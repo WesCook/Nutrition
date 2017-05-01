@@ -1,0 +1,16 @@
+[
+{
+  "modid": "nutrition",
+  "name": "Nutrition",
+  "description": "Ensuring you eat healthy",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/WesCook/Nutrition",
+  "updateUrl": "",
+  "authorList": ["Wes Cook"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
