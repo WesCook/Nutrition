@@ -1,19 +1,15 @@
 package ca.wescook.nutrition.configs;
 
 import ca.wescook.nutrition.Nutrition;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.LootTableManager;
 import net.minecraftforge.common.config.Configuration;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 
-import java.io.*;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
 import static net.minecraftforge.common.config.Configuration.CATEGORY_GENERAL;
 
 public class Config {
@@ -21,11 +17,7 @@ public class Config {
 
 	public static void registerConfigs(File configDirectory) {
 		registerPrimaryConfig(configDirectory); // Main nutrition.cfg file
-		try {
-			registerFoodGroupsDirectory(configDirectory); // /nutrition/ directory
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		registerFoodGroupsDirectory(configDirectory); // /nutrition/ directory
 	}
 
 	private static void registerPrimaryConfig(File configDirectory) {
@@ -41,7 +33,7 @@ public class Config {
 			configFile.save();
 	}
 
-	private static void registerFoodGroupsDirectory(File configDirectory) throws IOException {
+	private static void registerFoodGroupsDirectory(File configDirectory) {
 		// Specify /nutrition directory
 		File nutritionDirectory = new File(configDirectory, Nutrition.MODID);
 
@@ -52,26 +44,21 @@ public class Config {
 		// Create config directory
 		nutritionDirectory.mkdir();
 
-		// Set up our objects
-		ClassLoader loader = Thread.currentThread().getContextClassLoader(); // Can access resources via class loader
-		StringWriter outputWriter = new StringWriter(); // Create writer object
-
-		// Get directory content
-		String[] fileList;
-		try (InputStream inputStream = loader.getResourceAsStream("assets/nutrition/foodgroups")) { // Get input stream of directory contents
-			IOUtils.copy(inputStream, outputWriter); // Copy stream to writer
-			fileList = outputWriter.toString().split("\n"); // Read as string and split into file list
-			outputWriter.getBuffer().setLength(0); // Clear writer data
-			outputWriter.close(); // Close file
-		}
+		// Default json files list
+		List<String> files = new ArrayList<>();
+		files.add("dairy.json");
+		files.add("fruit.json");
+		files.add("grain.json");
+		files.add("protein.json");
+		files.add("vegetable.json");
 
 		// Copy each file over
-		for (String file : fileList) {
+		ClassLoader loader = Thread.currentThread().getContextClassLoader(); // Can access resources via class loader
+		for (String file : files) {
 			try (InputStream inputStream = loader.getResourceAsStream("assets/nutrition/foodgroups/" + file)) { // Get input stream of file
-				IOUtils.copy(inputStream, outputWriter); // Copy stream to writer
-				FileUtils.writeStringToFile(new File(nutritionDirectory + "/" + file), outputWriter.toString()); // Write writer to file
-				outputWriter.getBuffer().setLength(0); // Clear writer data
-				outputWriter.close(); // Close file
+				Files.copy(inputStream, new File(nutritionDirectory + "/" + file).toPath()); // Create files from stream
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}
