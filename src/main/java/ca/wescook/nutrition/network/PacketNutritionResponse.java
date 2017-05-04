@@ -4,6 +4,7 @@ import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.nutrition.Nutrient;
 import ca.wescook.nutrition.nutrition.NutrientList;
 import ca.wescook.nutrition.nutrition.NutritionProvider;
+import ca.wescook.nutrition.proxy.ClientProxy;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -56,15 +57,17 @@ public class PacketNutritionResponse {
 		@Override
 		public IMessage onMessage(final Message message, final MessageContext context) {
 			FMLCommonHandler.instance().getWorldThread(context.netHandler).addScheduledTask(() -> {
-				// Get info
-				GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
+				// Update local dummy nutrition data
+				ClientProxy.nutrientData = message.clientNutrients;
 
-				// Ensure GUI is still open
-				if (currentScreen == null || !currentScreen.equals(ModGuiHandler.nutritionGui))
+				// If GUI is still open
+				GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
+				if (currentScreen == null || !currentScreen.equals(ModGuiHandler.nutritionGui)) {
 					return;
+				}
 
 				// Update GUI information
-				ModGuiHandler.nutritionGui.updateInformation(message.clientNutrients);
+				ModGuiHandler.nutritionGui.updateInformation();
 			});
 			return null;
 		}

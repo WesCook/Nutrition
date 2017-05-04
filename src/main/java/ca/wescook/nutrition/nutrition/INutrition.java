@@ -21,4 +21,7 @@ public interface INutrition {
 
 	// Penalize all skills on death
 	void deathPenalty();
+
+	// Sync nutrition data to local dummy
+	void resync();
 }

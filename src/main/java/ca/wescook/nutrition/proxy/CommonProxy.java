@@ -2,10 +2,7 @@ package ca.wescook.nutrition.proxy;
 
 import ca.wescook.nutrition.Nutrition;
 import ca.wescook.nutrition.configs.Config;
-import ca.wescook.nutrition.events.EventEatFood;
-import ca.wescook.nutrition.events.EventNutritionDecay;
-import ca.wescook.nutrition.events.EventPlayerAttachCapability;
-import ca.wescook.nutrition.events.EventPlayerClone;
+import ca.wescook.nutrition.events.*;
 import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.network.ModPacketHandler;
 import ca.wescook.nutrition.nutrition.INutrition;
@@ -32,6 +29,7 @@ public class CommonProxy {
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {
+		MinecraftForge.EVENT_BUS.register(new EventPlayerLogin()); // Player login
 		MinecraftForge.EVENT_BUS.register(new EventPlayerClone()); // Player death and warping
 		MinecraftForge.EVENT_BUS.register(new EventEatFood()); // Register use item event
 		MinecraftForge.EVENT_BUS.register(new EventNutritionDecay()); // Register update event for Attrition

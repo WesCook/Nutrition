@@ -5,6 +5,7 @@ import ca.wescook.nutrition.network.ModPacketHandler;
 import ca.wescook.nutrition.network.PacketNutritionRequest;
 import ca.wescook.nutrition.nutrition.Nutrient;
 import ca.wescook.nutrition.nutrition.NutrientList;
+import ca.wescook.nutrition.proxy.ClientProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiLabel;
@@ -14,12 +15,10 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 
 import java.io.IOException;
-import java.util.Map;
 
 public class NutritionGui extends GuiScreen {
 	private GuiButton buttonClose;
 	private GuiLabel label;
-	private Map<Nutrient, Float> nutrientData;
 
 	// Magic numbers
 	private int nutritionDistance = 20; // Vertical distance between each entry
@@ -66,7 +65,7 @@ public class NutritionGui extends GuiScreen {
 		int i = 0;
 		for (Nutrient nutrient : NutrientList.get()) {
 			// Calculate percentage width for nutrition bars
-			float currentNutrient = (nutrientData != null && nutrientData.get(nutrient) != null) ? nutrientData.get(nutrient) : 0; // If null, setPlayerNutrition to 0, else getPlayerNutrition true value
+			float currentNutrient = (ClientProxy.nutrientData != null && ClientProxy.nutrientData.get(nutrient) != null) ? ClientProxy.nutrientData.get(nutrient) : 0; // If null, setPlayerNutrition to 0, else getPlayerNutrition true value
 			int nutritionBarDisplayWidth = (int) (currentNutrient / 100 * nutritionBarWidth);
 
 			// Draw icons
@@ -100,14 +99,41 @@ public class NutritionGui extends GuiScreen {
 	// Called when GUI is opened or resized
 	@Override
 	public void initGui() {
-		// Request nutrition data
-		ModPacketHandler.NETWORK_CHANNEL.sendToServer(new PacketNutritionRequest.Message()); // Make request
+		// Nutrition sync request
+		ModPacketHandler.NETWORK_CHANNEL.sendToServer(new PacketNutritionRequest.Message());
 
 		// Add buttons
 		this.buttonList.add(this.buttonClose = new GuiButton(0, (width / 2) - (closeButtonWidth / 2), (height / 2) + closeButtonVerticalOffset, closeButtonWidth, closeButtonHeight, "Close"));
 
-		// Redraw labels
-		this.redrawInformation();
+		// Draw labels
+		updateInformation();
+	}
+
+	// Called when needing to propagate the window with new information
+	public void updateInformation() {
+		// Clear existing labels for nutrition value or screen changes
+		this.labelList.clear();
+
+		// Draw title
+		String nutritionTitle = I18n.format("gui." + Nutrition.MODID + ":nutrition_title");
+		this.labelList.add(label = new GuiLabel(fontRendererObj, 0, (width / 2) - (fontRendererObj.getStringWidth(nutritionTitle) / 2), (height / 2) + titleVerticalOffset, 200, 100, 0xffffffff));
+		label.addLine(nutritionTitle);
+
+		// Nutrients names and values
+		int i = 0;
+		for (Nutrient nutrient : NutrientList.get()) {
+			// Create labels for each nutrient type name
+			this.labelList.add(label = new GuiLabel(fontRendererObj, 0, (width / 2) + labelNameHorizontalOffset, (height / 2) + labelVerticalOffset + (i * nutritionDistance), 200, 100, 0xffffffff));
+			label.addLine(I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name)); // Add name from localization file
+
+			// Create percent value labels for each nutrient value
+			this.labelList.add(label = new GuiLabel(fontRendererObj, 0, (width / 2) + labelValueHorizontalOffset, (height / 2) + labelVerticalOffset + (i * nutritionDistance), 200, 100, 0xffffffff));
+			if (ClientProxy.nutrientData == null || ClientProxy.nutrientData.get(nutrient) == null)
+				label.addLine("Updating...");
+			else
+				label.addLine(String.format("%.1f", ClientProxy.nutrientData.get(nutrient)) + "%%");
+			i++;
+		}
 	}
 
 	// Called when button/element is clicked
@@ -117,44 +143,6 @@ public class NutritionGui extends GuiScreen {
 			this.mc.displayGuiScreen(null); // Close GUI
 			if (this.mc.currentScreen == null)
 				this.mc.setIngameFocus(); // Focus game
-		}
-	}
-
-	// Called when needing to propagate the window with new information
-	public void redrawInformation() {
-		// Clear list in case the window is resized and this method is called again
-		this.labelList.clear();
-
-		// Draw title
-		String nutritionTitle = I18n.format("gui." + Nutrition.MODID + ":nutrition_title");
-		this.labelList.add(label = new GuiLabel(fontRendererObj, 0, (width / 2) - (fontRendererObj.getStringWidth(nutritionTitle) / 2), (height / 2) + titleVerticalOffset, 200, 100, 0xffffffff));
-		label.addLine(nutritionTitle);
-
-		// Create labels for each nutrient type
-		int i = 0;
-		for (Nutrient nutrient : NutrientList.get()) {
-			this.labelList.add(label = new GuiLabel(fontRendererObj, 0, (width / 2) + labelNameHorizontalOffset, (height / 2) + labelVerticalOffset + (i * nutritionDistance), 200, 100, 0xffffffff));
-			label.addLine(I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name)); // Add name from localization file
-			i++;
-		}
-	}
-
-
-	// Called when network request is completed to setPlayerNutrition GUI data
-	public void updateInformation(Map<Nutrient, Float> nutrientData) {
-		// Redraw labels
-		this.redrawInformation();
-
-		// Update nutrition info
-		this.nutrientData = nutrientData;
-
-		// Create percent value labels for each nutrient
-		// Can't be updated after drawing, so needs to happen after information is received
-		int i = 0;
-		for (Nutrient nutrient : NutrientList.get()) {
-			this.labelList.add(label = new GuiLabel(fontRendererObj, 0, (width / 2) + labelValueHorizontalOffset, (height / 2) + labelVerticalOffset + (i * nutritionDistance), 200, 100, 0xffffffff));
-			label.addLine(String.format("%.1f", nutrientData.get(nutrient)) + "%%");
-			i++;
 		}
 	}
 

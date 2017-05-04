@@ -1,12 +1,15 @@
 package ca.wescook.nutrition.nutrition;
 
+import ca.wescook.nutrition.network.ModPacketHandler;
+import ca.wescook.nutrition.network.PacketNutritionRequest;
+
 import java.util.HashMap;
 import java.util.Map;
 
 // Default implementation of Capability.  Contains logic for each method defined in the Interface.
 public class Nutrition implements INutrition {
 	// Map Nutrient type to value for that nutrient
-	private Map<Nutrient, Float> playerNutrition = new HashMap<Nutrient, Float>();
+	private Map<Nutrient, Float> playerNutrition = new HashMap<>();
 
 	// Constants
 	private final float STARTING_NUTRITION = 50;
@@ -28,20 +31,28 @@ public class Nutrition implements INutrition {
 
 	public void set(Map<Nutrient, Float> nutrientData) {
 		this.playerNutrition = nutrientData;
+		resync();
 	}
 
 	public void add(Nutrient nutrient, float amount) {
 		float currentAmount = playerNutrition.get(nutrient);
 		playerNutrition.put(nutrient, Math.min(currentAmount + amount, 100));
+		resync();
 	}
 
 	public void subtract(Nutrient nutrient, float amount) {
 		float currentAmount = playerNutrition.get(nutrient);
 		playerNutrition.put(nutrient, Math.max(currentAmount - amount, 0));
+		resync();
 	}
 
 	public void deathPenalty() {
 		for (Nutrient nutrient : playerNutrition.keySet()) // Loop through player's nutrients
 			subtract(nutrient, DEATH_LOSS); // Subtract death penalty to each
+		resync();
+	}
+
+	public void resync() {
+		ModPacketHandler.NETWORK_CHANNEL.sendToServer(new PacketNutritionRequest.Message()); // Send nutrition sync request
 	}
 }
