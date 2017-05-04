@@ -25,13 +25,10 @@ public class PacketNutritionRequest {
 	public static class Handler implements IMessageHandler<Message, IMessage> {
 		@Override
 		public IMessage onMessage(final Message message, final MessageContext context) {
-			FMLCommonHandler.instance().getWorldThread(context.netHandler).addScheduledTask(new Runnable() {
-				@Override
-				public void run() {
-					// Return message
-					EntityPlayer player = context.getServerHandler().playerEntity; // Get Player on server
-					ModPacketHandler.NETWORK_CHANNEL.sendTo(new PacketNutritionResponse.Message(player), context.getServerHandler().playerEntity);
-				}
+			FMLCommonHandler.instance().getWorldThread(context.netHandler).addScheduledTask(() -> {
+				// Return message
+				EntityPlayer player = context.getServerHandler().playerEntity; // Get Player on server
+				ModPacketHandler.NETWORK_CHANNEL.sendTo(new PacketNutritionResponse.Message(player), context.getServerHandler().playerEntity);
 			});
 			return null;
 		}

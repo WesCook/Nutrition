@@ -55,19 +55,16 @@ public class PacketNutritionResponse {
 	public static class Handler implements IMessageHandler<Message, IMessage> {
 		@Override
 		public IMessage onMessage(final Message message, final MessageContext context) {
-			FMLCommonHandler.instance().getWorldThread(context.netHandler).addScheduledTask(new Runnable() {
-				@Override
-				public void run() {
-					// Get info
-					GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
+			FMLCommonHandler.instance().getWorldThread(context.netHandler).addScheduledTask(() -> {
+				// Get info
+				GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
 
-					// Ensure GUI is still open
-					if (currentScreen == null || !currentScreen.equals(ModGuiHandler.nutritionGui))
-						return;
+				// Ensure GUI is still open
+				if (currentScreen == null || !currentScreen.equals(ModGuiHandler.nutritionGui))
+					return;
 
-					// Update GUI information
-					ModGuiHandler.nutritionGui.updateInformation(message.clientNutrients);
-				}
+				// Update GUI information
+				ModGuiHandler.nutritionGui.updateInformation(message.clientNutrients);
 			});
 			return null;
 		}

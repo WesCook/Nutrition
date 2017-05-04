@@ -32,7 +32,7 @@ minecraft {
     runDir = "run"
     mappings = config.mappings
 
-	// Replace @VERSION@ in HomesteadCompanion.java with mod version from build.properties
+	// Replace @VERSION@ in Nutrition.java with mod version from build.properties
 	replace '@VERSION@', config.mod_version
 	replaceIn 'Nutrition.java'
 }

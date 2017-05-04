@@ -1,6 +1,7 @@
 package ca.wescook.nutrition.proxy;
 
 import ca.wescook.nutrition.Nutrition;
+import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.events.EventEatFood;
 import ca.wescook.nutrition.events.EventPlayerAttachCapability;
 import ca.wescook.nutrition.events.EventPlayerClone;
@@ -18,6 +19,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
+		Config.registerConfigs(event.getModConfigurationDirectory()); // Create config files
 		ModPacketHandler.registerMessages(); // Register network messages
 		NutrientList.register(); // Register list of nutrients
 		CapabilityManager.INSTANCE.register(INutrition.class, new NutritionStorage(), ca.wescook.nutrition.nutrition.Nutrition.class); // Register capability
