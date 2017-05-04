@@ -106,6 +106,22 @@ public class NutritionGui extends GuiScreen {
 		// Add buttons
 		this.buttonList.add(this.buttonClose = new GuiButton(0, (width / 2) - (closeButtonWidth / 2), (height / 2) + closeButtonVerticalOffset, closeButtonWidth, closeButtonHeight, "Close"));
 
+		// Redraw labels
+		this.redrawInformation();
+	}
+
+	// Called when button/element is clicked
+	@Override
+	protected void actionPerformed(GuiButton button) throws IOException {
+		if (button == this.buttonClose) {
+			this.mc.displayGuiScreen(null); // Close GUI
+			if (this.mc.currentScreen == null)
+				this.mc.setIngameFocus(); // Focus game
+		}
+	}
+
+	// Called when needing to propagate the window with new information
+	public void redrawInformation() {
 		// Clear list in case the window is resized and this method is called again
 		this.labelList.clear();
 
@@ -123,18 +139,12 @@ public class NutritionGui extends GuiScreen {
 		}
 	}
 
-	// Called when button/element is clicked
-	@Override
-	protected void actionPerformed(GuiButton button) throws IOException {
-		if (button == this.buttonClose) {
-			this.mc.displayGuiScreen(null); // Close GUI
-			if (this.mc.currentScreen == null)
-				this.mc.setIngameFocus(); // Focus game
-		}
-	}
 
 	// Called when network request is completed to setPlayerNutrition GUI data
 	public void updateInformation(Map<Nutrient, Float> nutrientData) {
+		// Redraw labels
+		this.redrawInformation();
+
 		// Update nutrition info
 		this.nutrientData = nutrientData;
 
