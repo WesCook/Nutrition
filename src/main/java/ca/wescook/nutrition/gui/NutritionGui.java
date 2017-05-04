@@ -143,7 +143,7 @@ public class NutritionGui extends GuiScreen {
 		int i = 0;
 		for (Nutrient nutrient : NutrientList.get()) {
 			this.labelList.add(label = new GuiLabel(fontRendererObj, 0, (width / 2) + labelValueHorizontalOffset, (height / 2) + labelVerticalOffset + (i * nutritionDistance), 200, 100, 0xffffffff));
-			label.addLine(nutrientData.get(nutrient) + "%%");
+			label.addLine(String.format("%.1f", nutrientData.get(nutrient)) + "%%");
 			i++;
 		}
 	}

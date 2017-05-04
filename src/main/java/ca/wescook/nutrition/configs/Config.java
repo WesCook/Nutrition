@@ -14,6 +14,8 @@ import static net.minecraftforge.common.config.Configuration.CATEGORY_GENERAL;
 
 public class Config {
 	public static boolean testBool;
+	public static int nutritionDecay;
+	public static int nutritionHunger;
 
 	public static void registerConfigs(File configDirectory) {
 		registerPrimaryConfig(configDirectory); // Main nutrition.cfg file
@@ -27,6 +29,8 @@ public class Config {
 
 		// Get Values
 		testBool = configFile.getBoolean("TestBool", CATEGORY_GENERAL, true, "Test boolean");
+		nutritionDecay = configFile.getInt("NutritionDecayDelay", CATEGORY_GENERAL, 400, 100, 1000,"The delay in game ticks before the next decay check is made.");
+		nutritionHunger = configFile.getInt("NutritionDecayHunger", CATEGORY_GENERAL, 10,0,20,"The hunger level you need to be down to before decay occurs.");
 
 		// Update file
 		if (configFile.hasChanged())
