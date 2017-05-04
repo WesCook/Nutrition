@@ -3,6 +3,7 @@ key.nutrition=Open Nutrition GUI
 
 # GUI
 gui.nutrition:nutrition_title=Nutrition
+gui.nutrition:updating=Updating...
 
 # Nutrients
 nutrient.nutrition:grain=Grain
