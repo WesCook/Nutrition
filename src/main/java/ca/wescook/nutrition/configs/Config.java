@@ -1,9 +1,13 @@
 package ca.wescook.nutrition.configs;
 
 import ca.wescook.nutrition.Nutrition;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -13,13 +17,14 @@ import java.util.List;
 import static net.minecraftforge.common.config.Configuration.CATEGORY_GENERAL;
 
 public class Config {
-	public static boolean testBool;
+	private static final Gson gson = new GsonBuilder().enableComplexMapKeySerialization().setPrettyPrinting().create();
 	public static int nutritionDecay;
 	public static int nutritionHunger;
 
 	public static void registerConfigs(File configDirectory) {
 		registerPrimaryConfig(configDirectory); // Main nutrition.cfg file
-		registerFoodGroupsDirectory(configDirectory); // /nutrition/ directory
+		createFoodGroupsDirectory(configDirectory); // Create /nutrition directory
+		readFoodGroupsDirectory(configDirectory);
 	}
 
 	private static void registerPrimaryConfig(File configDirectory) {
@@ -28,16 +33,15 @@ public class Config {
 		configFile.load();
 
 		// Get Values
-		testBool = configFile.getBoolean("TestBool", CATEGORY_GENERAL, true, "Test boolean");
-		nutritionDecay = configFile.getInt("NutritionDecayDelay", CATEGORY_GENERAL, 400, 100, 1000,"The delay in game ticks before the next decay check is made.");
-		nutritionHunger = configFile.getInt("NutritionDecayHunger", CATEGORY_GENERAL, 10,0,20,"The hunger level you need to be down to before decay occurs.");
+		nutritionDecay = configFile.getInt("NutritionDecayDelay", CATEGORY_GENERAL, 400, 100, 1000, "The delay in game ticks before the next decay check is made.");
+		nutritionHunger = configFile.getInt("NutritionDecayHunger", CATEGORY_GENERAL, 10, 0, 20, "The hunger level you need to be down to before decay occurs.");
 
 		// Update file
 		if (configFile.hasChanged())
 			configFile.save();
 	}
 
-	private static void registerFoodGroupsDirectory(File configDirectory) {
+	private static void createFoodGroupsDirectory(File configDirectory) {
 		// Specify /nutrition directory
 		File nutritionDirectory = new File(configDirectory, Nutrition.MODID);
 
@@ -61,6 +65,18 @@ public class Config {
 		for (String file : files) {
 			try (InputStream inputStream = loader.getResourceAsStream("assets/nutrition/foodgroups/" + file)) { // Get input stream of file
 				Files.copy(inputStream, new File(nutritionDirectory + "/" + file).toPath()); // Create files from stream
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private static void readFoodGroupsDirectory(File configDirectory) {
+		File[] files = new File(configDirectory, Nutrition.MODID).listFiles();
+		for (File file : files) {
+			try {
+				JsonReader jsonReader = new JsonReader(new FileReader(file));
+				FoodGroup foodGroup = gson.fromJson(jsonReader, FoodGroup.class);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
