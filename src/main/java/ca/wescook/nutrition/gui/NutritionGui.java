@@ -128,10 +128,10 @@ public class NutritionGui extends GuiScreen {
 
 			// Create percent value labels for each nutrient value
 			this.labelList.add(label = new GuiLabel(fontRendererObj, 0, (width / 2) + labelValueHorizontalOffset, (height / 2) + labelVerticalOffset + (i * nutritionDistance), 200, 100, 0xffffffff));
-			if (ClientProxy.nutrientData == null || ClientProxy.nutrientData.get(nutrient) == null)
-				label.addLine(I18n.format("gui." + Nutrition.MODID + ":updating"));
-			else
+			if (ClientProxy.nutrientData != null && ClientProxy.nutrientData.get(nutrient) != null) // Ensure local nutrition data exists
 				label.addLine(String.format("%.1f", ClientProxy.nutrientData.get(nutrient)) + "%%");
+			else
+				label.addLine(I18n.format("gui." + Nutrition.MODID + ":updating"));
 			i++;
 		}
 	}
