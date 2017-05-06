@@ -20,6 +20,7 @@ import static net.minecraftforge.common.config.Configuration.CATEGORY_GENERAL;
 
 public class Config {
 	private static final Gson gson = new GsonBuilder().enableComplexMapKeySerialization().setPrettyPrinting().create();
+	public static boolean enableLogging;
 	public static int nutritionDecay;
 	public static int nutritionHunger;
 
@@ -35,6 +36,7 @@ public class Config {
 		configFile.load();
 
 		// Get Values
+		enableLogging = configFile.getBoolean("EnableLogging", CATEGORY_GENERAL, false, "Enable logging of missing or invalid foods.");
 		nutritionDecay = configFile.getInt("NutritionDecayDelay", CATEGORY_GENERAL, 400, 100, 1000, "The delay in game ticks before the next decay check is made.");
 		nutritionHunger = configFile.getInt("NutritionDecayHunger", CATEGORY_GENERAL, 10, 0, 20, "The hunger level you need to be down to before decay occurs.");
 
