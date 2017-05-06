@@ -1,6 +1,7 @@
 package ca.wescook.nutrition.nutrients;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
@@ -33,10 +34,12 @@ public class NutrientList {
 			// Food - Items
 			for (String itemName : nutrientRaw.food.items) {
 				Item foodItem = Item.getByNameOrId(itemName);
-				if (foodItem != null)
-					nutrient.foodItems.add(foodItem);
+				if (foodItem == null)
+					System.out.println(itemName + " is not a valid item (" + nutrient.name + ")");
+				else if (!(foodItem instanceof ItemFood))
+					System.out.println(itemName + " is not a valid food (" + nutrient.name + ")");
 				else
-					System.out.println(itemName + " is not a valid item");
+					nutrient.foodItems.add(foodItem);
 			}
 
 			// Register nutrient
