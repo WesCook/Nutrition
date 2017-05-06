@@ -38,7 +38,7 @@ public class EventEatFood {
 			// Search food items
 			for (ItemFood listedFood : nutrient.foodItems) { // All foods in that nutrient
 				if (listedFood.equals(eatingFood)) {
-					int nutrientIncrease = eatingFood.getHealAmount(new ItemStack(eatingFood)); // Must pass ItemStack in as well, otherwise Raw Fish crash the game
+					int nutrientIncrease = eatingFood.getHealAmount(new ItemStack(eatingFood)); // Must pass ItemStack in as well, otherwise Raw Fish crashes the game
 					player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutrientIncrease); // Add nutrient
 					continue foodSearch; // Skip rest of search in this nutrient, try others
 				}
