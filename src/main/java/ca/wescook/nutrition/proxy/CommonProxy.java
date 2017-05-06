@@ -32,6 +32,6 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new EventPlayerLogin()); // Player login
 		MinecraftForge.EVENT_BUS.register(new EventPlayerClone()); // Player death and warping
 		MinecraftForge.EVENT_BUS.register(new EventEatFood()); // Register use item event
-		MinecraftForge.EVENT_BUS.register(new EventNutritionDecay()); // Register update event for Attrition
+		if (Config.enableDecay) MinecraftForge.EVENT_BUS.register(new EventNutritionDecay()); // Register update event for Attrition
 	}
 }

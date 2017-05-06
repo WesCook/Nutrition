@@ -18,15 +18,10 @@ public class EventNutritionDecay {
 		if (player.getEntityWorld().isRemote)
 			return;
 
-		// Set config values to variables
-		int nutritionDecay = Config.nutritionDecay;
-		int nutritionHunger = Config.nutritionHunger;
-
-		if (fauxTick >= nutritionDecay) { // When the elapsed tick count reaches the configured value, trigger payload
-			if (player.getFoodStats().getFoodLevel() <= nutritionHunger) { // When the food level of the player is below the threshold
-				for (Nutrient nutrient : NutrientList.get()) { // Cycle through nutrient list
+		if (fauxTick >= Config.decayRate) { // When the elapsed tick count reaches the configured value, trigger payload
+			if (player.getFoodStats().getFoodLevel() <= Config.decayHungerLevel) { // When the food level of the player is below the threshold
+				for (Nutrient nutrient : NutrientList.get()) // Cycle through nutrient list
 					player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).subtract(nutrient, 0.1F); // And update player nutrition
-				}
 				fauxTick = 0; // If the payload has been triggered, reset tick count
 			}
 		}
