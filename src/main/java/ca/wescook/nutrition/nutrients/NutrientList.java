@@ -34,12 +34,12 @@ public class NutrientList {
 			// Food - Items
 			for (String itemName : nutrientRaw.food.items) {
 				Item foodItem = Item.getByNameOrId(itemName);
-				if (foodItem == null)
+				if (foodItem == null) // If food has valid item
 					System.out.println(itemName + " is not a valid item (" + nutrient.name + ")");
-				else if (!(foodItem instanceof ItemFood))
+				else if (!(foodItem instanceof ItemFood)) // If item is specified as a food
 					System.out.println(itemName + " is not a valid food (" + nutrient.name + ")");
 				else
-					nutrient.foodItems.add(foodItem);
+					nutrient.foodItems.add((ItemFood) foodItem); // Register it!
 			}
 
 			// Register nutrient
