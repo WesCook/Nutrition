@@ -1,6 +1,8 @@
 package ca.wescook.nutrition.configs;
 
 import ca.wescook.nutrition.Nutrition;
+import ca.wescook.nutrition.nutrients.NutrientJson;
+import ca.wescook.nutrition.nutrients.NutrientList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
@@ -63,7 +65,7 @@ public class Config {
 		// Copy each file over
 		ClassLoader loader = Thread.currentThread().getContextClassLoader(); // Can access resources via class loader
 		for (String file : files) {
-			try (InputStream inputStream = loader.getResourceAsStream("assets/nutrition/foodgroups/" + file)) { // Get input stream of file
+			try (InputStream inputStream = loader.getResourceAsStream("assets/nutrition/nutrients/" + file)) { // Get input stream of file
 				Files.copy(inputStream, new File(nutritionDirectory + "/" + file).toPath()); // Create files from stream
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -72,11 +74,11 @@ public class Config {
 	}
 
 	private static void readFoodGroupsDirectory(File configDirectory) {
-		File[] files = new File(configDirectory, Nutrition.MODID).listFiles();
+		File[] files = new File(configDirectory, Nutrition.MODID).listFiles(); // List json files
 		for (File file : files) {
 			try {
-				JsonReader jsonReader = new JsonReader(new FileReader(file));
-				FoodGroup foodGroup = gson.fromJson(jsonReader, FoodGroup.class);
+				JsonReader jsonReader = new JsonReader(new FileReader(file)); // Read in JSON
+				NutrientList.registerNutrientJson(gson.fromJson(jsonReader, NutrientJson.class)); // Deserialize with GSON and store for later processing
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

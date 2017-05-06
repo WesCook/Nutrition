@@ -5,8 +5,8 @@ import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.events.*;
 import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.network.ModPacketHandler;
+import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.nutrition.INutrition;
-import ca.wescook.nutrition.nutrition.NutrientList;
 import ca.wescook.nutrition.nutrition.NutritionStorage;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -19,7 +19,6 @@ public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		Config.registerConfigs(event.getModConfigurationDirectory()); // Create config files
 		ModPacketHandler.registerMessages(); // Register network messages
-		NutrientList.register(); // Register list of nutrients
 		CapabilityManager.INSTANCE.register(INutrition.class, new NutritionStorage(), ca.wescook.nutrition.nutrition.Nutrition.class); // Register capability
 		MinecraftForge.EVENT_BUS.register(new EventPlayerAttachCapability()); // Attach capability to player
 	}
@@ -29,6 +28,7 @@ public class CommonProxy {
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {
+		NutrientList.registerNutrients(); // Register nutrients from loaded JSONs
 		MinecraftForge.EVENT_BUS.register(new EventPlayerLogin()); // Player login
 		MinecraftForge.EVENT_BUS.register(new EventPlayerClone()); // Player death and warping
 		MinecraftForge.EVENT_BUS.register(new EventEatFood()); // Register use item event

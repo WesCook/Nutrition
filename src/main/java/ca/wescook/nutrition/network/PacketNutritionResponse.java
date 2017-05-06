@@ -1,8 +1,8 @@
 package ca.wescook.nutrition.network;
 
 import ca.wescook.nutrition.gui.ModGuiHandler;
-import ca.wescook.nutrition.nutrition.Nutrient;
-import ca.wescook.nutrition.nutrition.NutrientList;
+import ca.wescook.nutrition.nutrients.Nutrient;
+import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.nutrition.NutritionProvider;
 import ca.wescook.nutrition.proxy.ClientProxy;
 import io.netty.buffer.ByteBuf;

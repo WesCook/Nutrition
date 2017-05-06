@@ -1,10 +1,10 @@
-package ca.wescook.nutrition.configs;
+package ca.wescook.nutrition.nutrients;
 
 import java.util.ArrayList;
 import java.util.List;
 
 // This class mimics the layout of the json files
-public class FoodGroup {
+public class NutrientJson {
 	public String name;
 	public String icon;
 	public String color;

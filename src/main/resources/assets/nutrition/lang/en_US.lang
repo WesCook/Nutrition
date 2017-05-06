@@ -5,7 +5,7 @@ key.nutrition=Open Nutrition GUI
 gui.nutrition:nutrition_title=Nutrition
 gui.nutrition:updating=Updating...
 
-# Nutrients
+# Nutrients (Can be customized using Resource Packs)
 nutrient.nutrition:grain=Grain
 nutrient.nutrition:fruit=Fruit
 nutrient.nutrition:vegetable=Vegetable

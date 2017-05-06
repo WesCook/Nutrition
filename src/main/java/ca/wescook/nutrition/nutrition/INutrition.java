@@ -1,5 +1,7 @@
 package ca.wescook.nutrition.nutrition;
 
+import ca.wescook.nutrition.nutrients.Nutrient;
+
 import java.util.Map;
 
 // Capability Interface that describes what methods the Implementations should understand.

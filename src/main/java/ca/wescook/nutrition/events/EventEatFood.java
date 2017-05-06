@@ -1,7 +1,7 @@
 package ca.wescook.nutrition.events;
 
-import ca.wescook.nutrition.nutrition.Nutrient;
-import ca.wescook.nutrition.nutrition.NutrientList;
+import ca.wescook.nutrition.nutrients.Nutrient;
+import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.nutrition.NutritionProvider;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
