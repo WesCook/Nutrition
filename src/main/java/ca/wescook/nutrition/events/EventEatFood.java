@@ -33,15 +33,18 @@ public class EventEatFood {
 		if (!(item instanceof ItemFood))
 			return;
 
-		// The item we're eating
-		ItemFood eatingFood = (ItemFood) event.getItem().getItem();
-		List<Nutrient> foundNutrients = getFoodNutrients(eatingFood, player);
+		ItemFood eatingFood = (ItemFood) event.getItem().getItem(); // The item we're eating
+		List<Nutrient> foundNutrients = getFoodNutrients(eatingFood, player); // Nutrient list for that item
+
+		// Calculate nutrition value
+		int foodValue = eatingFood.getHealAmount(new ItemStack(eatingFood)); // Number of half-drumsticks food heals
+		float lossPercentage = (float) Config.lossPerNutrient / 100; // Loss percentage from config file
+		float foodLoss = (foodValue * lossPercentage * (foundNutrients.size() - 1)); // Lose 15% (configurable) for each nutrient added after the first nutrient
+		float nutritionValue = Math.max(1, foodValue - foodLoss); // Subtract from true value, with a floor of 1 (prevent zero/negatives)
+
+		// Add to each nutrition
 		for (Nutrient nutrient : foundNutrients) {
-			int foodValue = eatingFood.getHealAmount(new ItemStack(eatingFood)); // Number of half-drumsticks food heals
-			float lossPercentage = (float) Config.lossPerNutrient / 100; // Loss percentage from config file
-			float foodLoss = (foodValue * lossPercentage * (foundNutrients.size() - 1)); // Lose 15% (configurable) for each nutrient added after the first nutrient
-			float result = Math.max(1, foodValue - foodLoss); // Subtract from true value, with a floor of 1 (prevent zero/negatives)
-			player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).add(nutrient, result); // Add value for that nutrient
+			player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutritionValue);
 		}
 	}
 
