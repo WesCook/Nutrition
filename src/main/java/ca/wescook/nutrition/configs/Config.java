@@ -28,9 +28,9 @@ public class Config {
 	public static boolean enableLogging;
 
 	// Categories
-	private static String CATEGORY_DECAY = "Nutrition Decay";
-	private static String CATEGORY_DEATH_PENALTY = "Death Penalty";
-	private static String CATEGORY_LOGGING = "Logging";
+	private static final String CATEGORY_DECAY = "Nutrition Decay";
+	private static final String CATEGORY_DEATH_PENALTY = "Death Penalty";
+	private static final String CATEGORY_LOGGING = "Logging";
 
 	public static void registerConfigs(File configDirectory) {
 		registerPrimaryConfig(configDirectory); // Main nutrition.cfg file
@@ -92,7 +92,8 @@ public class Config {
 			try {
 				JsonReader jsonReader = new JsonReader(new FileReader(file)); // Read in JSON
 				NutrientList.registerNutrientJson(gson.fromJson(jsonReader, NutrientJson.class)); // Deserialize with GSON and store for later processing
-			} catch (IOException e) {
+			} catch (IOException | com.google.gson.JsonSyntaxException e) {
+				System.out.println("The file " + file.getName() + " has invalid JSON and could not be loaded.");
 				e.printStackTrace();
 			}
 		}
