@@ -1,5 +1,6 @@
 package ca.wescook.nutrition.events;
 
+import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.nutrition.NutritionProvider;
@@ -10,6 +11,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventEatFood {
 	@SubscribeEvent
@@ -31,6 +35,19 @@ public class EventEatFood {
 
 		// The item we're eating
 		ItemFood eatingFood = (ItemFood) event.getItem().getItem();
+		List<Nutrient> foundNutrients = getFoodNutrients(eatingFood, player);
+		for (Nutrient nutrient : foundNutrients) {
+			int foodValue = eatingFood.getHealAmount(new ItemStack(eatingFood)); // Number of half-drumsticks food heals
+			float lossPercentage = (float) Config.lossPerNutrient / 100; // Loss percentage from config file
+			float foodLoss = (foodValue * lossPercentage * (foundNutrients.size() - 1)); // Lose 15% (configurable) for each nutrient added after the first nutrient
+			float result = Math.max(1, foodValue - foodLoss); // Subtract from true value, with a floor of 1 (prevent zero/negatives)
+			player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).add(nutrient, result); // Add value for that nutrient
+		}
+	}
+
+	// Returns list of nutrients that food belongs to
+	private List<Nutrient> getFoodNutrients(ItemFood eatingFood, EntityPlayer player) {
+		List<Nutrient> nutrientsFound = new ArrayList<>();
 
 		// Loop through nutrients to look for food
 		foodSearch:
@@ -38,8 +55,7 @@ public class EventEatFood {
 			// Search food items
 			for (ItemFood listedFood : nutrient.foodItems) { // All foods in that nutrient
 				if (listedFood.equals(eatingFood)) {
-					int nutrientIncrease = eatingFood.getHealAmount(new ItemStack(eatingFood)); // Must pass ItemStack in as well, otherwise Raw Fish crashes the game
-					player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutrientIncrease); // Add nutrient
+					nutrientsFound.add(nutrient); // Add nutrient
 					continue foodSearch; // Skip rest of search in this nutrient, try others
 				}
 			}
@@ -49,12 +65,13 @@ public class EventEatFood {
 				for (ItemStack testingItemStack : OreDictionary.getOres(listedOreDict)) { // All items that match that oredict (eg. listAllmilk)
 					Item testingItem = testingItemStack.getItem(); // Get real item
 					if (testingItem.equals(eatingFood)) { // Our food matches oredict
-						int nutrientIncrease = eatingFood.getHealAmount(new ItemStack(eatingFood));
-						player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutrientIncrease); // Add nutrient
+						nutrientsFound.add(nutrient); // Add nutrient
 						continue foodSearch; // Skip rest of search in this nutrient, try others
 					}
 				}
 			}
 		}
+
+		return nutrientsFound;
 	}
 }
