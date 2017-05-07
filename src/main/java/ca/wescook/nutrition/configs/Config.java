@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import net.minecraftforge.common.config.Configuration;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.FileReader;
@@ -60,8 +61,8 @@ public class Config {
 		// Specify /nutrition directory
 		File nutritionDirectory = new File(configDirectory, Nutrition.MODID);
 
-		// Make no changes if directory already exists
-		if (nutritionDirectory.exists())
+		// Make no changes if directory already exists, unless it's also empty
+		if (nutritionDirectory.exists() && nutritionDirectory.list().length != 0)
 			return;
 
 		// Create config directory
@@ -89,12 +90,14 @@ public class Config {
 	private static void readFoodGroupsDirectory(File configDirectory) {
 		File[] files = new File(configDirectory, Nutrition.MODID).listFiles(); // List json files
 		for (File file : files) {
-			try {
-				JsonReader jsonReader = new JsonReader(new FileReader(file)); // Read in JSON
-				NutrientList.registerNutrientJson(gson.fromJson(jsonReader, NutrientJson.class)); // Deserialize with GSON and store for later processing
-			} catch (IOException | com.google.gson.JsonSyntaxException e) {
-				System.out.println("The file " + file.getName() + " has invalid JSON and could not be loaded.");
-				e.printStackTrace();
+			if (FilenameUtils.isExtension(file.getName(), "json")) {
+				try {
+					JsonReader jsonReader = new JsonReader(new FileReader(file)); // Read in JSON
+					NutrientList.registerNutrientJson(gson.fromJson(jsonReader, NutrientJson.class)); // Deserialize with GSON and store for later processing
+				} catch (IOException | com.google.gson.JsonSyntaxException e) {
+					System.out.println("The file " + file.getName() + " has invalid JSON and could not be loaded.");
+					e.printStackTrace();
+				}
 			}
 		}
 	}
