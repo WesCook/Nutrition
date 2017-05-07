@@ -16,14 +16,21 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.minecraftforge.common.config.Configuration.CATEGORY_GENERAL;
-
 public class Config {
 	private static final Gson gson = new GsonBuilder().enableComplexMapKeySerialization().setPrettyPrinting().create();
-	public static boolean enableLogging;
+
+	// Public config values
 	public static boolean enableDecay;
 	public static int decayRate;
 	public static int decayHungerLevel;
+	public static int deathPenaltyMin;
+	public static int deathPenaltyLoss;
+	public static boolean enableLogging;
+
+	// Categories
+	private static String CATEGORY_DECAY = "Nutrition Decay";
+	private static String CATEGORY_DEATH_PENALTY = "Death Penalty";
+	private static String CATEGORY_LOGGING = "Logging";
 
 	public static void registerConfigs(File configDirectory) {
 		registerPrimaryConfig(configDirectory); // Main nutrition.cfg file
@@ -37,10 +44,12 @@ public class Config {
 		configFile.load();
 
 		// Get Values
-		enableLogging = configFile.getBoolean("EnableLogging", CATEGORY_GENERAL, false, "Enable logging of missing or invalid foods.");
-		enableDecay = configFile.getBoolean("EnableDecay", CATEGORY_GENERAL, true, "Enable natural nutrition decay.");
-		decayRate = configFile.getInt("DecayRate", CATEGORY_GENERAL, 400, 100, 1000, "The delay in game ticks before the next decay check is made.");
-		decayHungerLevel = configFile.getInt("DecayHungerLevel", CATEGORY_GENERAL, 10, 0, 20, "The hunger level you need to be down to before decay occurs.");
+		enableDecay = configFile.getBoolean("EnableDecay", CATEGORY_DECAY, true, "Enable nutrition decay.");
+		decayRate = configFile.getInt("DecayRate", CATEGORY_DECAY, 400, 100, 1000, "The speed that nutrition decays in game ticks (lower is faster).");
+		decayHungerLevel = configFile.getInt("DecayHungerLevel", CATEGORY_DECAY, 10, 0, 20, "The hunger level at which nutrition decay begins taking effect (one value is half a drumstick).");
+		deathPenaltyMin = configFile.getInt("DeathPenaltyMin", CATEGORY_DEATH_PENALTY, 30, 0, 100, "The minimum nutrition value that the death penalty may reduce to.");
+		deathPenaltyLoss = configFile.getInt("DeathPenaltyLoss", CATEGORY_DEATH_PENALTY, 15, 0, 100, "The nutrition value subtracted from each nutrient upon death.");
+		enableLogging = configFile.getBoolean("EnableLogging", CATEGORY_LOGGING, false, "Enable logging of missing or invalid foods.");
 
 		// Update file
 		if (configFile.hasChanged())

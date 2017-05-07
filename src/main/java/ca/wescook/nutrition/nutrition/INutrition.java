@@ -15,6 +15,9 @@ public interface INutrition {
 	// Overwrite all nutrients
 	void set(Map<Nutrient, Float> nutrientData);
 
+	// Overwrite specific nutrient
+	void set(Nutrient nutrient, Float value);
+
 	// Increase nutrition
 	void add(Nutrient nutrient, float amount);
 

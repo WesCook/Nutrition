@@ -1,5 +1,6 @@
 package ca.wescook.nutrition.nutrition;
 
+import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.network.ModPacketHandler;
 import ca.wescook.nutrition.network.PacketNutritionRequest;
 import ca.wescook.nutrition.nutrients.Nutrient;
@@ -15,7 +16,6 @@ public class Nutrition implements INutrition {
 
 	// Constants
 	private final float STARTING_NUTRITION = 50;
-	private final float DEATH_LOSS = 15;
 
 	public Nutrition() {
 		// Populate nutrient data with starting nutrition
@@ -36,6 +36,11 @@ public class Nutrition implements INutrition {
 		resync();
 	}
 
+	public void set(Nutrient nutrient, Float value) {
+		playerNutrition.put(nutrient, value);
+		resync();
+	}
+
 	public void add(Nutrient nutrient, float amount) {
 		float currentAmount = playerNutrition.get(nutrient);
 		playerNutrition.put(nutrient, Math.min(currentAmount + amount, 100));
@@ -50,7 +55,7 @@ public class Nutrition implements INutrition {
 
 	public void deathPenalty() {
 		for (Nutrient nutrient : playerNutrition.keySet()) // Loop through player's nutrients
-			subtract(nutrient, DEATH_LOSS); // Subtract death penalty to each
+			set(nutrient, Math.max(Config.deathPenaltyMin, playerNutrition.get(nutrient) - Config.deathPenaltyLoss)); // Subtract death penalty to each, with a bottom cap
 		resync();
 	}
 
