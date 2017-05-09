@@ -24,6 +24,10 @@ public class EffectsList {
 			Effect effect = new Effect();
 			effect.name = effectRaw.name;
 			effect.amplifier = effectRaw.amplifier;
+			effect.minimum = effectRaw.minimum;
+			effect.maximum = effectRaw.maximum;
+			effect.nutrient = effectRaw.nutrient;
+			effect.hidden = effectRaw.hidden;
 
 			// Register effect
 			effects.add(effect);

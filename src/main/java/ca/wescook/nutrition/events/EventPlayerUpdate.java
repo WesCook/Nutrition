@@ -42,7 +42,10 @@ public class EventPlayerUpdate {
 
 	private void potionCheck(EntityPlayer player) {
 		// Run every 10 seconds
-		if (potionCounter > 200) { // 10 seconds
+		if (potionCounter > 200) {
+			// Read in list of potion effects to apply
+			//for (Effect effect : EffectsList.get()) {}
+
 			// Should effect be active?
 			Float vegetable = player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).get(NutrientList.getByName("vegetable"));
 			weaknessActive = (vegetable < 40);
