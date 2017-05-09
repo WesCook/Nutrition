@@ -79,8 +79,8 @@ public class Config {
 
 	// Copies files from internal resources to external files.  Accepts an input resource path, output directory, and list of files
 	private static void createConfigurationDirectory(String inputDirectory, File outputDirectory, List<String> files) {
-		// Make no changes if directory already exists, unless it's also empty
-		if (outputDirectory.exists() && outputDirectory.list().length != 0)
+		// Make no changes if directory already exists
+		if (outputDirectory.exists())
 			return;
 
 		// Create config directory
