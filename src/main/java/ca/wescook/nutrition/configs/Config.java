@@ -1,8 +1,11 @@
 package ca.wescook.nutrition.configs;
 
 import ca.wescook.nutrition.Nutrition;
-import ca.wescook.nutrition.nutrients.NutrientJson;
+import ca.wescook.nutrition.effects.EffectsList;
+import ca.wescook.nutrition.effects.JsonEffect;
+import ca.wescook.nutrition.nutrients.JsonNutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
+import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
@@ -36,14 +39,25 @@ public class Config {
 	private static final String CATEGORY_LOGGING = "Logging";
 
 	public static void registerConfigs(File configDirectory) {
-		registerPrimaryConfig(configDirectory); // Main nutrition.cfg file
-		createFoodGroupsDirectory(configDirectory); // Create /nutrition directory
-		readFoodGroupsDirectory(configDirectory);
+		// Register primary config
+		registerPrimaryConfig(configDirectory);
+
+		// Nutrients
+		List<String> nutrientFiles = Lists.newArrayList("dairy.json", "fruit.json", "grain.json", "protein.json", "vegetable.json");
+		File nutrientDirectory = new File(configDirectory, Nutrition.MODID + "/nutrients");
+		createConfigurationDirectory("assets/nutrition/configs/nutrients", nutrientDirectory, nutrientFiles);
+		NutrientList.register(readConfigurationDirectory(JsonNutrient.class, nutrientDirectory));
+
+		// Effects
+		List<String> effectsFiles = Lists.newArrayList("weakness.json");
+		File effectsDirectory = new File(configDirectory, Nutrition.MODID + "/effects");
+		createConfigurationDirectory("assets/nutrition/configs/effects", effectsDirectory, effectsFiles);
+		EffectsList.register(readConfigurationDirectory(JsonEffect.class, effectsDirectory));
 	}
 
 	private static void registerPrimaryConfig(File configDirectory) {
 		// Create or load from file
-		Configuration configFile = new Configuration(new File(configDirectory.getPath(), Nutrition.MODID + ".cfg"));
+		Configuration configFile = new Configuration(new File(configDirectory.getPath() + "/nutrition/nutrition.cfg"));
 		configFile.load();
 
 		// Get Values
@@ -63,48 +77,43 @@ public class Config {
 			configFile.save();
 	}
 
-	private static void createFoodGroupsDirectory(File configDirectory) {
-		// Specify /nutrition directory
-		File nutritionDirectory = new File(configDirectory, Nutrition.MODID);
-
+	// Copies files from internal resources to external files.  Accepts an input resource path, output directory, and list of files
+	private static void createConfigurationDirectory(String inputDirectory, File outputDirectory, List<String> files) {
 		// Make no changes if directory already exists, unless it's also empty
-		if (nutritionDirectory.exists() && nutritionDirectory.list().length != 0)
+		if (outputDirectory.exists() && outputDirectory.list().length != 0)
 			return;
 
 		// Create config directory
-		nutritionDirectory.mkdir();
-
-		// Default json files list
-		List<String> files = new ArrayList<>();
-		files.add("dairy.json");
-		files.add("fruit.json");
-		files.add("grain.json");
-		files.add("protein.json");
-		files.add("vegetable.json");
+		outputDirectory.mkdir();
 
 		// Copy each file over
 		ClassLoader loader = Thread.currentThread().getContextClassLoader(); // Can access resources via class loader
 		for (String file : files) {
-			try (InputStream inputStream = loader.getResourceAsStream("assets/nutrition/nutrients/" + file)) { // Get input stream of file
-				Files.copy(inputStream, new File(nutritionDirectory + "/" + file).toPath()); // Create files from stream
+			try (InputStream inputStream = loader.getResourceAsStream(inputDirectory + "/" + file)) { // Get input stream of resource
+				Files.copy(inputStream, new File(outputDirectory + "/" + file).toPath()); // Create files from stream
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
-	private static void readFoodGroupsDirectory(File configDirectory) {
-		File[] files = new File(configDirectory, Nutrition.MODID).listFiles(); // List json files
+	// Reads in JSON as objects.  Accepts object to serialize into, and directory to read json files.  Returns array of JSON objects.
+	private static <T> List<T> readConfigurationDirectory(Class<T> classImport, File configDirectory) {
+		File[] files = configDirectory.listFiles(); // List json files
+		List<T> jsonObjectList = new ArrayList<>(); // List json objects
+
 		for (File file : files) {
 			if (FilenameUtils.isExtension(file.getName(), "json")) {
 				try {
 					JsonReader jsonReader = new JsonReader(new FileReader(file)); // Read in JSON
-					NutrientList.registerNutrientJson(gson.fromJson(jsonReader, NutrientJson.class)); // Deserialize with GSON and store for later processing
+					jsonObjectList.add(gson.fromJson(jsonReader, classImport)); // Deserialize with GSON and store for later processing
 				} catch (IOException | com.google.gson.JsonSyntaxException e) {
 					System.out.println("The file " + file.getName() + " has invalid JSON and could not be loaded.");
 					e.printStackTrace();
 				}
 			}
 		}
+
+		return jsonObjectList;
 	}
 }

@@ -8,23 +8,26 @@ import net.minecraft.item.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-// Maintains list of information about nutrients (name, color, icon)
+// Maintains information about nutrients (name, color, icon)
 // Stored client and server-side
 public class NutrientList {
-	private static List<NutrientJson> nutrientJson = new ArrayList<>(); // Raw deserialized data from JSON
-	private static List<Nutrient> nutrients = new ArrayList<>(); // Polished nutrients list
+	private static List<JsonNutrient> jsonNutrients = new ArrayList<>(); // Raw deserialized data from JSON
+	private static List<Nutrient> nutrients = new ArrayList<>(); // Parsed nutrients list
 
-	// Nutrient JSON
-	// Data imported as object, but stored in strings
-	// Run during Pre-Init
-	public static void registerNutrientJson(NutrientJson nutrientJson) {
-		NutrientList.nutrientJson.add(nutrientJson);
+	// Register single JSON object
+	public static void register(JsonNutrient jsonNutrientIn) {
+		jsonNutrients.add(jsonNutrientIn);
 	}
 
-	// Iterate through JSON objects
+	// Register list of JSON objects
+	public static void register(List<JsonNutrient> jsonNutrientsIn) {
+		NutrientList.jsonNutrients.addAll(jsonNutrientsIn);
+	}
+
+	// Parse JSON data into more useful objects
 	// Run during Post-Init, so most foodItems will be in-game by now
-	public static void registerNutrients() {
-		for (NutrientJson nutrientRaw : nutrientJson) {
+	public static void parseJson() {
+		for (JsonNutrient nutrientRaw : jsonNutrients) {
 			// Copying and cleaning data
 			Nutrient nutrient = new Nutrient();
 			nutrient.name = nutrientRaw.name; // Localization key used in lang file
@@ -35,7 +38,7 @@ public class NutrientList {
 			// Food - Items
 			for (String itemName : nutrientRaw.food.items) {
 				Item foodItem = Item.getByNameOrId(itemName);
-				if (foodItem == null) // If food has valid item
+				if (foodItem == null) // If food has valid item (warning is incorrect)
 					logFoodError(itemName + " is not a valid item (" + nutrient.name + ")");
 				else if (!(foodItem instanceof ItemFood) && Config.enableLogging) // If item is specified as a food
 					logFoodError(itemName + " is not a valid food (" + nutrient.name + ")");
@@ -48,13 +51,13 @@ public class NutrientList {
 		}
 	}
 
-	// Return list of all nutrients
+	// Return all parsed nutrients
 	public static List<Nutrient> get() {
 		return nutrients;
 	}
 
 	// Return nutrient by name (null if not found)
-	public static Nutrient get(String name) {
+	public static Nutrient getByName(String name) {
 		for (Nutrient nutrient : nutrients) {
 			if (nutrient.name.equals(name))
 				return nutrient;
@@ -63,7 +66,7 @@ public class NutrientList {
 	}
 
 	// This method mostly exists to simplify the if/else chain up there
-	static private void logFoodError(String msg) {
+	private static void logFoodError(String msg) {
 		if (Config.enableLogging)
 			System.out.println(msg);
 	}

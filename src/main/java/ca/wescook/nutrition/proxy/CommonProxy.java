@@ -2,6 +2,7 @@ package ca.wescook.nutrition.proxy;
 
 import ca.wescook.nutrition.Nutrition;
 import ca.wescook.nutrition.configs.Config;
+import ca.wescook.nutrition.effects.EffectsList;
 import ca.wescook.nutrition.events.*;
 import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.network.ModPacketHandler;
@@ -28,7 +29,8 @@ public class CommonProxy {
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {
-		NutrientList.registerNutrients(); // Register nutrients from loaded JSONs
+		NutrientList.parseJson(); // Parse nutrients from loaded JSONs
+		EffectsList.parseJson(); // Parse potion effects from loaded JSONs
 		MinecraftForge.EVENT_BUS.register(new EventPlayerLogin()); // Player login
 		MinecraftForge.EVENT_BUS.register(new EventPlayerClone()); // Player death and warping
 		MinecraftForge.EVENT_BUS.register(new EventEatFood()); // Register use item event

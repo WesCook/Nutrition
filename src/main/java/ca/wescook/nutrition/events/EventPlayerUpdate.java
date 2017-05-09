@@ -44,8 +44,8 @@ public class EventPlayerUpdate {
 		// Run every 10 seconds
 		if (potionCounter > 200) { // 10 seconds
 			// Should effect be active?
-			Float vegetable = player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).get(NutrientList.get("vegetable"));
-			weaknessActive = (vegetable < 40); // TODO: Test, checks if veggie nutrition is below 40%
+			Float vegetable = player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).get(NutrientList.getByName("vegetable"));
+			weaknessActive = (vegetable < 40);
 
 			// Apply effect
 			if (weaknessActive)
