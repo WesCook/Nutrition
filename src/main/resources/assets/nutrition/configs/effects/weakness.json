@@ -1,8 +1,0 @@
-{
-	"name": "weakness",
-	"amplifier": 1,
-	"minimum": 0, // Minimum nutrition amount before effect takes effect
-	"maximum": 30, // Maximum nutrition amount before effect takes effect
-	"nutrient": "any", // Accepted values: average, any, "vegetable"
-	"visible": true // Whether to show on the inventory screen
-}

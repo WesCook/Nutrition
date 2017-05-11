@@ -49,7 +49,7 @@ public class Config {
 		NutrientList.register(readConfigurationDirectory(JsonNutrient.class, nutrientDirectory));
 
 		// Effects
-		List<String> effectsFiles = Lists.newArrayList("weakness.json");
+		List<String> effectsFiles = Lists.newArrayList("low_weakness.json");
 		File effectsDirectory = new File(configDirectory, Nutrition.MODID + "/effects");
 		createConfigurationDirectory("assets/nutrition/configs/effects", effectsDirectory, effectsFiles);
 		EffectsList.register(readConfigurationDirectory(JsonEffect.class, effectsDirectory));

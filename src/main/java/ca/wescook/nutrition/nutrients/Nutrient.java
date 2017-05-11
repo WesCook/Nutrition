@@ -11,6 +11,7 @@ public class Nutrient {
 	public String name;
 	public ItemStack icon;
 	public int color;
+	public boolean enabled;
 	public List<String> foodOreDict = new ArrayList<>();
 	public List<ItemFood> foodItems = new ArrayList<>();
 }

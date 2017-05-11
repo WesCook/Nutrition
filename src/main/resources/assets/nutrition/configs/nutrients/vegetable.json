@@ -2,6 +2,7 @@
 	"name": "vegetable",
 	"icon": "minecraft:carrot",
 	"color": "72dd5a",
+	"enabled": true,
 	"food": {
 		"oredict": [
 			"cropSunflower",

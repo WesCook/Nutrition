@@ -28,6 +28,10 @@ public class NutrientList {
 	// Run during Post-Init, so most foodItems will be in-game by now
 	public static void parseJson() {
 		for (JsonNutrient nutrientRaw : jsonNutrients) {
+			// Skip if nutrient is not enabled
+			if (!nutrientRaw.enabled)
+				break;
+
 			// Copying and cleaning data
 			Nutrient nutrient = new Nutrient();
 			nutrient.name = nutrientRaw.name; // Localization key used in lang file

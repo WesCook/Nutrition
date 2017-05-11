@@ -2,6 +2,7 @@
 	"name": "fruit",
 	"icon": "minecraft:apple",
 	"color": "cd73f4",
+	"enabled": true,
 	"food": {
 		"oredict": [
 			"cropAvocado",

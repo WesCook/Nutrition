@@ -2,6 +2,7 @@
 	"name": "grain",
 	"icon": "minecraft:wheat",
 	"color": "f4d92e",
+	"enabled": true,
 	"food": {
 		"oredict": [
 			"bread",

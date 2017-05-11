@@ -1,5 +1,9 @@
 package ca.wescook.nutrition.effects;
 
+import ca.wescook.nutrition.nutrients.NutrientList;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,14 +24,38 @@ public class EffectsList {
 	// Parse JSON data into more useful objects
 	public static void parseJson() {
 		for (JsonEffect effectRaw : jsonEffects) {
+			// Skip if potion is not enabled
+			if (!effectRaw.enabled)
+				break;
+
+			// Create potion
+			Potion potion = Potion.getPotionFromResourceLocation(effectRaw.potion);
+
+			// Check for and report invalid potion
+			if (potion == null) {
+				System.out.println("Potion '" + effectRaw.potion + "' is not valid (" + effectRaw.name + ").");
+				break;
+			}
+
+			// Create potion effect
+			PotionEffect potionEffect = new PotionEffect(potion, Integer.MAX_VALUE, effectRaw.amplifier, true, true);
+
 			// Copying and cleaning data
 			Effect effect = new Effect();
 			effect.name = effectRaw.name;
-			effect.amplifier = effectRaw.amplifier;
+			effect.potion = potion;
+			effect.potionEffect = potionEffect;
 			effect.minimum = effectRaw.minimum;
 			effect.maximum = effectRaw.maximum;
-			effect.nutrient = effectRaw.nutrient;
+			effect.detect = effectRaw.detect;
 			effect.hidden = effectRaw.hidden;
+
+			try {
+				effect.nutrient = NutrientList.getByName(effectRaw.nutrient);
+			}
+			catch(NullPointerException e) {
+				System.out.println("Nutrient " + effectRaw.nutrient + " cannot be found.");
+			}
 
 			// Register effect
 			effects.add(effect);

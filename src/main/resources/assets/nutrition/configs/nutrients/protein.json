@@ -2,6 +2,7 @@
 	"name": "protein",
 	"icon": "minecraft:cooked_beef",
 	"color": "db6c23",
+	"enabled": true,
 	"food": {
 		"oredict": [
 			"egg",
