@@ -1,5 +1,6 @@
 package ca.wescook.nutrition;
 
+import ca.wescook.nutrition.commands.CommandNutrition;
 import ca.wescook.nutrition.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -7,6 +8,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 import static ca.wescook.nutrition.Nutrition.MODID;
 import static ca.wescook.nutrition.Nutrition.MODNAME;
@@ -39,5 +41,10 @@ public class Nutrition {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		Nutrition.proxy.postInit(event);
+	}
+
+	@Mod.EventHandler
+	public void serverStart(FMLServerStartingEvent event) {
+		event.registerServerCommand(new CommandNutrition());
 	}
 }

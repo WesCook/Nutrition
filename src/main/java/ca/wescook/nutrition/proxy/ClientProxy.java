@@ -7,7 +7,6 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import java.util.Map;
 
@@ -20,11 +19,6 @@ public class ClientProxy extends CommonProxy {
 		super.init(event);
 		ClientRegistry.registerKeyBinding(keyNutritionGui = new KeyBinding("key.nutrition", 49, "Nutrition")); // Register Nutrition keybind, default to "N"
 		MinecraftForge.EVENT_BUS.register(new EventNutritionKey()); // Register key input event to respond to keybind
-	}
-
-	@Override
-	public void postInit(FMLPostInitializationEvent event) {
-		super.postInit(event);
 		MinecraftForge.EVENT_BUS.register(new EventNutritionButton()); // Register GUI events
 	}
 }

@@ -21,7 +21,12 @@ public class CommonProxy {
 		Config.registerConfigs(event.getModConfigurationDirectory()); // Create config files
 		ModPacketHandler.registerMessages(); // Register network messages
 		CapabilityManager.INSTANCE.register(INutrition.class, new NutritionStorage(), ca.wescook.nutrition.nutrition.Nutrition.class); // Register capability
+
 		MinecraftForge.EVENT_BUS.register(new EventPlayerAttachCapability()); // Attach capability to player
+		MinecraftForge.EVENT_BUS.register(new EventPlayerLogin()); // Player login
+		MinecraftForge.EVENT_BUS.register(new EventPlayerClone()); // Player death and warping
+		MinecraftForge.EVENT_BUS.register(new EventEatFood()); // Register use item event
+		MinecraftForge.EVENT_BUS.register(new EventPlayerUpdate()); // Register update event for nutrition decay and potion effects
 	}
 
 	public void init(FMLInitializationEvent event) {
@@ -31,9 +36,5 @@ public class CommonProxy {
 	public void postInit(FMLPostInitializationEvent event) {
 		NutrientList.parseJson(); // Parse nutrients from loaded JSONs
 		EffectsList.parseJson(); // Parse potion effects from loaded JSONs
-		MinecraftForge.EVENT_BUS.register(new EventPlayerLogin()); // Player login
-		MinecraftForge.EVENT_BUS.register(new EventPlayerClone()); // Player death and warping
-		MinecraftForge.EVENT_BUS.register(new EventEatFood()); // Register use item event
-		MinecraftForge.EVENT_BUS.register(new EventPlayerUpdate()); // Register update event for nutrition decay and potion effects
 	}
 }
