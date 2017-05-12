@@ -30,10 +30,11 @@ public class Config {
 	public static int deathPenaltyMin;
 	public static int deathPenaltyLoss;
 	public static int lossPerNutrient;
+	public static int startingNutrition;
 	public static boolean enableLogging;
 
 	// Categories
-	private static final String CATEGORY_EATING = "Eating";
+	private static final String CATEGORY_NUTRITION = "Nutrition";
 	private static final String CATEGORY_DECAY = "Nutrition Decay";
 	private static final String CATEGORY_DEATH_PENALTY = "Death Penalty";
 	private static final String CATEGORY_LOGGING = "Logging";
@@ -66,7 +67,8 @@ public class Config {
 		decayHungerLevel = configFile.getInt("DecayHungerLevel", CATEGORY_DECAY, 10, 0, 20, "The hunger level at which nutrition decay begins taking effect (one value is half a drumstick).");
 		deathPenaltyMin = configFile.getInt("DeathPenaltyMin", CATEGORY_DEATH_PENALTY, 30, 0, 100, "The minimum nutrition value that the death penalty may reduce to.");
 		deathPenaltyLoss = configFile.getInt("DeathPenaltyLoss", CATEGORY_DEATH_PENALTY, 15, 0, 100, "The nutrition value subtracted from each nutrient upon death.");
-		lossPerNutrient = configFile.getInt("LossPerNutrient", CATEGORY_EATING, 15, 0, 100,
+		startingNutrition = configFile.getInt("StartingNutrition", CATEGORY_NUTRITION, 50, 0, 100, "The starting nutrition level for new players.");
+		lossPerNutrient = configFile.getInt("LossPerNutrient", CATEGORY_NUTRITION, 15, 0, 100,
 			"The nutrition value subtracted from foods per additional nutrient, as a percentage.\n" +
 			"This is to prevent large, complex foods from being too powerful.\n" +
 			"(eg. 1 nutrient = 0% loss, 2 nutrients = 15% loss, 3 nutrients = 30% loss)");

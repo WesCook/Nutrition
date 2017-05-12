@@ -14,13 +14,10 @@ public class Nutrition implements INutrition {
 	// Map Nutrient type to value for that nutrient
 	private Map<Nutrient, Float> playerNutrition = new HashMap<>();
 
-	// Constants
-	private final float STARTING_NUTRITION = 50;
-
 	public Nutrition() {
 		// Populate nutrient data with starting nutrition
 		for (Nutrient nutrient : NutrientList.get())
-			playerNutrition.put(nutrient, STARTING_NUTRITION);
+			playerNutrition.put(nutrient, (float) Config.startingNutrition);
 	}
 
 	public Map<Nutrient, Float> get() {
