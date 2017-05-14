@@ -9,6 +9,5 @@ public class JsonEffect {
 	public int maximum;
 	public String detect;
 	public String nutrient;
-	public boolean hidden;
 	public boolean enabled;
 }

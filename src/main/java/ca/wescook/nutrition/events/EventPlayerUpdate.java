@@ -15,10 +15,11 @@ public class EventPlayerUpdate {
 
 	@SubscribeEvent
 	public void PlayerTickEvent(TickEvent.PlayerTickEvent event) {
-		// Only run on server
-		EntityPlayer player = event.player;
-		if (player.getEntityWorld().isRemote)
+		// Only run on server, and during end phase (post-vanilla)
+		if (event.player.getEntityWorld().isRemote || event.phase != TickEvent.Phase.END)
 			return;
+
+		EntityPlayer player = event.player;
 
 		// Apply decay on configurable delay
 		if (Config.enableDecay) {
@@ -29,8 +30,8 @@ public class EventPlayerUpdate {
 			decayCounter++;
 		}
 
-		// Re-check potion effects every 10 seconds
-		if (potionCounter > 200) {
+		// Re-check potion effects every 5 seconds
+		if (potionCounter > 100) {
 			EffectsManager.potionManage(player);
 			potionCounter = 0;
 		}

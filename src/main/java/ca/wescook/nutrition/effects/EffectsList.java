@@ -2,7 +2,6 @@ package ca.wescook.nutrition.effects;
 
 import ca.wescook.nutrition.nutrients.NutrientList;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,36 +27,21 @@ public class EffectsList {
 			if (!effectRaw.enabled)
 				break;
 
-			// Get vanilla potion from config
-			Potion vanillaPotion = Potion.getPotionFromResourceLocation(effectRaw.potion);
-			if (vanillaPotion == null) {
+			// Get potion from config
+			Potion potion = Potion.getPotionFromResourceLocation(effectRaw.potion);
+			if (potion == null) {
 				System.out.println("Potion '" + effectRaw.potion + "' is not valid (" + effectRaw.name + ").");
 				return;
 			}
-
-			// Create custom potion
-			Potion potion = new PotionCustom(true);
-			potion.setPotionName(effectRaw.name);
-
-			// Get attributes from vanilla potion and assign to custom potion (requires access transformer)
-			potion.attributeModifierMap = vanillaPotion.attributeModifierMap;
-
-			// Assign new attributes
-			// TODO: UUID should probably be deterministic based on potion data
-			//potion.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, "f74ac47c-dfcc-400f-b245-bcccae9f2847", 10D, 0);
-
-			// Create potion effect
-			PotionEffect potionEffect = new PotionEffect(potion, Integer.MAX_VALUE, effectRaw.amplifier, true, true);
 
 			// Copying and cleaning data
 			Effect effect = new Effect();
 			effect.name = effectRaw.name;
 			effect.potion = potion;
-			effect.potionEffect = potionEffect;
+			effect.amplifier = effectRaw.amplifier;
 			effect.minimum = effectRaw.minimum;
 			effect.maximum = effectRaw.maximum;
 			effect.detect = effectRaw.detect;
-			effect.hidden = effectRaw.hidden;
 
 			// Assigning appropriate nutrient
 			if (effect.detect.equals("nutrient")) {

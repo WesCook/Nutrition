@@ -1,9 +1,9 @@
 {
-	"name": "low_weakness",  // Unique Effect ID
+	"name": "high_weakness", // Unique Effect ID
 	"potion": "weakness",    // Potion's resource location, as used in commands
-	"amplifier": 0,          // Potion strength
-	"minimum": 10,           // Minimum nutrition level to take effect
-	"maximum": 20,           // Maximum nutrition level to take effect
+	"amplifier": 1,          // Potion strength
+	"minimum": 0,            // Minimum nutrition level to take effect
+	"maximum": 10,           // Maximum nutrition level to take effect
 	"detect": "average",     // Accepted values:
 	                         //   'any': Any nutrient may be in the threshold
 	                         //   'average': The average of all nutrients must be in the threshold

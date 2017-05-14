@@ -3,6 +3,7 @@ package ca.wescook.nutrition.effects;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrition.NutritionProvider;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.PotionEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +100,7 @@ public class EffectsManager {
 		for (Effect effectIn : effectsInput) { // Loop through supplied effects
 			for (Effect effectOut : effectsOutput) { // Loop through curated list, if it exists
 				if (effectIn.potion == effectOut.potion) { // Potion types match (eg. Weakness I and Weakness II)
-					if (effectIn.potionEffect.getAmplifier() > effectOut.potionEffect.getAmplifier()) { // New effect has a higher amplifier
+					if (effectIn.amplifier > effectOut.amplifier) { // New effect has a higher amplifier
 						int listIndex = effectsOutput.indexOf(effectOut); // Get index of position in list
 						effectsOutput.add(listIndex, effectIn); // Replace entry
 					}
@@ -118,13 +119,12 @@ public class EffectsManager {
 
 	// Applies the actual effects to the player
 	private static void applyEffects(EntityPlayer player, List<Effect> effectsQueued) {
+		int duration;
 		for (Effect effect : EffectsList.get()) {
-			// If effect is queued, apply it
-			if (effectsQueued.contains(effect))
-				player.addPotionEffect(effect.potionEffect);
-			// Else remove it
-			else if (player.isPotionActive(effect.potion))
-				player.removePotionEffect(effect.potion);
+			if (effectsQueued.contains(effect)) {
+				duration = (effect.potion.isBeneficial()) ? 615 : 315; // Positive effects are applied for longer, so nausea and such are cleared quickly, but night vision shouldn't flicker.
+				player.addPotionEffect(new PotionEffect(effect.potion, duration, effect.amplifier, true, true));
+			}
 		}
 	}
 }
