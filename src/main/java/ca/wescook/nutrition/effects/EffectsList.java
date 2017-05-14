@@ -28,14 +28,23 @@ public class EffectsList {
 			if (!effectRaw.enabled)
 				break;
 
-			// Create potion
-			Potion potion = Potion.getPotionFromResourceLocation(effectRaw.potion);
-
-			// Check for and report invalid potion
-			if (potion == null) {
+			// Get vanilla potion from config
+			Potion vanillaPotion = Potion.getPotionFromResourceLocation(effectRaw.potion);
+			if (vanillaPotion == null) {
 				System.out.println("Potion '" + effectRaw.potion + "' is not valid (" + effectRaw.name + ").");
-				break;
+				return;
 			}
+
+			// Create custom potion
+			Potion potion = new PotionCustom(true);
+			potion.setPotionName(effectRaw.name);
+
+			// Get attributes from vanilla potion and assign to custom potion (requires access transformer)
+			potion.attributeModifierMap = vanillaPotion.attributeModifierMap;
+
+			// Assign new attributes
+			// TODO: UUID should probably be deterministic based on potion data
+			//potion.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, "f74ac47c-dfcc-400f-b245-bcccae9f2847", 10D, 0);
 
 			// Create potion effect
 			PotionEffect potionEffect = new PotionEffect(potion, Integer.MAX_VALUE, effectRaw.amplifier, true, true);
@@ -50,11 +59,13 @@ public class EffectsList {
 			effect.detect = effectRaw.detect;
 			effect.hidden = effectRaw.hidden;
 
-			try {
+			// Assigning appropriate nutrient
+			if (effect.detect.equals("nutrient")) {
 				effect.nutrient = NutrientList.getByName(effectRaw.nutrient);
-			}
-			catch(NullPointerException e) {
-				System.out.println("Nutrient " + effectRaw.nutrient + " cannot be found.");
+				if (effect.nutrient == null) {
+					System.out.println("Nutrient '" + effectRaw.nutrient + "' cannot be found.");
+					return;
+				}
 			}
 
 			// Register effect

@@ -118,10 +118,13 @@ public class EffectsManager {
 
 	// Applies the actual effects to the player
 	private static void applyEffects(EntityPlayer player, List<Effect> effectsQueued) {
-//		for (Effect effect : EffectsList.get()) {
-//			// If effect is queued, apply it
-//			if (effectsQueued.contains(effect))
-//				player.addPotionEffect(effect.potionEffect);
-//		}
+		for (Effect effect : EffectsList.get()) {
+			// If effect is queued, apply it
+			if (effectsQueued.contains(effect))
+				player.addPotionEffect(effect.potionEffect);
+			// Else remove it
+			else if (player.isPotionActive(effect.potion))
+				player.removePotionEffect(effect.potion);
+		}
 	}
 }

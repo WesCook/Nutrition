@@ -59,3 +59,10 @@ processResources
         exclude 'mcmod.info'
     }
 }
+
+// Access Transformers
+jar {
+	manifest {
+		attributes 'FMLAT': "nutrition_at.cfg"
+	}
+}
