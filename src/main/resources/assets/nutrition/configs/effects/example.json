@@ -1,5 +1,5 @@
 {
-	"name": "strength",               // Unique Effect ID
+	"name": "example",                // Unique Effect ID
 	"potion": "minecraft:strength",   // Potion's resource location, as used in commands
 	"amplifier": 0,                   // Potion strength
 	"minimum": 75,                    // Minimum nutrition level to take effect
@@ -8,6 +8,7 @@
 	                                  //   'any': Any nutrient may be in the threshold
 	                                  //   'average': The average of all nutrients must be in the threshold
 	                                  //   'all': All nutrients must be in the threshold
+	                                  //   'cumulative': For each nutrient within the threshold, the amplifier increases by one
 	                                  //   'nutrient': A specific nutrient must be in the threshold (see below)
 	"nutrient": "",                   // If detect=nutrient, this defines the nutrient ID checked against
 	"enabled": false                  // Will this effect be active or not

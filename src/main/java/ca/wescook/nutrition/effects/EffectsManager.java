@@ -11,9 +11,14 @@ import java.util.Map;
 
 public class EffectsManager {
 	// Called from EventPlayerUpdate.
-	public static void potionManage(EntityPlayer player) {
+	public static void reapplyEffects(EntityPlayer player) {
+		int duration;
 		List<Effect> effects = removeDuplicates(getEffectsInThreshold(player));
-		applyEffects(player, effects);
+
+		for (Effect effect : effects) {
+			duration = (effect.potion.isBeneficial()) ? 615 : 315; // Positive effects are applied for longer, so nausea and such are cleared quickly, but night vision shouldn't flicker.
+			player.addPotionEffect(new PotionEffect(effect.potion, duration, effect.amplifier, true, false));
+		}
 	}
 
 	// Returns which effects match threshold conditions
@@ -26,6 +31,7 @@ public class EffectsManager {
 		Float total;
 		Float average;
 		Float specificNutrient;
+		int cumulativeCount;
 		boolean allWithinThreshold;
 
 		// Read in list of potion effects to apply
@@ -80,6 +86,30 @@ public class EffectsManager {
 				}
 				break;
 
+				// For each nutrient within the threshold, the amplifier increases by one
+				case "cumulative":  {
+					// Reset counter each new loop
+					cumulativeCount = 0;
+
+					// Loop all nutrients
+					for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
+						// If any are found within threshold
+						if (entry.getValue() >= effect.minimum && entry.getValue() <= effect.maximum)
+							cumulativeCount++;
+					}
+
+					// Save number of nutrients found as amplifier
+					// We're saving this for the entire effect, which is crazy hacky.
+					// However it's otherwise unused, and the simplest way of storing this information.
+					effect.amplifier = cumulativeCount - 1;
+
+					// If any were found, set effect
+					if (cumulativeCount > 0) {
+						effectsInThreshold.add(effect); // Add effect, once
+					}
+				}
+				break;
+
 				// If specific nutrient is within the threshold
 				case "nutrient": {
 					specificNutrient = playerNutrition.get(effect.nutrient);
@@ -115,16 +145,5 @@ public class EffectsManager {
 		}
 
 		return effectsOutput;
-	}
-
-	// Applies the actual effects to the player
-	private static void applyEffects(EntityPlayer player, List<Effect> effectsQueued) {
-		int duration;
-		for (Effect effect : EffectsList.get()) {
-			if (effectsQueued.contains(effect)) {
-				duration = (effect.potion.isBeneficial()) ? 615 : 315; // Positive effects are applied for longer, so nausea and such are cleared quickly, but night vision shouldn't flicker.
-				player.addPotionEffect(new PotionEffect(effect.potion, duration, effect.amplifier, true, false));
-			}
-		}
 	}
 }

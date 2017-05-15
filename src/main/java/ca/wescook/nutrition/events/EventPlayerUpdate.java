@@ -30,9 +30,9 @@ public class EventPlayerUpdate {
 			decayCounter++;
 		}
 
-		// Re-check potion effects every 5 seconds
+		// Reapply potion effects every 5 seconds
 		if (potionCounter > 100) {
-			EffectsManager.potionManage(player);
+			EffectsManager.reapplyEffects(player);
 			potionCounter = 0;
 		}
 		potionCounter++;

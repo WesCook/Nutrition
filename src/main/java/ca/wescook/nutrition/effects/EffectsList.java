@@ -25,13 +25,13 @@ public class EffectsList {
 		for (JsonEffect effectRaw : jsonEffects) {
 			// Skip if potion is not enabled
 			if (!effectRaw.enabled)
-				break;
+				continue;
 
 			// Get potion from config
 			Potion potion = Potion.getPotionFromResourceLocation(effectRaw.potion);
 			if (potion == null) {
 				System.out.println("Potion '" + effectRaw.potion + "' is not valid (" + effectRaw.name + ").");
-				return;
+				continue;
 			}
 
 			// Copying and cleaning data
@@ -48,7 +48,7 @@ public class EffectsList {
 				effect.nutrient = NutrientList.getByName(effectRaw.nutrient);
 				if (effect.nutrient == null) {
 					System.out.println("Nutrient '" + effectRaw.nutrient + "' cannot be found.");
-					return;
+					continue;
 				}
 			}
 
