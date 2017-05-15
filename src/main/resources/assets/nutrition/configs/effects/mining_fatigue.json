@@ -1,9 +1,9 @@
 {
-	"name": "weakness",
-	"potion": "minecraft:weakness",
+	"name": "mining_fatigue",
+	"potion": "minecraft:mining_fatigue",
 	"amplifier": 0,
 	"minimum": 0,
-	"maximum": 10,
+	"maximum": 20,
 	"detect": "average",
 	"nutrient": "",
 	"enabled": true
