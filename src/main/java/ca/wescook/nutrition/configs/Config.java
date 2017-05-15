@@ -44,13 +44,13 @@ public class Config {
 		registerPrimaryConfig(configDirectory);
 
 		// Nutrients
-		List<String> nutrientFiles = Lists.newArrayList("dairy.json", "fruit.json", "grain.json", "protein.json", "vegetable.json");
+		List<String> nutrientFiles = Lists.newArrayList("dairy.json", "example.json", "fruit.json", "grain.json", "protein.json", "vegetable.json");
 		File nutrientDirectory = new File(configDirectory, Nutrition.MODID + "/nutrients");
 		createConfigurationDirectory("assets/nutrition/configs/nutrients", nutrientDirectory, nutrientFiles);
 		NutrientList.register(readConfigurationDirectory(JsonNutrient.class, nutrientDirectory));
 
 		// Effects
-		List<String> effectsFiles = Lists.newArrayList("low_weakness.json");
+		List<String> effectsFiles = Lists.newArrayList("example.json", "resistance.json", "strength.json", "toughness_1.json", "toughness_2.json", "toughness_3.json", "weakness.json");
 		File effectsDirectory = new File(configDirectory, Nutrition.MODID + "/effects");
 		createConfigurationDirectory("assets/nutrition/configs/effects", effectsDirectory, effectsFiles);
 		EffectsList.register(readConfigurationDirectory(JsonEffect.class, effectsDirectory));

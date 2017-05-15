@@ -1,0 +1,14 @@
+{
+	"name": "example",                // Unique nutrient ID
+	"icon": "minecraft:milk_bucket",  // Item drawn in nutrient GUI
+	"color": "a0d4f7",                // Hexadecimal color used to draw for nutrient bar
+	"enabled": false,                 // Will this nutrient be active or not
+	"food": {                         //
+		"oredict": [                  // List of ore dictionary entries for foods that include this nutrient
+			"foodButter"              //
+		],                            //
+		"items": [                    // List of item IDs for foods that include this nutrient
+			"minecraft:golden_apple"  //
+		]                             //
+	}                                 //
+}

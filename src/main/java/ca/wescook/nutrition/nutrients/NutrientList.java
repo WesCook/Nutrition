@@ -30,7 +30,7 @@ public class NutrientList {
 		for (JsonNutrient nutrientRaw : jsonNutrients) {
 			// Skip if nutrient is not enabled
 			if (!nutrientRaw.enabled)
-				break;
+				continue;
 
 			// Copying and cleaning data
 			Nutrient nutrient = new Nutrient();

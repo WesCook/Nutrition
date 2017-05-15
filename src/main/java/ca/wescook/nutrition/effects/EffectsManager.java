@@ -123,7 +123,7 @@ public class EffectsManager {
 		for (Effect effect : EffectsList.get()) {
 			if (effectsQueued.contains(effect)) {
 				duration = (effect.potion.isBeneficial()) ? 615 : 315; // Positive effects are applied for longer, so nausea and such are cleared quickly, but night vision shouldn't flicker.
-				player.addPotionEffect(new PotionEffect(effect.potion, duration, effect.amplifier, true, true));
+				player.addPotionEffect(new PotionEffect(effect.potion, duration, effect.amplifier, true, false));
 			}
 		}
 	}

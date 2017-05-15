@@ -1,0 +1,10 @@
+{
+	"name": "resistance",
+	"potion": "minecraft:resistance",
+	"amplifier": 0,
+	"minimum": 80,
+	"maximum": 100,
+	"detect": "average",
+	"nutrient": "",
+	"enabled": true
+}

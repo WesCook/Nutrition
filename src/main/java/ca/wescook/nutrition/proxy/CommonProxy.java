@@ -9,6 +9,7 @@ import ca.wescook.nutrition.network.ModPacketHandler;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.nutrition.INutrition;
 import ca.wescook.nutrition.nutrition.NutritionStorage;
+import ca.wescook.nutrition.potions.ModPotions;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -21,6 +22,7 @@ public class CommonProxy {
 		Config.registerConfigs(event.getModConfigurationDirectory()); // Create config files
 		ModPacketHandler.registerMessages(); // Register network messages
 		CapabilityManager.INSTANCE.register(INutrition.class, new NutritionStorage(), ca.wescook.nutrition.nutrition.Nutrition.class); // Register capability
+		ModPotions.registerPotions(); // Register custom potions
 
 		MinecraftForge.EVENT_BUS.register(new EventPlayerAttachCapability()); // Attach capability to player
 		MinecraftForge.EVENT_BUS.register(new EventPlayerLogin()); // Player login
