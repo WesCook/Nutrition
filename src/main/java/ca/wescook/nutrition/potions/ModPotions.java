@@ -15,7 +15,7 @@ public class ModPotions {
 
 	public static void registerPotions() {
 		// Toughness
-		toughness = new PotionToughness(false, new ResourceLocation("nutrition", "textures/potions/toughness.png"));
+		toughness = new PotionToughness(true, new ResourceLocation("nutrition", "textures/potions/toughness.png"));
 		toughness.setPotionName("Toughness");
 		toughness.setRegistryName("toughness");
 		toughness.setBeneficial();

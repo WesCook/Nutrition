@@ -32,12 +32,15 @@ public class Config {
 	public static int lossPerNutrient;
 	public static float nutritionMultiplier;
 	public static int startingNutrition;
+	public static boolean enableGui;
+	public static boolean enableGuiButton;
 	public static boolean enableLogging;
 
 	// Categories
 	private static final String CATEGORY_NUTRITION = "Nutrition";
 	private static final String CATEGORY_DECAY = "Nutrition Decay";
 	private static final String CATEGORY_DEATH_PENALTY = "Death Penalty";
+	private static final String CATEGORY_GUI = "Gui";
 	private static final String CATEGORY_LOGGING = "Logging";
 
 	public static void registerConfigs(File configDirectory) {
@@ -66,14 +69,20 @@ public class Config {
 		enableDecay = configFile.getBoolean("EnableDecay", CATEGORY_DECAY, true, "Enable nutrition decay.");
 		decayRate = configFile.getInt("DecayRate", CATEGORY_DECAY, 400, 100, 1000, "The speed that nutrition decays in game ticks (lower is faster).");
 		decayHungerLevel = configFile.getInt("DecayHungerLevel", CATEGORY_DECAY, 10, 0, 20, "The hunger level at which nutrition decay begins taking effect (one value is half a drumstick).");
+
 		deathPenaltyMin = configFile.getInt("DeathPenaltyMin", CATEGORY_DEATH_PENALTY, 30, 0, 100, "The minimum nutrition value that the death penalty may reduce to.");
 		deathPenaltyLoss = configFile.getInt("DeathPenaltyLoss", CATEGORY_DEATH_PENALTY, 15, 0, 100, "The nutrition value subtracted from each nutrient upon death.");
+
 		nutritionMultiplier = configFile.getFloat("NutritionMultiplier", CATEGORY_NUTRITION, 1, 0, 100, "Value to multiply base nutrition by for each food (eg. 0.5 to halve nutrition gain).");
 		startingNutrition = configFile.getInt("StartingNutrition", CATEGORY_NUTRITION, 50, 0, 100, "The starting nutrition level for new players.");
 		lossPerNutrient = configFile.getInt("LossPerNutrient", CATEGORY_NUTRITION, 15, 0, 100,
 			"The nutrition value subtracted from foods per additional nutrient, as a percentage.\n" +
 			"This is to prevent large, complex foods from being too powerful.\n" +
 			"(eg. 1 nutrient = 0% loss, 2 nutrients = 15% loss, 3 nutrients = 30% loss)");
+
+		enableGui = configFile.getBoolean("EnableGui", CATEGORY_GUI, true, "If the nutrition GUI should be enabled");
+		enableGuiButton = configFile.getBoolean("EnableGuiButton", CATEGORY_GUI, true, "If the nutrition button should be shown on player inventory (hotkey will still function).");
+
 		enableLogging = configFile.getBoolean("EnableLogging", CATEGORY_LOGGING, false, "Enable logging of missing or invalid foods.");
 
 		// Update file

@@ -1,5 +1,6 @@
 package ca.wescook.nutrition.proxy;
 
+import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.events.EventNutritionButton;
 import ca.wescook.nutrition.events.EventNutritionKey;
 import ca.wescook.nutrition.nutrients.Nutrient;
@@ -17,8 +18,12 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
-		ClientRegistry.registerKeyBinding(keyNutritionGui = new KeyBinding("key.nutrition", 49, "Nutrition")); // Register Nutrition keybind, default to "N"
-		MinecraftForge.EVENT_BUS.register(new EventNutritionKey()); // Register key input event to respond to keybind
-		MinecraftForge.EVENT_BUS.register(new EventNutritionButton()); // Register GUI events
+
+		if (Config.enableGui) { // If GUI is enabled
+			ClientRegistry.registerKeyBinding(keyNutritionGui = new KeyBinding("key.nutrition", 49, "Nutrition")); // Register Nutrition keybind, default to "N"
+			MinecraftForge.EVENT_BUS.register(new EventNutritionKey()); // Register key input event to respond to keybind
+			if (Config.enableGuiButton)
+				MinecraftForge.EVENT_BUS.register(new EventNutritionButton()); // Register GUI button event
+		}
 	}
 }
