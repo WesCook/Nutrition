@@ -30,6 +30,7 @@ public class Config {
 	public static int deathPenaltyMin;
 	public static int deathPenaltyLoss;
 	public static int lossPerNutrient;
+	public static float nutritionMultiplier;
 	public static int startingNutrition;
 	public static boolean enableLogging;
 
@@ -67,6 +68,7 @@ public class Config {
 		decayHungerLevel = configFile.getInt("DecayHungerLevel", CATEGORY_DECAY, 10, 0, 20, "The hunger level at which nutrition decay begins taking effect (one value is half a drumstick).");
 		deathPenaltyMin = configFile.getInt("DeathPenaltyMin", CATEGORY_DEATH_PENALTY, 30, 0, 100, "The minimum nutrition value that the death penalty may reduce to.");
 		deathPenaltyLoss = configFile.getInt("DeathPenaltyLoss", CATEGORY_DEATH_PENALTY, 15, 0, 100, "The nutrition value subtracted from each nutrient upon death.");
+		nutritionMultiplier = configFile.getFloat("NutritionMultiplier", CATEGORY_NUTRITION, 1, 0, 100, "Value to multiply base nutrition by for each food (eg. 0.5 to halve nutrition gain).");
 		startingNutrition = configFile.getInt("StartingNutrition", CATEGORY_NUTRITION, 50, 0, 100, "The starting nutrition level for new players.");
 		lossPerNutrient = configFile.getInt("LossPerNutrient", CATEGORY_NUTRITION, 15, 0, 100,
 			"The nutrition value subtracted from foods per additional nutrient, as a percentage.\n" +
