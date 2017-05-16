@@ -12,6 +12,9 @@ nutrient.nutrition:vegetable=Vegetable
 nutrient.nutrition:protein=Protein
 nutrient.nutrition:dairy=Dairy
 
+# Tooltips
+tooltip.nutrition:nutrients=Nutrients:
+
 # Commands
 command.nutrition:help=/nutrition <get/set> <nutrient> <value>
 command.nutrition:error_invalid_nutrient=is not a valid nutrient.

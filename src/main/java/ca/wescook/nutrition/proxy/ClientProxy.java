@@ -3,6 +3,7 @@ package ca.wescook.nutrition.proxy;
 import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.events.EventNutritionButton;
 import ca.wescook.nutrition.events.EventNutritionKey;
+import ca.wescook.nutrition.events.EventTooltip;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,5 +26,8 @@ public class ClientProxy extends CommonProxy {
 			if (Config.enableGuiButton)
 				MinecraftForge.EVENT_BUS.register(new EventNutritionButton()); // Register GUI button event
 		}
+
+		if (Config.enableTooltips)
+			MinecraftForge.EVENT_BUS.register(new EventTooltip()); // Register tooltip event
 	}
 }
