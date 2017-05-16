@@ -1,5 +1,6 @@
 package ca.wescook.nutrition.nutrition;
 
+import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import net.minecraft.nbt.NBTBase;
@@ -23,11 +24,21 @@ public class NutritionStorage implements Capability.IStorage<INutrition> {
 	// Load serialized data from disk
 	@Override
 	public void readNBT(Capability<INutrition> capability, INutrition instance, EnumFacing side, NBTBase nbt) {
-		HashMap<Nutrient, Float> clientNutrients = new HashMap<Nutrient, Float>(); // Create new map
-		for (Nutrient nutrient : NutrientList.get()) {
-			Float value = ((NBTTagCompound) nbt).getFloat(nutrient.name); // Read values from packet
-			clientNutrients.put(nutrient, value); // Add to map
+		HashMap<Nutrient, Float> clientNutrients = new HashMap<Nutrient, Float>();
+		Float value;
+
+		// Read in nutrients from file
+		for (Nutrient nutrient : NutrientList.get()) { // For each nutrient
+			if (((NBTTagCompound) nbt).hasKey(nutrient.name)) // If it's found in player file
+				value = ((NBTTagCompound) nbt).getFloat(nutrient.name); // Read value in
+			else
+				value = (float) Config.startingNutrition; // Set to default
+
+			// Add to map
+			clientNutrients.put(nutrient, value);
 		}
-		instance.set(clientNutrients); // Replace nutrient data wih map
+
+		// Replace nutrient data with map
+		instance.set(clientNutrients);
 	}
 }
