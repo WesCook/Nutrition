@@ -59,3 +59,9 @@ processResources
         exclude 'mcmod.info'
     }
 }
+
+jar {
+	manifest {
+		attributes 'FMLAT': 'nutrition_at.cfg'
+	}
+}
