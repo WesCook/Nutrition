@@ -1,6 +1,6 @@
 {
 	"name": "example",                // Unique Effect ID
-	"potion": "minecraft:strength",   // Potion's resource location, as used in utility
+	"potion": "minecraft:strength",   // Potion's resource location (eg. fire_resistance)
 	"amplifier": 0,                   // Potion strength
 	"minimum": 75,                    // Minimum nutrition level to take effect
 	"maximum": 100,                   // Maximum nutrition level to take effect
