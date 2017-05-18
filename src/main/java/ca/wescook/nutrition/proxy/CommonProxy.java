@@ -1,7 +1,6 @@
 package ca.wescook.nutrition.proxy;
 
 import ca.wescook.nutrition.Nutrition;
-import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.effects.EffectsList;
 import ca.wescook.nutrition.events.*;
 import ca.wescook.nutrition.gui.ModGuiHandler;
@@ -10,6 +9,7 @@ import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.nutrition.INutrition;
 import ca.wescook.nutrition.nutrition.NutritionStorage;
 import ca.wescook.nutrition.potions.ModPotions;
+import ca.wescook.nutrition.utility.Config;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;

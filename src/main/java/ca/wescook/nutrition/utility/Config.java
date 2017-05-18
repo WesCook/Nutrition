@@ -1,4 +1,4 @@
-package ca.wescook.nutrition.configs;
+package ca.wescook.nutrition.utility;
 
 import ca.wescook.nutrition.Nutrition;
 import ca.wescook.nutrition.effects.EffectsList;
@@ -123,7 +123,7 @@ public class Config {
 					JsonReader jsonReader = new JsonReader(new FileReader(file)); // Read in JSON
 					jsonObjectList.add(gson.fromJson(jsonReader, classImport)); // Deserialize with GSON and store for later processing
 				} catch (IOException | com.google.gson.JsonSyntaxException e) {
-					System.out.println("The file " + file.getName() + " has invalid JSON and could not be loaded.");
+					Log.error("The file " + file.getName() + " has invalid JSON and could not be loaded.");
 					e.printStackTrace();
 				}
 			}

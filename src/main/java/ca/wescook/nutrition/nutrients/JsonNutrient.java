@@ -3,7 +3,7 @@ package ca.wescook.nutrition.nutrients;
 import java.util.ArrayList;
 import java.util.List;
 
-// This class mimics the layout of the effect json files
+// This class mimics the layout of the nutrient json files
 public class JsonNutrient {
 	public String name;
 	public String icon;

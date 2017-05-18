@@ -1,4 +1,4 @@
-package ca.wescook.nutrition.commands;
+package ca.wescook.nutrition.utility;
 
 import ca.wescook.nutrition.Nutrition;
 import ca.wescook.nutrition.nutrients.Nutrient;
@@ -13,7 +13,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
 import org.apache.commons.lang3.math.NumberUtils;
 
-public class CommandNutrition extends CommandBase {
+public class ChatCommand extends CommandBase {
 	@Override
 	public String getCommandName() {
 		return "nutrition";

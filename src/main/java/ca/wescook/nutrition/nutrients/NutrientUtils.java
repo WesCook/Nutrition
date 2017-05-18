@@ -1,6 +1,6 @@
 package ca.wescook.nutrition.nutrients;
 
-import ca.wescook.nutrition.configs.Config;
+import ca.wescook.nutrition.utility.Config;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;

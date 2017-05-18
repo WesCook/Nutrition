@@ -1,10 +1,10 @@
 package ca.wescook.nutrition.proxy;
 
-import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.events.EventNutritionButton;
 import ca.wescook.nutrition.events.EventNutritionKey;
 import ca.wescook.nutrition.events.EventTooltip;
 import ca.wescook.nutrition.nutrients.Nutrient;
+import ca.wescook.nutrition.utility.Config;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;

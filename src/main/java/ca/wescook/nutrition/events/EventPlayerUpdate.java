@@ -1,10 +1,10 @@
 package ca.wescook.nutrition.events;
 
-import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.effects.EffectsManager;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.nutrition.NutritionProvider;
+import ca.wescook.nutrition.utility.Config;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;

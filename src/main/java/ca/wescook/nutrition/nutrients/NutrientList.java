@@ -1,6 +1,7 @@
 package ca.wescook.nutrition.nutrients;
 
-import ca.wescook.nutrition.configs.Config;
+import ca.wescook.nutrition.utility.Config;
+import ca.wescook.nutrition.utility.Log;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -43,9 +44,9 @@ public class NutrientList {
 			for (String itemName : nutrientRaw.food.items) {
 				Item foodItem = Item.getByNameOrId(itemName);
 				if (foodItem == null) // If food has valid item (warning is incorrect)
-					logFoodError(itemName + " is not a valid item (" + nutrient.name + ")");
+					Log.missingFood(itemName + " is not a valid item (" + nutrient.name + ")");
 				else if (!(foodItem instanceof ItemFood) && Config.enableLogging) // If item is specified as a food
-					logFoodError(itemName + " is not a valid food (" + nutrient.name + ")");
+					Log.missingFood(itemName + " is not a valid food (" + nutrient.name + ")");
 				else
 					nutrient.foodItems.add((ItemFood) foodItem); // Register it!
 			}
@@ -67,11 +68,5 @@ public class NutrientList {
 				return nutrient;
 		}
 		return null;
-	}
-
-	// This method mostly exists to simplify the if/else chain up there
-	private static void logFoodError(String msg) {
-		if (Config.enableLogging)
-			System.out.println(msg);
 	}
 }

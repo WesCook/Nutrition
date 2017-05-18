@@ -1,10 +1,10 @@
 package ca.wescook.nutrition.nutrition;
 
-import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.network.ModPacketHandler;
 import ca.wescook.nutrition.network.PacketNutritionRequest;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
+import ca.wescook.nutrition.utility.Config;
 
 import java.util.HashMap;
 import java.util.Map;

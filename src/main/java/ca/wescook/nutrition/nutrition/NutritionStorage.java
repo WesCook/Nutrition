@@ -1,8 +1,8 @@
 package ca.wescook.nutrition.nutrition;
 
-import ca.wescook.nutrition.configs.Config;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
+import ca.wescook.nutrition.utility.Config;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;

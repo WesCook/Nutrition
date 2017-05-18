@@ -1,7 +1,7 @@
 package ca.wescook.nutrition;
 
-import ca.wescook.nutrition.commands.CommandNutrition;
 import ca.wescook.nutrition.proxy.CommonProxy;
+import ca.wescook.nutrition.utility.ChatCommand;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -45,6 +45,6 @@ public class Nutrition {
 
 	@Mod.EventHandler
 	public void serverStart(FMLServerStartingEvent event) {
-		event.registerServerCommand(new CommandNutrition());
+		event.registerServerCommand(new ChatCommand());
 	}
 }

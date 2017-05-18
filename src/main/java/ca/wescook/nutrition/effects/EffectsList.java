@@ -1,6 +1,7 @@
 package ca.wescook.nutrition.effects;
 
 import ca.wescook.nutrition.nutrients.NutrientList;
+import ca.wescook.nutrition.utility.Log;
 import net.minecraft.potion.Potion;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class EffectsList {
 			// Get potion from config
 			Potion potion = Potion.getPotionFromResourceLocation(effectRaw.potion);
 			if (potion == null) {
-				System.out.println("Potion '" + effectRaw.potion + "' is not valid (" + effectRaw.name + ").");
+				Log.error("Potion '" + effectRaw.potion + "' is not valid (" + effectRaw.name + ").");
 				continue;
 			}
 
@@ -47,7 +48,7 @@ public class EffectsList {
 			if (effect.detect.equals("nutrient")) {
 				effect.nutrient = NutrientList.getByName(effectRaw.nutrient);
 				if (effect.nutrient == null) {
-					System.out.println("Nutrient '" + effectRaw.nutrient + "' cannot be found.");
+					Log.error("Nutrient '" + effectRaw.nutrient + "' cannot be found.");
 					continue;
 				}
 			}
