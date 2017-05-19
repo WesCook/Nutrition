@@ -25,8 +25,7 @@ public class Config {
 
 	// Public config values
 	public static boolean enableDecay;
-	public static int decayRate;
-	public static int decayHungerLevel;
+	public static float decayMultiplier;
 	public static int deathPenaltyMin;
 	public static int deathPenaltyLoss;
 	public static int lossPerNutrient;
@@ -67,9 +66,8 @@ public class Config {
 		configFile.load();
 
 		// Get Values
-		enableDecay = configFile.getBoolean("EnableDecay", CATEGORY_DECAY, true, "Enable nutrition decay.");
-		decayRate = configFile.getInt("DecayRate", CATEGORY_DECAY, 400, 100, 1000, "The speed that nutrition decays in game ticks (lower is faster).");
-		decayHungerLevel = configFile.getInt("DecayHungerLevel", CATEGORY_DECAY, 10, 0, 20, "The hunger level at which nutrition decay begins taking effect (one value is half a drumstick).");
+		enableDecay = configFile.getBoolean("EnableDecay", CATEGORY_DECAY, true, "Enable nutrition decay when hunger drains.");
+		decayMultiplier = configFile.getFloat("DecayMultiplier", CATEGORY_DECAY, 1, 0, 100, "Value to multiply decay rate by (eg. 0.5 halves the rate, 2.0 doubles it).");
 
 		deathPenaltyMin = configFile.getInt("DeathPenaltyMin", CATEGORY_DEATH_PENALTY, 30, 0, 100, "The minimum nutrition value that the death penalty may reduce to.");
 		deathPenaltyLoss = configFile.getInt("DeathPenaltyLoss", CATEGORY_DEATH_PENALTY, 15, 0, 100, "The nutrition value subtracted from each nutrient upon death.");

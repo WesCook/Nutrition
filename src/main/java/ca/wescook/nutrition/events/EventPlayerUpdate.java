@@ -10,8 +10,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class EventPlayerUpdate {
-	private int decayCounter = 0;
-	private int potionCounter = 0;
+	private Integer foodLevel; // Track food level between ticks
+	private int potionCounter = 0; // Count ticks to reapply potion effects
 
 	@SubscribeEvent
 	public void PlayerTickEvent(TickEvent.PlayerTickEvent event) {
@@ -21,13 +21,9 @@ public class EventPlayerUpdate {
 
 		EntityPlayer player = event.player;
 
-		// Apply decay on configurable delay
+		// Apply decay check each tick
 		if (Config.enableDecay) {
-			if (decayCounter > Config.decayRate) {
-				nutritionDecay(player);
-				decayCounter = 0;
-			}
-			decayCounter++;
+			nutritionDecay(player);
 		}
 
 		// Reapply potion effects every 5 seconds
@@ -39,10 +35,18 @@ public class EventPlayerUpdate {
 	}
 
 	private void nutritionDecay(EntityPlayer player) {
-		if (player.getFoodStats().getFoodLevel() <= Config.decayHungerLevel) { // When the food level of the player is below the threshold
-			for (Nutrient nutrient : NutrientList.get()) // Cycle through nutrient list
-				player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).subtract(nutrient, 0.1F); // And update player nutrition
+		// Get player food level
+		int foodLevelNew = player.getFoodStats().getFoodLevel();
 
+		// If food level has reduced, also lower nutrition
+		if (foodLevel != null && foodLevelNew < foodLevel) {
+			int difference = foodLevel - foodLevelNew;
+			float decay = (float) (difference * 0.075 * Config.decayMultiplier); // Lower number for reasonable starting point, then apply multiplier from config
+			for (Nutrient nutrient : NutrientList.get())
+				player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).subtract(nutrient, decay);
 		}
+
+		// Update for the next pass
+		foodLevel = foodLevelNew;
 	}
 }

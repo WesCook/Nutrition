@@ -44,7 +44,8 @@ public class NutrientUtils {
 	// Requires nutrient list from that food for performance reasons (see getFoodNutrients)
 	public static float calculateNutrition(ItemFood food, List<Nutrient> nutrients) {
 		int foodValue = food.getHealAmount(new ItemStack(food)); // Number of half-drumsticks food heals
-		float adjustedFoodValue = foodValue * Config.nutritionMultiplier; // Multiply by config value
+		float adjustedFoodValue = (float) (foodValue * 0.5); // Halve to start at reasonable starting point
+		adjustedFoodValue = adjustedFoodValue * Config.nutritionMultiplier; // Multiply by config value
 		float lossPercentage = (float) Config.lossPerNutrient / 100; // Loss percentage from config file
 		float foodLoss = (adjustedFoodValue * lossPercentage * (nutrients.size() - 1)); // Lose 15% (configurable) for each nutrient added after the first nutrient
 		float nutritionValue = Math.max(1, adjustedFoodValue - foodLoss); // Subtract from true value, with a floor of 1 (prevent zero/negatives)
