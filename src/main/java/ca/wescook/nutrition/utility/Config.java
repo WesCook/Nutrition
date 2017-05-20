@@ -28,6 +28,7 @@ public class Config {
 	public static float decayMultiplier;
 	public static int deathPenaltyMin;
 	public static int deathPenaltyLoss;
+	public static boolean allowOverEating;
 	public static int lossPerNutrient;
 	public static float nutritionMultiplier;
 	public static int startingNutrition;
@@ -78,6 +79,8 @@ public class Config {
 			"The nutrition value subtracted from foods per additional nutrient, as a percentage.\n" +
 			"This is to prevent large, complex foods from being too powerful.\n" +
 			"(eg. 1 nutrient = 0% loss, 2 nutrients = 15% loss, 3 nutrients = 30% loss)");
+		allowOverEating = configFile.getBoolean("AllowOverEating", CATEGORY_NUTRITION, false, "Allow player to continue eating even while full.\n" +
+			"This setting may upset balance, but is necessary for playing in peaceful mode.");
 
 		enableGui = configFile.getBoolean("EnableGui", CATEGORY_GUI, true, "If the nutrition GUI should be enabled");
 		enableGuiButton = configFile.getBoolean("EnableGuiButton", CATEGORY_GUI, true, "If the nutrition button should be shown on player inventory (hotkey will still function).");
