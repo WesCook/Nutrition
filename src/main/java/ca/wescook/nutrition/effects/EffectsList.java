@@ -25,7 +25,7 @@ public class EffectsList {
 	public static void parseJson() {
 		for (JsonEffect effectRaw : jsonEffects) {
 			// Skip if potion is not enabled
-			if (!effectRaw.enabled)
+			if (effectRaw.enabled != null && !effectRaw.enabled)
 				continue;
 
 			// Get potion from config

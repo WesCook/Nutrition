@@ -31,8 +31,8 @@ public class NutrientList {
 	// Run during Post-Init, so most foodItems will be in-game by now
 	public static void parseJson() {
 		for (JsonNutrient nutrientRaw : jsonNutrients) {
-			// Skip if nutrient is not enabled
-			if (!nutrientRaw.enabled)
+			// Skip if nutrient is not enabled, or if field omitted (null)
+			if (nutrientRaw.enabled != null && !nutrientRaw.enabled)
 				continue;
 
 			// Copying and cleaning data
