@@ -24,7 +24,7 @@ public class EffectsList {
 	// Parse JSON data into more useful objects
 	public static void parseJson() {
 		for (JsonEffect effectRaw : jsonEffects) {
-			// Skip if potion is not enabled
+			// Skip if effect is not enabled, or if field omitted (null)
 			if (effectRaw.enabled != null && !effectRaw.enabled)
 				continue;
 
