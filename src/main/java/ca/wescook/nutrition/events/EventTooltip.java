@@ -3,8 +3,11 @@ package ca.wescook.nutrition.events;
 import ca.wescook.nutrition.Nutrition;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientUtils;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockCake;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlockSpecial;
 import net.minecraft.item.ItemFood;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -16,13 +19,31 @@ import java.util.StringJoiner;
 public class EventTooltip {
 	@SubscribeEvent
 	public void tooltipEvent(ItemTooltipEvent event) {
-		// Get out if not food item
+		String tooltip = null;
+
+		// Regular Food
 		Item item = event.getItemStack().getItem();
-		if (!(item instanceof ItemFood))
-			return;
+		if (item instanceof ItemFood)
+			tooltip = getTooltip(item);
 
-		ItemFood food = (ItemFood) item;
+		// Vanilla Cake
+		if (item instanceof ItemBlockSpecial) {
+			Block block = ((ItemBlockSpecial) item).getBlock();
+			if (block instanceof BlockCake)
+				tooltip = getTooltip(block);
+		}
 
+		// Generic Cake
+		Block block = Block.getBlockFromItem(item);
+		if (block instanceof BlockCake)
+			tooltip = getTooltip(block);
+
+		// Tooltip
+		if (tooltip != null)
+			event.getToolTip().add(tooltip);
+	}
+
+	private <T> String getTooltip(T food) {
 		// Create readable list of nutrients
 		StringJoiner stringJoiner = new StringJoiner(", ");
 		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(food);
@@ -33,13 +54,13 @@ public class EventTooltip {
 		// Get nutrition value
 		float nutritionValue = NutrientUtils.calculateNutrition(food, foundNutrients);
 
-		// Add tooltip
+		// Return tooltip
 		if (!nutrientString.equals("")) {
-			event.getToolTip().add(
-				I18n.format("tooltip." + Nutrition.MODID + ":nutrients") + " " +
+			return I18n.format("tooltip." + Nutrition.MODID + ":nutrients") + " " +
 				TextFormatting.DARK_GREEN + nutrientString +
-				TextFormatting.DARK_AQUA + " (" + String.format("%.1f", nutritionValue) + "%)"
-			);
+				TextFormatting.DARK_AQUA + " (" + String.format("%.1f", nutritionValue) + "%)";
 		}
+
+		return null;
 	}
 }

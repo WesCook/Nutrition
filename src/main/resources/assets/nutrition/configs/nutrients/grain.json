@@ -253,6 +253,9 @@
 			"harvestcraft:zucchinibakeItem",
 			"harvestcraft:zucchinibreadItem",
 			"harvestcraft:zucchinifriesItem"
+		],
+		"cakes": [
+			"minecraft:cake"
 		]
 	}
 }

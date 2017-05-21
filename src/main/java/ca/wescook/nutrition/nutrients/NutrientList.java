@@ -2,6 +2,8 @@ package ca.wescook.nutrition.nutrients;
 
 import ca.wescook.nutrition.utility.Config;
 import ca.wescook.nutrition.utility.Log;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockCake;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -35,20 +37,45 @@ public class NutrientList {
 
 			// Copying and cleaning data
 			Nutrient nutrient = new Nutrient();
-			nutrient.name = nutrientRaw.name; // Localization key used in lang file
-			nutrient.icon = new ItemStack(Item.getByNameOrId(nutrientRaw.icon)); // Create ItemStack used to represent icon
-			nutrient.color = Integer.parseUnsignedInt("ff" + nutrientRaw.color, 16); // Convert hex string to int
-			nutrient.foodOreDict = nutrientRaw.food.oredict; // Ore dicts remains as strings
+
+			// Name, icon color
+			try {
+				nutrient.name = nutrientRaw.name;
+				nutrient.icon = new ItemStack(Item.getByNameOrId(nutrientRaw.icon)); // Create ItemStack used to represent icon
+				nutrient.color = Integer.parseUnsignedInt("ff" + nutrientRaw.color, 16); // Convert hex string to int
+			} catch (NullPointerException e) {
+				Log.fatal("Missing or invalid JSON.  A name, icon, and color are required.");
+				throw e;
+			}
+
+			// Food - Ore Dictionary
+			if (nutrientRaw.food.oredict != null)
+				nutrient.foodOreDict = nutrientRaw.food.oredict; // Ore dicts remains as strings
 
 			// Food - Items
-			for (String itemName : nutrientRaw.food.items) {
-				Item foodItem = Item.getByNameOrId(itemName);
-				if (foodItem == null) // If food has valid item (warning is incorrect)
-					Log.missingFood(itemName + " is not a valid item (" + nutrient.name + ")");
-				else if (!(foodItem instanceof ItemFood) && Config.enableLogging) // If item is specified as a food
-					Log.missingFood(itemName + " is not a valid food (" + nutrient.name + ")");
-				else
-					nutrient.foodItems.add((ItemFood) foodItem); // Register it!
+			if (nutrientRaw.food.items != null) {
+				for (String itemName : nutrientRaw.food.items) {
+					Item foodItem = Item.getByNameOrId(itemName);
+					if (foodItem == null) // If food has valid item (warning is incorrect)
+						Log.missingFood(itemName + " is not a valid item (" + nutrient.name + ")");
+					else if (!(foodItem instanceof ItemFood) && Config.enableLogging) // If item isn't a real ItemFood
+						Log.missingFood(itemName + " is not a valid food (" + nutrient.name + ")");
+					else
+						nutrient.foodItems.add((ItemFood) foodItem); // Register it!
+				}
+			}
+
+			// Food - Cakes
+			if (nutrientRaw.food.cakes != null) {
+				for (String cakeName : nutrientRaw.food.cakes) {
+					Block blockCake = Block.getBlockFromName(cakeName);
+					if (blockCake == null) // If cake has valid block
+						Log.missingFood(cakeName + " is not a valid block (" + nutrient.name + ")");
+					else if (!(blockCake instanceof BlockCake) && Config.enableLogging) // If cake isn't a real BlockCake
+						Log.missingFood(cakeName + " is not a valid cake (" + nutrient.name + ")");
+					else
+						nutrient.foodCakes.add((BlockCake) blockCake); // Register it!
+				}
 			}
 
 			// Register nutrient

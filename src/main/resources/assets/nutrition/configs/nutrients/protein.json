@@ -245,6 +245,9 @@
 			"harvestcraft:zombiejerkyItem",
 			"harvestcraft:zucchinibreadItem",
 			"harvestcraft:zucchinifriesItem"
+		],
+		"cakes": [
+			"minecraft:cake"
 		]
 	}
 }

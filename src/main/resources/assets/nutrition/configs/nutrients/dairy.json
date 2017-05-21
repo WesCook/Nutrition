@@ -13,8 +13,6 @@
 			"listAllmilk"
 		],
 		"items": [
-			"minecraft:golden_apple",
-			"minecraft:golden_carrot",
 			"harvestcraft:appleyogurtItem",
 			"harvestcraft:apricotyogurtItem",
 			"harvestcraft:asparagusquicheItem",
@@ -179,6 +177,9 @@
 			"harvestcraft:zestyzucchiniItem",
 			"harvestcraft:zucchinibakeItem",
 			"harvestcraft:zucchinifriesItem"
+		],
+		"cakes": [
+			"minecraft:cake"
 		]
 	}
 }

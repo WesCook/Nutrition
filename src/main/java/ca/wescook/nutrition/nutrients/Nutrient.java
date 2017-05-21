@@ -1,5 +1,6 @@
 package ca.wescook.nutrition.nutrients;
 
+import net.minecraft.block.BlockCake;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 
@@ -14,4 +15,5 @@ public class Nutrient {
 	public boolean enabled;
 	public List<String> foodOreDict = new ArrayList<>();
 	public List<ItemFood> foodItems = new ArrayList<>();
+	public List<BlockCake> foodCakes = new ArrayList<>();
 }
