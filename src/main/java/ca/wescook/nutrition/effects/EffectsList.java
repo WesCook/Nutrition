@@ -48,7 +48,7 @@ public class EffectsList {
 			if (effect.detect.equals("nutrient")) {
 				effect.nutrient = NutrientList.getByName(effectRaw.nutrient);
 				if (effect.nutrient == null) {
-					Log.error("Nutrient '" + effectRaw.nutrient + "' cannot be found.");
+					Log.error("Detect mode is set to 'nutrient', but nutrient is not set. (" + effect.name + ")");
 					continue;
 				}
 			}
