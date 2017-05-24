@@ -124,8 +124,8 @@ public class Config {
 					JsonReader jsonReader = new JsonReader(new FileReader(file)); // Read in JSON
 					jsonObjectList.add(gson.fromJson(jsonReader, classImport)); // Deserialize with GSON and store for later processing
 				} catch (IOException | com.google.gson.JsonSyntaxException e) {
-					Log.error("The file " + file.getName() + " has invalid JSON and could not be loaded.");
-					e.printStackTrace();
+					Log.fatal("The file " + file.getName() + " has invalid JSON and could not be loaded.");
+					throw new IllegalArgumentException("Unable to load " + file.getName() + ".  Is the JSON valid?", e);
 				}
 			}
 		}
