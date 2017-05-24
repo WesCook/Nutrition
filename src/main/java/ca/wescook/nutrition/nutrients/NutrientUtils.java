@@ -1,10 +1,7 @@
 package ca.wescook.nutrition.nutrients;
 
 import ca.wescook.nutrition.utility.Config;
-import net.minecraft.block.BlockCake;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
@@ -12,37 +9,24 @@ import java.util.List;
 
 public class NutrientUtils {
 	// Returns list of nutrients that food belongs to
-	public static <T> List<Nutrient> getFoodNutrients(T eatingFood) {
+	public static List<Nutrient> getFoodNutrients(ItemStack eatingFood) {
 		List<Nutrient> nutrientsFound = new ArrayList<>();
 
 		// Loop through nutrients to look for food
 		foodSearch:
 		for (Nutrient nutrient : NutrientList.get()) { // All nutrients
-			// Search food IDs
-			if (eatingFood instanceof ItemFood) {
-				for (ItemFood listedFood : nutrient.foodItems) { // All foods in that nutrient
-					if (listedFood.equals(eatingFood)) {
-						nutrientsFound.add(nutrient); // Add nutrient
-						continue foodSearch; // Skip rest of search in this nutrient, try others
-					}
-				}
-			}
-
-			// Search cake IDs
-			if (eatingFood instanceof BlockCake) {
-				for (BlockCake listedFood : nutrient.foodCakes) { // All foods in that nutrient
-					if (listedFood.equals(eatingFood)) {
-						nutrientsFound.add(nutrient); // Add nutrient
-						continue foodSearch; // Skip rest of search in this nutrient, try others
-					}
+			// Search foods
+			for (ItemStack listedFood : nutrient.foodItems) { // All foods in that category
+				if (listedFood.isItemEqual(eatingFood)) {
+					nutrientsFound.add(nutrient); // Add nutrient
+					continue foodSearch; // Skip rest of search in this nutrient, try others
 				}
 			}
 
 			// Search ore dictionary
 			for (String listedOreDict : nutrient.foodOreDict) { // All ore dicts in that nutrient
-				for (ItemStack testingItemStack : OreDictionary.getOres(listedOreDict)) { // All items that match that oredict (eg. listAllmilk)
-					Item testingItem = testingItemStack.getItem(); // Get real item
-					if (testingItem.equals(eatingFood)) { // Our food matches oredict
+				for (ItemStack itemStack : OreDictionary.getOres(listedOreDict)) { // All items that match that oredict (eg. listAllmilk)
+					if (itemStack.isItemEqual(eatingFood)) { // Our food matches oredict
 						nutrientsFound.add(nutrient); // Add nutrient
 						continue foodSearch; // Skip rest of search in this nutrient, try others
 					}
@@ -55,13 +39,16 @@ public class NutrientUtils {
 
 	// Calculate nutrition value for supplied food
 	// Requires nutrient list from that food for performance reasons (see getFoodNutrients)
-	public static <T> float calculateNutrition(T food, List<Nutrient> nutrients) {
-		// Starting value
+	public static float calculateNutrition(ItemStack itemStack, List<Nutrient> nutrients) {
+		// Get item/block
+		Item item = itemStack.getItem();
+
+		// Base food value
 		int foodValue = 0;
-		if (food instanceof ItemFood)
-			foodValue = ((ItemFood) food).getHealAmount(new ItemStack((ItemFood) food)); // Number of half-drumsticks food heals
-		else if (food instanceof BlockCake)
-			foodValue = 2; // Cake defaults to 2 half-drumsticks
+		if (item instanceof ItemFood)
+			foodValue = ((ItemFood) item).getHealAmount(itemStack); // Number of half-drumsticks food heals
+		else if (item instanceof ItemBlock || item instanceof ItemBlockSpecial) // Cake, most likely
+			foodValue = 2; // Hardcoded value from vanilla
 
 		// Apply multipliers
 		float adjustedFoodValue = (float) (foodValue * 0.5); // Halve to start at reasonable starting point

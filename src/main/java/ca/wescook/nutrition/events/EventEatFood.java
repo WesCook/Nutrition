@@ -30,26 +30,30 @@ public class EventEatFood {
 		World world = event.getWorld();
 		IBlockState blockState = world.getBlockState(event.getPos());
 
-		// Find cake
-		if (blockState.getBlock() instanceof BlockCake) {
-			if (player.canEat(false) || Config.allowOverEating) {
-				// Calculate nutrition
-				BlockCake eatingFood = (BlockCake) blockState.getBlock();
-				List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(eatingFood);
-				float nutritionValue = NutrientUtils.calculateNutrition(eatingFood, foundNutrients);
+		// Get out if not cake
+		if (!(blockState.getBlock() instanceof BlockCake)) {
+			return;
+		}
 
-				// Add to each nutrient
-				for (Nutrient nutrient : foundNutrients)
-					player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutritionValue);
+		// Should we let them eat cake?
+		if (player.canEat(false) || Config.allowOverEating) {
+			// Calculate nutrition
+			Item item = Item.getByNameOrId(blockState.getBlock().getRegistryName().toString()); // Get cake Item from registry name
+			ItemStack itemStack = new ItemStack(item);
+			List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(itemStack);
+			float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients);
 
-				// If full but over-eating, simulate cake eating
-				if (!player.canEat(false) && Config.allowOverEating) {
-					int cakeBites = blockState.getValue(BlockCake.BITES);
-					if (cakeBites < 6)
-						world.setBlockState(event.getPos(), blockState.withProperty(BlockCake.BITES, cakeBites + 1), 3);
-					else
-						world.setBlockToAir(event.getPos());
-				}
+			// Add to each nutrient
+			for (Nutrient nutrient : foundNutrients)
+				player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutritionValue);
+
+			// If full but over-eating, simulate cake eating
+			if (!player.canEat(false) && Config.allowOverEating) {
+				int cakeBites = blockState.getValue(BlockCake.BITES);
+				if (cakeBites < 6)
+					world.setBlockState(event.getPos(), blockState.withProperty(BlockCake.BITES, cakeBites + 1), 3);
+				else
+					world.setBlockToAir(event.getPos());
 			}
 		}
 	}
@@ -91,14 +95,13 @@ public class EventEatFood {
 			return;
 
 		// Get out if not food item
-		Item item = event.getItem().getItem();
-		if (!(item instanceof ItemFood))
+		ItemStack itemStack = event.getItem();
+		if (!(itemStack.getItem() instanceof ItemFood))
 			return;
 
 		// Calculate nutrition
-		ItemFood eatingFood = (ItemFood) event.getItem().getItem(); // The item we're eating
-		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(eatingFood); // Nutrient list for that food
-		float nutritionValue = NutrientUtils.calculateNutrition(eatingFood, foundNutrients); // Nutrition value for that food
+		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(itemStack); // Nutrient list for that food
+		float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients); // Nutrition value for that food
 
 		// Add to each nutrient
 		for (Nutrient nutrient : foundNutrients) {
