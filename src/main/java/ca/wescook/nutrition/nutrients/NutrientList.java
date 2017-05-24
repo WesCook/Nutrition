@@ -3,6 +3,8 @@ package ca.wescook.nutrition.nutrients;
 import ca.wescook.nutrition.utility.Log;
 import net.minecraft.block.BlockCake;
 import net.minecraft.item.*;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,33 +50,47 @@ public class NutrientList {
 			if (nutrientRaw.food.oredict != null)
 				nutrient.foodOreDict = nutrientRaw.food.oredict; // Ore dicts remains as strings
 
-			// Extract metadata
-			int metadata = 0; // TODO: Read from file
-
 			// Food Items
 			if (nutrientRaw.food.items != null) {
-				for (String itemName : nutrientRaw.food.items) {
+				for (String fullName : nutrientRaw.food.items) {
+					// Initial values
+					String name = fullName;
+					int metadata = 0;
+					boolean validItem = false;
+
+					// If string includes meta data, update name/meta
+					if (StringUtils.countMatches(fullName, ":") == 2) { // Two colons for metadata (eg. minecraft:golden_apple:1)
+						// Get data
+						name = StringUtils.substringBeforeLast(fullName, ":");
+						String metaString = StringUtils.substringAfterLast(fullName, ":");
+
+						// Is valid metadata
+						if (NumberUtils.isNumber(metaString))
+							metadata = Integer.decode(metaString);
+						else
+							validItem = false;
+					}
+
 					// Get item
-					Item foodItem = Item.getByNameOrId(itemName);
-					if (foodItem == null) {
-						Log.missingFood(itemName + " is not a valid item name (" + nutrient.name + ")");
+					Item item = Item.getByNameOrId(name);
+					if (item == null) {
+						Log.missingFood(name + " is not a valid item name (" + nutrient.name + ")");
 						continue;
 					}
 
 					// Verify it meets a valid type
-					boolean validItem = false;
-					if (foodItem instanceof ItemFood) // ItemFood
+					if (item instanceof ItemFood) // ItemFood
 						validItem = true;
-					else if (foodItem instanceof ItemBlock && ((ItemBlock) foodItem).getBlock() instanceof BlockCake) // Cake - Vanilla
+					else if (item instanceof ItemBlock && ((ItemBlock) item).getBlock() instanceof BlockCake) // Cake - Vanilla
 						validItem = true;
-					else if (foodItem instanceof ItemBlockSpecial && ((ItemBlockSpecial) foodItem).getBlock() instanceof BlockCake) // Cake - Modded
+					else if (item instanceof ItemBlockSpecial && ((ItemBlockSpecial) item).getBlock() instanceof BlockCake) // Cake - Modded
 						validItem = true;
 
 					// Add to nutrient, or report error
 					if (validItem)
-						nutrient.foodItems.add(new ItemStack(foodItem, 1, metadata));
+						nutrient.foodItems.add(new ItemStack(item, 1, metadata));
 					else
-						Log.missingFood(itemName + " is not a valid food (" + nutrient.name + ")");
+						Log.missingFood(name + " is not a valid food (" + nutrient.name + ")");
 				}
 			}
 
