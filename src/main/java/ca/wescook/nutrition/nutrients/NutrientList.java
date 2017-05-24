@@ -58,6 +58,12 @@ public class NutrientList {
 					int metadata = 0;
 					boolean validItem = false;
 
+					// Null check
+					if (name == null) {
+						Log.fatal("There is a null item in the '" + nutrient.name + "' JSON.  Check for a trailing comma in the file.");
+						throw new NullPointerException("There is a null item in the '" + nutrient.name + "' JSON.  Check for a trailing comma in the file.");
+					}
+
 					// If string includes meta data, update name/meta
 					if (StringUtils.countMatches(fullName, ":") == 2) { // Two colons for metadata (eg. minecraft:golden_apple:1)
 						// Get data
@@ -67,8 +73,10 @@ public class NutrientList {
 						// Is valid metadata
 						if (NumberUtils.isNumber(metaString))
 							metadata = Integer.decode(metaString);
-						else
-							validItem = false;
+						else {
+							Log.missingFood(name + " does not contain valid metadata (" + nutrient.name + ")");
+							continue;
+						}
 					}
 
 					// Get item
