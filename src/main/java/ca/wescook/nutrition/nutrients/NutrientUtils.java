@@ -1,6 +1,7 @@
 package ca.wescook.nutrition.nutrients;
 
 import ca.wescook.nutrition.utility.Config;
+import net.minecraft.block.BlockCake;
 import net.minecraft.item.*;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -58,5 +59,25 @@ public class NutrientUtils {
 		float nutritionValue = Math.max(0, adjustedFoodValue - foodLoss); // Subtract from true value, with a floor of 0
 
 		return nutritionValue;
+	}
+
+	// Verify it meets a valid type
+	// Little bit of guesswork in this one...
+	public static boolean isValidFood(ItemStack itemStack) {
+		Item item = itemStack.getItem();
+
+		// Regular ItemFood
+		if (item instanceof ItemFood)
+			return true;
+
+		// Cake - Vanilla
+		if (item instanceof ItemBlock && ((ItemBlock) item).getBlock() instanceof BlockCake)
+			return true;
+
+		// Cake - Modded
+		if (item instanceof ItemBlockSpecial && ((ItemBlockSpecial) item).getBlock() instanceof BlockCake)
+			return true;
+
+		return false;
 	}
 }

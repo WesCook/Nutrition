@@ -1,8 +1,8 @@
 package ca.wescook.nutrition.nutrients;
 
 import ca.wescook.nutrition.utility.Log;
-import net.minecraft.block.BlockCake;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
@@ -56,9 +56,8 @@ public class NutrientList {
 					// Initial values
 					String name = fullName;
 					int metadata = 0;
-					boolean validItem = false;
 
-					// Null check
+					// Null check input string
 					if (name == null) {
 						Log.fatal("There is a null item in the '" + nutrient.name + "' JSON.  Check for a trailing comma in the file.");
 						throw new NullPointerException("There is a null item in the '" + nutrient.name + "' JSON.  Check for a trailing comma in the file.");
@@ -74,29 +73,24 @@ public class NutrientList {
 						if (NumberUtils.isNumber(metaString))
 							metadata = Integer.decode(metaString);
 						else {
-							Log.missingFood(name + " does not contain valid metadata (" + nutrient.name + ")");
+							Log.missingFood(fullName + " does not contain valid metadata (" + nutrient.name + ")");
 							continue;
 						}
 					}
 
 					// Get item
 					Item item = Item.getByNameOrId(name);
+
+					// Null test item
 					if (item == null) {
 						Log.missingFood(name + " is not a valid item name (" + nutrient.name + ")");
 						continue;
 					}
 
-					// Verify it meets a valid type
-					if (item instanceof ItemFood) // ItemFood
-						validItem = true;
-					else if (item instanceof ItemBlock && ((ItemBlock) item).getBlock() instanceof BlockCake) // Cake - Vanilla
-						validItem = true;
-					else if (item instanceof ItemBlockSpecial && ((ItemBlockSpecial) item).getBlock() instanceof BlockCake) // Cake - Modded
-						validItem = true;
-
 					// Add to nutrient, or report error
-					if (validItem)
-						nutrient.foodItems.add(new ItemStack(item, 1, metadata));
+					ItemStack itemStack = new ItemStack(item, 1, metadata);
+					if (NutrientUtils.isValidFood(itemStack))
+						nutrient.foodItems.add(itemStack);
 					else
 						Log.missingFood(name + " is not a valid food (" + nutrient.name + ")");
 				}

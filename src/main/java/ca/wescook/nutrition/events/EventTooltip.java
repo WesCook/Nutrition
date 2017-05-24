@@ -18,6 +18,10 @@ public class EventTooltip {
 		ItemStack itemStack = event.getItemStack();
 		String tooltip = null;
 
+		// Get out if not a food item
+		if (!NutrientUtils.isValidFood(itemStack))
+			return;
+
 		// Create readable list of nutrients
 		StringJoiner stringJoiner = new StringJoiner(", ");
 		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(itemStack);
@@ -28,13 +32,14 @@ public class EventTooltip {
 		// Get nutrition value
 		float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients);
 
-		// Return tooltip
+		// Build tooltip
 		if (!nutrientString.equals("")) {
 			tooltip = I18n.format("tooltip." + Nutrition.MODID + ":nutrients") + " " +
 					TextFormatting.DARK_GREEN + nutrientString +
 					TextFormatting.DARK_AQUA + " (" + String.format("%.1f", nutritionValue) + "%)";
 		}
 
+		// Add to item tooltip
 		if (tooltip != null)
 			event.getToolTip().add(tooltip);
 	}
