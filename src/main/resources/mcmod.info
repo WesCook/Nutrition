@@ -2,7 +2,7 @@
 {
   "modid": "nutrition",
   "name": "Nutrition",
-  "description": "Ensuring you eat healthy",
+  "description": "Nutrition is a highly configurable mod to enable the creation of health systems in Minecraft.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://github.com/WesCook/Nutrition",
