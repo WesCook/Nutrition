@@ -40,8 +40,7 @@ minecraft {
 dependencies {
 }
 
-processResources
-{
+processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
@@ -61,7 +60,11 @@ processResources
 }
 
 jar {
+	// Load Access Transformer
 	manifest {
 		attributes 'FMLAT': 'nutrition_at.cfg'
 	}
+
+	// Move access transformers to META-INF
+	rename '(.+_at.cfg)', 'META-INF/$1'
 }
