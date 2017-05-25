@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 // Link properties file (variables now accessible as config.var)
-ext.configFile = file "build.properties"
+ext.configFile = file "gradle.properties"
 configFile.withReader {
 	def prop = new Properties()
 	prop.load(it)
@@ -53,7 +53,7 @@ processResources {
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
         
-    // copy everything else, thats not the mcmod.info
+    // copy everything else, that's not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
