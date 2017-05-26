@@ -67,7 +67,7 @@ public class PacketNutritionResponse {
 				}
 
 				// Update GUI information
-				ModGuiHandler.nutritionGui.updateInformation();
+				ModGuiHandler.nutritionGui.redrawLabels();
 			});
 			return null;
 		}
