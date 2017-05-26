@@ -103,7 +103,7 @@ public class NutritionGui extends GuiScreen {
 		ModPacketHandler.NETWORK_CHANNEL.sendToServer(new PacketNutritionRequest.Message());
 
 		// Add buttons
-		this.buttonList.add(this.buttonClose = new GuiButton(0, (width / 2) - (closeButtonWidth / 2), (height / 2) + closeButtonVerticalOffset, closeButtonWidth, closeButtonHeight, "Close"));
+		this.buttonList.add(this.buttonClose = new GuiButton(0, (width / 2) - (closeButtonWidth / 2), (height / 2) + closeButtonVerticalOffset, closeButtonWidth, closeButtonHeight, I18n.format("gui." + Nutrition.MODID + ":close")));
 
 		// Draw labels
 		updateInformation();
