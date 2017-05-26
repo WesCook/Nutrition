@@ -28,10 +28,9 @@ public class EventNutritionButton {
 		if (!(gui instanceof GuiInventory))
 			return;
 
-		// TODO: 1.11 offers GuiContainer#getGuiLeft().  Remove access transformers in 1.11 port.
 		// Button position
-		int xPosition = ((GuiInventory) gui).guiLeft + 97;
-		int yPosition = ((GuiInventory) gui).guiTop + 61;
+		int xPosition = ((GuiInventory) gui).getGuiLeft() + 97;
+		int yPosition = ((GuiInventory) gui).getGuiTop() + 61;
 
 		// Create button
 		event.getButtonList().add(this.buttonNutrition = new GuiButtonIcon(NUTRITION_ID, xPosition, yPosition, 18, 17, new ItemStack(Items.CARROT)));
@@ -45,8 +44,8 @@ public class EventNutritionButton {
 			return;
 
 		// Get data
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-		World world = Minecraft.getMinecraft().theWorld;
+		EntityPlayer player = Minecraft.getMinecraft().player;
+		World world = Minecraft.getMinecraft().world;
 
 		// Open GUI
 		player.openGui(Nutrition.instance, ModGuiHandler.NUTRITION_GUI_ID, world, (int) player.posX, (int) player.posY, (int) player.posZ);

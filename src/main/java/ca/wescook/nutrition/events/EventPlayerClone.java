@@ -12,7 +12,7 @@ public class EventPlayerClone {
 	public void onPlayerClone(PlayerEvent.Clone event) {
 		// Only run on server
 		EntityPlayer player = event.getEntityPlayer();
-		if (player.worldObj.isRemote)
+		if (player.world.isRemote)
 			return;
 
 		// Duplicate player nutrition on warp/death

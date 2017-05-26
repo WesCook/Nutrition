@@ -31,8 +31,8 @@ public class EventNutritionKey {
 	@SideOnly(Side.CLIENT)
 	private void openNutritionGui() {
 		// Get data
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-		World world = Minecraft.getMinecraft().theWorld;
+		EntityPlayer player = Minecraft.getMinecraft().player;
+		World world = Minecraft.getMinecraft().world;
 
 		// Open GUI
 		player.openGui(Nutrition.instance, ModGuiHandler.NUTRITION_GUI_ID, world, (int) player.posX, (int) player.posY, (int) player.posZ);

@@ -58,13 +58,3 @@ processResources {
         exclude 'mcmod.info'
     }
 }
-
-jar {
-	// Load Access Transformer
-	manifest {
-		attributes 'FMLAT': 'nutrition_at.cfg'
-	}
-
-	// Move access transformers to META-INF
-	rename '(.+_at.cfg)', 'META-INF/$1'
-}

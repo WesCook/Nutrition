@@ -8,7 +8,7 @@ public class EventPlayerLogin {
 	@SubscribeEvent
 	public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
 		// Only run on server
-		if (event.player.worldObj.isRemote)
+		if (event.player.world.isRemote)
 			return;
 
 		// Sync nutrition data from server

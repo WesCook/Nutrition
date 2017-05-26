@@ -15,12 +15,12 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 public class ChatCommand extends CommandBase {
 	@Override
-	public String getCommandName() {
+	public String getName() {
 		return "nutrition";
 	}
 
 	@Override
-	public String getCommandUsage(ICommandSender sender) {
+	public String getUsage(ICommandSender sender) {
 		return I18n.format("command." + Nutrition.MODID + ":help");
 	}
 
@@ -38,13 +38,13 @@ public class ChatCommand extends CommandBase {
 	}
 
 	private void commandHelp(ICommandSender sender) {
-		sender.addChatMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":help")));
+		sender.sendMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":help")));
 	}
 
 	private void commandGetNutrition(ICommandSender sender, String[] args) {
 		// If missing parameter, offer help
 		if (args.length != 2) {
-			sender.addChatMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_get_missing")));
+			sender.sendMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_get_missing")));
 			return;
 		}
 
@@ -54,16 +54,16 @@ public class ChatCommand extends CommandBase {
 		if (nutrient != null) {
 			String localizedName = I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name);
 			Float nutrientValue = player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).get(nutrient);
-			sender.addChatMessage(new TextComponentString(localizedName + ": " + String.format("%.2f", nutrientValue) + "%"));
+			sender.sendMessage(new TextComponentString(localizedName + ": " + String.format("%.2f", nutrientValue) + "%"));
 		}
 		else // Write error message
-			sender.addChatMessage(new TextComponentString("'" + args[1] + "' " + I18n.format("command." + Nutrition.MODID + ":error_invalid_nutrient")));
+			sender.sendMessage(new TextComponentString("'" + args[1] + "' " + I18n.format("command." + Nutrition.MODID + ":error_invalid_nutrient")));
 	}
 
 	private void commandSetNutrition(ICommandSender sender, String[] args) {
 		// If missing parameter, offer help
 		if (args.length != 3) {
-			sender.addChatMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_set_missing")));
+			sender.sendMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_set_missing")));
 			return;
 		}
 
@@ -72,13 +72,13 @@ public class ChatCommand extends CommandBase {
 		if (NumberUtils.isNumber(args[2]))
 			newValue = Float.parseFloat(args[2]);
 		else {
-			sender.addChatMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_number_invalid")));
+			sender.sendMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_number_invalid")));
 			return;
 		}
 
 		// Range check (don't sue me Oracle)
 		if (!(newValue >= 0 && newValue <= 100)) {
-			sender.addChatMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_number_range")));
+			sender.sendMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_number_range")));
 			return;
 		}
 
@@ -89,9 +89,9 @@ public class ChatCommand extends CommandBase {
 		if (nutrient != null) {
 			String localizedName = I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name);
 			player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).set(nutrient, newValue);
-			sender.addChatMessage(new TextComponentString(localizedName + " " + I18n.format("command." + Nutrition.MODID + ":set_success")));
+			sender.sendMessage(new TextComponentString(localizedName + " " + I18n.format("command." + Nutrition.MODID + ":set_success")));
 		}
 		else // Write error message
-			sender.addChatMessage(new TextComponentString("'" + args[1] + "' " + I18n.format("command." + Nutrition.MODID + ":error_invalid_nutrient")));
+			sender.sendMessage(new TextComponentString("'" + args[1] + "' " + I18n.format("command." + Nutrition.MODID + ":error_invalid_nutrient")));
 	}
 }
