@@ -1,9 +1,9 @@
 package ca.wescook.nutrition.network;
 
+import ca.wescook.nutrition.capabilities.CapProvider;
 import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
-import ca.wescook.nutrition.nutrition.NutritionProvider;
 import ca.wescook.nutrition.proxy.ClientProxy;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
@@ -38,14 +38,14 @@ public class PacketNutritionResponse {
 		public void toBytes(ByteBuf buf) {
 			// Loop through nutrients and add to buffer
 			for (Nutrient nutrient : NutrientList.get())
-				buf.writeFloat(serverPlayer.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).get(nutrient));
+				buf.writeFloat(serverPlayer.getCapability(CapProvider.NUTRITION_CAPABILITY, null).get(nutrient));
 		}
 
 		// Then deserialized (on the client)
 		@Override
 		public void fromBytes(ByteBuf buf) {
 			// Loop through nutrients to build accurate list from data
-			clientNutrients = new HashMap<Nutrient, Float>();
+			clientNutrients = new HashMap<>();
 			for (Nutrient nutrient : NutrientList.get())
 				clientNutrients.put(nutrient, buf.readFloat());
 		}
@@ -60,15 +60,12 @@ public class PacketNutritionResponse {
 				// Update local dummy nutrition data
 				ClientProxy.nutrientData = message.clientNutrients;
 
-				// If GUI is still open
+				// If GUI is still open, update GUI
 				GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
-				if (currentScreen == null || !currentScreen.equals(ModGuiHandler.nutritionGui)) {
-					return;
-				}
-
-				// Update GUI information
-				ModGuiHandler.nutritionGui.redrawLabels();
+				if (currentScreen != null && currentScreen.equals(ModGuiHandler.nutritionGui))
+					ModGuiHandler.nutritionGui.redrawLabels();
 			});
+
 			return null;
 		}
 	}

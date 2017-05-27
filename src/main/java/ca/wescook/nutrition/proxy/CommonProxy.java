@@ -1,13 +1,14 @@
 package ca.wescook.nutrition.proxy;
 
 import ca.wescook.nutrition.Nutrition;
+import ca.wescook.nutrition.capabilities.CapImplementation;
+import ca.wescook.nutrition.capabilities.CapInterface;
+import ca.wescook.nutrition.capabilities.CapStorage;
 import ca.wescook.nutrition.effects.EffectsList;
 import ca.wescook.nutrition.events.*;
 import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.network.ModPacketHandler;
 import ca.wescook.nutrition.nutrients.NutrientList;
-import ca.wescook.nutrition.nutrition.INutrition;
-import ca.wescook.nutrition.nutrition.NutritionStorage;
 import ca.wescook.nutrition.potions.ModPotions;
 import ca.wescook.nutrition.utility.Config;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,7 +22,7 @@ public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		Config.registerConfigs(event.getModConfigurationDirectory()); // Create config files
 		ModPacketHandler.registerMessages(); // Register network messages
-		CapabilityManager.INSTANCE.register(INutrition.class, new NutritionStorage(), ca.wescook.nutrition.nutrition.Nutrition.class); // Register capability
+		CapabilityManager.INSTANCE.register(CapInterface.class, new CapStorage(), CapImplementation.class); // Register capability
 		ModPotions.registerPotions(); // Register custom potions
 
 		MinecraftForge.EVENT_BUS.register(new EventPlayerAttachCapability()); // Attach capability to player

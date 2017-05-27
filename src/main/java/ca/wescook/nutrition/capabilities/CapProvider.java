@@ -1,6 +1,7 @@
-package ca.wescook.nutrition.nutrition;
+package ca.wescook.nutrition.capabilities;
 
 import jline.internal.Nullable;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -8,14 +9,18 @@ import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
 // Creates and holds default implementation.  Offers Capability access, and optionally handles serialization.
-public class NutritionProvider implements ICapabilitySerializable<NBTBase> {
-
+public class CapProvider implements ICapabilitySerializable<NBTBase> {
 	// Inject capability into field
-	@CapabilityInject(INutrition.class)
-	public static final Capability<INutrition> NUTRITION_CAPABILITY = null;
+	@CapabilityInject(CapInterface.class)
+	public static final Capability<CapInterface> NUTRITION_CAPABILITY = null;
 
-	// Create default instance
-	private INutrition instance = NUTRITION_CAPABILITY.getDefaultInstance();
+	private CapInterface instance;
+
+	// Constructor passes entity to implementation
+	public CapProvider(EntityPlayer player) {
+		instance = new CapImplementation(player);
+		//instance = NUTRITION_CAPABILITY.getDefaultInstance();
+	}
 
 	// Check if capability exists
 	@Override

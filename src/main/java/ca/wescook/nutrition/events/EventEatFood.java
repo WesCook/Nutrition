@@ -1,8 +1,8 @@
 package ca.wescook.nutrition.events;
 
+import ca.wescook.nutrition.capabilities.CapProvider;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientUtils;
-import ca.wescook.nutrition.nutrition.NutritionProvider;
 import ca.wescook.nutrition.utility.Config;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.state.IBlockState;
@@ -45,7 +45,7 @@ public class EventEatFood {
 
 			// Add to each nutrient
 			for (Nutrient nutrient : foundNutrients)
-				player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutritionValue);
+				player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutritionValue, true);
 
 			// If full but over-eating, simulate cake eating
 			if (!player.canEat(false) && Config.allowOverEating) {
@@ -101,11 +101,11 @@ public class EventEatFood {
 
 		// Calculate nutrition
 		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(itemStack); // Nutrient list for that food
-		float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients); // Nutrition value for that food
+		float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients); // CapImplementation value for that food
 
 		// Add to each nutrient
 		for (Nutrient nutrient : foundNutrients) {
-			player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutritionValue);
+			player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutritionValue, true);
 		}
 	}
 }
