@@ -1,9 +1,9 @@
 package ca.wescook.nutrition.events;
 
+import ca.wescook.nutrition.capabilities.CapProvider;
 import ca.wescook.nutrition.effects.EffectsManager;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
-import ca.wescook.nutrition.nutrition.NutritionProvider;
 import ca.wescook.nutrition.utility.Config;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -22,9 +22,8 @@ public class EventPlayerUpdate {
 		EntityPlayer player = event.player;
 
 		// Apply decay check each tick
-		if (Config.enableDecay) {
+		if (Config.enableDecay)
 			nutritionDecay(player);
-		}
 
 		// Reapply potion effects every 5 seconds
 		if (potionCounter > 100) {
@@ -43,7 +42,7 @@ public class EventPlayerUpdate {
 			int difference = foodLevel - foodLevelNew;
 			float decay = (float) (difference * 0.075 * Config.decayMultiplier); // Lower number for reasonable starting point, then apply multiplier from config
 			for (Nutrient nutrient : NutrientList.get())
-				player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).subtract(nutrient, decay);
+				player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).subtract(nutrient, decay, true);
 		}
 
 		// Update for the next pass

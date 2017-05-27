@@ -1,7 +1,7 @@
 package ca.wescook.nutrition.effects;
 
+import ca.wescook.nutrition.capabilities.CapProvider;
 import ca.wescook.nutrition.nutrients.Nutrient;
-import ca.wescook.nutrition.nutrition.NutritionProvider;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 
@@ -22,7 +22,7 @@ public class EffectsManager {
 	// Returns which effects match threshold conditions
 	private static List<Effect> getEffectsInThreshold(EntityPlayer player) {
 		// Get info
-		Map<Nutrient, Float> playerNutrition = player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).get();
+		Map<Nutrient, Float> playerNutrition = player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).get();
 
 		// Track states
 		List<Effect> effectsInThreshold = new ArrayList<>();

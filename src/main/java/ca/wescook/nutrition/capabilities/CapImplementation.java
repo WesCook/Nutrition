@@ -1,20 +1,26 @@
-package ca.wescook.nutrition.nutrition;
+package ca.wescook.nutrition.capabilities;
 
 import ca.wescook.nutrition.network.ModPacketHandler;
-import ca.wescook.nutrition.network.PacketNutritionRequest;
+import ca.wescook.nutrition.network.PacketNutritionResponse;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.utility.Config;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 
 import java.util.HashMap;
 import java.util.Map;
 
-// Default implementation of Capability.  Contains logic for each method defined in the Interface.
-public class Nutrition implements INutrition {
+// Real implementation of Capability.  Contains logic for each method defined in the Interface.
+public class CapImplementation implements CapInterface {
 	// Map Nutrient type to value for that nutrient
 	private Map<Nutrient, Float> playerNutrition = new HashMap<>();
+	private EntityPlayer player;
 
-	public Nutrition() {
+	CapImplementation(EntityPlayer player) {
+		// Store player
+		this.player = player;
+
 		// Populate nutrient data with starting nutrition
 		for (Nutrient nutrient : NutrientList.get())
 			playerNutrition.put(nutrient, (float) Config.startingNutrition);
@@ -28,35 +34,35 @@ public class Nutrition implements INutrition {
 		return playerNutrition.get(nutrient);
 	}
 
-	public void set(Map<Nutrient, Float> nutrientData) {
+	public void set(Map<Nutrient, Float> nutrientData, boolean sync) {
 		this.playerNutrition = nutrientData;
-		resync();
+		if (sync) resync();
 	}
 
-	public void set(Nutrient nutrient, Float value) {
+	public void set(Nutrient nutrient, Float value, boolean sync) {
 		playerNutrition.put(nutrient, value);
-		resync();
+		if (sync) resync();
 	}
 
-	public void add(Nutrient nutrient, float amount) {
+	public void add(Nutrient nutrient, float amount, boolean sync) {
 		float currentAmount = playerNutrition.get(nutrient);
 		playerNutrition.put(nutrient, Math.min(currentAmount + amount, 100));
-		resync();
+		if (sync) resync();
 	}
 
-	public void subtract(Nutrient nutrient, float amount) {
+	public void subtract(Nutrient nutrient, float amount, boolean sync) {
 		float currentAmount = playerNutrition.get(nutrient);
 		playerNutrition.put(nutrient, Math.max(currentAmount - amount, 0));
-		resync();
+		if (sync) resync();
 	}
 
 	public void deathPenalty() {
 		for (Nutrient nutrient : playerNutrition.keySet()) // Loop through player's nutrients
-			set(nutrient, Math.max(Config.deathPenaltyMin, playerNutrition.get(nutrient) - Config.deathPenaltyLoss)); // Subtract death penalty to each, with a bottom cap
-		resync();
+			set(nutrient, Math.max(Config.deathPenaltyMin, playerNutrition.get(nutrient) - Config.deathPenaltyLoss), true); // Subtract death penalty to each, with a bottom cap
 	}
 
 	public void resync() {
-		ModPacketHandler.NETWORK_CHANNEL.sendToServer(new PacketNutritionRequest.Message()); // Send nutrition sync request
+		if (!player.worldObj.isRemote)
+			ModPacketHandler.NETWORK_CHANNEL.sendTo(new PacketNutritionResponse.Message(player), (EntityPlayerMP) player);
 	}
 }

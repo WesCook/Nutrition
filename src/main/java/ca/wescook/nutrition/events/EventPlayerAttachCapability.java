@@ -1,7 +1,7 @@
 package ca.wescook.nutrition.events;
 
 import ca.wescook.nutrition.Nutrition;
-import ca.wescook.nutrition.nutrition.NutritionProvider;
+import ca.wescook.nutrition.capabilities.CapProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -19,6 +19,6 @@ public class EventPlayerAttachCapability {
 
 		// Attach capability to player
 		if (entity instanceof EntityPlayer)
-			event.addCapability(new ResourceLocation(Nutrition.MODID, "nutrition"), new NutritionProvider());
+			event.addCapability(new ResourceLocation(Nutrition.MODID, "nutrition"), new CapProvider((EntityPlayer) entity));
 	}
 }

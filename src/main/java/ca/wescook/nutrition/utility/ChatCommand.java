@@ -1,8 +1,8 @@
 package ca.wescook.nutrition.utility;
 
+import ca.wescook.nutrition.capabilities.CapProvider;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
-import ca.wescook.nutrition.nutrition.NutritionProvider;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -50,7 +50,7 @@ public class ChatCommand extends CommandBase {
 		EntityPlayer player = (EntityPlayer) sender;
 		Nutrient nutrient = NutrientList.getByName(args[1]);
 		if (nutrient != null) {
-			Float nutrientValue = player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).get(nutrient);
+			Float nutrientValue = player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).get(nutrient);
 			sender.addChatMessage(new TextComponentString(nutrient.name + ": " + String.format("%.2f", nutrientValue) + "%"));
 		}
 		else // Write error message
@@ -84,7 +84,7 @@ public class ChatCommand extends CommandBase {
 		Nutrient nutrient = NutrientList.getByName(args[1]);
 
 		if (nutrient != null) {
-			player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).set(nutrient, newValue);
+			player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).set(nutrient, newValue, true);
 			sender.addChatMessage(new TextComponentString(nutrient.name + " updated!"));
 		}
 		else // Write error message

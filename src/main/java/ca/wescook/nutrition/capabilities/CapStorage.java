@@ -1,4 +1,4 @@
-package ca.wescook.nutrition.nutrition;
+package ca.wescook.nutrition.capabilities;
 
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
@@ -11,10 +11,10 @@ import net.minecraftforge.common.capabilities.Capability;
 import java.util.HashMap;
 
 // Saves and loads serialized data from disk
-public class NutritionStorage implements Capability.IStorage<INutrition> {
+public class CapStorage implements Capability.IStorage<CapInterface> {
 	// Save serialized data to disk
 	@Override
-	public NBTBase writeNBT(Capability<INutrition> capability, INutrition instance, EnumFacing side) {
+	public NBTBase writeNBT(Capability<CapInterface> capability, CapInterface instance, EnumFacing side) {
 		NBTTagCompound playerData = new NBTTagCompound();
 		for (Nutrient nutrient : NutrientList.get())
 			playerData.setFloat(nutrient.name, instance.get(nutrient));
@@ -23,7 +23,7 @@ public class NutritionStorage implements Capability.IStorage<INutrition> {
 
 	// Load serialized data from disk
 	@Override
-	public void readNBT(Capability<INutrition> capability, INutrition instance, EnumFacing side, NBTBase nbt) {
+	public void readNBT(Capability<CapInterface> capability, CapInterface instance, EnumFacing side, NBTBase nbt) {
 		HashMap<Nutrient, Float> clientNutrients = new HashMap<Nutrient, Float>();
 		Float value;
 
@@ -39,6 +39,7 @@ public class NutritionStorage implements Capability.IStorage<INutrition> {
 		}
 
 		// Replace nutrient data with map
-		instance.set(clientNutrients);
+		// Note: Syncing throws network errors at this stage
+		instance.set(clientNutrients, false);
 	}
 }

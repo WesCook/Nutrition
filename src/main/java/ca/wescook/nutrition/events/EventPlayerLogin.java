@@ -1,6 +1,6 @@
 package ca.wescook.nutrition.events;
 
-import ca.wescook.nutrition.nutrition.NutritionProvider;
+import ca.wescook.nutrition.capabilities.CapProvider;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
@@ -12,6 +12,6 @@ public class EventPlayerLogin {
 			return;
 
 		// Sync nutrition data from server
-		event.player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).resync();
+		event.player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).resync();
 	}
 }
