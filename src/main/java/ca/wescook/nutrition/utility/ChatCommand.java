@@ -1,10 +1,8 @@
 package ca.wescook.nutrition.utility;
 
-import ca.wescook.nutrition.Nutrition;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.nutrition.NutritionProvider;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -21,7 +19,7 @@ public class ChatCommand extends CommandBase {
 
 	@Override
 	public String getUsage(ICommandSender sender) {
-		return I18n.format("command." + Nutrition.MODID + ":help");
+		return "/nutrition <get/set> <nutrient> <value>";
 	}
 
 	@Override
@@ -38,13 +36,13 @@ public class ChatCommand extends CommandBase {
 	}
 
 	private void commandHelp(ICommandSender sender) {
-		sender.sendMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":help")));
+		sender.sendMessage(new TextComponentString("/nutrition <get/set> <nutrient> <value>"));
 	}
 
 	private void commandGetNutrition(ICommandSender sender, String[] args) {
 		// If missing parameter, offer help
 		if (args.length != 2) {
-			sender.sendMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_get_missing")));
+			sender.sendMessage(new TextComponentString("Invalid format.  /nutrition get <nutrient>"));
 			return;
 		}
 
@@ -52,18 +50,17 @@ public class ChatCommand extends CommandBase {
 		EntityPlayer player = (EntityPlayer) sender;
 		Nutrient nutrient = NutrientList.getByName(args[1]);
 		if (nutrient != null) {
-			String localizedName = I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name);
 			Float nutrientValue = player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).get(nutrient);
-			sender.sendMessage(new TextComponentString(localizedName + ": " + String.format("%.2f", nutrientValue) + "%"));
+			sender.sendMessage(new TextComponentString(nutrient.name + ": " + String.format("%.2f", nutrientValue) + "%"));
 		}
 		else // Write error message
-			sender.sendMessage(new TextComponentString("'" + args[1] + "' " + I18n.format("command." + Nutrition.MODID + ":error_invalid_nutrient")));
+			sender.sendMessage(new TextComponentString("'" + args[1] + "' is not a valid nutrient."));
 	}
 
 	private void commandSetNutrition(ICommandSender sender, String[] args) {
 		// If missing parameter, offer help
 		if (args.length != 3) {
-			sender.sendMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_set_missing")));
+			sender.sendMessage(new TextComponentString("Invalid format.  /nutrition set <nutrient> <value>"));
 			return;
 		}
 
@@ -72,13 +69,13 @@ public class ChatCommand extends CommandBase {
 		if (NumberUtils.isNumber(args[2]))
 			newValue = Float.parseFloat(args[2]);
 		else {
-			sender.sendMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_number_invalid")));
+			sender.sendMessage(new TextComponentString("Value is not a number."));
 			return;
 		}
 
 		// Range check (don't sue me Oracle)
 		if (!(newValue >= 0 && newValue <= 100)) {
-			sender.sendMessage(new TextComponentString(I18n.format("command." + Nutrition.MODID + ":error_number_range")));
+			sender.sendMessage(new TextComponentString("Value is not between 0 and 100."));
 			return;
 		}
 
@@ -87,11 +84,10 @@ public class ChatCommand extends CommandBase {
 		Nutrient nutrient = NutrientList.getByName(args[1]);
 
 		if (nutrient != null) {
-			String localizedName = I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name);
 			player.getCapability(NutritionProvider.NUTRITION_CAPABILITY, null).set(nutrient, newValue);
-			sender.sendMessage(new TextComponentString(localizedName + " " + I18n.format("command." + Nutrition.MODID + ":set_success")));
+			sender.sendMessage(new TextComponentString(nutrient.name + " updated!"));
 		}
 		else // Write error message
-			sender.sendMessage(new TextComponentString("'" + args[1] + "' " + I18n.format("command." + Nutrition.MODID + ":error_invalid_nutrient")));
+			sender.sendMessage(new TextComponentString("'" + args[1] + "' is not a valid nutrient."));
 	}
 }

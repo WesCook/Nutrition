@@ -15,12 +15,3 @@ nutrient.nutrition:dairy=Dairy
 
 # Tooltips
 tooltip.nutrition:nutrients=Nutrients:
-
-# Commands
-command.nutrition:help=/nutrition <get/set> <nutrient> <value>
-command.nutrition:error_invalid_nutrient=is not a valid nutrient.
-command.nutrition:error_get_missing=Invalid format.  /nutrition get <nutrient>
-command.nutrition:error_set_missing=Invalid format.  /nutrition set <nutrient> <value>
-command.nutrition:error_number_invalid=Value is not a number.
-command.nutrition:error_number_range=Value is not between 0 and 100.
-command.nutrition:set_success=updated!
