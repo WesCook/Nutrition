@@ -12,12 +12,10 @@ import java.util.Map;
 public class EffectsManager {
 	// Called from EventPlayerUpdate.
 	public static void reapplyEffects(EntityPlayer player) {
-		int duration;
 		List<Effect> effects = removeDuplicates(getEffectsInThreshold(player));
 
 		for (Effect effect : effects) {
-			duration = (effect.potion.isBeneficial()) ? 615 : 315; // Positive effects are applied for longer, so nausea and such are cleared quickly, but night vision shouldn't flicker.
-			player.addPotionEffect(new PotionEffect(effect.potion, duration, effect.amplifier, true, false));
+			player.addPotionEffect(new PotionEffect(effect.potion, 615, effect.amplifier, true, false));
 		}
 	}
 
