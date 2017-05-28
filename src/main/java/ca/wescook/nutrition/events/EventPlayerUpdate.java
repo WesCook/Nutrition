@@ -2,7 +2,6 @@ package ca.wescook.nutrition.events;
 
 import ca.wescook.nutrition.capabilities.CapProvider;
 import ca.wescook.nutrition.effects.EffectsManager;
-import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.utility.Config;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,8 +40,7 @@ public class EventPlayerUpdate {
 		if (foodLevel != null && foodLevelNew < foodLevel) {
 			int difference = foodLevel - foodLevelNew;
 			float decay = (float) (difference * 0.075 * Config.decayMultiplier); // Lower number for reasonable starting point, then apply multiplier from config
-			for (Nutrient nutrient : NutrientList.get())
-				player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).subtract(nutrient, decay, true);
+			player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).subtract(NutrientList.get(), decay, true); // Subtract from every nutrient
 		}
 
 		// Update for the next pass
