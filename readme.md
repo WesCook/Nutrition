@@ -27,3 +27,9 @@ Mods that are supported with the default five-food group system include:
 * [Simple Corn](https://minecraft.curseforge.com/projects/simple-corn)
 
 Mod support contributions are welcome!  Please create a [Pull Request](https://github.com/WesCook/Nutrition/pulls) or an [Issue](https://github.com/WesCook/Nutrition/issues) with the related .json files.
+
+## Changelog
+
+[v1.0.0](https://github.com/WesCook/Nutrition/releases/tag/v1.0.0) - 2017-05-28
+
+* Initial release
