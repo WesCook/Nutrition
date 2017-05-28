@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import static ca.wescook.nutrition.Nutrition.MODID;
 import static ca.wescook.nutrition.Nutrition.MODNAME;
 
-@Mod(modid = MODID, name = MODNAME, version = "@VERSION@")
+@Mod(modid = MODID, name = MODNAME, version = "@VERSION@", acceptableRemoteVersions = "*")
 public class Nutrition {
 	public static final String MODID = "nutrition";
 	public static final String MODNAME = "Nutrition";
