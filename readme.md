@@ -29,7 +29,6 @@ Mods that are supported with the default five-food group system include:
 * [Pam's HarvestCraft](https://minecraft.curseforge.com/projects/pams-harvestcraft)
 * [Rockhounding: Surface](https://minecraft.curseforge.com/projects/rockhounding-mod-surface)
 * [Simple Corn](https://minecraft.curseforge.com/projects/simple-corn)
-* [Terraqueous](https://minecraft.curseforge.com/projects/terraqueous)
 * [Village Box](https://minecraft.curseforge.com/projects/village-box)
 
 Mod support contributions are welcome!  Please create a [Pull Request](https://github.com/WesCook/Nutrition/pulls) or an [Issue](https://github.com/WesCook/Nutrition/issues) with the related .json files.

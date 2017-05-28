@@ -32,7 +32,9 @@
 			"listAllmeatcooked",
 			"listAllmeatraw",
 			"listAllnut",
-			"listAllnutbutter"
+			"listAllnutbutter",
+			"foodFirmtofu",
+			"foodSilkentofu"
 		],
 		"items": [
 			"animania:bacon_omelette",
@@ -144,6 +146,12 @@
 			"grimpack:melon_pie",
 			"grimpack:pork_pie",
 			"grimpack:pumpkin_pie",
+			"grimpack:raw_apple_pie",
+			"grimpack:raw_chocolate_pie",
+			"grimpack:raw_empty_pie",
+			"grimpack:raw_melon_pie",
+			"grimpack:raw_pork_pie",
+			"grimpack:raw_pumpkin_pie",
 			"harvestcraft:applejellysandwichItem",
 			"harvestcraft:apricotglazedporkItem",
 			"harvestcraft:apricotjellysandwichItem",
@@ -271,6 +279,7 @@
 			"harvestcraft:meatystewItem",
 			"harvestcraft:mincepieItem",
 			"harvestcraft:museliItem",
+			"harvestcraft:omeletItem",
 			"harvestcraft:onionhamburgerItem",
 			"harvestcraft:orangechickenItem",
 			"harvestcraft:orangejellysandwichItem",

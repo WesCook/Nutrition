@@ -9,8 +9,6 @@
 			"foodButter",
 			"foodCheese",
 			"foodChocolatebar",
-			"listAllheavycream",
-			"listAllicecream",
 			"listAllmilk"
 		],
 		"items": [
@@ -57,6 +55,12 @@
 			"grimpack:melon_pie",
 			"grimpack:pork_pie",
 			"grimpack:pumpkin_pie",
+			"grimpack:raw_apple_pie",
+			"grimpack:raw_chocolate_pie",
+			"grimpack:raw_empty_pie",
+			"grimpack:raw_melon_pie",
+			"grimpack:raw_pork_pie",
+			"grimpack:raw_pumpkin_pie",
 			"harvestcraft:appleyogurtItem",
 			"harvestcraft:apricotyogurtItem",
 			"harvestcraft:asparagusquicheItem",
