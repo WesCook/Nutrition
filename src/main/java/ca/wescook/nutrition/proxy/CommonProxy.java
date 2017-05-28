@@ -5,7 +5,10 @@ import ca.wescook.nutrition.capabilities.CapImplementation;
 import ca.wescook.nutrition.capabilities.CapInterface;
 import ca.wescook.nutrition.capabilities.CapStorage;
 import ca.wescook.nutrition.effects.EffectsList;
-import ca.wescook.nutrition.events.*;
+import ca.wescook.nutrition.events.EventEatFood;
+import ca.wescook.nutrition.events.EventPlayerAttachCapability;
+import ca.wescook.nutrition.events.EventPlayerClone;
+import ca.wescook.nutrition.events.EventPlayerUpdate;
 import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.network.ModPacketHandler;
 import ca.wescook.nutrition.nutrients.NutrientList;
@@ -26,7 +29,6 @@ public class CommonProxy {
 		ModPotions.registerPotions(); // Register custom potions
 
 		MinecraftForge.EVENT_BUS.register(new EventPlayerAttachCapability()); // Attach capability to player
-		MinecraftForge.EVENT_BUS.register(new EventPlayerLogin()); // Player login
 		MinecraftForge.EVENT_BUS.register(new EventPlayerClone()); // Player death and warping
 		MinecraftForge.EVENT_BUS.register(new EventEatFood()); // Register use item event
 		MinecraftForge.EVENT_BUS.register(new EventPlayerUpdate()); // Register update event for nutrition decay and potion effects
