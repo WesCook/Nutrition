@@ -44,8 +44,7 @@ public class EventEatFood {
 			float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients);
 
 			// Add to each nutrient
-			for (Nutrient nutrient : foundNutrients)
-				player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutritionValue, true);
+			player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(foundNutrients, nutritionValue, true);
 
 			// If full but over-eating, simulate cake eating
 			if (!player.canEat(false) && Config.allowOverEating) {
@@ -104,8 +103,6 @@ public class EventEatFood {
 		float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients); // CapImplementation value for that food
 
 		// Add to each nutrient
-		for (Nutrient nutrient : foundNutrients) {
-			player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(nutrient, nutritionValue, true);
-		}
+		player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(foundNutrients, nutritionValue, true);
 	}
 }
