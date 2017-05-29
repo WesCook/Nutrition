@@ -35,6 +35,10 @@ Mod support contributions are welcome!  Please create a [Pull Request](https://g
 
 ## Changelog
 
+[v1.0.1](https://github.com/WesCook/Nutrition/releases/tag/v1.0.1) - 2017-05-28
+
+* Improved detection when attaching capability
+
 [v1.0.0](https://github.com/WesCook/Nutrition/releases/tag/v1.0.0) - 2017-05-28
 
 * Initial release
