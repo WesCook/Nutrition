@@ -225,7 +225,14 @@
 			"minecraft:cake",
 			"minecraft:golden_apple:1",
 			"simplecorn:chickencornchowder",
-			"simplecorn:cornchowder"
+			"simplecorn:cornchowder",
+			"tconstruct:edible:1",
+			"tconstruct:edible:2",
+			"tconstruct:edible:4",
+			"tconstruct:edible:30",
+			"tconstruct:edible:31",
+			"tconstruct:edible:32",
+			"tconstruct:edible:34"
 		]
 	}
 }
