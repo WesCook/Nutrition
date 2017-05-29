@@ -7,3 +7,11 @@ classes
 *.iml
 .idea
 .gradle
+
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
