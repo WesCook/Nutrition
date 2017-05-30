@@ -93,14 +93,20 @@ public class EventEatFood {
 		if (player.getEntityWorld().isRemote)
 			return;
 
-		// Get out if not food item
+		// Get ItemStack of eaten food, and copy item
 		ItemStack itemStack = event.getItem();
-		if (!(itemStack.getItem() instanceof ItemFood))
+		int stackSize = itemStack.getCount();
+		itemStack.setCount(1); // Temporarily setting stack size to 1 so .copy works for stack sizes of 0
+		ItemStack dummyStack = itemStack.copy(); // Create dummy copy to not affect original item
+		itemStack.setCount(stackSize); // Restore original stack size
+
+		// Get out if not food item
+		if (!(dummyStack.getItem() instanceof ItemFood))
 			return;
 
 		// Calculate nutrition
-		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(itemStack); // Nutrient list for that food
-		float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients); // CapImplementation value for that food
+		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(dummyStack); // Nutrient list for that food
+		float nutritionValue = NutrientUtils.calculateNutrition(dummyStack, foundNutrients); // CapImplementation value for that food
 
 		// Add to each nutrient
 		player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(foundNutrients, nutritionValue, true);
