@@ -41,7 +41,7 @@ public class EffectsManager {
 					// Loop all nutrients
 					for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
 						// If any are found within threshold
-						if (!entry.getKey().equals(effect.nutrient) // skip if excluded
+						if (!entry.getKey().equals(effect.nutrient) // Skip if excluded
 								&& entry.getValue() >= effect.minimum && entry.getValue() <= effect.maximum) {
 							effectsInThreshold.add(effect); // Add effect, once
 							break;
@@ -57,15 +57,15 @@ public class EffectsManager {
 
 					// Loop all nutrients
 					for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
-						if(!entry.getKey().equals(effect.nutrient)) // skip if excluded
+						if(!entry.getKey().equals(effect.nutrient)) // Skip if excluded
 							total += entry.getValue(); // Add each value to total
 					}
 
-					// remove the excluded nutrient from the size count
+					// Remove the excluded nutrient from the size count
 					int size = playerNutrition.size();
-					if(effect.nutrient != null) {
+					if (effect.nutrient != null)
 						size--;
-					}
+
 					// Divide by number of nutrients for average (division by zero check)
 					average = (size != 0) ? total / size : -1f;
 
@@ -82,7 +82,7 @@ public class EffectsManager {
 
 					// Loop all nutrients
 					for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
-						if (!entry.getKey().equals(effect.nutrient) // skip if excluded
+						if (!entry.getKey().equals(effect.nutrient) // Skip if excluded
 								&& !(entry.getValue() >= effect.minimum && entry.getValue() <= effect.maximum)) // If nutrient isn't within threshold
 							allWithinThreshold = false; // Fail check
 					}
@@ -101,7 +101,7 @@ public class EffectsManager {
 					// Loop all nutrients
 					for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
 						// If any are found within threshold
-						if (!entry.getKey().equals(effect.nutrient) // skip if excluded
+						if (!entry.getKey().equals(effect.nutrient) // Skip if excluded
 								&& entry.getValue() >= effect.minimum && entry.getValue() <= effect.maximum)
 							cumulativeCount++;
 					}

@@ -1,14 +1,17 @@
+#Forge/Gradle
 run
 out
 build
 classes
+.gradle
+
+# IntelliJ IDEA
 *.ipr
 *.iws
 *.iml
 .idea
-.gradle
 
-# eclipse
+# Eclipse
 bin
 *.launch
 .settings

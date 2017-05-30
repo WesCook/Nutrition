@@ -20,15 +20,26 @@ Mods that are supported with the default five-food group system include:
 
 * [Animania](https://minecraft.curseforge.com/projects/animania)
 * [Better with Mods](https://minecraft.curseforge.com/projects/better-with-mods)
+* [Biomes O' Plenty](https://minecraft.curseforge.com/projects/biomes-o-plenty)
 * [Edible Bugs](https://minecraft.curseforge.com/projects/edible-bugs)
 * [Food Expansion](https://minecraft.curseforge.com/projects/food-expansion)
+* [Forestry](https://minecraft.curseforge.com/projects/forestry)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
+* [Natura](https://minecraft.curseforge.com/projects/natura)
 * [Pam's HarvestCraft](https://minecraft.curseforge.com/projects/pams-harvestcraft)
+* [Roots](https://minecraft.curseforge.com/projects/roots)
 * [Simple Corn](https://minecraft.curseforge.com/projects/simple-corn)
+* [Simply Tea!](https://minecraft.curseforge.com/projects/simply-tea)
+* [Tinkers Construct](https://minecraft.curseforge.com/projects/tinkers-construct)
 
 Mod support contributions are welcome!  Please create a [Pull Request](https://github.com/WesCook/Nutrition/pulls) or an [Issue](https://github.com/WesCook/Nutrition/issues) with the related .json files.
 
 ## Changelog
+
+[v1.1.0](https://github.com/WesCook/Nutrition/releases/tag/v1.1.0) - 2017-05-30
+
+* Added support for Biomes O' Plenty, Forestry, Natura, Roots, Simply Tea!, and Tinkers Construct (contribution from KnightMiner)
+* Nutrient field can now be negated from other detection modes (contribution from KnightMiner)
 
 [v1.0.1](https://github.com/WesCook/Nutrition/releases/tag/v1.0.1) - 2017-05-28
 

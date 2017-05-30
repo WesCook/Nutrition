@@ -44,10 +44,10 @@ public class EffectsList {
 			effect.maximum = effectRaw.maximum;
 			effect.detect = effectRaw.detect;
 
-			// assign the tag for exclusion/only nutrient
+			// Assign the tag for exclusion/only nutrient
 			effect.nutrient = NutrientList.getByName(effectRaw.nutrient);
 			
-			// error if missing the nutrient when the mode is nutrient
+			// Error if missing the nutrient when the mode is nutrient
 			if (effect.detect.equals("nutrient")) {
 				if (effect.nutrient == null) {
 					Log.error("Detect mode is set to 'nutrient', but nutrient is not set. (" + effect.name + ")");
