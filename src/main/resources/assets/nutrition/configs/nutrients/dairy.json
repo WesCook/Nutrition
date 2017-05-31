@@ -244,6 +244,13 @@
 			"rockhounding_surface:truffle_pumpkin",
 			"simplecorn:chickencornchowder",
 			"simplecorn:cornchowder",
+			"tconstruct:edible:1",
+			"tconstruct:edible:2",
+			"tconstruct:edible:30",
+			"tconstruct:edible:31",
+			"tconstruct:edible:32",
+			"tconstruct:edible:34",
+			"tconstruct:edible:4",
 			"villagebox:melon_icecream"
 		]
 	}
