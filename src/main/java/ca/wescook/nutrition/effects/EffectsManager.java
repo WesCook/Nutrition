@@ -57,7 +57,7 @@ public class EffectsManager {
 
 					// Loop all nutrients
 					for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
-						if(!entry.getKey().equals(effect.nutrient)) // Skip if excluded
+						if (!entry.getKey().equals(effect.nutrient)) // Skip if excluded
 							total += entry.getValue(); // Add each value to total
 					}
 
