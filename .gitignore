@@ -1,9 +1,20 @@
+#Forge/Gradle
 run
 out
 build
 classes
+.gradle
+
+# IntelliJ IDEA
 *.ipr
 *.iws
 *.iml
 .idea
-.gradle
+
+# Eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
