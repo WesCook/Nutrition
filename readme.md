@@ -36,7 +36,7 @@ Mod support contributions are welcome!  Please create a [Pull Request](https://g
 
 ## Changelog
 
-[v1.1.0](https://github.com/WesCook/Nutrition/releases/tag/v1.1.0) - 2017-05-30
+[v1.1.0](https://github.com/WesCook/Nutrition/releases/tag/v1.1.0) - 2017-05-31
 
 * Added support for Biomes O' Plenty, Forestry, Natura, Roots, Simply Tea!, and Tinkers Construct (contribution from KnightMiner)
 * Nutrient field can now be negated from other detection modes (contribution from KnightMiner)

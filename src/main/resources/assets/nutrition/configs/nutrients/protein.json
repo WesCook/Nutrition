@@ -17,6 +17,7 @@
 			"foodCrayfishraw",
 			"foodEelraw",
 			"foodFilledhoneycomb",
+			"foodFirmtofu",
 			"foodFriedegg",
 			"foodFrogcooked",
 			"foodFrograw",
@@ -26,6 +27,7 @@
 			"foodScallopraw",
 			"foodShrimpcooked",
 			"foodShrimpraw",
+			"foodSilkentofu",
 			"foodSnailcooked",
 			"foodSnailraw",
 			"foodTurtlecooked",
@@ -35,9 +37,7 @@
 			"listAllmeatcooked",
 			"listAllmeatraw",
 			"listAllnut",
-			"listAllnutbutter",
-			"foodFirmtofu",
-			"foodSilkentofu"
+			"listAllnutbutter"
 		],
 		"items": [
 			"animania:bacon_omelette",

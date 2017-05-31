@@ -13,9 +13,7 @@
 		],
 		"items": [
 			"animania:cheese_omelette",
-			"animania:friesian_bucket_milk",
 			"animania:friesian_cheese_wheel",
-			"animania:holstein_bucket_milk",
 			"animania:holstein_cheese_wheel",
 			"animania:super_omelette",
 			"betterwithmods:chowder",
@@ -73,7 +71,7 @@
 			"harvestcraft:broccolimacItem",
 			"harvestcraft:broccolindipItem",
 			"harvestcraft:brownieItem",
-			"harvestcraft:butteredpotato	Item",
+			"harvestcraft:butteredpotatoItem",
 			"harvestcraft:caramelicecreamItem",
 			"harvestcraft:carrotsoupItem",
 			"harvestcraft:ceasarsaladItem",
