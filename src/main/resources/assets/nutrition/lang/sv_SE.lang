@@ -1,0 +1,17 @@
+# Tangenter
+key.nutrition=Öppna Närings GUI
+
+# GUI
+gui.nutrition:nutrition_title=Näring
+gui.nutrition:close=Avsluta
+gui.nutrition:updating=Uppdaterar...
+
+# Näring (Anpassbar i "Resource pack")
+nutrient.nutrition:grain=Spannmål
+nutrient.nutrition:fruit=Frukt
+nutrient.nutrition:vegetable=Grönsaker
+nutrient.nutrition:protein=Protein
+nutrient.nutrition:dairy=Mejeri
+
+# Verktygstips
+tooltip.nutrition:nutrients=Nutrients:
