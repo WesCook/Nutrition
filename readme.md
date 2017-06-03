@@ -36,6 +36,13 @@ Mod support contributions are welcome!  Please create a [Pull Request](https://g
 
 ## Changelog
 
+[v1.2.0](https://github.com/WesCook/Nutrition/releases/tag/v1.2.0) - 2017-06-03
+
+* Updated HarvestCraft support on 1.10
+* Added German localizations (contribution from ACGaming)
+* Added Swedish localizations (contribution from John "Rufus" Lundström)
+* Added Norwegian localizations (contribution from Marcus "Rex" Holm)
+
 [v1.1.0](https://github.com/WesCook/Nutrition/releases/tag/v1.1.0) - 2017-05-31
 
 * Added support for Biomes O' Plenty, Forestry, Natura, Roots, Simply Tea!, and Tinkers Construct (contribution from KnightMiner)
