@@ -1,0 +1,17 @@
+# Llaves
+key.nutrition=Abrir nutrición GUI
+
+# GUI
+gui.nutrition:nutrition_title=Nutrición
+gui.nutrition:close=Cerrar
+gui.nutrition:updating=Actualizando...
+
+# Nutrientes (se pueden perzonalizar utilizando paquetes de recursos)
+nutrient.nutrition:grain=Cereales
+nutrient.nutrition:fruit=Fruta
+nutrient.nutrition:vegetable=Vegetales
+nutrient.nutrition:protein=Proteína
+nutrient.nutrition:dairy=Lácteo
+
+# Consejo de herramientas
+tooltip.nutrition:nutrients=Nutrientes:

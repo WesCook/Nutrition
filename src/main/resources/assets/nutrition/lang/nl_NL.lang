@@ -1,0 +1,17 @@
+# Sleutels
+key.nutrition=Open Voeding GUI
+
+# GUI
+gui.nutrition:nutrition_title=Voeding
+gui.nutrition:close=Sluiten
+gui.nutrition:updating=Updaten...
+
+# Voeding (Kan aangepast worden met Resource Packs)
+nutrient.nutrition:grain=Graan
+nutrient.nutrition:fruit=Fruit
+nutrient.nutrition:vegetable=Groenten
+nutrient.nutrition:protein=Proteïne
+nutrient.nutrition:dairy=Zuivel
+
+# Gereedschapskist
+tooltip.nutrition:nutrients=Voeding:
