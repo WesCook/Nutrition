@@ -36,6 +36,11 @@ Mod support contributions are welcome!  Please create a [Pull Request](https://g
 
 ## Changelog
 
+[v1.3.0](https://github.com/WesCook/Nutrition/releases/tag/v1.3.0) - 2017-06-10
+* Corrected packet sync error which resulted in clients showing incorrect data under some conditions 
+* Added Dutch localizations (contribution from Arthur Dent)
+* Added Spanish localizations (contribution from Rougito)
+
 [v1.2.0](https://github.com/WesCook/Nutrition/releases/tag/v1.2.0) - 2017-06-03
 
 * Updated HarvestCraft support on 1.10
