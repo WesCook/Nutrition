@@ -35,6 +35,10 @@ Mod support contributions are welcome!  Please create a [Pull Request](https://g
 
 ## Changelog
 
+[v1.3.1](https://github.com/WesCook/Nutrition/releases/tag/v1.3.1) - 2017-06-13
+* Enabled Nutrition key to both open and close GUI
+* Fixed severe nutrition decay bug in multiplayer
+
 [v1.3.0](https://github.com/WesCook/Nutrition/releases/tag/v1.3.0) - 2017-06-10
 * Corrected packet sync error which resulted in clients showing incorrect data under some conditions 
 * Added Dutch localizations (contribution from Arthur Dent)
