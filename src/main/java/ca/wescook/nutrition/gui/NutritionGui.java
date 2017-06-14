@@ -154,8 +154,8 @@ public class NutritionGui extends GuiScreenDynamic {
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
 		super.keyTyped(typedChar, keyCode);
 
-		// If "E" (open GUI) key is pressed
-		if (keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode()) {
+		// If player inventory key (E), or Nutrition GUI key (N) is pressed
+		if (keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode() || keyCode == ClientProxy.keyNutritionGui.getKeyCode()) {
 			// Close GUI
 			mc.displayGuiScreen(null);
 			if (mc.currentScreen == null)
