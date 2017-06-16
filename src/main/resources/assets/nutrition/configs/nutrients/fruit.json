@@ -28,6 +28,8 @@
 			"listAllsmoothie"
 		],
 		"items": [
+			"aether_legacy:blue_berry",
+			"aether_legacy:enchanted_blueberry",
 			"biomesoplenty:ambrosia",
 			"biomesoplenty:berries",
 			"foodexpansion:itemcactusfruit",
@@ -283,13 +285,11 @@
 			"natura:edibles:10",
 			"natura:soups:9",
 			"plants:akebia_q",
-			"plants:rubus_o",
-			"rustic:wildberries",
-			"rustic:grapes",
+			"plants:alyxia_b",
 			"plants:pineapple",
-			"aether_legacy:blue_berry",
-			"aether_legacy:enchanted_blueberry",
-			"plants:alyxia_b"
+			"plants:rubus_o",			
+			"rustic:wildberries",
+			"rustic:grapes"
 		]
 	}
 }
