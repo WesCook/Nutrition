@@ -379,7 +379,18 @@
 			"tconstruct:edible:21",
 			"tconstruct:edible:22",
 			"tconstruct:edible:23",
-			"tconstruct:edible:33"
+			"tconstruct:edible:33",
+			"aquaculture:food:2",
+			"aquaculture:food:3",
+			"aquaculture:food:4",
+			"aquaculture:food:5",
+			"aquaculture:food:6",
+			"aquaculture:food:7",
+			"aquaculture:food:8",
+			"aquaculture:food:9",
+			"aquaculture:food:10",
+			"iceandfire:ice_dragon_flesh",
+			"iceandfire:fire_dragon_flesh"
 		]
 	}
 }

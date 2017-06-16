@@ -299,7 +299,8 @@
 			"simplecorn:cornchowder",
 			"simplecorn:corncob",
 			"simplecorn:poppedcorn",
-			"simplecorn:roastedcorn"
+			"simplecorn:roastedcorn",
+			"aquaculture:food:6"
 		]
 	}
 }
