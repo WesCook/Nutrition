@@ -300,7 +300,9 @@
 			"simplecorn:corncob",
 			"simplecorn:poppedcorn",
 			"simplecorn:roastedcorn",
-			"aquaculture:food:6"
+			"aquaculture:food:6",
+			"plants:apocynum_c",
+			"plants:ambrosia_a"
 		]
 	}
 }
