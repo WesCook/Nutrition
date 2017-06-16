@@ -32,6 +32,7 @@
 			"listAllgrain"
 		],
 		"items": [
+			"aquaculture:food:6",
 			"betterwithmods:hearty_stew",
 			"betterwithmods:tasty_sandwich",
 			"foodexpansion:itembeetrootnoodles",
@@ -300,9 +301,8 @@
 			"simplecorn:corncob",
 			"simplecorn:poppedcorn",
 			"simplecorn:roastedcorn",
-			"aquaculture:food:6",
-			"plants:apocynum_c",
-			"plants:ambrosia_a"
+			"plants:ambrosia_a",			
+			"plants:apocynum_c"
 		]
 	}
 }
