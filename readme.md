@@ -33,6 +33,8 @@ Mods that are supported with the default five-food group system include:
 
 Mod support contributions are welcome!  Please create a [Pull Request](https://github.com/WesCook/Nutrition/pulls) or an [Issue](https://github.com/WesCook/Nutrition/issues) with the related .json files.
 
+When updating the mod, please clear your /nutrition/ config directory to receive new mod support (point releases will not require this).
+
 ## Changelog
 
 [v1.3.1](https://github.com/WesCook/Nutrition/releases/tag/v1.3.1) - 2017-06-13
