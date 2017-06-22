@@ -32,6 +32,7 @@
 			"listAllgrain"
 		],
 		"items": [
+			"aquaculture:food:6",
 			"betterwithmods:hearty_stew",
 			"betterwithmods:tasty_sandwich",
 			"endcake:blockEndCake",
@@ -357,6 +358,9 @@
 			"simplecorn:cornchowder",
 			"simplecorn:corncob",
 			"simplecorn:poppedcorn",
+			"simplecorn:roastedcorn",
+			"plants:ambrosia_a",
+			"plants:apocynum_c",
 			"simplecorn:roastedcorn",
 			"villagebox:beef_noodle_soup",
 			"villagebox:beer",

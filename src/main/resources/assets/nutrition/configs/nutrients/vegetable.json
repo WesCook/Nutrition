@@ -28,6 +28,9 @@
 			"animania:super_omelette",
 			"animania:truffle_omelette",
 			"animania:truffle_soup",
+			"aquaculture:food:1",
+			"aquaculture:food:0",
+			"aquaculture:food:10",
 			"betterwithmods:beef_dinner",
 			"betterwithmods:beef_potatoes",
 			"betterwithmods:chicken_soup",
@@ -308,7 +311,6 @@
 			"minecraft:poisonous_potato",
 			"minecraft:potato",
 			"minecraft:rabbit_stew",
-			"minecraft:rabbit_stew",
 			"morefood:item_breakfast_cooked",
 			"morefood:item_chips",
 			"morefood:item_footlong",
@@ -358,7 +360,13 @@
 			"villagebox:corn_chips",
 			"villagebox:creamy_corn",
 			"villagebox:fries",
-			"villagebox:honey_tea"
+			"villagebox:honey_tea",
+			"plants:alternanthera_f",
+			"plants:amaranthus_h",
+			"plants:daucus_c",
+			"plants:okra",
+			"plants:plantago_m",
+			"plants:saffron"
 		]
 	}
 }
