@@ -6,7 +6,6 @@
 	"food": {
 		"oredict": [
 			"foodButter",
-			"foodButter",
 			"foodCheese",
 			"foodChocolatebar",
 			"listAllmilk"
@@ -212,8 +211,8 @@
 			"harvestcraft:raspberryyogurtitem",
 			"harvestcraft:refriedbeansitem",
 			"harvestcraft:scallionbakedpotatoitem",
-			"harvestcraft:softpretzelitem",
 			"harvestcraft:softpretzelandmustarditem",
+			"harvestcraft:softpretzelitem",
 			"harvestcraft:spicebunitem",
 			"harvestcraft:spinachpieitem",
 			"harvestcraft:spumoniicecreamitem",
