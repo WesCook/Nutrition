@@ -73,7 +73,7 @@ public class NutrientList {
 						if (NumberUtils.isNumber(metaString))
 							metadata = Integer.decode(metaString);
 						else {
-							Log.missingFood(fullName + " does not contain valid metadata (" + nutrient.name + ")");
+							Log.missingFood(fullName + " does not contain valid metadata (" + fullName + ")");
 							continue;
 						}
 					}
@@ -83,7 +83,7 @@ public class NutrientList {
 
 					// Null test item
 					if (item == null) {
-						Log.missingFood(name + " is not a valid item name (" + nutrient.name + ")");
+						Log.missingFood(name + " is not a valid item name (" + fullName + ")");
 						continue;
 					}
 
@@ -92,7 +92,7 @@ public class NutrientList {
 					if (NutrientUtils.isValidFood(itemStack))
 						nutrient.foodItems.add(itemStack);
 					else
-						Log.missingFood(name + " is not a valid food (" + nutrient.name + ")");
+						Log.missingFood(name + " is not a valid food (" + fullName + ")");
 				}
 			}
 
