@@ -6,7 +6,6 @@
 	"food": {
 		"oredict": [
 			"foodButter",
-			"foodButter",
 			"foodCheese",
 			"foodChocolatebar",
 			"listAllmilk"
@@ -193,8 +192,8 @@
 			"harvestcraft:raspberryyogurtitem",
 			"harvestcraft:refriedbeansitem",
 			"harvestcraft:scallionbakedpotatoitem",
-			"harvestcraft:softpretzelitem",
 			"harvestcraft:softpretzelandmustarditem",
+			"harvestcraft:softpretzelitem",
 			"harvestcraft:spicebunitem",
 			"harvestcraft:spinachpieitem",
 			"harvestcraft:spumoniicecreamitem",
@@ -226,11 +225,11 @@
 			"simplecorn:cornchowder",
 			"tconstruct:edible:1",
 			"tconstruct:edible:2",
-			"tconstruct:edible:4",
 			"tconstruct:edible:30",
 			"tconstruct:edible:31",
 			"tconstruct:edible:32",
-			"tconstruct:edible:34"
+			"tconstruct:edible:34",
+			"tconstruct:edible:4"
 		]
 	}
 }

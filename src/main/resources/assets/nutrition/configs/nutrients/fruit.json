@@ -274,6 +274,7 @@
 			"minecraft:golden_apple:1",
 			"minecraft:melon",
 			"minecraft:pumpkin_pie",
+			"natura:edibles:10",
 			"natura:edibles:2",
 			"natura:edibles:3",
 			"natura:edibles:4",
@@ -282,14 +283,13 @@
 			"natura:edibles:7",
 			"natura:edibles:8",
 			"natura:edibles:9",
-			"natura:edibles:10",
 			"natura:soups:9",
 			"plants:akebia_q",
 			"plants:alyxia_b",
 			"plants:pineapple",
-			"plants:rubus_o",			
-			"rustic:wildberries",
-			"rustic:grapes"
+			"plants:rubus_o",
+			"rustic:grapes",
+			"rustic:wildberries"
 		]
 	}
 }

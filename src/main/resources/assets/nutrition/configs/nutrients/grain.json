@@ -259,10 +259,10 @@
 			"harvestcraft:sausagerollitem",
 			"harvestcraft:sesameballitem",
 			"harvestcraft:sesamesnapsitem",
-			"harvestcraft:softpretzelitem",
 			"harvestcraft:softpretzelandmustarditem",
-			"harvestcraft:spagettiitem",
+			"harvestcraft:softpretzelitem",
 			"harvestcraft:spagettiandmeatballsitem",
+			"harvestcraft:spagettiitem",
 			"harvestcraft:spicebunitem",
 			"harvestcraft:spinachpieitem",
 			"harvestcraft:starfruitjellysandwichitem",
@@ -297,13 +297,13 @@
 			"minecraft:cake",
 			"minecraft:cookie",
 			"minecraft:golden_apple:1",
+			"plants:ambrosia_a",
+			"plants:apocynum_c",
 			"simplecorn:chickencornchowder",
 			"simplecorn:cornchowder",
 			"simplecorn:corncob",
 			"simplecorn:poppedcorn",
-			"simplecorn:roastedcorn",
-			"plants:ambrosia_a",			
-			"plants:apocynum_c"
+			"simplecorn:roastedcorn"
 		]
 	}
 }
