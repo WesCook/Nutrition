@@ -11,7 +11,7 @@ public class PotionToughness extends PotionCustom {
 
 	// Multiply effects based on amplifier
 	@Override
-	public double getAttributeModifierAmount(int amplifier, AttributeModifier modifier){
+	public double getAttributeModifierAmount(int amplifier, AttributeModifier modifier) {
 		// Multiply health
 		if (modifier.getID().equals(ModPotions.TOUGHNESS_HEALTH))
 			return (amplifier + 1) * 4D; // 4 = two hearts
