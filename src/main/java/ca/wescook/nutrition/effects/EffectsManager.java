@@ -109,7 +109,7 @@ public class EffectsManager {
 					// Save number of nutrients found as amplifier
 					// We're saving this for the entire effect, which is crazy hacky.
 					// However it's otherwise unused, and the simplest way of storing this information.
-					effect.amplifier = cumulativeCount - 1;
+					effect.amplifier = (cumulativeCount * effect.cumulativeModifier) - 1;
 
 					// If any were found, set effect
 					if (cumulativeCount > 0) {

@@ -12,4 +12,5 @@ public class Effect {
 	public int maximum;
 	public String detect;
 	public Nutrient nutrient;
+	public int cumulativeModifier;
 }

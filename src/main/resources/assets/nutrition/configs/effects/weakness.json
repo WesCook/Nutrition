@@ -5,6 +5,5 @@
 	"minimum": 0,
 	"maximum": 10,
 	"detect": "average",
-	"nutrient": "",
 	"enabled": true
 }
