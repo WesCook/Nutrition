@@ -9,5 +9,6 @@ public class JsonEffect {
 	public int maximum;
 	public String detect;
 	public String nutrient;
+	public Integer cumulative_modifier;
 	public Boolean enabled;
 }

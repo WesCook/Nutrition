@@ -55,6 +55,9 @@ public class EffectsList {
 				}
 			}
 
+			// Default the cumulative modifier to 1 if not defined
+			effect.cumulativeModifier = (effectRaw.cumulative_modifier != null) ? effectRaw.cumulative_modifier : 1;
+
 			// Register effect
 			effects.add(effect);
 		}

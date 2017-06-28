@@ -12,5 +12,6 @@
 	                                  //   'nutrient': A specific nutrient must be in the threshold (see below)
 	"nutrient": "",                   // If detect=nutrient, this defines the nutrient ID checked against
 	                                  // If detect!=nutrient, this defines the nutrient ID that is excluded from other detection modes
+	"cumulative_modifier": "1",       // Amount to increase the amplifier by for each cumulative effect
 	"enabled": false                  // Will this effect be active or not
 }
