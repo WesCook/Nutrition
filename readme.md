@@ -43,6 +43,10 @@ When updating the mod, please clear your /nutrition/ config directory to receive
 
 ## Changelog
 
+[v1.5.0](https://github.com/WesCook/Nutrition/releases/tag/v1.5.0) - 2017-06-28
+* Added nourished and malnourished effects.  Each adds or subtracts one heart per amplifier level.
+* Added `cumulative_modifier` property to effects.  In cumulative detection mode, this will increase the amplifier by the provided value for each cumulative level.  
+
 [v1.4.0](https://github.com/WesCook/Nutrition/releases/tag/v1.4.0) - 2017-06-22
 * Added support for Aether Legacy, Animalium, Aquaculture, Ice and Fire, Jurassicraft, Plants, and Rustic (contribution from Sunconure11)
 
@@ -56,21 +60,17 @@ When updating the mod, please clear your /nutrition/ config directory to receive
 * Added Spanish localizations (contribution from Rougito)
 
 [v1.2.0](https://github.com/WesCook/Nutrition/releases/tag/v1.2.0) - 2017-06-03
-
 * Updated HarvestCraft support on 1.10
 * Added German localizations (contribution from ACGaming)
 * Added Swedish localizations (contribution from John "Rufus" Lundström)
 * Added Norwegian localizations (contribution from Marcus "Rex" Holm)
 
 [v1.1.0](https://github.com/WesCook/Nutrition/releases/tag/v1.1.0) - 2017-05-31
-
 * Added support for Biomes O' Plenty, Forestry, Natura, Roots, and Tinkers Construct (contribution from KnightMiner)
 * Nutrient field can now be negated from other detection modes (contribution from KnightMiner)
 
 [v1.0.1](https://github.com/WesCook/Nutrition/releases/tag/v1.0.1) - 2017-05-28
-
 * Improved detection when attaching capability
 
 [v1.0.0](https://github.com/WesCook/Nutrition/releases/tag/v1.0.0) - 2017-05-28
-
 * Initial release
