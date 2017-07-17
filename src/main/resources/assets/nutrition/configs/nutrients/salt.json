@@ -1,0 +1,21 @@
+{
+	"name": "salt",
+	"icon": "minecraft:sugar",
+	"color": "a0d4f7",
+	"enabled": false,
+	"food": {
+		"oredict": [
+			"dustSalt",
+			"itemSalt",
+			"foodSalt",
+			"ingredientSalt"
+		],
+		"items": [
+			"vanillafoodpantry:salt_pork",
+			"vanillafoodpantry:cod_salted",
+			"vanillafoodpantry:pork_meat_product:1",
+			"vanillafoodpantry:pork_meat_product:4",
+			"vanillafoodpantry:cooked_salt_pork",
+		]
+	}
+}
