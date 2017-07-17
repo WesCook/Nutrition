@@ -289,7 +289,30 @@
 			"plants:pineapple",
 			"plants:rubus_o",
 			"rustic:grapes",
-			"rustic:wildberries"
+			"rustic:wildberries",
+			"vanillafoodpantry:breads:407",
+			"vanillafoodpantry:breads:409",
+			"vanillafoodpantry:cookie:798",
+			"vanillafoodpantry:creamsoup:997",
+			"vanillafoodpantry:juice:212",
+			"vanillafoodpantry:juice:213",
+			"vanillafoodpantry:juice:215",
+			"vanillafoodpantry:juice:201",
+			"vanillafoodpantry:juice:203",
+			"vanillafoodpantry:kebab:8",
+			"vanillafoodpantry:kebab:9",
+			"vanillafoodpantry:pumpkin_portion",
+			"vanillafoodpantry:roasted_pumpkin_portion",
+			"vanillafoodpantry:snowcone:3",
+			"vanillafoodpantry:snowcone:6",
+			"vanillafoodpantry:snowcone:9",
+			"vanillafoodpantry:snowcone:7",
+			"vanillafoodpantry:snowcone:36",
+			"vanillafoodpantry:snowcone:42",
+			"vanillafoodpantry:snowcone:40",
+			"vanillafoodpantry:snowcone:45",
+			"vanillafoodpantry:stewed:0",
+			"vanillafoodpantry:stewed:1"
 		]
 	}
 }
