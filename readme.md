@@ -38,12 +38,19 @@ Mods that are supported with the default five-food group system include:
 * [Simple Corn](https://minecraft.curseforge.com/projects/simple-corn)
 * [Simply Tea!](https://minecraft.curseforge.com/projects/simply-tea)
 * [Tinkers Construct](https://minecraft.curseforge.com/projects/tinkers-construct)
+* [VanillaFoodPantry](https://minecraft.curseforge.com/projects/vanillafoodpantry-mod)
 
 Mod support contributions are welcome!  Please create a [Pull Request](https://github.com/WesCook/Nutrition/pulls) or an [Issue](https://github.com/WesCook/Nutrition/issues) with the related .json files.
 
 When updating the mod, please clear your /nutrition/ config directory to receive new mod support (point releases will not require this).
 
 ## Changelog
+
+[v1.6.0](https://github.com/WesCook/Nutrition/releases/tag/v1.6.0) - 2017-08-01
+* Added config to prevent nutrition from being reset back up to the minimum upon death
+* Amplifier is no longer a required field
+* Added support for VanillaFoodPantry (contribution from darloth)
+* Updated support for Animania (contribution from Sunconure11)
 
 [v1.5.0](https://github.com/WesCook/Nutrition/releases/tag/v1.5.0) - 2017-06-28
 * Added nourished and malnourished effects.  Each adds or subtracts one heart per amplifier level.
@@ -62,7 +69,7 @@ When updating the mod, please clear your /nutrition/ config directory to receive
 * Added Spanish localizations (contribution from Rougito)
 
 [v1.2.0](https://github.com/WesCook/Nutrition/releases/tag/v1.2.0) - 2017-06-03
-* Updated HarvestCraft support on 1.10
+* Updated support for HarvestCraft on 1.10
 * Added German localizations (contribution from ACGaming)
 * Added Swedish localizations (contribution from John "Rufus" Lundström)
 * Added Norwegian localizations (contribution from Marcus "Rex" Holm)
