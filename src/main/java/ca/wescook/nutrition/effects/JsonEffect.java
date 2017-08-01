@@ -4,7 +4,7 @@ package ca.wescook.nutrition.effects;
 public class JsonEffect {
 	public String name;
 	public String potion;
-	public int amplifier;
+	public Integer amplifier;
 	public int minimum;
 	public int maximum;
 	public String detect;

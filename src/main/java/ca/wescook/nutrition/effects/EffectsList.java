@@ -39,10 +39,12 @@ public class EffectsList {
 			Effect effect = new Effect();
 			effect.name = effectRaw.name;
 			effect.potion = potion;
-			effect.amplifier = effectRaw.amplifier;
 			effect.minimum = effectRaw.minimum;
 			effect.maximum = effectRaw.maximum;
 			effect.detect = effectRaw.detect;
+
+			// Amplifier defaults to 0 if undefined
+			effect.amplifier = (effectRaw.amplifier != null) ? effectRaw.amplifier : 0;
 
 			// Assign the tag for exclusion/only nutrient
 			effect.nutrient = NutrientList.getByName(effectRaw.nutrient);
