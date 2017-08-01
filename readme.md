@@ -43,6 +43,12 @@ When updating the mod, please clear your /nutrition/ config directory to receive
 
 ## Changelog
 
+[v1.6.0](https://github.com/WesCook/Nutrition/releases/tag/v1.6.0) - 2017-08-01
+* Added config to prevent nutrition from being reset back up to the minimum upon death
+* Amplifier is no longer a required field
+* Added support for VanillaFoodPantry (contribution from darloth)
+* Updated support for Animania (contribution from Sunconure11)
+
 [v1.5.0](https://github.com/WesCook/Nutrition/releases/tag/v1.5.0) - 2017-06-28
 * Added nourished and malnourished effects.  Each adds or subtracts one heart per amplifier level.
 * Added `cumulative_modifier` property to effects.  In cumulative detection mode, this will increase the amplifier by the provided value for each cumulative level.  
@@ -60,7 +66,7 @@ When updating the mod, please clear your /nutrition/ config directory to receive
 * Added Spanish localizations (contribution from Rougito)
 
 [v1.2.0](https://github.com/WesCook/Nutrition/releases/tag/v1.2.0) - 2017-06-03
-* Updated HarvestCraft support on 1.10
+* Updated support for HarvestCraft on 1.10
 * Added German localizations (contribution from ACGaming)
 * Added Swedish localizations (contribution from John "Rufus" Lundström)
 * Added Norwegian localizations (contribution from Marcus "Rex" Holm)
