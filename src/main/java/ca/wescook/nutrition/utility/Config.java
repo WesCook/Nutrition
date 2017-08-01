@@ -27,6 +27,7 @@ public class Config {
 	public static boolean enableDecay;
 	public static float decayMultiplier;
 	public static int deathPenaltyMin;
+	public static boolean deathPenaltyReset;
 	public static int deathPenaltyLoss;
 	public static boolean allowOverEating;
 	public static int lossPerNutrient;
@@ -71,6 +72,7 @@ public class Config {
 		decayMultiplier = configFile.getFloat("DecayMultiplier", CATEGORY_DECAY, 1, 0, 100, "Value to multiply decay rate by (eg. 0.5 halves the rate, 2.0 doubles it).");
 
 		deathPenaltyMin = configFile.getInt("DeathPenaltyMin", CATEGORY_DEATH_PENALTY, 30, 0, 100, "The minimum nutrition value that the death penalty may reduce to.");
+		deathPenaltyReset = configFile.getBoolean("DeathPenaltyReset", CATEGORY_DEATH_PENALTY, true, "On death, should nutrition be reset to DeathPenaltyMin if it's fallen below that value?  This is recommended to prevent death loops caused by negative effects.");
 		deathPenaltyLoss = configFile.getInt("DeathPenaltyLoss", CATEGORY_DEATH_PENALTY, 15, 0, 100, "The nutrition value subtracted from each nutrient upon death.");
 
 		nutritionMultiplier = configFile.getFloat("NutritionMultiplier", CATEGORY_NUTRITION, 1, 0, 100, "Value to multiply base nutrition by for each food (eg. 0.5 to halve nutrition gain).");
