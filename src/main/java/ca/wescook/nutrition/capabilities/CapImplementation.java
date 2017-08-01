@@ -72,7 +72,8 @@ public class CapImplementation implements CapInterface {
 
 	public void deathPenalty() {
 		for (Nutrient nutrient : playerNutrition.keySet()) // Loop through player's nutrients
-			set(nutrient, Math.max(Config.deathPenaltyMin, playerNutrition.get(nutrient) - Config.deathPenaltyLoss), false); // Subtract death penalty to each, with a bottom cap
+			if (Config.deathPenaltyReset || get(nutrient) > Config.deathPenaltyMin) // If reset is disabled, only reduce to cap when above its value
+				set(nutrient, Math.max(Config.deathPenaltyMin, playerNutrition.get(nutrient) - Config.deathPenaltyLoss), false); // Subtract death penalty from each nutrient, to cap
 		resync();
 	}
 
