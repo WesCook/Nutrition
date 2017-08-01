@@ -86,7 +86,7 @@ public abstract class GuiScreenDynamic extends GuiScreen {
 	public void drawLabels(int mouseX, int mouseY) {
 		// Labels
 		for (GuiButton aButtonList : this.buttonList)
-			aButtonList.drawButton(this.mc, mouseX, mouseY);
+			aButtonList.drawButton(this.mc, mouseX, mouseY, 0);
 
 		// Buttons
 		for (GuiLabel aLabelList : this.labelList)

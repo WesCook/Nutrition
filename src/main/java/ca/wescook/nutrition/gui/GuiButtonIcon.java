@@ -15,9 +15,9 @@ public class GuiButtonIcon extends GuiButton {
 
 	// This exists to draw an icon over the button
 	@Override
-	public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-		drawHorizontalLine(xPosition, xPosition + width - 1, yPosition + height, 0xff000000); // Draw line on bottom
-		super.drawButton(mc, mouseX, mouseY); // Draw regular button
-		mc.getRenderItem().renderItemIntoGUI(icon, xPosition + (width / 2) - 8, yPosition + (height / 2)  - 7); // Draw our icon centered
+	public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+		drawHorizontalLine(x, x + width - 1, y + height, 0xff000000); // Draw line on bottom
+		super.drawButton(mc, mouseX, mouseY, partialTicks); // Draw regular button
+		mc.getRenderItem().renderItemIntoGUI(icon, x + (width / 2) - 8, y + (height / 2)  - 7); // Draw our icon centered
 	}
 }

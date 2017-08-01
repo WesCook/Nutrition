@@ -118,18 +118,18 @@ public class NutritionGui extends GuiScreenDynamic {
 
 		// Draw title
 		String nutritionTitle = I18n.format("gui." + Nutrition.MODID + ":nutrition_title");
-		labelList.add(label = new GuiLabel(fontRendererObj, 0, (width / 2) - (fontRendererObj.getStringWidth(nutritionTitle) / 2), top + TITLE_VERTICAL_OFFSET, 0, 0, 0xffffffff));
+		labelList.add(label = new GuiLabel(fontRenderer, 0, (width / 2) - (fontRenderer.getStringWidth(nutritionTitle) / 2), top + TITLE_VERTICAL_OFFSET, 0, 0, 0xffffffff));
 		label.addLine(nutritionTitle);
 
 		// Nutrients names and values
 		int i = 0;
 		for (Nutrient nutrient : NutrientList.get()) {
 			// Create labels for each nutrient type name
-			labelList.add(label = new GuiLabel(fontRendererObj, 0, left + LABEL_NAME_HORIZONTAL_OFFSET, top + LABEL_VERTICAL_OFFSET + (i * NUTRITION_DISTANCE), 0, 0, 0xffffffff));
+			labelList.add(label = new GuiLabel(fontRenderer, 0, left + LABEL_NAME_HORIZONTAL_OFFSET, top + LABEL_VERTICAL_OFFSET + (i * NUTRITION_DISTANCE), 0, 0, 0xffffffff));
 			label.addLine(I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name)); // Add name from localization file
 
 			// Create percent value labels for each nutrient value
-			labelList.add(label = new GuiLabel(fontRendererObj, 0, left + LABEL_VALUE_HORIZONTAL_OFFSET, top + LABEL_VERTICAL_OFFSET + (i * NUTRITION_DISTANCE), 0, 0, 0xffffffff));
+			labelList.add(label = new GuiLabel(fontRenderer, 0, left + LABEL_VALUE_HORIZONTAL_OFFSET, top + LABEL_VERTICAL_OFFSET + (i * NUTRITION_DISTANCE), 0, 0, 0xffffffff));
 			if (ClientProxy.nutrientData != null && ClientProxy.nutrientData.get(nutrient) != null) // Ensure local nutrition data exists
 				label.addLine(Math.round(ClientProxy.nutrientData.get(nutrient)) + "%%");
 			else

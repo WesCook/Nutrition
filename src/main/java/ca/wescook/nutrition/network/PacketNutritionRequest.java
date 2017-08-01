@@ -28,7 +28,7 @@ public class PacketNutritionRequest {
 		public IMessage onMessage(final Message message, final MessageContext context) {
 			FMLCommonHandler.instance().getWorldThread(context.netHandler).addScheduledTask(() -> {
 				// Return message
-				EntityPlayer player = context.getServerHandler().playerEntity; // Get Player on server
+				EntityPlayer player = context.getServerHandler().player; // Get Player on server
 				ModPacketHandler.NETWORK_CHANNEL.sendTo(new PacketNutritionResponse.Message(player), (EntityPlayerMP) player);
 			});
 

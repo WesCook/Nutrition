@@ -2,7 +2,6 @@ package ca.wescook.nutrition.potions;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.UUID;
 
@@ -18,7 +17,7 @@ public class ModPotions {
 	static final UUID NOURISHMENT_HEALTH = UUID.fromString("bdafe0c7-5881-4505-802e-e18f6c419554");
 	static final UUID MALNOURISHMENT_HEALTH = UUID.fromString("ea9cebf7-7c7a-4a89-a04f-221dab8ffdf7");
 
-	public static void registerPotions() {
+	public static void createPotions() {
 		// Toughness
 		toughness = new PotionToughness(true, new ResourceLocation("nutrition", "textures/potions/toughness.png"));
 		toughness.setPotionName("Toughness");
@@ -27,20 +26,17 @@ public class ModPotions {
 		toughness.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, TOUGHNESS_HEALTH.toString(), 0D, 0);
 		toughness.registerPotionAttributeModifier(SharedMonsterAttributes.ARMOR_TOUGHNESS, TOUGHNESS_ARMOR.toString(), 0D, 0);
 		toughness.registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_SPEED, TOUGHNESS_ATTACK_SPEED.toString(), 0D, 0);
-		GameRegistry.register(toughness);
 
 		// Nourished
 		nourished = new PotionNourished(true, new ResourceLocation("nutrition", "textures/potions/nourished.png"));
 		nourished.setPotionName("Nourished");
 		nourished.setRegistryName("nourished");
 		nourished.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, NOURISHMENT_HEALTH.toString(), 0D, 0);
-		GameRegistry.register(nourished);
 
 		// Malnourished
 		malnourished = new PotionMalnourished(true, new ResourceLocation("nutrition", "textures/potions/malnourished.png"));
 		malnourished.setPotionName("Malnourished");
 		malnourished.setRegistryName("malnourished");
 		malnourished.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, MALNOURISHMENT_HEALTH.toString(), 0D, 0);
-		GameRegistry.register(malnourished);
 	}
 }
