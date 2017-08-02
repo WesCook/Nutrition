@@ -1,5 +1,6 @@
 package ca.wescook.nutrition.effects;
 
+import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.utility.Log;
 import net.minecraft.potion.Potion;
@@ -46,14 +47,17 @@ public class EffectsList {
 			// Amplifier defaults to 0 if undefined
 			effect.amplifier = (effectRaw.amplifier != null) ? effectRaw.amplifier : 0;
 
-			// Assign the tag for exclusion/only nutrient
-			effect.nutrient = NutrientList.getByName(effectRaw.nutrient);
-			
-			// Error if missing the nutrient when the mode is nutrient
-			if (effect.detect.equals("nutrient")) {
-				if (effect.nutrient == null) {
-					Log.error("Detect mode is set to 'nutrient', but nutrient is not set. (" + effect.name + ")");
-					continue;
+			// Build list of applicable nutrients
+			// If nutrients are unspecified in file, this defaults to include every nutrient
+			if (effectRaw.nutrients.size() == 0) {
+				effect.nutrients.addAll(NutrientList.get());
+			} else { // Field has been set, so fetch nutrients by name
+				for (String nutrientName : effectRaw.nutrients) {
+					Nutrient nutrient = NutrientList.getByName(nutrientName);
+					if (nutrient != null)
+						effect.nutrients.add(nutrient); // Nutrient checks out, add to list
+					else
+						Log.error("Nutrient " + nutrientName + " not found (" + effectRaw.name + ").");
 				}
 			}
 
