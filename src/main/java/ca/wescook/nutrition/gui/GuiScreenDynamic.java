@@ -21,7 +21,7 @@ public abstract class GuiScreenDynamic extends GuiScreen {
 	public int bottom = 0;
 
 	// Container info
-	private final ResourceLocation GUI_BORDERS = new ResourceLocation(Nutrition.MODID, "textures/gui/gui_border.png");
+	private final ResourceLocation GUI_BORDERS = new ResourceLocation(Nutrition.MODID, "textures/gui/gui.png");
 	private final int BACKGROUND_COLOR = 0xffc6c6c6;
 
 	// Update GUI size

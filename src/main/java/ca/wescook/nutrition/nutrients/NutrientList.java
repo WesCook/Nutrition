@@ -70,7 +70,7 @@ public class NutrientList {
 						String metaString = StringUtils.substringAfterLast(fullName, ":");
 
 						// Is valid metadata
-						if (NumberUtils.isNumber(metaString))
+						if (NumberUtils.isCreatable(metaString))
 							metadata = Integer.decode(metaString);
 						else {
 							Log.missingFood(fullName + " does not contain valid metadata (" + fullName + ")");

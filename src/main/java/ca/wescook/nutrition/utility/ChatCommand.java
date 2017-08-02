@@ -66,7 +66,7 @@ public class ChatCommand extends CommandBase {
 
 		// Valid number check
 		Float newValue;
-		if (NumberUtils.isNumber(args[2]))
+		if (NumberUtils.isCreatable(args[2]))
 			newValue = Float.parseFloat(args[2]);
 		else {
 			sender.sendMessage(new TextComponentString("Value is not a number."));
