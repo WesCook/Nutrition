@@ -69,7 +69,7 @@ public class Config {
 
 		// Get Values
 		enableDecay = configFile.getBoolean("EnableDecay", CATEGORY_DECAY, true, "Enable nutrition decay when hunger drains.");
-		decayMultiplier = configFile.getFloat("DecayMultiplier", CATEGORY_DECAY, 1, 0, 100, "Value to multiply decay rate by (eg. 0.5 halves the rate, 2.0 doubles it).");
+		decayMultiplier = configFile.getFloat("DecayMultiplier", CATEGORY_DECAY, 1, -100, 100, "Global value to multiply decay rate by (eg. 0.5 halves the rate, 2.0 doubles it).  This can also be set per-nutrient.");
 
 		deathPenaltyMin = configFile.getInt("DeathPenaltyMin", CATEGORY_DEATH_PENALTY, 30, 0, 100, "The minimum nutrition value that the death penalty may reduce to.");
 		deathPenaltyReset = configFile.getBoolean("DeathPenaltyReset", CATEGORY_DEATH_PENALTY, true, "On death, should nutrition be reset to DeathPenaltyMin if it's fallen below that value?  This is recommended to prevent death loops caused by negative effects.");

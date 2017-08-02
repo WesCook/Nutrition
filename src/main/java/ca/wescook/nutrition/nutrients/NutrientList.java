@@ -1,5 +1,6 @@
 package ca.wescook.nutrition.nutrients;
 
+import ca.wescook.nutrition.utility.Config;
 import ca.wescook.nutrition.utility.Log;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -44,6 +45,18 @@ public class NutrientList {
 			} catch (NullPointerException e) {
 				Log.fatal("Missing or invalid JSON.  A name, icon, and color are required.");
 				throw e;
+			}
+
+			// Decay rate multiplier
+			// Determined either by global rate, or optional override in nutrient file
+			if (nutrientRaw.decay == null)
+				nutrient.decay = Config.decayMultiplier; // Set to global value
+			else if (nutrientRaw.decay >= -100 && nutrientRaw.decay <= 100)
+				nutrient.decay = nutrientRaw.decay; // Set to value in field
+			else {
+				nutrient.decay = 0;
+				Log.error("Decay rate must be between -100 and 100 (" + nutrient.name + ").");
+				continue;
 			}
 
 			// Food - Ore Dictionary

@@ -2,8 +2,9 @@ package ca.wescook.nutrition.events;
 
 import ca.wescook.nutrition.capabilities.CapProvider;
 import ca.wescook.nutrition.effects.EffectsManager;
-import ca.wescook.nutrition.nutrients.NutrientList;
+import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.utility.Config;
+import com.google.common.primitives.Floats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -42,9 +43,14 @@ public class EventPlayerUpdate {
 
 		// If food level has reduced, also lower nutrition
 		if (foodLevelOld != null && foodLevelNew < foodLevelOld) {
-			int difference = foodLevelOld - foodLevelNew;
-			float decay = (float) (difference * 0.075 * Config.decayMultiplier); // Lower number for reasonable starting point, then apply multiplier from config
-			player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).subtract(NutrientList.get(), decay, true); // Subtract from every nutrient
+			int difference = foodLevelOld - foodLevelNew; // Difference in food level
+			Map<Nutrient, Float> playerNutrition = player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).get();
+
+			for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
+				float decay = (float) (difference * 0.075 * entry.getKey().decay); // Lower number for reasonable starting point, then apply multiplier from config
+				entry.setValue(Floats.constrainToRange(entry.getValue() - decay, 0, 100)); // Subtract decay from nutrient
+			}
+			player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).set(playerNutrition, true);
 		}
 
 		// Update for the next pass

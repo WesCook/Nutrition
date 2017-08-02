@@ -8,6 +8,7 @@ public class JsonNutrient {
 	public String name;
 	public String icon;
 	public String color;
+	public Float decay;
 	public Boolean enabled;
 	public Food food = new Food();
 

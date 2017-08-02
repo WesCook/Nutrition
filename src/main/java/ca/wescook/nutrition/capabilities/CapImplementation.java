@@ -5,6 +5,7 @@ import ca.wescook.nutrition.network.PacketNutritionResponse;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.utility.Config;
+import com.google.common.primitives.Floats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -48,25 +49,25 @@ public class CapImplementation implements CapInterface {
 
 	public void add(Nutrient nutrient, float amount, boolean sync) {
 		float currentAmount = playerNutrition.get(nutrient);
-		playerNutrition.put(nutrient, Math.min(currentAmount + amount, 100));
+		playerNutrition.put(nutrient, Floats.constrainToRange(currentAmount + amount, 0, 100));
 		if (sync) resync();
 	}
 
 	public void add(List<Nutrient> nutrientData, float amount, boolean sync) {
 		for (Nutrient nutrient : nutrientData)
-			playerNutrition.put(nutrient, Math.min(playerNutrition.get(nutrient) + amount, 100));
+			playerNutrition.put(nutrient, Floats.constrainToRange(playerNutrition.get(nutrient) + amount, 0, 100));
 		if (sync) resync();
 	}
 
 	public void subtract(Nutrient nutrient, float amount, boolean sync) {
 		float currentAmount = playerNutrition.get(nutrient);
-		playerNutrition.put(nutrient, Math.max(currentAmount - amount, 0));
+		playerNutrition.put(nutrient, Floats.constrainToRange(currentAmount - amount, 0, 100));
 		if (sync) resync();
 	}
 
 	public void subtract(List<Nutrient> nutrientData, float amount, boolean sync) {
 		for (Nutrient nutrient : nutrientData)
-			playerNutrition.put(nutrient, Math.max(playerNutrition.get(nutrient) - amount, 0));
+			playerNutrition.put(nutrient, Floats.constrainToRange(playerNutrition.get(nutrient) - amount, 0, 100));
 		if (sync) resync();
 	}
 
