@@ -24,13 +24,8 @@ public class EffectsManager {
 		// Get info
 		Map<Nutrient, Float> playerNutrition = player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).get();
 
-		// Track states
+		// Effects being turned on
 		List<Effect> effectsInThreshold = new ArrayList<>();
-		Float total;
-		Float average;
-		Float specificNutrient;
-		int cumulativeCount;
-		boolean allWithinThreshold;
 
 		// Read in list of potion effects to apply
 		for (Effect effect : EffectsList.get()) {
@@ -41,8 +36,7 @@ public class EffectsManager {
 					// Loop all nutrients
 					for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
 						// If any are found within threshold
-						if (!entry.getKey().equals(effect.nutrient) // Skip if excluded
-								&& entry.getValue() >= effect.minimum && entry.getValue() <= effect.maximum) {
+						if (entry.getValue() >= effect.minimum && entry.getValue() <= effect.maximum) {
 							effectsInThreshold.add(effect); // Add effect, once
 							break;
 						}
@@ -53,12 +47,12 @@ public class EffectsManager {
 				// If the average of all nutrients is within the threshold
 				case "average": {
 					// Reset counter each new loop
-					total = 0f;
+					Float total = 0f;
+					Float average;
 
 					// Loop all nutrients
 					for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
-						if (!entry.getKey().equals(effect.nutrient)) // Skip if excluded
-							total += entry.getValue(); // Add each value to total
+						total += entry.getValue(); // Add each value to total
 					}
 
 					// Remove the excluded nutrient from the size count
@@ -78,12 +72,11 @@ public class EffectsManager {
 				// If all nutrients are within the threshold
 				case "all": {
 					// Condition starts true, and must be triggered to fail
-					allWithinThreshold = true;
+					boolean allWithinThreshold = true;
 
 					// Loop all nutrients
 					for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
-						if (!entry.getKey().equals(effect.nutrient) // Skip if excluded
-								&& !(entry.getValue() >= effect.minimum && entry.getValue() <= effect.maximum)) // If nutrient isn't within threshold
+						if (!(entry.getValue() >= effect.minimum && entry.getValue() <= effect.maximum)) // If nutrient isn't within threshold
 							allWithinThreshold = false; // Fail check
 					}
 
@@ -96,13 +89,12 @@ public class EffectsManager {
 				// For each nutrient within the threshold, the amplifier increases by one
 				case "cumulative":  {
 					// Reset counter each new loop
-					cumulativeCount = 0;
+					int cumulativeCount = 0;
 
 					// Loop all nutrients
 					for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
 						// If any are found within threshold
-						if (!entry.getKey().equals(effect.nutrient) // Skip if excluded
-								&& entry.getValue() >= effect.minimum && entry.getValue() <= effect.maximum)
+						if (entry.getValue() >= effect.minimum && entry.getValue() <= effect.maximum)
 							cumulativeCount++;
 					}
 
@@ -115,14 +107,6 @@ public class EffectsManager {
 					if (cumulativeCount > 0) {
 						effectsInThreshold.add(effect); // Add effect, once
 					}
-				}
-				break;
-
-				// If specific nutrient is within the threshold
-				case "nutrient": {
-					specificNutrient = playerNutrition.get(effect.nutrient);
-					if (specificNutrient >= effect.minimum && specificNutrient <= effect.maximum)
-						effectsInThreshold.add(effect);
 				}
 				break;
 			}
