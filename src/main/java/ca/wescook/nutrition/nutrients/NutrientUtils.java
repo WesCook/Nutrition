@@ -1,6 +1,7 @@
 package ca.wescook.nutrition.nutrients;
 
 import ca.wescook.nutrition.utility.Config;
+import ca.wescook.nutrition.utility.Log;
 import net.minecraft.block.BlockCake;
 import net.minecraft.item.*;
 import net.minecraftforge.oredict.OreDictionary;
@@ -79,5 +80,14 @@ public class NutrientUtils {
 			return true;
 
 		return false;
+	}
+
+	// List all foods registered in-game without nutrients
+	public static void findRegisteredFoods() {
+		for (Item item : Item.REGISTRY) {
+			ItemStack itemStack = new ItemStack(item);
+			if (isValidFood(itemStack) && getFoodNutrients(itemStack).size() == 0)
+				Log.warn("Registered food without nutrients: " + item.getRegistryName());
+		}
 	}
 }

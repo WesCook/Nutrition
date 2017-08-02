@@ -9,6 +9,7 @@ import ca.wescook.nutrition.events.*;
 import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.network.ModPacketHandler;
 import ca.wescook.nutrition.nutrients.NutrientList;
+import ca.wescook.nutrition.nutrients.NutrientUtils;
 import ca.wescook.nutrition.potions.ModPotions;
 import ca.wescook.nutrition.utility.Config;
 import net.minecraftforge.common.MinecraftForge;
@@ -39,5 +40,7 @@ public class CommonProxy {
 	public void postInit(FMLPostInitializationEvent event) {
 		NutrientList.parseJson(); // Parse nutrients from loaded JSONs
 		EffectsList.parseJson(); // Parse potion effects from loaded JSONs
+		if (Config.logMissingNutrients) // List all foods registered in-game without nutrients
+			NutrientUtils.findRegisteredFoods();
 	}
 }

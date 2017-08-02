@@ -47,6 +47,9 @@ public class EffectsList {
 			// Amplifier defaults to 0 if undefined
 			effect.amplifier = (effectRaw.amplifier != null) ? effectRaw.amplifier : 0;
 
+			// Default the cumulative modifier to 1 if not defined
+			effect.cumulativeModifier = (effectRaw.cumulative_modifier != null) ? effectRaw.cumulative_modifier : 1;
+
 			// Build list of applicable nutrients
 			// If nutrients are unspecified in file, this defaults to include every nutrient
 			if (effectRaw.nutrients.size() == 0) {
@@ -60,9 +63,6 @@ public class EffectsList {
 						Log.error("Nutrient " + nutrientName + " not found (" + effectRaw.name + ").");
 				}
 			}
-
-			// Default the cumulative modifier to 1 if not defined
-			effect.cumulativeModifier = (effectRaw.cumulative_modifier != null) ? effectRaw.cumulative_modifier : 1;
 
 			// Register effect
 			effects.add(effect);

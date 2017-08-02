@@ -89,7 +89,7 @@ public class EffectsManager {
 
 					// Loop relevant nutrients
 					for (Nutrient nutrient : effect.nutrients) {
-						// If any are found within threshold
+						// For each nutrient found within threshold
 						if (playerNutrition.get(nutrient) >= effect.minimum && playerNutrition.get(nutrient) <= effect.maximum)
 							cumulativeCount++;
 					}

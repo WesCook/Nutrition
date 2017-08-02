@@ -29,10 +29,4 @@ public class Log {
 	public static void fatal(String message) {
 		logger.log(Level.FATAL, message);
 	}
-
-	// Check config first
-	public static void missingFood(String message) {
-		if (Config.enableLogging)
-			log(Level.WARN, message);
-	}
 }
