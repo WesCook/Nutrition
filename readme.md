@@ -18,18 +18,12 @@ By default, Nutrition comes configured with the classic five food group system: 
 
 Mods that are supported with the default five-food group system include:
 
-* [Aether Legacy](https://minecraft.curseforge.com/projects/aether-legacy)
-* [Animalium](https://minecraft.curseforge.com/projects/animalium)
-* [Animania](https://minecraft.curseforge.com/projects/animania)
-* [Aquaculture](https://minecraft.curseforge.com/projects/aquaculture)
 * [Better with Mods](https://minecraft.curseforge.com/projects/better-with-mods)
 * [Biomes O' Plenty](https://minecraft.curseforge.com/projects/biomes-o-plenty)
 * [Edible Bugs](https://minecraft.curseforge.com/projects/edible-bugs)
 * [Food Expansion](https://minecraft.curseforge.com/projects/food-expansion)
 * [Forestry](https://minecraft.curseforge.com/projects/forestry)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
-* [Ice and Fire](https://minecraft.curseforge.com/projects/ice-and-fire-dragons-in-a-whole-new-light)
-* [Jurassicraft](https://minecraft.curseforge.com/projects/jurassicraft2)
 * [Natura](https://minecraft.curseforge.com/projects/natura)
 * [Pam's HarvestCraft](https://minecraft.curseforge.com/projects/pams-harvestcraft)
 * [Plants](https://minecraft.curseforge.com/projects/plants)
@@ -38,13 +32,20 @@ Mods that are supported with the default five-food group system include:
 * [Simple Corn](https://minecraft.curseforge.com/projects/simple-corn)
 * [Simply Tea!](https://minecraft.curseforge.com/projects/simply-tea)
 * [Tinkers Construct](https://minecraft.curseforge.com/projects/tinkers-construct)
-* [VanillaFoodPantry](https://minecraft.curseforge.com/projects/vanillafoodpantry-mod)
 
 Mod support contributions are welcome!  Please create a [Pull Request](https://github.com/WesCook/Nutrition/pulls) or an [Issue](https://github.com/WesCook/Nutrition/issues) with the related .json files.
 
 When updating the mod, please clear your /nutrition/ config directory to receive new mod support (point releases will not require this).
 
 ## Changelog
+
+[v2.0.0](https://github.com/WesCook/Nutrition/releases/tag/v2.0.0) - 2017-08-03
+* Updated to Minecraft 1.12.  Previous versions will only receive major bugfixes.
+* The nutrient detection mode has been removed in favor of a more powerful whitelist system
+* The decay multiplier can now be set on a per-nutrient basis
+* The nutrition button UI has changed to match the recipe book
+* Improved logging feature to show foods without registered nutrients
+* Updated support for missing foods, and removed mods which haven't been ported yet
 
 [v1.6.0](https://github.com/WesCook/Nutrition/releases/tag/v1.6.0) - 2017-08-01
 * Added config to prevent nutrition from being reset back up to the minimum upon death
