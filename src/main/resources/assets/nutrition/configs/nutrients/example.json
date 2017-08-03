@@ -10,8 +10,8 @@
 			"listAllgreenveggie"  //
 		],                        //
 		"items": [                // List of item IDs for foods that are included in this nutrient
-			"minecraft:potato",   //
 			"minecraft:carrot",   //
+			"minecraft:apple:1",  //
 			"minecraft:cake"      //
 		]
 	}
