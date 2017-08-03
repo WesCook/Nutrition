@@ -5,6 +5,6 @@
 	"minimum": 90,
 	"maximum": 100,
 	"detect": "cumulative",
-	"cumulative_modifier": "1",
+	"cumulative_modifier": 1,
 	"enabled": true
 }
