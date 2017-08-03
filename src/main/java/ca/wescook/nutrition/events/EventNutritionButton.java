@@ -28,7 +28,7 @@ public class EventNutritionButton {
 			return;
 
 		// Button position
-		int xPosition = ((GuiInventory) gui).getGuiLeft() + 132;
+		int xPosition = ((GuiInventory) gui).getGuiLeft() + 134;
 		int yPosition = ((GuiInventory) gui).getGuiTop() + 61;
 
 		// Create button
@@ -53,7 +53,7 @@ public class EventNutritionButton {
 			player.openGui(Nutrition.instance, ModGuiHandler.NUTRITION_GUI_ID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 		} else {
 			// Presumably recipe book button was clicked - recalculate nutrition button position
-			int xPosition = ((GuiInventory) event.getGui()).getGuiLeft() + 132;
+			int xPosition = ((GuiInventory) event.getGui()).getGuiLeft() + 134;
 			int yPosition = ((GuiInventory) event.getGui()).getGuiTop() + 61;
 			buttonNutrition.setPosition(xPosition, yPosition);
 		}
