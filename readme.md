@@ -40,6 +40,9 @@ When updating the mod, please clear your /nutrition/ config directory to receive
 
 ## Changelog
 
+[v2.2.0](https://github.com/WesCook/Nutrition/releases/tag/v2.1.0) - 2017-08-04
+* Added config option to move nutrition button
+
 [v2.1.0](https://github.com/WesCook/Nutrition/releases/tag/v2.1.0) - 2017-08-04
 * Small GUI texture optimization
 * Added support for Reptiles Mod (contribution from Sunconure11)
