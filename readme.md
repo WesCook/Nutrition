@@ -27,6 +27,7 @@ Mods that are supported with the default five-food group system include:
 * [Natura](https://minecraft.curseforge.com/projects/natura)
 * [Pam's HarvestCraft](https://minecraft.curseforge.com/projects/pams-harvestcraft)
 * [Plants](https://minecraft.curseforge.com/projects/plants)
+* [Reptile Mod](https://minecraft.curseforge.com/projects/reptilemod)
 * [Roots](https://minecraft.curseforge.com/projects/roots)
 * [Rustic](https://minecraft.curseforge.com/projects/rustic)
 * [Simple Corn](https://minecraft.curseforge.com/projects/simple-corn)
@@ -38,6 +39,10 @@ Mod support contributions are welcome!  Please create a [Pull Request](https://g
 When updating the mod, please clear your /nutrition/ config directory to receive new mod support (point releases will not require this).
 
 ## Changelog
+
+[v2.1.0](https://github.com/WesCook/Nutrition/releases/tag/v2.1.0) - 2017-08-04
+* Small GUI texture optimization
+* Added support for Reptiles Mod (contribution from Sunconure11)
 
 [v2.0.0](https://github.com/WesCook/Nutrition/releases/tag/v2.0.0) - 2017-08-03
 * Updated to Minecraft 1.12.  Previous versions will only receive major bugfixes.
