@@ -2,6 +2,7 @@ package ca.wescook.nutrition.events;
 
 import ca.wescook.nutrition.Nutrition;
 import ca.wescook.nutrition.gui.ModGuiHandler;
+import ca.wescook.nutrition.utility.Config;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButtonImage;
 import net.minecraft.client.gui.GuiScreen;
@@ -28,8 +29,8 @@ public class EventNutritionButton {
 			return;
 
 		// Button position
-		int xPosition = ((GuiInventory) gui).getGuiLeft() + 134;
-		int yPosition = ((GuiInventory) gui).getGuiTop() + 61;
+		int xPosition = ((GuiInventory) gui).getGuiLeft() + Config.buttonXPosition;
+		int yPosition = ((GuiInventory) gui).getGuiTop() + Config.buttonYPosition;
 
 		// Create button
 		buttonNutrition = new GuiButtonImage(NUTRITION_ID, xPosition, yPosition, 20, 18, 14, 0, 19, NUTRITION_ICON);
@@ -53,8 +54,8 @@ public class EventNutritionButton {
 			player.openGui(Nutrition.instance, ModGuiHandler.NUTRITION_GUI_ID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 		} else {
 			// Presumably recipe book button was clicked - recalculate nutrition button position
-			int xPosition = ((GuiInventory) event.getGui()).getGuiLeft() + 134;
-			int yPosition = ((GuiInventory) event.getGui()).getGuiTop() + 61;
+			int xPosition = ((GuiInventory) event.getGui()).getGuiLeft() + Config.buttonXPosition;
+			int yPosition = ((GuiInventory) event.getGui()).getGuiTop() + Config.buttonYPosition;
 			buttonNutrition.setPosition(xPosition, yPosition);
 		}
 	}
