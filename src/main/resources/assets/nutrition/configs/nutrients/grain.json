@@ -29,7 +29,8 @@
 			"foodTortilla",
 			"foodWalnutraisinbread",
 			"foodZucchinibread",
-			"listAllgrain"
+			"listAllgrain",
+			"foodBread"
 		],
 		"items": [
 			"betterwithmods:apple_pie",
