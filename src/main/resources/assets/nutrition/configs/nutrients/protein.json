@@ -42,6 +42,18 @@
 			"portionMeat"
 		],
 		"items": [
+			"betterwithaddons:food_clownfish_cooked",
+			"betterwithaddons:food_egg_cooked",
+			"betterwithaddons:food_ground_meat",
+			"betterwithaddons:food_meatballs",
+			"betterwithaddons:food_pie_amanita",
+			"betterwithaddons:food_pie_meat",
+			"betterwithaddons:food_pie_melon",
+			"betterwithaddons:food_pie_mushroom",
+			"betterwithaddons:food_pufferfish_baked",
+			"betterwithaddons:food_pufferfish_cooked",
+			"betterwithaddons:food_pufferfish_prepared",
+			"betterwithaddons:food_sashimi",
 			"betterwithmods:apple_pie",
 			"betterwithmods:beef_dinner",
 			"betterwithmods:beef_potatoes",

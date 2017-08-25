@@ -33,6 +33,8 @@
 			"listAllgrain"
 		],
 		"items": [
+			"betterwithaddons:food_bowl_rice",
+			"betterwithaddons:food_cooked_rice",
 			"betterwithmods:apple_pie",
 			"betterwithmods:donut",
 			"betterwithmods:hearty_stew",
