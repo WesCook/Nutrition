@@ -38,6 +38,8 @@ public class Config {
 	public static boolean enableTooltips;
 	public static int buttonXPosition;
 	public static int buttonYPosition;
+	public static String buttonOrigin;
+	public static String buttonAnchor;
 	public static boolean logMissingFood;
 	public static boolean logMissingNutrients;
 
@@ -75,7 +77,8 @@ public class Config {
 		decayMultiplier = configFile.getFloat("DecayMultiplier", CATEGORY_DECAY, 1, -100, 100, "Global value to multiply decay rate by (eg. 0.5 halves the rate, 2.0 doubles it).  This can also be set per-nutrient.");
 
 		deathPenaltyMin = configFile.getInt("DeathPenaltyMin", CATEGORY_DEATH_PENALTY, 30, 0, 100, "The minimum nutrition value that the death penalty may reduce to.");
-		deathPenaltyReset = configFile.getBoolean("DeathPenaltyReset", CATEGORY_DEATH_PENALTY, true, "On death, should nutrition be reset to DeathPenaltyMin if it's fallen below that value?  This is recommended to prevent death loops caused by negative effects.");
+		deathPenaltyReset = configFile.getBoolean("DeathPenaltyReset", CATEGORY_DEATH_PENALTY, true, "On death, should nutrition be reset to DeathPenaltyMin if it's fallen below that value?\n" +
+			"This is recommended to prevent death loops caused by negative effects.");
 		deathPenaltyLoss = configFile.getInt("DeathPenaltyLoss", CATEGORY_DEATH_PENALTY, 15, 0, 100, "The nutrition value subtracted from each nutrient upon death.");
 
 		nutritionMultiplier = configFile.getFloat("NutritionMultiplier", CATEGORY_NUTRITION, 1, 0, 100, "Value to multiply base nutrition by for each food (eg. 0.5 to halve nutrition gain).");
@@ -90,8 +93,12 @@ public class Config {
 		enableGui = configFile.getBoolean("EnableGui", CATEGORY_GUI, true, "If the nutrition GUI should be enabled");
 		enableGuiButton = configFile.getBoolean("EnableGuiButton", CATEGORY_GUI, true, "If the nutrition button should be shown on player inventory (hotkey will still function).");
 		enableTooltips = configFile.getBoolean("EnableTooltips", CATEGORY_GUI, true, "If foods should show their nutrients on hover.");
-		buttonXPosition = configFile.getInt("ButtonXPosition", CATEGORY_GUI, 134, -1000, 1000, "The nutrition button's X position.");
-		buttonYPosition = configFile.getInt("ButtonYPosition", CATEGORY_GUI, 61, -1000, 1000, "The nutrition button's Y position.");
+		buttonOrigin = configFile.getString("ButtonOrigin", CATEGORY_GUI, "gui", "The origin defines the object which the nutrition button will be placed relative to.\n" +
+			"Accepted values: gui, screen");
+		buttonAnchor = configFile.getString("ButtonAnchor", CATEGORY_GUI, "top-left", "The anchor defines which side of the origin to position the button against.\n" +
+			"Accepted values: top, right, bottom, left, top-left, top-right, bottom-right, bottom-left, center");
+		buttonXPosition = configFile.getInt("ButtonXPosition", CATEGORY_GUI, 134, -1000, 1000, "The nutrition button's X position, relative to its anchor point.");
+		buttonYPosition = configFile.getInt("ButtonYPosition", CATEGORY_GUI, 61, -1000, 1000, "The nutrition button's Y position, relative to its anchor point.");
 
 		logMissingFood = configFile.getBoolean("LogMissingFood", CATEGORY_LOGGING, false, "Log foods which have not been registered but are still listed in nutrients.");
 		logMissingNutrients = configFile.getBoolean("LogMissingNutrients", CATEGORY_LOGGING, false, "Log foods which are registered but do not have any nutrients.");
