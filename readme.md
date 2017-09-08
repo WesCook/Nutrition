@@ -18,6 +18,7 @@ By default, Nutrition comes configured with the classic five food group system: 
 
 Mods that are supported with the default five-food group system include:
 
+* [Better with Addons](https://minecraft.curseforge.com/projects/better-with-addons)
 * [Better with Mods](https://minecraft.curseforge.com/projects/better-with-mods)
 * [Biomes O' Plenty](https://minecraft.curseforge.com/projects/biomes-o-plenty)
 * [Edible Bugs](https://minecraft.curseforge.com/projects/edible-bugs)
@@ -27,6 +28,8 @@ Mods that are supported with the default five-food group system include:
 * [Natura](https://minecraft.curseforge.com/projects/natura)
 * [Pam's HarvestCraft](https://minecraft.curseforge.com/projects/pams-harvestcraft)
 * [Plants](https://minecraft.curseforge.com/projects/plants)
+* [PrimalCore](https://minecraft.curseforge.com/projects/primalcore)
+* [RealWorld](http://10paksmods.net/realworld.html)
 * [Reptile Mod](https://minecraft.curseforge.com/projects/reptilemod)
 * [Roots](https://minecraft.curseforge.com/projects/roots)
 * [Rustic](https://minecraft.curseforge.com/projects/rustic)
@@ -40,7 +43,16 @@ When updating the mod, please clear your /nutrition/ config directory to receive
 
 ## Changelog
 
-[v2.2.0](https://github.com/WesCook/Nutrition/releases/tag/v2.1.0) - 2017-08-04
+[v2.3.0](https://github.com/WesCook/Nutrition/releases/tag/v2.3.0) - 2017-09-08
+* GUI now resizes horizontally for long nutrient names
+* Nutrition button can now be positioned more dynamically (eg. top-right of screen)
+* Nutrition button now accepts negative coordinates
+* Added Primal Core support (contribution from Sunconure11)
+* Added RealWorld support (contribution from Ash70)
+* Added Better with Addons support
+* Updated to Forge 1.12.1
+
+[v2.2.0](https://github.com/WesCook/Nutrition/releases/tag/v2.2.0) - 2017-08-04
 * Added config option to move nutrition button
 
 [v2.1.0](https://github.com/WesCook/Nutrition/releases/tag/v2.1.0) - 2017-08-04
