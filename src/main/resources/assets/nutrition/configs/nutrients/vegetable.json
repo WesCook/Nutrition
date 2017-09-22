@@ -25,6 +25,11 @@
 			"listAllveggie"
 		],
 		"items": [
+			"actuallyadditions:item_food:14",
+			"actuallyadditions:item_food:2",
+			"actuallyadditions:item_food:3",
+			"actuallyadditions:item_food:4",
+			"actuallyadditions:item_food:5",
 			"betterwithaddons:food_amanita_baked",
 			"betterwithaddons:food_beetroot_baked",
 			"betterwithaddons:food_beetroot_cooked",
@@ -408,7 +413,6 @@
 			"saltmod:pickled_mushroom",
 			"saltmod:potato_mushroom",
 			"saltmod:potato_pie",
-			"saltmod:pumpkin_porridge",
 			"saltmod:salt_beetroot",
 			"saltmod:salt_beetroot_salad",
 			"saltmod:salt_beetroot_soup",

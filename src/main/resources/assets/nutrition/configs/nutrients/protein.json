@@ -42,6 +42,13 @@
 			"portionMeat"
 		],
 		"items": [
+			"actuallyadditions:item_food:0",
+			"actuallyadditions:item_food:11",
+			"actuallyadditions:item_food:13",
+			"actuallyadditions:item_food:14",
+			"actuallyadditions:item_food:20",
+			"actuallyadditions:item_food:3",
+			"actuallyadditions:item_food:8",
 			"betterwithaddons:food_clownfish_cooked",
 			"betterwithaddons:food_egg_cooked",
 			"betterwithaddons:food_ground_meat",

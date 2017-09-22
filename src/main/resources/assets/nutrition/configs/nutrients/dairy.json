@@ -11,6 +11,14 @@
 			"listAllmilk"
 		],
 		"items": [
+			"actuallyadditions:item_food:0",
+			"actuallyadditions:item_food:11",
+			"actuallyadditions:item_food:13",
+			"actuallyadditions:item_food:14",
+			"actuallyadditions:item_food:18",
+			"actuallyadditions:item_food:19",
+			"actuallyadditions:item_food:8",
+			"actuallyadditions:item_food:9",
 			"betterwithmods:chowder",
 			"betterwithmods:cooked_scrambled_egg",
 			"betterwithmods:raw_scrambled_egg",
@@ -227,6 +235,7 @@
 			"realworld:food_fruit_drink_red",
 			"realworld:food_fruit_drink_white",
 			"realworld:food_fruit_drink_yellow",
+			"saltmod:pumpkin_porridge",
 			"simplecorn:chickencornchowder",
 			"simplecorn:cornchowder",
 			"tconstruct:edible:1",
