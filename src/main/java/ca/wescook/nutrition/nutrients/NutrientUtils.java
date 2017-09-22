@@ -51,6 +51,8 @@ public class NutrientUtils {
 			foodValue = ((ItemFood) item).getHealAmount(itemStack); // Number of half-drumsticks food heals
 		else if (item instanceof ItemBlock || item instanceof ItemBlockSpecial) // Cake, most likely
 			foodValue = 2; // Hardcoded value from vanilla
+		else if (item instanceof ItemBucketMilk)
+			foodValue = 4; // Hardcoded milk value
 
 		// Apply multipliers
 		float adjustedFoodValue = (float) (foodValue * 0.5); // Halve to start at reasonable starting point
@@ -77,6 +79,10 @@ public class NutrientUtils {
 
 		// Cake - Modded
 		if (item instanceof ItemBlockSpecial && ((ItemBlockSpecial) item).getBlock() instanceof BlockCake)
+			return true;
+
+		// Milk Bucket
+		if (item instanceof ItemBucketMilk)
 			return true;
 
 		return false;

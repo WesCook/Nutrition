@@ -8,6 +8,7 @@ import net.minecraft.block.BlockCake;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBucketMilk;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -101,7 +102,7 @@ public class EventEatFood {
 		itemStack.setCount(stackSize); // Restore original stack size
 
 		// Get out if not food item
-		if (!(dummyStack.getItem() instanceof ItemFood))
+		if (!(dummyStack.getItem() instanceof ItemFood || dummyStack.getItem() instanceof ItemBucketMilk))
 			return;
 
 		// Calculate nutrition
