@@ -22,7 +22,6 @@ public abstract class GuiScreenDynamic extends GuiScreen {
 
 	// Container info
 	private final ResourceLocation GUI_BORDERS = new ResourceLocation(Nutrition.MODID, "textures/gui/gui.png");
-	private final int BACKGROUND_COLOR = 0xffc6c6c6;
 
 	// Update GUI size
 	// Must be increment of 4!
@@ -77,8 +76,10 @@ public abstract class GuiScreenDynamic extends GuiScreen {
 		for (int i = 0; i < guiWidth - 8; i += 4)
 			drawTexturedModalRect(left + 4 + i, bottom - 4, 4, 8, 4, 4);
 
-		// Draw center rectangle
-		drawRect(left + 4, top + 4, right - 4, bottom - 4, BACKGROUND_COLOR);
+		// Draw center tiles
+		for (int i = 0; i < guiWidth - 8; i += 4)
+			for (int j = 0; j < guiHeight - 8; j += 4)
+				drawTexturedModalRect(left + 4 + i, top + 4 + j, 4, 4, 4, 4);
 	}
 
 	// Draw labels and buttons (replacing super.drawScreen() call)
