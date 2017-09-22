@@ -336,7 +336,9 @@
 			"realworld:food_strawberry",
 			"realworld:food_tangerine",
 			"rustic:grapes",
-			"rustic:wildberries"
+			"rustic:wildberries",
+			"saltmod:apple_pie",
+			"saltmod:fruit_salad"
 		]
 	}
 }
