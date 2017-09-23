@@ -10,13 +10,13 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-import static ca.wescook.nutrition.Nutrition.MODID;
-import static ca.wescook.nutrition.Nutrition.MODNAME;
+import static ca.wescook.nutrition.Nutrition.*;
 
-@Mod(modid = MODID, name = MODNAME, version = "@VERSION@", acceptableRemoteVersions = "*")
+@Mod(modid = MODID, name = MODNAME, version = "@VERSION@", acceptedMinecraftVersions = FORGE_VERSIONS, acceptableRemoteVersions = "*")
 public class Nutrition {
 	public static final String MODID = "nutrition";
 	public static final String MODNAME = "Nutrition";
+	public static final String FORGE_VERSIONS = "[1.12,1.13)";
 
 	// Create instance of mod
 	@Mod.Instance
