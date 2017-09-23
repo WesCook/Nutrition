@@ -48,6 +48,9 @@ When updating the mod, please clear your /nutrition/ config directory to receive
 
 ## Changelog
 
+[v2.4.1](https://github.com/WesCook/Nutrition/releases/tag/v2.4.1) - 2017-09-23
+* Now compatible with any Forge 1.12.* version
+
 [v2.4.0](https://github.com/WesCook/Nutrition/releases/tag/v2.4.0) - 2017-09-22
 * Gui background can now be textured
 * Hardcoded support for milk buckets
