@@ -18,10 +18,13 @@ By default, Nutrition comes configured with the classic five food group system: 
 
 Mods that are supported with the default five-food group system include:
 
+* [Actually Additions](https://minecraft.curseforge.com/projects/actually-additions)
+* [Animania](https://minecraft.curseforge.com/projects/animania)
 * [Better with Addons](https://minecraft.curseforge.com/projects/better-with-addons)
 * [Better with Mods](https://minecraft.curseforge.com/projects/better-with-mods)
 * [Biomes O' Plenty](https://minecraft.curseforge.com/projects/biomes-o-plenty)
 * [Edible Bugs](https://minecraft.curseforge.com/projects/edible-bugs)
+* [Extra Utilities 2](https://minecraft.curseforge.com/projects/extra-utilities)
 * [Food Expansion](https://minecraft.curseforge.com/projects/food-expansion)
 * [Forestry](https://minecraft.curseforge.com/projects/forestry)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
@@ -33,15 +36,29 @@ Mods that are supported with the default five-food group system include:
 * [Reptile Mod](https://minecraft.curseforge.com/projects/reptilemod)
 * [Roots](https://minecraft.curseforge.com/projects/roots)
 * [Rustic](https://minecraft.curseforge.com/projects/rustic)
+* [SaltyMod](https://minecraft.curseforge.com/projects/saltymod)
 * [Simple Corn](https://minecraft.curseforge.com/projects/simple-corn)
 * [Simply Tea!](https://minecraft.curseforge.com/projects/simply-tea)
 * [Tinkers Construct](https://minecraft.curseforge.com/projects/tinkers-construct)
+* [VanillaFoodPantry](https://minecraft.curseforge.com/projects/vanillafoodpantry-mod)
 
 Mod support contributions are welcome!  Please create a [Pull Request](https://github.com/WesCook/Nutrition/pulls) or an [Issue](https://github.com/WesCook/Nutrition/issues) with the related .json files.
 
 When updating the mod, please clear your /nutrition/ config directory to receive new mod support (point releases will not require this).
 
 ## Changelog
+
+[v2.4.0](https://github.com/WesCook/Nutrition/releases/tag/v2.4.0) - 2017-09-22
+* Gui background can now be textured
+* Hardcoded support for milk buckets
+* HarvestCraft cakes are now supported
+* Added SaltyMod support (contribution from Ash70)
+* Added Actually Additions support (contribution from ethanator2008)
+* Added Extra Utilities 2 support (contribution from ethanator2008)
+* Added Plants 2 support
+* Ported Animania support
+* Ported VanillaFoodPantry support
+* Updated to Forge 1.12.2
 
 [v2.3.0](https://github.com/WesCook/Nutrition/releases/tag/v2.3.0) - 2017-09-08
 * GUI now resizes horizontally for long nutrient names
