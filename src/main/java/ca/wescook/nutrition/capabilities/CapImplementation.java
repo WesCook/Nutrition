@@ -18,6 +18,7 @@ public class CapImplementation implements CapInterface {
 	// Map Nutrient type to value for that nutrient
 	private Map<Nutrient, Float> playerNutrition = new HashMap<>();
 	private EntityPlayer player;
+	private Float playerDrinkPenalty;
 
 	CapImplementation(EntityPlayer player) {
 		// Store player
@@ -26,6 +27,9 @@ public class CapImplementation implements CapInterface {
 		// Populate nutrient data with starting nutrition
 		for (Nutrient nutrient : NutrientList.get())
 			playerNutrition.put(nutrient, (float) Config.startingNutrition);
+		
+		// Assign starting drink penalty
+		playerDrinkPenalty = (float) Config.startingDrinkPenalty;
 	}
 
 	public Map<Nutrient, Float> get() {
@@ -81,5 +85,14 @@ public class CapImplementation implements CapInterface {
 	public void resync() {
 		if (!player.world.isRemote)
 			ModPacketHandler.NETWORK_CHANNEL.sendTo(new PacketNutritionResponse.Message(player), (EntityPlayerMP) player);
+	}
+	
+	public Float getDrinkPenalty() {
+		return playerDrinkPenalty;
+	}
+	
+	public void setDrinkPenalty(Float value, boolean sync) {
+		playerDrinkPenalty = value;
+		if (sync) resync();
 	}
 }
