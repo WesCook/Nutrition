@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NutrientUtils {
+	
 	// Returns list of nutrients that food belongs to
 	public static List<Nutrient> getFoodNutrients(ItemStack eatingFood) {
 		List<Nutrient> nutrientsFound = new ArrayList<>();
@@ -41,7 +42,7 @@ public class NutrientUtils {
 
 	// Calculate nutrition value for supplied food
 	// Requires nutrient list from that food for performance reasons (see getFoodNutrients)
-	public static float calculateNutrition(ItemStack itemStack, List<Nutrient> nutrients) {
+	public static float calculateNutrition(ItemStack itemStack, List<Nutrient> nutrients, int drinkFoodValue) {
 		// Get item/block
 		Item item = itemStack.getItem();
 
@@ -51,8 +52,9 @@ public class NutrientUtils {
 			foodValue = ((ItemFood) item).getHealAmount(itemStack); // Number of half-drumsticks food heals
 		else if (item instanceof ItemBlock || item instanceof ItemBlockSpecial) // Cake, most likely
 			foodValue = 2; // Hardcoded value from vanilla
-		else if (item instanceof ItemBucketMilk)
-			foodValue = 4; // Hardcoded milk value
+		//dummyStack.getItem().getItemUseAction(dummyStack) != EnumAction.DRINK
+		else if (item.getItemUseAction(itemStack) == EnumAction.DRINK)
+			foodValue = drinkFoodValue; // Allow drinks to grant nutrients
 
 		// Apply multipliers
 		float adjustedFoodValue = (float) (foodValue * 0.5); // Halve to start at reasonable starting point
@@ -62,6 +64,9 @@ public class NutrientUtils {
 		float nutritionValue = Math.max(0, adjustedFoodValue - foodLoss); // Subtract from true value, with a floor of 0
 
 		return nutritionValue;
+	}
+	public static float calculateNutrition(ItemStack itemStack, List<Nutrient> nutrients) {
+		return NutrientUtils.calculateNutrition(itemStack, nutrients, 0);
 	}
 
 	// Verify it meets a valid type
@@ -80,9 +85,9 @@ public class NutrientUtils {
 		// Cake - Modded
 		if (item instanceof ItemBlockSpecial && ((ItemBlockSpecial) item).getBlock() instanceof BlockCake)
 			return true;
-
-		// Milk Bucket
-		if (item instanceof ItemBucketMilk)
+		
+		// Drinkable items
+		if (itemStack.getItem().getItemUseAction(itemStack) == EnumAction.DRINK)
 			return true;
 
 		return false;
@@ -95,5 +100,14 @@ public class NutrientUtils {
 			if (isValidFood(itemStack) && getFoodNutrients(itemStack).size() == 0)
 				Log.warn("Registered food without nutrients: " + item.getRegistryName());
 		}
+	}
+	
+	public static int getDrinkValue(Float drinkPenalty)
+	{
+		float penaltyPercent = drinkPenalty / Config.maxDrinkPenalty;
+		float logFunc = (float)( 1 - (1 / (1 + Math.pow(Math.E,-9*(penaltyPercent-0.5)))));
+		int drinkEffect = (int) Math.round(Config.maxDrinkFoodValue * logFunc);
+		Log.info("calculated drink val of "+drinkEffect+" from effectiveness of "+logFunc+" from drinkPenalty of "+drinkPenalty+" = "+penaltyPercent+"%");
+		return (int) Math.round(Config.maxDrinkFoodValue * logFunc);
 	}
 }
