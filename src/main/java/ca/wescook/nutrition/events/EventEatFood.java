@@ -7,8 +7,8 @@ import ca.wescook.nutrition.utility.Config;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBucketMilk;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -71,11 +71,11 @@ public class EventEatFood {
 		if (itemStack == null)
 			return;
 
-		// Is item food?
+		// Is item food or drink?
 		Item item = itemStack.getItem();
-		if (!(item instanceof ItemFood))
+		if (!(item instanceof ItemFood) && item.getItemUseAction(itemStack) != EnumAction.DRINK) {
 			return;
-
+		}
 		// If config allows, mark food as edible
 		if (Config.allowOverEating)
 			((ItemFood) item).setAlwaysEdible();
@@ -100,14 +100,26 @@ public class EventEatFood {
 		itemStack.setCount(1); // Temporarily setting stack size to 1 so .copy works for stack sizes of 0
 		ItemStack dummyStack = itemStack.copy(); // Create dummy copy to not affect original item
 		itemStack.setCount(stackSize); // Restore original stack size
-
-		// Get out if not food item
-		if (!(dummyStack.getItem() instanceof ItemFood || dummyStack.getItem() instanceof ItemBucketMilk))
-			return;
+		
+		// Get out if not food or drink item
+		//if (!(dummyStack.getItem() instanceof ItemFood) && dummyStack.getItem().getItemUseAction(dummyStack) != EnumAction.DRINK)
+		//	return;
+		int drinkValue = 0; //Food items don't care, will set if a drink
+		if (!(dummyStack.getItem() instanceof ItemFood)) {
+			if (dummyStack.getItem().getItemUseAction(dummyStack) == EnumAction.DRINK) {
+				//Calculate drink value based on current drink penalty, then set penalty to max
+				float drinkPenalty=player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).getDrinkPenalty();
+				drinkValue = NutrientUtils.getDrinkValue(drinkPenalty);
+				player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).setDrinkPenalty((float)Config.maxDrinkPenalty, true);
+			} else {
+				//abort, not food or drink
+				return;
+			}
+		}
 
 		// Calculate nutrition
 		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(dummyStack); // Nutrient list for that food
-		float nutritionValue = NutrientUtils.calculateNutrition(dummyStack, foundNutrients); // CapImplementation value for that food
+		float nutritionValue = NutrientUtils.calculateNutrition(dummyStack, foundNutrients, drinkValue); // CapImplementation value for that food
 
 		// Add to each nutrient
 		player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(foundNutrients, nutritionValue, true);
