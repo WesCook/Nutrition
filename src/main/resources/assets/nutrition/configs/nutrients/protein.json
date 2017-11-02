@@ -408,6 +408,8 @@
 			"minecraft:pumpkin_pie",
 			"minecraft:rabbit",
 			"minecraft:rabbit_stew",
+			"mob_mash:cooked_crocoduck",
+			"mob_mash:raw_crocoduck",
 			"natura:edibles:0",
 			"natura:edibles:1",
 			"primal:bear_meat_cooked",
