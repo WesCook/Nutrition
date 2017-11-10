@@ -23,11 +23,14 @@ Mods that are supported with the default five-food group system include:
 * [Better with Addons](https://minecraft.curseforge.com/projects/better-with-addons)
 * [Better with Mods](https://minecraft.curseforge.com/projects/better-with-mods)
 * [Biomes O' Plenty](https://minecraft.curseforge.com/projects/biomes-o-plenty)
+* [Chococraft](https://minecraft.curseforge.com/projects/chococraft)
+* [Defiled Lands](https://minecraft.curseforge.com/projects/defiled-lands)
 * [Edible Bugs](https://minecraft.curseforge.com/projects/edible-bugs)
 * [Extra Utilities 2](https://minecraft.curseforge.com/projects/extra-utilities)
 * [Food Expansion](https://minecraft.curseforge.com/projects/food-expansion)
 * [Forestry](https://minecraft.curseforge.com/projects/forestry)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
+* [Mob Mash](https://minecraft.curseforge.com/projects/mob-mash)
 * [Natura](https://minecraft.curseforge.com/projects/natura)
 * [Pam's HarvestCraft](https://minecraft.curseforge.com/projects/pams-harvestcraft)
 * [Plants](https://minecraft.curseforge.com/projects/plants)
@@ -39,6 +42,7 @@ Mods that are supported with the default five-food group system include:
 * [SaltyMod](https://minecraft.curseforge.com/projects/saltymod)
 * [Simple Corn](https://minecraft.curseforge.com/projects/simple-corn)
 * [Simply Tea!](https://minecraft.curseforge.com/projects/simply-tea)
+* [Twilight Forest](https://minecraft.curseforge.com/projects/the-twilight-forest)
 * [Tinkers Construct](https://minecraft.curseforge.com/projects/tinkers-construct)
 * [VanillaFoodPantry](https://minecraft.curseforge.com/projects/vanillafoodpantry-mod)
 
@@ -47,6 +51,10 @@ Mod support contributions are welcome!  Please create a [Pull Request](https://g
 When updating the mod, please clear your /nutrition/ config directory to receive new mod support (point releases will not require this).
 
 ## Changelog
+
+[v2.5.0](https://github.com/WesCook/Nutrition/releases/tag/v2.5.0) - 2017-11-10
+* Added support for Chococraft, Defiled Lands, Mob Mash, and Twilight Forest (contribution from Sunconure11)
+* Added German localizations (contribution from 3TUSK)
 
 [v2.4.1](https://github.com/WesCook/Nutrition/releases/tag/v2.4.1) - 2017-09-23
 * Now compatible with any Forge 1.12.* version
