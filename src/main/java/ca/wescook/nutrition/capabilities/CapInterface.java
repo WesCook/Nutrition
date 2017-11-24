@@ -36,4 +36,10 @@ public interface CapInterface {
 
 	// Sync nutrition data to local dummy
 	void resync();
+	
+	// Return drink penalty
+	Float getDrinkPenalty();
+	
+	// Set drink penalty
+	void setDrinkPenalty(Float value, boolean sync);
 }

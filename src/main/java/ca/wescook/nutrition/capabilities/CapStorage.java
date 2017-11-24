@@ -12,12 +12,15 @@ import java.util.HashMap;
 
 // Saves and loads serialized data from disk
 public class CapStorage implements Capability.IStorage<CapInterface> {
+	private static final String DRINK_PENALTY_STRING = "drinkPenalty";
+	
 	// Save serialized data to disk
 	@Override
 	public NBTBase writeNBT(Capability<CapInterface> capability, CapInterface instance, EnumFacing side) {
 		NBTTagCompound playerData = new NBTTagCompound();
 		for (Nutrient nutrient : NutrientList.get())
 			playerData.setFloat(nutrient.name, instance.get(nutrient));
+		playerData.setFloat(DRINK_PENALTY_STRING, instance.getDrinkPenalty());
 		return playerData;
 	}
 
@@ -41,5 +44,12 @@ public class CapStorage implements Capability.IStorage<CapInterface> {
 		// Replace nutrient data with map
 		// Note: Syncing throws network errors at this stage
 		instance.set(clientNutrients, false);
+
+		// Read drink penalty from file
+		if (((NBTTagCompound) nbt).hasKey(DRINK_PENALTY_STRING))
+			value = ((NBTTagCompound) nbt).getFloat(DRINK_PENALTY_STRING);
+		else
+			value = (float) 0; //TODO use config for default
+		instance.setDrinkPenalty(value, false);
 	}
 }

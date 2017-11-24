@@ -27,6 +27,9 @@ public class EventPlayerUpdate {
 		// Apply decay check each tick
 		if (Config.enableDecay)
 			nutritionDecay(player);
+		
+		// Reduce drink penalty each tick
+		drinkPenaltyTick(player);
 
 		// Reapply potion effects every 5 seconds
 		if (potionCounter > 100) {
@@ -55,5 +58,13 @@ public class EventPlayerUpdate {
 
 		// Update for the next pass
 		playerFoodLevels.put(player, foodLevelNew);
+	}
+	
+	private void drinkPenaltyTick(EntityPlayer player) {
+		Float drinkPenalty = player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).getDrinkPenalty();
+		drinkPenalty--;
+		if (drinkPenalty < 0)
+			drinkPenalty = (float) 0;
+		player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).setDrinkPenalty(drinkPenalty, true);
 	}
 }
