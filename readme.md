@@ -25,6 +25,7 @@ Mods that are supported with the default five-food group system include:
 * [Biomes O' Plenty](https://minecraft.curseforge.com/projects/biomes-o-plenty)
 * [Chococraft](https://minecraft.curseforge.com/projects/chococraft)
 * [Defiled Lands](https://minecraft.curseforge.com/projects/defiled-lands)
+* [Duck Craft](https://minecraft.curseforge.com/projects/duck-craft)
 * [Edible Bugs](https://minecraft.curseforge.com/projects/edible-bugs)
 * [Extra Utilities 2](https://minecraft.curseforge.com/projects/extra-utilities)
 * [Food Expansion](https://minecraft.curseforge.com/projects/food-expansion)
@@ -42,6 +43,7 @@ Mods that are supported with the default five-food group system include:
 * [SaltyMod](https://minecraft.curseforge.com/projects/saltymod)
 * [Simple Corn](https://minecraft.curseforge.com/projects/simple-corn)
 * [Simply Tea!](https://minecraft.curseforge.com/projects/simply-tea)
+* [Skye's Donuts](https://minecraft.curseforge.com/projects/skyes-donuts)
 * [Twilight Forest](https://minecraft.curseforge.com/projects/the-twilight-forest)
 * [Tinkers Construct](https://minecraft.curseforge.com/projects/tinkers-construct)
 * [VanillaFoodPantry](https://minecraft.curseforge.com/projects/vanillafoodpantry-mod)
@@ -51,6 +53,10 @@ Mod support contributions are welcome!  Please create a [Pull Request](https://g
 When updating the mod, please clear your /nutrition/ config directory to receive new mod support (point releases will not require this).
 
 ## Changelog
+
+[v2.6.0](https://github.com/WesCook/Nutrition/releases/tag/v2.6.0) - 2017-11-24
+* Added support for Skye's Donuts and Duck Craft
+* Updated Reptile Mod support (contribution from Sunconure11)
 
 [v2.5.0](https://github.com/WesCook/Nutrition/releases/tag/v2.5.0) - 2017-11-10
 * Added support for Chococraft, Defiled Lands, Mob Mash, and Twilight Forest (contribution from Sunconure11)
