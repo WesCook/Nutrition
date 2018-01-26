@@ -19,11 +19,14 @@ By default, Nutrition comes configured with the classic five food group system: 
 Mods that are supported with the default five-food group system include:
 
 * [Actually Additions](https://minecraft.curseforge.com/projects/actually-additions)
+* [Aether Legacy](https://minecraft.curseforge.com/projects/aether-legacy)
 * [Animania](https://minecraft.curseforge.com/projects/animania)
 * [Better with Addons](https://minecraft.curseforge.com/projects/better-with-addons)
 * [Better with Mods](https://minecraft.curseforge.com/projects/better-with-mods)
 * [Biomes O' Plenty](https://minecraft.curseforge.com/projects/biomes-o-plenty)
+* [Cave Root](https://minecraft.curseforge.com/projects/cave-root)
 * [Chococraft](https://minecraft.curseforge.com/projects/chococraft)
+* [Combustive Fishing](https://minecraft.curseforge.com/projects/combustive-fishing)
 * [Defiled Lands](https://minecraft.curseforge.com/projects/defiled-lands)
 * [Duck Craft](https://minecraft.curseforge.com/projects/duck-craft)
 * [Edible Bugs](https://minecraft.curseforge.com/projects/edible-bugs)
@@ -31,11 +34,14 @@ Mods that are supported with the default five-food group system include:
 * [Food Expansion](https://minecraft.curseforge.com/projects/food-expansion)
 * [Forestry](https://minecraft.curseforge.com/projects/forestry)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
+* [Ice and Fire](https://minecraft.curseforge.com/projects/ice-and-fire-dragons-in-a-whole-new-light)
 * [Mob Mash](https://minecraft.curseforge.com/projects/mob-mash)
 * [Natura](https://minecraft.curseforge.com/projects/natura)
+* [NetherEx](https://minecraft.curseforge.com/projects/netherex)
 * [Pam's HarvestCraft](https://minecraft.curseforge.com/projects/pams-harvestcraft)
 * [Plants](https://minecraft.curseforge.com/projects/plants)
 * [PrimalCore](https://minecraft.curseforge.com/projects/primalcore)
+* [Primitive Mobs](https://minecraft.curseforge.com/projects/primitive-mobs)
 * [RealWorld](http://10paksmods.net/realworld.html)
 * [Reptile Mod](https://minecraft.curseforge.com/projects/reptilemod)
 * [Roots](https://minecraft.curseforge.com/projects/roots)
@@ -44,8 +50,9 @@ Mods that are supported with the default five-food group system include:
 * [Simple Corn](https://minecraft.curseforge.com/projects/simple-corn)
 * [Simply Tea!](https://minecraft.curseforge.com/projects/simply-tea)
 * [Skye's Donuts](https://minecraft.curseforge.com/projects/skyes-donuts)
-* [Twilight Forest](https://minecraft.curseforge.com/projects/the-twilight-forest)
+* [The Betweenlands](https://minecraft.curseforge.com/projects/angry-pixel-the-betweenlands-mod)
 * [Tinkers Construct](https://minecraft.curseforge.com/projects/tinkers-construct)
+* [Twilight Forest](https://minecraft.curseforge.com/projects/the-twilight-forest)
 * [VanillaFoodPantry](https://minecraft.curseforge.com/projects/vanillafoodpantry-mod)
 
 Mod support contributions are welcome!  Please create a [Pull Request](https://github.com/WesCook/Nutrition/pulls) or an [Issue](https://github.com/WesCook/Nutrition/issues) with the related .json files.
@@ -53,6 +60,13 @@ Mod support contributions are welcome!  Please create a [Pull Request](https://g
 When updating the mod, please clear your /nutrition/ config directory to receive new mod support (point releases will not require this).
 
 ## Changelog
+
+[v2.7.0](https://github.com/WesCook/Nutrition/releases/tag/v2.7.0) - 2018-01-26
+* Added support for Cave Root, Combustive Fishing, NetherEx, Primitive Mobs, and The Betweenlands (contribution from Sunconure11)
+* Updated support for Aether Legacy, and Ice and Fire (contribution from Sunconure11)
+* Updated support for HarvestCraft, SaltyMod, VanillaFoodPantry, and PrimalCore
+* Minor config comment changes
+* Bumped Forge version
 
 [v2.6.0](https://github.com/WesCook/Nutrition/releases/tag/v2.6.0) - 2017-11-24
 * Added support for Skye's Donuts and Duck Craft
