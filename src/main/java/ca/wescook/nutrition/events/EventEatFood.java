@@ -89,6 +89,10 @@ public class EventEatFood {
 
 	// Checks which food has been eaten, and updates nutrition
 	private void checkFoodEaten(LivingEntityUseItemEvent.Finish event) {
+		// Only check against players
+		if (!(event.getEntity() instanceof EntityPlayer))
+			return;
+
 		// Only run on server
 		EntityPlayer player = (EntityPlayer) event.getEntity();
 		if (player.getEntityWorld().isRemote)
