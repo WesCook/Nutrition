@@ -35,6 +35,7 @@ Mods that are supported with the default five-food group system include:
 * [Forestry](https://minecraft.curseforge.com/projects/forestry)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
 * [Ice and Fire](https://minecraft.curseforge.com/projects/ice-and-fire-dragons-in-a-whole-new-light)
+* [Lycanites Mobs](https://minecraft.curseforge.com/projects/lycanites-mobs)
 * [Mob Mash](https://minecraft.curseforge.com/projects/mob-mash)
 * [Natura](https://minecraft.curseforge.com/projects/natura)
 * [NetherEx](https://minecraft.curseforge.com/projects/netherex)
