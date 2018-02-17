@@ -62,6 +62,10 @@ When updating the mod, please clear your /nutrition/ config directory to receive
 
 ## Changelog
 
+[v2.8.0](https://github.com/WesCook/Nutrition/releases/tag/v2.8.0) - 2018-02-17
+* Added support for Lycanites Mobs (contribution from Sunconure11)
+* Additional player entity check (fixes conflict with "Welcome to the Jungle")
+
 [v2.7.0](https://github.com/WesCook/Nutrition/releases/tag/v2.7.0) - 2018-01-26
 * Added support for Cave Root, Combustive Fishing, NetherEx, Primitive Mobs, and The Betweenlands (contribution from Sunconure11)
 * Updated support for Aether Legacy, and Ice and Fire (contribution from Sunconure11)
