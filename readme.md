@@ -30,10 +30,12 @@ Mods that are supported with the default five-food group system include:
 * [Defiled Lands](https://minecraft.curseforge.com/projects/defiled-lands)
 * [Duck Craft](https://minecraft.curseforge.com/projects/duck-craft)
 * [Edible Bugs](https://minecraft.curseforge.com/projects/edible-bugs)
+* [Erebus](https://minecraft.curseforge.com/projects/the-erebus)
 * [Extra Utilities 2](https://minecraft.curseforge.com/projects/extra-utilities)
 * [Food Expansion](https://minecraft.curseforge.com/projects/food-expansion)
 * [Forestry](https://minecraft.curseforge.com/projects/forestry)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
+* [Heat and Climate](http://defeatedcrow.jp/modwiki/HeatAndClimate_EN)
 * [Ice and Fire](https://minecraft.curseforge.com/projects/ice-and-fire-dragons-in-a-whole-new-light)
 * [Lycanites Mobs](https://minecraft.curseforge.com/projects/lycanites-mobs)
 * [Mob Mash](https://minecraft.curseforge.com/projects/mob-mash)
@@ -61,6 +63,11 @@ Mod support contributions are welcome!  Please create a [Pull Request](https://g
 When updating the mod, please clear your /nutrition/ config directory to receive new mod support (point releases will not require this).
 
 ## Changelog
+
+[v2.9.0](https://github.com/WesCook/Nutrition/releases/tag/v2.9.0) - 2018-02-25
+* Added support for Heat and Climate (contribution from MaskedBird)
+* Added support for Erebus (contribution from Sunconure11)
+* Updated support for Plants and Betweenlands (contribution from Sunconure11)
 
 [v2.8.0](https://github.com/WesCook/Nutrition/releases/tag/v2.8.0) - 2018-02-17
 * Added support for Lycanites Mobs (contribution from Sunconure11)
