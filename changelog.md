@@ -1,5 +1,9 @@
 ## Changelog
 
+[v3.0.0](https://github.com/WesCook/Nutrition/releases/tag/v3.0.0) - 2018-03-11
+* Made a breaking change to the custom mal/nourished effects, so each amplifier level grants half a heart instead of a full heart.  This is to allow more granularity in custom effects.
+* Added support for Familiar Fauna (contribution from Sunconure11)
+
 [v2.9.0](https://github.com/WesCook/Nutrition/releases/tag/v2.9.0) - 2018-02-25
 * Added support for Heat and Climate (contribution from MaskedBird)
 * Added support for Erebus (contribution from Sunconure11)
