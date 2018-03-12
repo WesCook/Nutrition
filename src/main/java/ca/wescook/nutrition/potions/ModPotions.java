@@ -5,7 +5,6 @@ import net.minecraft.util.ResourceLocation;
 
 import java.util.UUID;
 
-// A simple potion implementation to avoid visible rendering in the inventory screen
 public class ModPotions {
 	public static PotionToughness toughness;
 	public static PotionMalnourished malnourished;

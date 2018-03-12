@@ -14,7 +14,7 @@ public class PotionNourished extends PotionCustom {
 	public double getAttributeModifierAmount(int amplifier, AttributeModifier modifier) {
 		// Increase health
 		if (modifier.getID().equals(ModPotions.NOURISHMENT_HEALTH))
-			return (amplifier + 1) * 2D; // 2 = one heart
+			return (amplifier + 1); // Half-heart per level
 
 		return 0D;
 	}
