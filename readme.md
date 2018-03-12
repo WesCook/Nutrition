@@ -32,6 +32,7 @@ Mods that are supported with the default five-food group system include:
 * [Edible Bugs](https://minecraft.curseforge.com/projects/edible-bugs)
 * [Erebus](https://minecraft.curseforge.com/projects/the-erebus)
 * [Extra Utilities 2](https://minecraft.curseforge.com/projects/extra-utilities)
+* [Familiar Fauna](https://minecraft.curseforge.com/projects/familiar-fauna)
 * [Food Expansion](https://minecraft.curseforge.com/projects/food-expansion)
 * [Forestry](https://minecraft.curseforge.com/projects/forestry)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
