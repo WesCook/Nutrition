@@ -1,6 +1,7 @@
 package ca.wescook.nutrition.events;
 
 import ca.wescook.nutrition.capabilities.CapProvider;
+import ca.wescook.nutrition.effects.EffectsManager;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientUtils;
 import ca.wescook.nutrition.utility.Config;
@@ -81,14 +82,9 @@ public class EventEatFood {
 			((ItemFood) item).setAlwaysEdible();
 	}
 
-	// Calculate nutrition after finishing eating
+	// Calculate nutrition after finishing eating and reapply effects if appropriate
 	@SubscribeEvent
 	public void finishUsingItem(LivingEntityUseItemEvent.Finish event) {
-		checkFoodEaten(event);
-	}
-
-	// Checks which food has been eaten, and updates nutrition
-	private void checkFoodEaten(LivingEntityUseItemEvent.Finish event) {
 		// Only check against players
 		if (!(event.getEntity() instanceof EntityPlayer))
 			return;
@@ -98,22 +94,39 @@ public class EventEatFood {
 		if (player.getEntityWorld().isRemote)
 			return;
 
-		// Get ItemStack of eaten food, and copy item
+		// Get ItemStack of eaten food
 		ItemStack itemStack = event.getItem();
 		int stackSize = itemStack.getCount();
 		itemStack.setCount(1); // Temporarily setting stack size to 1 so .copy works for stack sizes of 0
 		ItemStack dummyStack = itemStack.copy(); // Create dummy copy to not affect original item
 		itemStack.setCount(stackSize); // Restore original stack size
 
+		// Apply actions to item
+		applyNutrition(player, dummyStack);
+		reapplyEffectsFromMilk(player, dummyStack);
+	}
+
+	// Add found nutrients to player
+	private void applyNutrition(EntityPlayer player, ItemStack itemStack) {
 		// Get out if not food item
-		if (!(dummyStack.getItem() instanceof ItemFood || dummyStack.getItem() instanceof ItemBucketMilk))
+		if (!(itemStack.getItem() instanceof ItemFood || itemStack.getItem() instanceof ItemBucketMilk))
 			return;
 
 		// Calculate nutrition
-		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(dummyStack); // Nutrient list for that food
-		float nutritionValue = NutrientUtils.calculateNutrition(dummyStack, foundNutrients); // CapImplementation value for that food
+		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(itemStack); // Nutrient list for that food
+		float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients); // CapImplementation value for that food
 
 		// Add to each nutrient
 		player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(foundNutrients, nutritionValue, true);
+	}
+
+	// If milk clears effects, reapply immediately
+	private void reapplyEffectsFromMilk(EntityPlayer player, ItemStack itemStack) {
+		// Only continue if milk bucket (curative item)
+		if (!(itemStack.getItem() instanceof ItemBucketMilk))
+			return;
+
+		// Reapply effects
+		EffectsManager.reapplyEffects(player);
 	}
 }

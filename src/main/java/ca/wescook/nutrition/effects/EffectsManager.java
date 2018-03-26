@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class EffectsManager {
-	// Called from EventPlayerUpdate.
+	// Called from EventPlayerUpdate#PlayerTickEvent and EventEatFood#reapplyEffectsFromMilk
 	public static void reapplyEffects(EntityPlayer player) {
 		List<Effect> effects = removeDuplicates(getEffectsInThreshold(player));
 
@@ -111,7 +111,7 @@ public class EffectsManager {
 		return effectsInThreshold;
 	}
 
-	// Determines highest amplifier for duplicates, and removes them
+	// Determines highest amplifier for duplicates, and removes any others of the same type
 	private static List<Effect> removeDuplicates(List<Effect> effectsInput) {
 		List<Effect> effectsOutput = new ArrayList<>();
 		boolean foundMatch = false;
