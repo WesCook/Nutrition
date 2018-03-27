@@ -20,6 +20,7 @@ Mods that are supported with the default five-food group system include:
 
 * [Actually Additions](https://minecraft.curseforge.com/projects/actually-additions)
 * [Aether Legacy](https://minecraft.curseforge.com/projects/aether-legacy)
+* [Animalium](https://minecraft.curseforge.com/projects/animalium)
 * [Animania](https://minecraft.curseforge.com/projects/animania)
 * [Better with Addons](https://minecraft.curseforge.com/projects/better-with-addons)
 * [Better with Mods](https://minecraft.curseforge.com/projects/better-with-mods)
@@ -38,6 +39,7 @@ Mods that are supported with the default five-food group system include:
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
 * [Heat and Climate](http://defeatedcrow.jp/modwiki/HeatAndClimate_EN)
 * [Ice and Fire](https://minecraft.curseforge.com/projects/ice-and-fire-dragons-in-a-whole-new-light)
+* [Inspirations](https://minecraft.curseforge.com/projects/inspirations)
 * [Lycanites Mobs](https://minecraft.curseforge.com/projects/lycanites-mobs)
 * [Mob Mash](https://minecraft.curseforge.com/projects/mob-mash)
 * [Natura](https://minecraft.curseforge.com/projects/natura)
@@ -56,6 +58,7 @@ Mods that are supported with the default five-food group system include:
 * [Skye's Donuts](https://minecraft.curseforge.com/projects/skyes-donuts)
 * [The Betweenlands](https://minecraft.curseforge.com/projects/angry-pixel-the-betweenlands-mod)
 * [Tinkers Construct](https://minecraft.curseforge.com/projects/tinkers-construct)
+* [Tropicraft](https://minecraft.curseforge.com/projects/tropicraft)
 * [Twilight Forest](https://minecraft.curseforge.com/projects/the-twilight-forest)
 * [VanillaFoodPantry](https://minecraft.curseforge.com/projects/vanillafoodpantry-mod)
 
