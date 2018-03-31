@@ -2,7 +2,7 @@
 
 [v3.1.0](https://github.com/WesCook/Nutrition/releases/tag/v3.1.0) - 2018-03-26
 * Drinking milk will no longer clear potion effects from Nutrition
-* Updated VanillaFoodPantry
+* Updated VanillaFoodPantry support
 * Ported Animalium support, and updated support for Familiar Fauna (contribution from Sunconure11)
 * Added Tropicraft and Inspirations support (contribution from Sunconure11)
 
