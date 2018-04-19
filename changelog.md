@@ -1,5 +1,9 @@
 ## Changelog
 
+[v3.2.0](https://github.com/WesCook/Nutrition/releases/tag/v3.2.0) - 2018-04-19
+* Major overhaul of chat commands.  Introduced tab completion, player selectors, and add/subtract/reset features.
+* Added support for Galacticraft (contribution from Broam)
+
 [v3.1.0](https://github.com/WesCook/Nutrition/releases/tag/v3.1.0) - 2018-03-26
 * Drinking milk will no longer clear potion effects from Nutrition
 * Updated VanillaFoodPantry support

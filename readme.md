@@ -36,6 +36,7 @@ Mods that are supported with the default five-food group system include:
 * [Familiar Fauna](https://minecraft.curseforge.com/projects/familiar-fauna)
 * [Food Expansion](https://minecraft.curseforge.com/projects/food-expansion)
 * [Forestry](https://minecraft.curseforge.com/projects/forestry)
+* [Galacticraft](https://micdoodle8.com/mods/galacticraft)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
 * [Heat and Climate](http://defeatedcrow.jp/modwiki/HeatAndClimate_EN)
 * [Ice and Fire](https://minecraft.curseforge.com/projects/ice-and-fire-dragons-in-a-whole-new-light)
