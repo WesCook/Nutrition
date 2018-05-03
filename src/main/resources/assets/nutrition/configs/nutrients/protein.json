@@ -897,7 +897,21 @@
 			"vanillafoodpantry:tatoes:9",
 			"vanillafoodpantry:wolf_cooked",
 			"vanillafoodpantry:wolf_raw",
-			"vanillafoodpantry:wrapped_egg"
+			"vanillafoodpantry:wrapped_egg",
+			"zawa:bird_meat",
+			"zawa:bird_meat_cooked",
+			"zawa:bush_meat_cooked",
+			"zawa:bush_meat_raw",
+			"zawa:carnivore_meat_cooked",
+			"zawa:carnivore_meat_raw",
+			"zawa:cetacean_meat_cooked",
+			"zawa:cetacean_meat_raw",
+			"zawa:cooked_frog_leg",
+			"zawa:large_meat_cooked",
+			"zawa:large_meat_raw",
+			"zawa:raw_frog_leg",
+			"zawa:reptile_meat_cooked",
+			"zawa:reptile_meat_raw"
 		]
 	}
 }
