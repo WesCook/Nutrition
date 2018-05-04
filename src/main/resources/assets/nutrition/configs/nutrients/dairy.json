@@ -404,7 +404,30 @@
 			"vanillafoodpantry:tatoes:10",
 			"vanillafoodpantry:tatoes:11",
 			"vanillafoodpantry:teadrink:201",
-			"vanillafoodpantry:teadrink:202"
+			"vanillafoodpantry:teadrink:202",
+			"xlfoodmod:enchilada",
+			"xlfoodmod:taco_salad",
+			"xlfoodmod:oreo_cupcake",
+			"xlfoodmod:cheeseburger",
+			"xlfoodmod:caesar_salad",
+			"xlfoodmod:burrito",
+			"xlfoodmod:crouton",
+			"xlfoodmod:cheesy_bread",
+			"xlfoodmod:garden_salad",
+			"xlfoodmod:slice_of_pizza",
+			"xlfoodmod:lasagne",
+			"xlfoodmod:butter_rice",
+			"xlfoodmod:oreo_cookie",
+			"xlfoodmod:cheese",
+			"xlfoodmod:taco",
+			"xlfoodmod:waffle",
+			"xlfoodmod:butter",
+			"xlfoodmod:cheese_puff",
+			"xlfoodmod:vanilla_icecream",
+			"xlfoodmod:chocolate_icecream",
+			"xlfoodmod:cheese_pie",
+			"xlfoodmod:strawberry_icecream",
+			"xlfoodmod:cappuccino"
 		]
 	}
 }
