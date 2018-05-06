@@ -1,5 +1,10 @@
 ## Changelog
 
+[v3.3.0](https://github.com/WesCook/Nutrition/releases/tag/v3.3.0) - 2018-05-06
+* Added support for Exotic Birds, Thaumcraft, and Zoo & Wild Animals Rebuilt (contribution from Sunconure11)
+* Added support for XL Food Mod (contribution from ellor1138)
+* Ported support for Aquaculture (contribution from Sunconure11)
+
 [v3.2.0](https://github.com/WesCook/Nutrition/releases/tag/v3.2.0) - 2018-04-19
 * Major overhaul of chat commands.  Introduced tab completion, player selectors, and add/subtract/reset features.
 * Added support for Galacticraft (contribution from Broam)
