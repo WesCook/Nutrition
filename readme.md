@@ -18,6 +18,7 @@ By default, Nutrition comes configured with the classic five food group system: 
 
 Mods that are supported with the default five-food group system include:
 
+* [Aquaculture](https://minecraft.curseforge.com/projects/aquaculture)
 * [Actually Additions](https://minecraft.curseforge.com/projects/actually-additions)
 * [Aether Legacy](https://minecraft.curseforge.com/projects/aether-legacy)
 * [Animalium](https://minecraft.curseforge.com/projects/animalium)
@@ -32,10 +33,12 @@ Mods that are supported with the default five-food group system include:
 * [Duck Craft](https://minecraft.curseforge.com/projects/duck-craft)
 * [Edible Bugs](https://minecraft.curseforge.com/projects/edible-bugs)
 * [Erebus](https://minecraft.curseforge.com/projects/the-erebus)
+* [Exotic Birds](https://minecraft.curseforge.com/projects/exotic-birds)
 * [Extra Utilities 2](https://minecraft.curseforge.com/projects/extra-utilities)
 * [Familiar Fauna](https://minecraft.curseforge.com/projects/familiar-fauna)
 * [Food Expansion](https://minecraft.curseforge.com/projects/food-expansion)
 * [Forestry](https://minecraft.curseforge.com/projects/forestry)
+* [Galacticraft](https://micdoodle8.com/mods/galacticraft)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
 * [Heat and Climate](http://defeatedcrow.jp/modwiki/HeatAndClimate_EN)
 * [Ice and Fire](https://minecraft.curseforge.com/projects/ice-and-fire-dragons-in-a-whole-new-light)
@@ -56,11 +59,14 @@ Mods that are supported with the default five-food group system include:
 * [Simple Corn](https://minecraft.curseforge.com/projects/simple-corn)
 * [Simply Tea!](https://minecraft.curseforge.com/projects/simply-tea)
 * [Skye's Donuts](https://minecraft.curseforge.com/projects/skyes-donuts)
+* [Thaumcraft](https://minecraft.curseforge.com/projects/thaumcraft)
 * [The Betweenlands](https://minecraft.curseforge.com/projects/angry-pixel-the-betweenlands-mod)
 * [Tinkers Construct](https://minecraft.curseforge.com/projects/tinkers-construct)
 * [Tropicraft](https://minecraft.curseforge.com/projects/tropicraft)
 * [Twilight Forest](https://minecraft.curseforge.com/projects/the-twilight-forest)
 * [VanillaFoodPantry](https://minecraft.curseforge.com/projects/vanillafoodpantry-mod)
+* [XL Food Mod](https://minecraft.curseforge.com/projects/xl-food-mod)
+* [Zoo & Wild Animals Rebuilt](https://minecraft.curseforge.com/projects/zoo-wild-animals-rebuild)
 
 Mod support contributions are welcome!  Please create a [Pull Request](https://github.com/WesCook/Nutrition/pulls) or an [Issue](https://github.com/WesCook/Nutrition/issues) with the related .json files.
 
