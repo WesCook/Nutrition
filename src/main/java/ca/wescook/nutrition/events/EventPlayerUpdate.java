@@ -1,11 +1,13 @@
 package ca.wescook.nutrition.events;
 
-import ca.wescook.nutrition.capabilities.CapProvider;
+import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.effects.EffectsManager;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.utility.Config;
 import com.google.common.primitives.Floats;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -13,6 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EventPlayerUpdate {
+	@CapabilityInject(INutrientManager.class)
+	private final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
+
 	private Map<EntityPlayer, Integer> playerFoodLevels = new HashMap<>(); // Track food level between ticks
 	private int potionCounter = 0; // Count ticks to reapply potion effects
 
@@ -44,13 +49,13 @@ public class EventPlayerUpdate {
 		// If food level has reduced, also lower nutrition
 		if (foodLevelOld != null && foodLevelNew < foodLevelOld) {
 			int difference = foodLevelOld - foodLevelNew; // Difference in food level
-			Map<Nutrient, Float> playerNutrition = player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).get();
+			Map<Nutrient, Float> playerNutrition = player.getCapability(NUTRITION_CAPABILITY, null).get();
 
 			for (Map.Entry<Nutrient, Float> entry : playerNutrition.entrySet()) {
 				float decay = (float) (difference * 0.075 * entry.getKey().decay); // Lower number for reasonable starting point, then apply multiplier from config
 				entry.setValue(Floats.constrainToRange(entry.getValue() - decay, 0, 100)); // Subtract decay from nutrient
 			}
-			player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).set(playerNutrition, true);
+			player.getCapability(NUTRITION_CAPABILITY, null).set(playerNutrition);
 		}
 
 		// Update for the next pass

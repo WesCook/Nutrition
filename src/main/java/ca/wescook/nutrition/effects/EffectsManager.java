@@ -1,15 +1,20 @@
 package ca.wescook.nutrition.effects;
 
-import ca.wescook.nutrition.capabilities.CapProvider;
+import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class EffectsManager {
+	@CapabilityInject(INutrientManager.class)
+	private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
+
 	// Called from EventPlayerUpdate#PlayerTickEvent and EventEatFood#reapplyEffectsFromMilk
 	public static void reapplyEffects(EntityPlayer player) {
 		List<Effect> effects = removeDuplicates(getEffectsInThreshold(player));
@@ -22,7 +27,7 @@ public class EffectsManager {
 	// Returns which effects match threshold conditions
 	private static List<Effect> getEffectsInThreshold(EntityPlayer player) {
 		// Get info
-		Map<Nutrient, Float> playerNutrition = player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).get();
+		Map<Nutrient, Float> playerNutrition = player.getCapability(NUTRITION_CAPABILITY, null).get();
 
 		// Effects being turned on
 		List<Effect> effectsInThreshold = new ArrayList<>();

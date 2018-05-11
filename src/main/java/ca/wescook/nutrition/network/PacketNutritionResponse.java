@@ -1,6 +1,6 @@
 package ca.wescook.nutrition.network;
 
-import ca.wescook.nutrition.capabilities.CapProvider;
+import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
@@ -9,6 +9,8 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -21,6 +23,9 @@ import java.util.Map;
 public class PacketNutritionResponse {
 	// Message Subclass
 	public static class Message implements IMessage {
+		@CapabilityInject(INutrientManager.class)
+		private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
+
 		// Server vars only
 		EntityPlayer serverPlayer;
 
@@ -38,7 +43,7 @@ public class PacketNutritionResponse {
 		@Override
 		public void toBytes(ByteBuf buf) {
 			// Loop through nutrients from server player, and add to buffer
-			Map<Nutrient, Float> nutrientData = serverPlayer.getCapability(CapProvider.NUTRITION_CAPABILITY, null).get();
+			Map<Nutrient, Float> nutrientData = serverPlayer.getCapability(NUTRITION_CAPABILITY, null).get();
 			for (Map.Entry<Nutrient, Float> entry : nutrientData.entrySet()) {
 				ByteBufUtils.writeUTF8String(buf, entry.getKey().name); // Write name as identifier
 				buf.writeFloat(entry.getValue()); // Write float as value
@@ -67,7 +72,7 @@ public class PacketNutritionResponse {
 				// Update local dummy nutrition data
 				ClientProxy.nutrientData = message.clientNutrients;
 
-				// If GUI is still open, update GUI
+				// If Nutrition GUI is open, update GUI
 				GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
 				if (currentScreen != null && currentScreen.equals(ModGuiHandler.nutritionGui))
 					ModGuiHandler.nutritionGui.redrawLabels();

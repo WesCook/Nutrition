@@ -1,8 +1,7 @@
 package ca.wescook.nutrition.gui;
 
 import ca.wescook.nutrition.Nutrition;
-import ca.wescook.nutrition.network.ModPacketHandler;
-import ca.wescook.nutrition.network.PacketNutritionRequest;
+import ca.wescook.nutrition.network.Sync;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.proxy.ClientProxy;
@@ -92,8 +91,8 @@ public class NutritionGui extends GuiScreenDynamic {
 	// Called when GUI is opened or resized
 	@Override
 	public void initGui() {
-		// Nutrition sync request
-		ModPacketHandler.NETWORK_CHANNEL.sendToServer(new PacketNutritionRequest.Message());
+		// Sync Nutrition info from server to client
+		Sync.clientRequest();
 
 		// Calculate label offset for long nutrition names
 		for (Nutrient nutrient : NutrientList.get()) {

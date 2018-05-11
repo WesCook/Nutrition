@@ -1,6 +1,6 @@
 package ca.wescook.nutrition.events;
 
-import ca.wescook.nutrition.capabilities.CapProvider;
+import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.effects.EffectsManager;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientUtils;
@@ -13,6 +13,8 @@ import net.minecraft.item.ItemBucketMilk;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -20,6 +22,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.List;
 
 public class EventEatFood {
+	@CapabilityInject(INutrientManager.class)
+	private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
+
 	// Detect eating cake
 	@SubscribeEvent
 	public void rightClickBlock(PlayerInteractEvent.RightClickBlock event) {
@@ -46,7 +51,7 @@ public class EventEatFood {
 			float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients);
 
 			// Add to each nutrient
-			player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(foundNutrients, nutritionValue, true);
+			player.getCapability(NUTRITION_CAPABILITY, null).add(foundNutrients, nutritionValue);
 
 			// If full but over-eating, simulate cake eating
 			if (!player.canEat(false) && Config.allowOverEating) {
@@ -114,10 +119,10 @@ public class EventEatFood {
 
 		// Calculate nutrition
 		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(itemStack); // Nutrient list for that food
-		float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients); // CapImplementation value for that food
+		float nutritionValue = NutrientUtils.calculateNutrition(itemStack, foundNutrients); // Nutrition value for that food
 
 		// Add to each nutrient
-		player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(foundNutrients, nutritionValue, true);
+		player.getCapability(NUTRITION_CAPABILITY, null).add(foundNutrients, nutritionValue);
 	}
 
 	// If milk clears effects, reapply immediately

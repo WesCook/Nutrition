@@ -1,6 +1,6 @@
 package ca.wescook.nutrition.utility;
 
-import ca.wescook.nutrition.capabilities.CapProvider;
+import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import net.minecraft.command.CommandBase;
@@ -11,6 +11,8 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import javax.annotation.Nullable;
@@ -20,6 +22,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class ChatCommand extends CommandBase {
+	@CapabilityInject(INutrientManager.class)
+	private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
+
 	private String helpString = "/nutrition <player> <get/set/add/subtract/reset> <nutrient> <value>";
 	private enum actions {SET, ADD, SUBTRACT}
 
@@ -89,7 +94,7 @@ public class ChatCommand extends CommandBase {
 		// Write nutrient name and percentage to chat
 		Nutrient nutrient = NutrientList.getByName(args[2]);
 		if (nutrient != null) {
-			Float nutrientValue = player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).get(nutrient);
+			Float nutrientValue = player.getCapability(NUTRITION_CAPABILITY, null).get(nutrient);
 			sender.sendMessage(new TextComponentString(nutrient.name + ": " + String.format("%.2f", nutrientValue) + "%"));
 		}
 		else // Write error message
@@ -107,11 +112,11 @@ public class ChatCommand extends CommandBase {
 		if (nutrient != null) {
 			// Update nutrition based on action type
 			if (action == actions.SET)
-				player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).set(nutrient, Float.parseFloat(args[3]), true);
+				player.getCapability(NUTRITION_CAPABILITY, null).set(nutrient, Float.parseFloat(args[3]));
 			else if (action == actions.ADD)
-				player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).add(nutrient, Float.parseFloat(args[3]), true);
+				player.getCapability(NUTRITION_CAPABILITY, null).add(nutrient, Float.parseFloat(args[3]));
 			else if (action == actions.SUBTRACT)
-				player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).subtract(nutrient, Float.parseFloat(args[3]), true);
+				player.getCapability(NUTRITION_CAPABILITY, null).subtract(nutrient, Float.parseFloat(args[3]));
 
 			// Update chat
 			sender.sendMessage(new TextComponentString(nutrient.name + " updated!"));
@@ -125,15 +130,14 @@ public class ChatCommand extends CommandBase {
 		if (args.length == 3) {
 			Nutrient nutrient = NutrientList.getByName(args[2]);
 			if (nutrient != null) {
-				player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).set(nutrient, (float) Config.startingNutrition, true);
+				player.getCapability(NUTRITION_CAPABILITY, null).set(nutrient, (float) Config.startingNutrition);
 				sender.sendMessage(new TextComponentString("Nutrient " + nutrient.name + " reset for " + player.getName() + "!"));
 			}
 		}
 		// Reset all nutrients
 		else if (args.length == 2) {
 			for (Nutrient nutrient : NutrientList.get())
-				player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).set(nutrient, (float) Config.startingNutrition, false);
-			player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).resync();
+				player.getCapability(NUTRITION_CAPABILITY, null).set(nutrient, (float) Config.startingNutrition);
 			sender.sendMessage(new TextComponentString("Nutrition reset for " + player.getName() + "!"));
 		}
 	}
