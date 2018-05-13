@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class EventPlayerUpdate {
 	@CapabilityInject(INutrientManager.class)
-	private final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
+	private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
 
 	private Map<EntityPlayer, Integer> playerFoodLevels = new HashMap<>(); // Track food level between ticks
 	private int potionCounter = 0; // Count ticks to reapply potion effects

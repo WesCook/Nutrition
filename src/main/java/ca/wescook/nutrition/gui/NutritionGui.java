@@ -60,7 +60,7 @@ public class NutritionGui extends GuiScreenDynamic {
 		int i = 0;
 		for (Nutrient nutrient : NutrientList.get()) {
 			// Calculate percentage width for nutrition bars
-			float currentNutrient = (ClientProxy.nutrientData != null && ClientProxy.nutrientData.get(nutrient) != null) ? Math.round(ClientProxy.nutrientData.get(nutrient)) : 0; // If null, setPlayerNutrition to 0, else getPlayerNutrition true value
+			float currentNutrient = (ClientProxy.localNutrition != null && ClientProxy.localNutrition.get(nutrient) != null) ? Math.round(ClientProxy.localNutrition.get(nutrient)) : 0; // If null, setPlayerNutrition to 0, else getPlayerNutrition true value
 			int nutritionBarDisplayWidth = (int) (currentNutrient / 100 * NUTRITION_BAR_WIDTH);
 
 			// Draw icons
@@ -138,8 +138,8 @@ public class NutritionGui extends GuiScreenDynamic {
 
 			// Create percent value labels for each nutrient value
 			labelList.add(label = new GuiLabel(fontRenderer, 0, left + LABEL_VALUE_HORIZONTAL_OFFSET + labelCharacterPadding, top + LABEL_VERTICAL_OFFSET + (i * NUTRITION_DISTANCE), 0, 0, 0xffffffff));
-			if (ClientProxy.nutrientData != null && ClientProxy.nutrientData.get(nutrient) != null) // Ensure local nutrition data exists
-				label.addLine(Math.round(ClientProxy.nutrientData.get(nutrient)) + "%%");
+			if (ClientProxy.localNutrition != null && ClientProxy.localNutrition.get(nutrient) != null) // Ensure local nutrition data exists
+				label.addLine(Math.round(ClientProxy.localNutrition.get(nutrient)) + "%%");
 			else
 				label.addLine(I18n.format("gui." + Nutrition.MODID + ":updating"));
 			i++;

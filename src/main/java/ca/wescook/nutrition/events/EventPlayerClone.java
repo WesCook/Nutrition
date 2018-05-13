@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventPlayerClone {
 	@CapabilityInject(INutrientManager.class)
-	private final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
+	private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
 
 	// Copy player nutrition when "cloned" (death, teleport from End)
 	@SubscribeEvent

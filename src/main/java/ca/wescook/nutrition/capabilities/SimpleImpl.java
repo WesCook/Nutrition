@@ -13,7 +13,7 @@ import java.util.Map;
 // Contains basic logic for each method defined in the Interface
 public class SimpleImpl implements INutrientManager {
 	// Stored nutrition for the attached player
-	Map<Nutrient, Float> nutrition = new HashMap<>();
+	private Map<Nutrient, Float> nutrition = new HashMap<>();
 
 	SimpleImpl() {
 		// Populate nutrient data with starting nutrition

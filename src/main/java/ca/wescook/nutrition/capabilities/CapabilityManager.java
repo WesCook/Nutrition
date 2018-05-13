@@ -4,6 +4,7 @@ import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.utility.Config;
 import jline.internal.Nullable;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -29,9 +30,9 @@ public class CapabilityManager {
 	public static class Provider implements ICapabilitySerializable<NBTBase> {
 		private INutrientManager instance;
 
-		public Provider() {
+		public Provider(EntityPlayer player) {
 			//instance = new SimpleImpl(); // Default implementation
-			instance = new NutritionImpl(); // Nutrition's implementation with client-side prediction
+			instance = new NutritionImpl(player); // Nutrition's implementation with client-side syncing
 		}
 
 		// Check if capability exists
@@ -95,7 +96,8 @@ public class CapabilityManager {
 			}
 
 			// Replace nutrient data with map
-			// Note: Syncing throws network errors at this stage
+			// Note: Triggers primarily on initial world load
+			// Don't send network packets (syncing) yet because it throws an error
 			instance.set(clientNutrients);
 		}
 	}

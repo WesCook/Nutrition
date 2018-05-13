@@ -70,7 +70,7 @@ public class PacketNutritionResponse {
 		public IMessage onMessage(final Message message, final MessageContext context) {
 			FMLCommonHandler.instance().getWorldThread(context.netHandler).addScheduledTask(() -> {
 				// Update local dummy nutrition data
-				ClientProxy.nutrientData = message.clientNutrients;
+				ClientProxy.localNutrition = message.clientNutrients;
 
 				// If Nutrition GUI is open, update GUI
 				GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;

@@ -13,10 +13,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import java.util.Map;
 
 public class ClientProxy extends CommonProxy {
-	// Holds local copy of nutrition data
-	// Simulated on the client and syncs when the GUI opens
-	public static Map<Nutrient, Float> nutrientData;
-
+	public static Map<Nutrient, Float> localNutrition; // Local dummy updated routinely to improve responsiveness
 	public static KeyBinding keyNutritionGui;
 
 	@Override
