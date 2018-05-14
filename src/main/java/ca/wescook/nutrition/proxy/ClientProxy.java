@@ -1,19 +1,17 @@
 package ca.wescook.nutrition.proxy;
 
+import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.events.EventNutritionButton;
 import ca.wescook.nutrition.events.EventNutritionKey;
 import ca.wescook.nutrition.events.EventTooltip;
-import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.utility.Config;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
-import java.util.Map;
-
 public class ClientProxy extends CommonProxy {
-	public static Map<Nutrient, Float> localNutrition; // Local dummy updated routinely to improve responsiveness
+	public static INutrientManager localNutrition; // Holds local copy of data/methods for client-side prediction
 	public static KeyBinding keyNutritionGui;
 
 	@Override

@@ -1,6 +1,5 @@
 package ca.wescook.nutrition.network;
 
-import ca.wescook.nutrition.utility.Log;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -10,13 +9,11 @@ public class Sync {
 	public static void serverRequest(EntityPlayer player) {
 		if (!player.world.isRemote) // Server-only
 			ModPacketHandler.NETWORK_CHANNEL.sendTo(new PacketNutritionResponse.Message(player), (EntityPlayerMP) player);
-		Log.info("Sync from server"); // TODO: Remove before release
 	}
 
 	// Client requests a nutrition update from server
 	// Only call from client
 	public static void clientRequest() {
 		ModPacketHandler.NETWORK_CHANNEL.sendToServer(new PacketNutritionRequest.Message());
-		Log.info("Sync from client"); // TODO: Remove before release
 	}
 }

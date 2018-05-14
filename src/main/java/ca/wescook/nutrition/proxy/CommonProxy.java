@@ -24,8 +24,8 @@ public class CommonProxy {
 
 		ModPotions.createPotions(); // Register custom potions
 		MinecraftForge.EVENT_BUS.register(new EventRegistry()); // Register custom potions
-		MinecraftForge.EVENT_BUS.register(new EventPlayerAttachCapability()); // Attach capability to player
-		MinecraftForge.EVENT_BUS.register(new EventPlayerClone()); // Player death and warping
+		MinecraftForge.EVENT_BUS.register(new EventPlayerJoinWorld()); // Attach capability to player
+		MinecraftForge.EVENT_BUS.register(new EventPlayerDeath()); // Player death and warping
 		MinecraftForge.EVENT_BUS.register(new EventEatFood()); // Register use item event
 		MinecraftForge.EVENT_BUS.register(new EventPlayerUpdate()); // Register update event for nutrition decay and potion effects
 	}

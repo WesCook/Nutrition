@@ -64,13 +64,14 @@ public class PacketNutritionResponse {
 	}
 
 	// Message Handler Subclass
-	// This is the client response to the information
+	// This is the client's handling of the information
 	public static class Handler implements IMessageHandler<Message, IMessage> {
 		@Override
 		public IMessage onMessage(final Message message, final MessageContext context) {
 			FMLCommonHandler.instance().getWorldThread(context.netHandler).addScheduledTask(() -> {
 				// Update local dummy nutrition data
-				ClientProxy.localNutrition = message.clientNutrients;
+				if (ClientProxy.localNutrition != null)
+					ClientProxy.localNutrition.set(message.clientNutrients);
 
 				// If Nutrition GUI is open, update GUI
 				GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;

@@ -1,6 +1,7 @@
 package ca.wescook.nutrition.utility;
 
 import ca.wescook.nutrition.capabilities.INutrientManager;
+import ca.wescook.nutrition.network.Sync;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import net.minecraft.command.CommandBase;
@@ -118,11 +119,14 @@ public class ChatCommand extends CommandBase {
 			else if (action == actions.SUBTRACT)
 				player.getCapability(NUTRITION_CAPABILITY, null).subtract(nutrient, Float.parseFloat(args[3]));
 
+			// Sync nutrition
+			Sync.serverRequest(player);
+
 			// Update chat
 			sender.sendMessage(new TextComponentString(nutrient.name + " updated!"));
 		}
 		else // Write error message
-			sender.sendMessage(new TextComponentString("'" + args[1] + "' is not a valid nutrient."));
+			sender.sendMessage(new TextComponentString("'" + args[2] + "' is not a valid nutrient."));
 	}
 
 	private void commandResetNutrition(EntityPlayer player, ICommandSender sender, String[] args) {
@@ -130,16 +134,18 @@ public class ChatCommand extends CommandBase {
 		if (args.length == 3) {
 			Nutrient nutrient = NutrientList.getByName(args[2]);
 			if (nutrient != null) {
-				player.getCapability(NUTRITION_CAPABILITY, null).set(nutrient, (float) Config.startingNutrition);
+				player.getCapability(NUTRITION_CAPABILITY, null).reset(nutrient);
 				sender.sendMessage(new TextComponentString("Nutrient " + nutrient.name + " reset for " + player.getName() + "!"));
 			}
 		}
 		// Reset all nutrients
 		else if (args.length == 2) {
-			for (Nutrient nutrient : NutrientList.get())
-				player.getCapability(NUTRITION_CAPABILITY, null).set(nutrient, (float) Config.startingNutrition);
+			player.getCapability(NUTRITION_CAPABILITY, null).reset();
 			sender.sendMessage(new TextComponentString("Nutrition reset for " + player.getName() + "!"));
 		}
+
+		// Sync nutrition
+		Sync.serverRequest(player);
 	}
 
 	// Checks if the supplied nutrient value is valid and in an acceptable range

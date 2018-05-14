@@ -15,7 +15,7 @@ public class SimpleImpl implements INutrientManager {
 	// Stored nutrition for the attached player
 	private Map<Nutrient, Float> nutrition = new HashMap<>();
 
-	SimpleImpl() {
+	public SimpleImpl() {
 		// Populate nutrient data with starting nutrition
 		for (Nutrient nutrient : NutrientList.get())
 			nutrition.put(nutrient, (float) Config.startingNutrition);
@@ -58,8 +58,17 @@ public class SimpleImpl implements INutrientManager {
 			nutrition.put(nutrient, Floats.constrainToRange(nutrition.get(nutrient) - amount, 0, 100));
 	}
 
-	public void deathPenalty() {
+	public void reset(Nutrient nutrient) {
+		set(nutrient, (float) Config.startingNutrition);
+	}
+
+	public void reset() {
 		for (Nutrient nutrient : nutrition.keySet()) // Loop through player's nutrients
+			reset(nutrient);
+	}
+
+	public void deathPenalty() {
+		for (Nutrient nutrient : nutrition.keySet())
 			if (Config.deathPenaltyReset || get(nutrient) > Config.deathPenaltyMin) // If reset is disabled, only reduce to cap when above its value
 				set(nutrient, Math.max(Config.deathPenaltyMin, nutrition.get(nutrient) - Config.deathPenaltyLoss)); // Subtract death penalty from each nutrient, to cap
 	}

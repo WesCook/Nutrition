@@ -8,29 +8,35 @@ import java.util.Map;
 // Capability Interface that describes what methods the Implementations should understand.
 // This is essentially our API, internally and externally
 public interface INutrientManager {
-	// Return all nutrients
+	// Return all nutrients and values
 	Map<Nutrient, Float> get();
 
-	// Return specific nutrient
+	// Return value of specific nutrient
 	Float get(Nutrient nutrient);
 
-	// Overwrite all nutrients
-	void set(Map<Nutrient, Float> nutrientData);
-
-	// Overwrite specific nutrient
+	// Set value of specific nutrient
 	void set(Nutrient nutrient, Float value);
 
-	// Increase nutrition of specific nutrient
+	// Update all nutrients
+	void set(Map<Nutrient, Float> nutrientData);
+
+	// Increase specific nutrient by amount
 	void add(Nutrient nutrient, float amount);
 
-	// Increase nutrition of list of nutrients
+	// Increase list of nutrients by amount
 	void add(List<Nutrient> nutrientData, float amount);
 
-	// Decrease nutrition of specific nutrient
+	// Decrease specific nutrient by amount
 	void subtract(Nutrient nutrient, float amount);
 
-	// Decrease nutrition of list of nutrients
+	// Decrease list of nutrients by amount
 	void subtract(List<Nutrient> nutrientData, float amount);
+
+	// Reset specific nutrient to default nutrition
+	void reset(Nutrient nutrient);
+
+	// Reset all nutrients to default nutrition
+	void reset();
 
 	// Penalize all skills on death
 	void deathPenalty();
