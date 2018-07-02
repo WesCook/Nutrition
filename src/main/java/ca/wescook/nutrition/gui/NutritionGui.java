@@ -151,7 +151,7 @@ public class NutritionGui extends GuiScreenDynamic {
 	protected void actionPerformed(GuiButton button) throws IOException {
 		if (button == buttonClose) {
 			// Close GUI
-			mc.displayGuiScreen(null);
+			mc.player.closeScreen();
 			if (mc.currentScreen == null)
 				mc.setIngameFocus();
 		}
@@ -162,10 +162,10 @@ public class NutritionGui extends GuiScreenDynamic {
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
 		super.keyTyped(typedChar, keyCode);
 
-		// If player inventory key (E), or Nutrition GUI key (N) is pressed
-		if (keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode() || keyCode == ClientProxy.keyNutritionGui.getKeyCode()) {
+		// If escape key (1), or player inventory key (E), or Nutrition GUI key (N) is pressed
+		if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode() || keyCode == ClientProxy.keyNutritionGui.getKeyCode()) {
 			// Close GUI
-			mc.displayGuiScreen(null);
+			mc.player.closeScreen();
 			if (mc.currentScreen == null)
 				mc.setIngameFocus();
 		}
