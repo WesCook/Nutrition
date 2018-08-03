@@ -1,5 +1,12 @@
 ## Changelog
 
+[v3.5.0](https://github.com/WesCook/Nutrition/releases/tag/v3.5.0) - 2018-08-03
+* Prevented 2x2 crafting inventory from storing items when opening Nutrition GUI
+* Improved keybind handling (contribution from Snownee)
+* Added support for JurassiCraft, Roots Classic, Pam's Simply Strawberries, and Wizardry Mod  (contribution from Sunconure11)
+* Updated XL Food Mod Support (contribution from mariot7)
+* Bumped Forge version
+
 [v3.4.0](https://github.com/WesCook/Nutrition/releases/tag/v3.4.0) - 2018-05-20
 * Added client-side prediction to significantly reduce network overhead
 * Updated Harvestcraft support
