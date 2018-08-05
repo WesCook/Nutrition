@@ -72,7 +72,8 @@ public class CapabilityManager {
 		public NBTBase writeNBT(Capability<INutrientManager> capability, INutrientManager instance, EnumFacing side) {
 			NBTTagCompound playerData = new NBTTagCompound();
 			for (Nutrient nutrient : NutrientList.get())
-				playerData.setFloat(nutrient.name, instance.get(nutrient));
+				if (instance.get(nutrient) != null)
+					playerData.setFloat(nutrient.name, instance.get(nutrient));
 			return playerData;
 		}
 
@@ -80,7 +81,7 @@ public class CapabilityManager {
 		@Override
 		public void readNBT(Capability<INutrientManager> capability, INutrientManager instance, EnumFacing side, NBTBase nbt) {
 			HashMap<Nutrient, Float> clientNutrients = new HashMap<>();
-			Float value;
+			float value;
 
 			// Read in nutrients from file
 			for (Nutrient nutrient : NutrientList.get()) { // For each nutrient

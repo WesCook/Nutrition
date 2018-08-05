@@ -5,6 +5,7 @@ import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.proxy.ClientProxy;
+import ca.wescook.nutrition.utility.Log;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -42,6 +43,12 @@ public class PacketNutritionResponse {
 		// Then serialized into bytes (on server)
 		@Override
 		public void toBytes(ByteBuf buf) {
+			// If cap isn't loaded, exit safely
+			if (serverPlayer.getCapability(NUTRITION_CAPABILITY, null) == null) {
+				Log.fatal("Capability isn't loaded");
+				return;
+			}
+
 			// Loop through nutrients from server player, and add to buffer
 			Map<Nutrient, Float> nutrientData = serverPlayer.getCapability(NUTRITION_CAPABILITY, null).get();
 			for (Map.Entry<Nutrient, Float> entry : nutrientData.entrySet()) {

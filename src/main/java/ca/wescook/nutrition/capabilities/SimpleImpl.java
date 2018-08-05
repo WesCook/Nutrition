@@ -16,9 +16,7 @@ public class SimpleImpl implements INutrientManager {
 	private Map<Nutrient, Float> nutrition = new HashMap<>();
 
 	public SimpleImpl() {
-		// Populate nutrient data with starting nutrition
-		for (Nutrient nutrient : NutrientList.get())
-			nutrition.put(nutrient, (float) Config.startingNutrition);
+		updateCapability();
 	}
 
 	public Map<Nutrient, Float> get() {
@@ -65,6 +63,24 @@ public class SimpleImpl implements INutrientManager {
 	public void reset() {
 		for (Nutrient nutrient : nutrition.keySet()) // Loop through player's nutrients
 			reset(nutrient);
+	}
+
+	public void updateCapability() {
+		// Copy map by value, not by reference
+		Map<Nutrient, Float> nutritionOld = new HashMap<>(nutrition);
+
+		// If nutrient already exists (by name), copy nutrition.  Else reset from starting nutrition.
+		nutrition.clear();
+		loop:
+		for (Nutrient nutrient : NutrientList.get()) {
+			for (Map.Entry<Nutrient, Float> nutrientOld : nutritionOld.entrySet()) {
+				if (nutrient.name.equals(nutrientOld.getKey().name)) {
+					nutrition.put(nutrient, nutrientOld.getValue());
+					continue loop;
+				}
+			}
+			nutrition.put(nutrient, (float) Config.startingNutrition);
+		}
 	}
 
 	public void deathPenalty() {

@@ -38,6 +38,9 @@ public interface INutrientManager {
 	// Reset all nutrients to default nutrition
 	void reset();
 
+	// Internal: Called to update Nutrient object references in player's capability
+	void updateCapability();
+
 	// Penalize all skills on death
 	void deathPenalty();
 }

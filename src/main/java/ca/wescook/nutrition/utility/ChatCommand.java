@@ -14,6 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import javax.annotation.Nullable;
@@ -26,7 +27,7 @@ public class ChatCommand extends CommandBase {
 	@CapabilityInject(INutrientManager.class)
 	private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
 
-	private String helpString = "/nutrition <player> <get/set/add/subtract/reset> <nutrient> <value>";
+	private String helpString = "/nutrition <player/reload> <get/set/add/subtract/reset> <nutrient> <value>";
 	private enum actions {SET, ADD, SUBTRACT}
 
 	@Override
@@ -48,11 +49,11 @@ public class ChatCommand extends CommandBase {
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos)
 	{
-		if (args.length == 1) { // Player list
-			return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
+		if (args.length == 1) { // Player list/reload command
+			return getListOfStringsMatchingLastWord(args, ArrayUtils.addAll(server.getOnlinePlayerNames(), "reload"));
 		}
 		else if (args.length == 2) { // Sub-commands list
-			return getListOfStringsMatchingLastWord(args, Arrays.asList("get", "set", "add", "subtract"));
+			return getListOfStringsMatchingLastWord(args, Arrays.asList("get", "set", "add", "subtract", "reset"));
 		}
 		else if (args.length == 3) { // Nutrients list
 			List<String> nutrientList = new ArrayList<>();
@@ -69,12 +70,14 @@ public class ChatCommand extends CommandBase {
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		// Get player
 		EntityPlayerMP player = null;
-		if (args.length != 0)
+		if (args.length != 0 && !args[0].equals("reload"))
 			player = CommandBase.getPlayer(server, sender, args[0]);
 
 		// Which sub-command to execute
 		if (args.length == 0 || args[0].equals("help"))
 			commandHelp(sender);
+		else if (args[0].equals("reload"))
+			commandReload(server, sender);
 		else if (args[1].equals("get"))
 			commandGetNutrition(player, sender, args);
 		else if (args[1].equals("set"))
@@ -91,6 +94,12 @@ public class ChatCommand extends CommandBase {
 		sender.sendMessage(new TextComponentString(helpString));
 	}
 
+	private void commandReload(MinecraftServer server, ICommandSender sender) {
+		DataImporter.reload();
+		DataImporter.updatePlayerCapabilitiesOnServer(server);
+		sender.sendMessage(new TextComponentString("Nutrients and effects reloaded"));
+	}
+
 	private void commandGetNutrition(EntityPlayer player, ICommandSender sender, String[] args) {
 		// Write nutrient name and percentage to chat
 		Nutrient nutrient = NutrientList.getByName(args[2]);
@@ -99,7 +108,7 @@ public class ChatCommand extends CommandBase {
 			sender.sendMessage(new TextComponentString(nutrient.name + ": " + String.format("%.2f", nutrientValue) + "%"));
 		}
 		else // Write error message
-			sender.sendMessage(new TextComponentString("'" + args[1] + "' is not a valid nutrient."));
+			sender.sendMessage(new TextComponentString("'" + args[2] + "' is not a valid nutrient."));
 	}
 
 	// Used to set, add, and subtract nutrients (defined under actions)
@@ -152,7 +161,7 @@ public class ChatCommand extends CommandBase {
 	// Spits out an error if problem is met
 	private boolean validNumber(ICommandSender sender, String value) {
 		// Valid number check
-		Float newValue;
+		float newValue;
 		if (NumberUtils.isCreatable(value))
 			newValue = Float.parseFloat(value);
 		else {
