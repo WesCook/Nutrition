@@ -14,7 +14,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import javax.annotation.Nullable;
@@ -27,7 +26,8 @@ public class ChatCommand extends CommandBase {
 	@CapabilityInject(INutrientManager.class)
 	private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
 
-	private String helpString = "/nutrition <player/reload> <get/set/add/subtract/reset> <nutrient> <value>";
+	private final List<String> playerSubCommands = Arrays.asList("get", "set", "add", "subtract", "reset"); // Suggest player names following these subcommands
+	private final String helpString = "/nutrition <get/set/add/subtract/reset/reload> <player> <nutrient> <value>";
 	private enum actions {SET, ADD, SUBTRACT}
 
 	@Override
@@ -49,11 +49,11 @@ public class ChatCommand extends CommandBase {
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos)
 	{
-		if (args.length == 1) { // Player list/reload command
-			return getListOfStringsMatchingLastWord(args, ArrayUtils.addAll(server.getOnlinePlayerNames(), "reload"));
+		if (args.length == 1) { // Sub-commands list
+			return getListOfStringsMatchingLastWord(args, Arrays.asList("get", "set", "add", "subtract", "reset", "reload"));
 		}
-		else if (args.length == 2) { // Sub-commands list
-			return getListOfStringsMatchingLastWord(args, Arrays.asList("get", "set", "add", "subtract", "reset"));
+		else if (args.length == 2 && playerSubCommands.contains(args[0])) { // Player list/reload command
+			return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
 		}
 		else if (args.length == 3) { // Nutrients list
 			List<String> nutrientList = new ArrayList<>();
@@ -70,24 +70,24 @@ public class ChatCommand extends CommandBase {
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		// Get player
 		EntityPlayerMP player = null;
-		if (args.length != 0 && !args[0].equals("reload"))
-			player = CommandBase.getPlayer(server, sender, args[0]);
+		if (args.length > 0 && playerSubCommands.contains(args[0]))
+			player = CommandBase.getPlayer(server, sender, args[1]);
 
 		// Which sub-command to execute
 		if (args.length == 0 || args[0].equals("help"))
 			commandHelp(sender);
+		else if (args[0].equals("get"))
+			commandGetNutrition(player, sender, args);
+		else if (args[0].equals("set"))
+			commandSetNutrition(player, sender, args, actions.SET);
+		else if (args[0].equals("add"))
+			commandSetNutrition(player, sender, args, actions.ADD);
+		else if (args[0].equals("subtract"))
+			commandSetNutrition(player, sender, args, actions.SUBTRACT);
+		else if (args[0].equals("reset"))
+			commandResetNutrition(player, sender, args);
 		else if (args[0].equals("reload"))
 			commandReload(server, sender);
-		else if (args[1].equals("get"))
-			commandGetNutrition(player, sender, args);
-		else if (args[1].equals("set"))
-			commandSetNutrition(player, sender, args, actions.SET);
-		else if (args[1].equals("add"))
-			commandSetNutrition(player, sender, args, actions.ADD);
-		else if (args[1].equals("subtract"))
-			commandSetNutrition(player, sender, args, actions.SUBTRACT);
-		else if (args[1].equals("reset"))
-			commandResetNutrition(player, sender, args);
 	}
 
 	private void commandHelp(ICommandSender sender) {
