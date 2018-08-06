@@ -2,7 +2,6 @@ package ca.wescook.nutrition.effects;
 
 import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.nutrients.Nutrient;
-import ca.wescook.nutrition.utility.Log;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.capabilities.Capability;
@@ -30,20 +29,8 @@ public class EffectsManager {
 		// List of effects being turned on
 		List<Effect> effectsInThreshold = new ArrayList<>();
 
-		// If cap isn't loaded, exit safely
-		if (player.getCapability(NUTRITION_CAPABILITY, null) == null) {
-			Log.fatal("Capability isn't loaded");
-			return effectsInThreshold;
-		}
-
 		// Get player nutrition
 		Map<Nutrient, Float> playerNutrition = player.getCapability(NUTRITION_CAPABILITY, null).get();
-
-		// If cap still isn't loaded, exit safely
-		if (playerNutrition.isEmpty()) {
-			Log.fatal("Capability isn't loaded");
-			return effectsInThreshold;
-		}
 
 		// Read in list of potion effects to apply
 		for (Effect effect : EffectsList.get()) {
