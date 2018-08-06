@@ -40,7 +40,4 @@ public interface INutrientManager {
 
 	// Internal: Called to update Nutrient object references in player's capability
 	void updateCapability();
-
-	// Penalize all skills on death
-	void deathPenalty();
 }

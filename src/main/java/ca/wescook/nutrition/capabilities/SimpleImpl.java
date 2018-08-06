@@ -82,10 +82,4 @@ public class SimpleImpl implements INutrientManager {
 			nutrition.put(nutrient, (float) Config.startingNutrition);
 		}
 	}
-
-	public void deathPenalty() {
-		for (Nutrient nutrient : nutrition.keySet())
-			if (Config.deathPenaltyReset || get(nutrient) > Config.deathPenaltyMin) // If reset is disabled, only reduce to cap when above its value
-				set(nutrient, Math.max(Config.deathPenaltyMin, nutrition.get(nutrient) - Config.deathPenaltyLoss)); // Subtract death penalty from each nutrient, to cap
-	}
 }
