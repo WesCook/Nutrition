@@ -36,9 +36,8 @@ public class DataImporter {
 	// Runs initially during Post-Init, or from /reload command
 	// Always call updatePlayerCapabilitiesOnServer() afterwards if world is loaded
  	public static void reload() {
-		loadJsonFiles();
-		DataParser.parseNutrients();
-		DataParser.parseEffects();
+		NutrientList.register(DataParser.parseNutrients(loadJsonNutrients()));
+		EffectsList.register(DataParser.parseEffects(loadJsonEffects()));
 	}
 
 	// Updates player capabilities on server so object IDs match those in NutritionList
@@ -53,19 +52,20 @@ public class DataImporter {
 	//////////////////////////////////////////////////
 
 
-	// Creates and parses json files into fresh data
-	private static void loadJsonFiles() {
-		// Nutrients
+	// Creates and parses nutrient json files into objects, returned as list
+	private static List<JsonNutrient> loadJsonNutrients() {
 		List<String> nutrientFiles = Lists.newArrayList("dairy.json", "example.json", "fruit.json", "grain.json", "protein.json", "vegetable.json");
 		File nutrientDirectory = new File(Config.configDirectory, Nutrition.MODID + "/nutrients");
 		createConfigurationDirectory("assets/nutrition/configs/nutrients", nutrientDirectory, nutrientFiles);
-		NutrientList.register(readConfigurationDirectory(JsonNutrient.class, nutrientDirectory));
+		return readConfigurationDirectory(JsonNutrient.class, nutrientDirectory);
+	}
 
-		// Effects
+	// Creates and parses effect json files into objects, returned as list
+	private static List<JsonEffect> loadJsonEffects() {
 		List<String> effectsFiles = Lists.newArrayList("example.json", "mining_fatigue.json", "resistance.json", "strength.json", "toughness.json", "weakness.json");
 		File effectsDirectory = new File(Config.configDirectory, Nutrition.MODID + "/effects");
 		createConfigurationDirectory("assets/nutrition/configs/effects", effectsDirectory, effectsFiles);
-		EffectsList.register(readConfigurationDirectory(JsonEffect.class, effectsDirectory));
+		return readConfigurationDirectory(JsonEffect.class, effectsDirectory);
 	}
 
 	// Copies files from internal resources to external files.  Accepts an input resource path, output directory, and list of files

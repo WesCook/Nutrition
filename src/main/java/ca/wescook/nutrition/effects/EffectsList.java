@@ -6,13 +6,12 @@ import java.util.List;
 // Maintains information about effects (name, potion, nutrient conditions)
 // Stored client and server-side
 public class EffectsList {
-	public static List<JsonEffect> jsonEffects = new ArrayList<>(); // Raw deserialized data from JSON
-	public static List<Effect> effects = new ArrayList<>(); // Parsed effects list
+	private static List<Effect> effects = new ArrayList<>();
 
 	// Register list of JSON objects
-	public static void register(List<JsonEffect> jsonEffectsIn) {
-		jsonEffects.clear();
-		jsonEffects.addAll(jsonEffectsIn);
+	public static void register(List<Effect> effectsIn) {
+		effects.clear();
+		effects.addAll(effectsIn);
 	}
 
 	// Return all parsed effects

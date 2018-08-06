@@ -6,13 +6,12 @@ import java.util.List;
 // Maintains information about nutrients (name, color, icon)
 // Stored client and server-side
 public class NutrientList {
-	public static List<JsonNutrient> jsonNutrients = new ArrayList<>(); // Raw deserialized data from JSON
-	public static List<Nutrient> nutrients = new ArrayList<>(); // Parsed nutrients list
+	private static List<Nutrient> nutrients = new ArrayList<>();
 
 	// Register list of JSON objects
-	public static void register(List<JsonNutrient> jsonNutrientsIn) {
-		jsonNutrients.clear();
-		jsonNutrients.addAll(jsonNutrientsIn);
+	public static void register(List<Nutrient> nutrientsIn) {
+		nutrients.clear();
+		nutrients.addAll(nutrientsIn);
 	}
 
 	// Return all parsed nutrients

@@ -1,7 +1,6 @@
 package ca.wescook.nutrition.utility;
 
 import ca.wescook.nutrition.effects.Effect;
-import ca.wescook.nutrition.effects.EffectsList;
 import ca.wescook.nutrition.effects.JsonEffect;
 import ca.wescook.nutrition.nutrients.JsonNutrient;
 import ca.wescook.nutrition.nutrients.Nutrient;
@@ -13,11 +12,15 @@ import net.minecraft.potion.Potion;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
-public class DataParser {
-	public static void parseNutrients() {
-		NutrientList.nutrients.clear();
+import java.util.ArrayList;
+import java.util.List;
 
-		for (JsonNutrient nutrientRaw : NutrientList.jsonNutrients) {
+public class DataParser {
+	// Accepts a list of raw JSON objects, which are returned as cleaned Nutrients
+	public static List<Nutrient> parseNutrients(List<JsonNutrient> jsonNutrients) {
+		List<Nutrient> nutrients = new ArrayList<>();
+
+		for (JsonNutrient nutrientRaw : jsonNutrients) {
 			// Skip if nutrient is not enabled, or if field omitted (null)
 			if (nutrientRaw.enabled != null && !nutrientRaw.enabled)
 				continue;
@@ -99,14 +102,17 @@ public class DataParser {
 			}
 
 			// Register nutrient
-			NutrientList.nutrients.add(nutrient);
+			nutrients.add(nutrient);
 		}
+
+		return nutrients;
 	}
 
-	public static void parseEffects() {
-		EffectsList.effects.clear();
+	// Accepts a list of raw JSON objects, which are returned as cleaned Effects
+	public static List<Effect> parseEffects(List<JsonEffect> jsonEffects) {
+		List<Effect> effects = new ArrayList<>();
 
-		for (JsonEffect effectRaw : EffectsList.jsonEffects) {
+		for (JsonEffect effectRaw : jsonEffects) {
 			// Skip if effect is not enabled, or if field omitted (null)
 			if (effectRaw.enabled != null && !effectRaw.enabled)
 				continue;
@@ -147,7 +153,9 @@ public class DataParser {
 			}
 
 			// Register effect
-			EffectsList.effects.add(effect);
+			effects.add(effect);
 		}
+
+		return effects;
 	}
 }
