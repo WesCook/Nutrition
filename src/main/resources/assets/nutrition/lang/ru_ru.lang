@@ -1,0 +1,17 @@
+# Keys
+key.nutrition=Открыть Nutrition GUI
+
+# GUI
+gui.nutrition:nutrition_title=Nutrition
+gui.nutrition:close=Закрыть
+gui.nutrition:updating=Обновление...
+
+# Nutrients (Может быть настроено с помощью Пакетов ресурсов)
+nutrient.nutrition:grain=Зерно
+nutrient.nutrition:fruit=Фрукт
+nutrient.nutrition:vegetable=Овощь
+nutrient.nutrition:protein=Белок
+nutrient.nutrition:dairy=Молочный
+
+# Tooltips
+tooltip.nutrition:nutrients=Nutrients:
