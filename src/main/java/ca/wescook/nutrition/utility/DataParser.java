@@ -9,6 +9,7 @@ import ca.wescook.nutrition.nutrients.NutrientUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+import net.minecraftforge.fml.common.Loader;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
@@ -85,10 +86,11 @@ public class DataParser {
 					// Get item
 					Item item = Item.getByNameOrId(name);
 
-					// Null test item
+					// Item ID not found, issue warning and skip adding item
 					if (item == null) {
-						if (Config.logMissingFood)
-							Log.warn("Nutrient provided food doesn't exist: " + fullName + " (" + nutrient.name + ")");
+						String modid = fullName.substring(0, fullName.indexOf(":")); // Get string before first colon
+						if (Config.logMissingFood && Loader.isModLoaded(modid))
+							Log.warn("Food with nutrients doesn't exist: " + fullName + " (" + nutrient.name + ")");
 						continue;
 					}
 

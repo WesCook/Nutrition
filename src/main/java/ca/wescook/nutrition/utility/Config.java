@@ -72,8 +72,7 @@ public class Config {
 		buttonXPosition = configFile.getInt("ButtonXPosition", CATEGORY_GUI, 134, -1000, 1000, "The nutrition button's X position, relative to its anchor point.");
 		buttonYPosition = configFile.getInt("ButtonYPosition", CATEGORY_GUI, 61, -1000, 1000, "The nutrition button's Y position, relative to its anchor point.");
 
-		logMissingFood = configFile.getBoolean("LogMissingFood", CATEGORY_LOGGING, false, "Log foods which cannot be found but are still listed in nutrients file.\n" +
-			"This can be quite spammy unless all mods with nutrients are loaded.");
+		logMissingFood = configFile.getBoolean("LogMissingFood", CATEGORY_LOGGING, false, "Log foods which cannot be found but are still listed in nutrients file.");
 		logMissingNutrients = configFile.getBoolean("LogMissingNutrients", CATEGORY_LOGGING, false, "Log foods which have been found but do not have any associated nutrients.");
 
 		// Update file
