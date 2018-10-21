@@ -9,8 +9,8 @@ public class JsonNutrient {
 	public String icon;
 	public String color;
 	public Float decay;
-	public Boolean enabled;
 	public Boolean visible;
+	public Boolean enabled;
 	public Food food = new Food();
 
 	public class Food {

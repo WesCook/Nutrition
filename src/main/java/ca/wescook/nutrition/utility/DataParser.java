@@ -44,7 +44,7 @@ public class DataParser {
 			if (nutrientRaw.decay == null)
 				nutrient.decay = Config.decayMultiplier; // Set to global value
 			else if (nutrientRaw.decay >= -100 && nutrientRaw.decay <= 100)
-				nutrient.decay = nutrientRaw.decay; // Set to value in field
+				nutrient.decay = nutrientRaw.decay;
 			else {
 				nutrient.decay = 0;
 				Log.error("Decay rate must be between -100 and 100 (" + nutrient.name + ").");
