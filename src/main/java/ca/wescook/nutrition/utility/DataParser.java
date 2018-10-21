@@ -51,6 +51,9 @@ public class DataParser {
 				continue;
 			}
 
+			// Nutrient Visibility
+			nutrient.visible = (nutrientRaw.visible == null || nutrientRaw.visible);
+
 			// Food - Ore Dictionary
 			if (nutrientRaw.food.oredict != null)
 				nutrient.foodOreDict = nutrientRaw.food.oredict; // Ore dicts remains as strings

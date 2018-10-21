@@ -41,7 +41,6 @@ public class DataImporter {
 	}
 
 	// Updates player capabilities on server so object IDs match those in NutritionList
-	// TODO: Multiplayer: On "/nutrition reload", server updates but client does not
 	public static void updatePlayerCapabilitiesOnServer(MinecraftServer server) {
 		for (EntityPlayerMP player : server.getPlayerList().getPlayers())
 			if (!server.getWorld(0).isRemote)

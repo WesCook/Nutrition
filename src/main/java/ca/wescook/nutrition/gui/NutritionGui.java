@@ -58,7 +58,7 @@ public class NutritionGui extends GuiScreenDynamic {
 
 	private void drawNutritionBars() {
 		int i = 0;
-		for (Nutrient nutrient : NutrientList.get()) {
+		for (Nutrient nutrient : NutrientList.getVisible()) {
 			// Calculate percentage width for nutrition bars
 			float currentNutrient = (ClientProxy.localNutrition != null && ClientProxy.localNutrition.get(nutrient) != null) ? Math.round(ClientProxy.localNutrition.get(nutrient)) : 0; // If null, setPlayerNutrition to 0, else get true value
 			int nutritionBarDisplayWidth = (int) (currentNutrient / 100 * NUTRITION_BAR_WIDTH);
@@ -95,7 +95,7 @@ public class NutritionGui extends GuiScreenDynamic {
 		Sync.clientRequest();
 
 		// Calculate label offset for long nutrition names
-		for (Nutrient nutrient : NutrientList.get()) {
+		for (Nutrient nutrient : NutrientList.getVisible()) {
 			int nutrientWidth = fontRenderer.getStringWidth(I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name)); // Get width of localized string
 			nutrientWidth = (nutrientWidth / 4) * 4; // Round to nearest multiple of 4
 			if (nutrientWidth > labelCharacterPadding)
@@ -103,7 +103,7 @@ public class NutritionGui extends GuiScreenDynamic {
 		}
 
 		// Update dynamic GUI size
-		super.updateContainerSize(GUI_BASE_WIDTH + labelCharacterPadding, GUI_BASE_HEIGHT + (NutrientList.get().size() * NUTRITION_DISTANCE));
+		super.updateContainerSize(GUI_BASE_WIDTH + labelCharacterPadding, GUI_BASE_HEIGHT + (NutrientList.getVisible().size() * NUTRITION_DISTANCE));
 
 		// Add Close button
 		buttonList.add(buttonClose = new GuiButton(
@@ -131,7 +131,7 @@ public class NutritionGui extends GuiScreenDynamic {
 
 		// Nutrients names and values
 		int i = 0;
-		for (Nutrient nutrient : NutrientList.get()) {
+		for (Nutrient nutrient : NutrientList.getVisible()) {
 			// Create labels for each nutrient type name
 			labelList.add(label = new GuiLabel(fontRenderer, 0, left + LABEL_NAME_HORIZONTAL_OFFSET, top + LABEL_VERTICAL_OFFSET + (i * NUTRITION_DISTANCE), 0, 0, 0xffffffff));
 			label.addLine(I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name)); // Add name from localization file

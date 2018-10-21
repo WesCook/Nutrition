@@ -14,9 +14,18 @@ public class NutrientList {
 		nutrients.addAll(nutrientsIn);
 	}
 
-	// Return all parsed nutrients
+	// Return all nutrients
 	public static List<Nutrient> get() {
 		return nutrients;
+	}
+
+	// Return all visible nutrients
+	public static List<Nutrient> getVisible() {
+		List<Nutrient> visibleNutrients = new ArrayList<>();
+		for (Nutrient nutrient : nutrients)
+			if (nutrient.visible)
+				visibleNutrients.add(nutrient);
+		return visibleNutrients;
 	}
 
 	// Return nutrient by name (null if not found)
