@@ -26,6 +26,7 @@
 			"listAllveggie"
 		],
 		"items": [
+			"abyssalcraft:mre",
 			"actuallyadditions:item_food:2",
 			"actuallyadditions:item_food:3",
 			"actuallyadditions:item_food:4",
@@ -709,6 +710,12 @@
 			"realworld:veget_tomat",
 			"realworld:veget_turni",
 			"realworld:veget_watcr",
+			"rockhounding_surface:mesquite_flower",
+			"rockhounding_surface:mesquite_tea",
+			"rockhounding_surface:truffle_omelette",
+			"rockhounding_surface:truffle_pumpkin",
+			"rockhounding_surface:truffle_toast",
+			"rockhounding_surface:truffle_vodka",
 			"roots:aubergine_item",
 			"rootsclassic:oldroot",
 			"rootsclassic:rootystew",

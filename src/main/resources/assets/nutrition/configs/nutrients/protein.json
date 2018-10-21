@@ -47,6 +47,13 @@
 			"portionMeat"
 		],
 		"items": [
+			"abyssalcraft:beefp",
+			"abyssalcraft:chickenp",
+			"abyssalcraft:eggp",
+			"abyssalcraft:fishp",
+			"abyssalcraft:friedegg",
+			"abyssalcraft:mre",
+			"abyssalcraft:porkp",
 			"actuallyadditions:item_food:0",
 			"actuallyadditions:item_food:3",
 			"actuallyadditions:item_food:8",
@@ -877,6 +884,9 @@
 			"reptilemod:reptile_raw",
 			"reptilemod:turtle_cooked",
 			"reptilemod:turtle_raw",
+			"rockhounding_surface:mesquite_fruit",
+			"rockhounding_surface:sourberry_pie",
+			"rockhounding_surface:truffle_omelette",
 			"saltmod:apple_pie",
 			"saltmod:carrot_pie",
 			"saltmod:corned_beef",
