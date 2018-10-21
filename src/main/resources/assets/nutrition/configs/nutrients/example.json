@@ -4,7 +4,7 @@
 	"color": "72dd5a",            // Hexadecimal color used to draw for nutrient bar
 	"decay": 2.5,                 // Override global decay multiplier
 	"enabled": false,             // Will this nutrient be active or not
-	"visible": true,              // Will this nutrient be visible in the GUI
+	"visible": true,              // Will this nutrient be visible in the GUI and tooltips
 	"food": {                     //
 		"oredict": [              // List of ore dictionary entries that are included in this nutrient
 			"listAllveggie",      //

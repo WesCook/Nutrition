@@ -26,7 +26,8 @@ public class EventTooltip {
 		StringJoiner stringJoiner = new StringJoiner(", ");
 		List<Nutrient> foundNutrients = NutrientUtils.getFoodNutrients(itemStack);
 		for (Nutrient nutrient : foundNutrients) // Loop through nutrients from food
-			stringJoiner.add(I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name));
+			if (nutrient.visible)
+				stringJoiner.add(I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name));
 		String nutrientString = stringJoiner.toString();
 
 		// Get nutrition value
