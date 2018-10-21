@@ -20,7 +20,7 @@ public class EffectsManager {
 		List<Effect> effects = removeDuplicates(getEffectsInThreshold(player));
 
 		for (Effect effect : effects) {
-			player.addPotionEffect(new PotionEffect(effect.potion, 615, effect.amplifier, true, false));
+			player.addPotionEffect(new PotionEffect(effect.potion, 619, effect.amplifier, true, false));
 		}
 	}
 

@@ -89,7 +89,7 @@ public class EventPlayerUpdate {
 	}
 
 	private void potionTicking(EntityPlayer player) {
-		if (potionCounter > 100) {
+		if (potionCounter > 110) {
 			EffectsManager.reapplyEffects(player);
 			potionCounter = 0;
 		}
