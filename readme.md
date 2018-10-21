@@ -11,23 +11,24 @@ Through its [config files](https://github.com/WesCook/Nutrition/wiki/Configurati
 By default, Nutrition comes configured with the classic five food group system: dairy, fruit, grain, protein, and vegetables.  However many different systems are possible.  Some examples include:
 
 * A spicy tolerance bar, where eating enough spicy foods will grant a permanent resistance to fire.
-* A zombie simulation where you must constantly eat brains/flesh to avoid negative effects.
+* A zombie simulation where you must constantly eat brains to avoid negative effects.
 * Gluten intolerance.  Eat bread, get sick.
 
 ## Mods Supported
 
 Mods that are supported with the default five-food group system include:
 
-* [Aquaculture](https://minecraft.curseforge.com/projects/aquaculture)
+* [AbyssalCraft](https://minecraft.curseforge.com/projects/abyssalcraft)
 * [Actually Additions](https://minecraft.curseforge.com/projects/actually-additions)
 * [Aether Legacy](https://minecraft.curseforge.com/projects/aether-legacy)
 * [Animalium](https://minecraft.curseforge.com/projects/animalium)
 * [Animania](https://minecraft.curseforge.com/projects/animania)
+* [Aquaculture](https://minecraft.curseforge.com/projects/aquaculture)
 * [Better with Addons](https://minecraft.curseforge.com/projects/better-with-addons)
 * [Better with Mods](https://minecraft.curseforge.com/projects/better-with-mods)
 * [Biomes O' Plenty](https://minecraft.curseforge.com/projects/biomes-o-plenty)
 * [Cave Root](https://minecraft.curseforge.com/projects/cave-root)
-* [Chococraft](https://minecraft.curseforge.com/projects/chococraft)
+* [Chococraft](https://minecraft.curseforge.com/projects/chococraft-3)
 * [Combustive Fishing](https://minecraft.curseforge.com/projects/combustive-fishing)
 * [Defiled Lands](https://minecraft.curseforge.com/projects/defiled-lands)
 * [Duck Craft](https://minecraft.curseforge.com/projects/duck-craft)
@@ -40,21 +41,25 @@ Mods that are supported with the default five-food group system include:
 * [Forestry](https://minecraft.curseforge.com/projects/forestry)
 * [Galacticraft](https://micdoodle8.com/mods/galacticraft)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
-* [Heat and Climate](http://defeatedcrow.jp/modwiki/HeatAndClimate_EN)
+* [Heat and Climate](https://defeatedcrow.jp/modwiki/HeatAndClimate_EN)
 * [Ice and Fire](https://minecraft.curseforge.com/projects/ice-and-fire-dragons-in-a-whole-new-light)
 * [Inspirations](https://minecraft.curseforge.com/projects/inspirations)
 * [JurassiCraft](https://minecraft.curseforge.com/projects/jurassicraft)
 * [Lycanites Mobs](https://minecraft.curseforge.com/projects/lycanites-mobs)
 * [Mob Mash](https://minecraft.curseforge.com/projects/mob-mash)
 * [Natura](https://minecraft.curseforge.com/projects/natura)
+* [Natural Fauna](https://minecraft.curseforge.com/projects/natural-fauna-mod-a-zawa-addon)
 * [NetherEx](https://minecraft.curseforge.com/projects/netherex)
 * [Pam's HarvestCraft](https://minecraft.curseforge.com/projects/pams-harvestcraft)
 * [Pam's Simply Strawberries](https://minecraft.curseforge.com/projects/pams-simply-strawberries)
+* [Plant Mega Pack](https://10paksmods.net/pmp.html)
 * [Plants](https://minecraft.curseforge.com/projects/plants)
 * [PrimalCore](https://minecraft.curseforge.com/projects/primalcore)
 * [Primitive Mobs](https://minecraft.curseforge.com/projects/primitive-mobs)
-* [RealWorld](http://10paksmods.net/realworld.html)
+* [Project: Vibrant Journeys](https://minecraft.curseforge.com/projects/project-vibrant-journeys)
+* [RealWorld](https://10paksmods.net/realworld.html)
 * [Reptile Mod](https://minecraft.curseforge.com/projects/reptilemod)
+* [Rockhounding Surface](https://minecraft.curseforge.com/projects/rockhounding-mod-surface)
 * [Roots](https://minecraft.curseforge.com/projects/roots)
 * [Roots Classic](https://minecraft.curseforge.com/projects/roots-classic)
 * [Rustic](https://minecraft.curseforge.com/projects/rustic)
@@ -68,7 +73,6 @@ Mods that are supported with the default five-food group system include:
 * [Tropicraft](https://minecraft.curseforge.com/projects/tropicraft)
 * [Twilight Forest](https://minecraft.curseforge.com/projects/the-twilight-forest)
 * [VanillaFoodPantry](https://minecraft.curseforge.com/projects/vanillafoodpantry-mod)
-* [Wizardry Mod](https://minecraft.curseforge.com/projects/wizardry-mod)
 * [XL Food Mod](https://minecraft.curseforge.com/projects/xl-food-mod)
 * [Zoo & Wild Animals Rebuilt](https://minecraft.curseforge.com/projects/zoo-wild-animals-rebuild)
 

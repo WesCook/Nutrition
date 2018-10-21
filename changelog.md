@@ -1,5 +1,17 @@
 ## Changelog
 
+[v4.0.0](https://github.com/WesCook/Nutrition/releases/tag/v4.0.0) - 2018-10-20
+* Added visibility setting to hide nutrients in GUI and tooltips
+* Added `/nutrition reload` command to reload nutrients without restarting game
+* Updated command order
+* Improved logging of invalid foods
+* Added Russian localizations (contribution from AlekseiVoronin)
+* Added Rockhounding Surface and AbyssalCraft support
+* Removed Wizardry support.  Only contained one item and was onerous to test in development.
+* Updated support for Animania, Erebus, Heat and Climate, PrimalCore, VanillaFoodPantry, and Pam's HarvestCraft
+* Added Natural Fauna and Vibrant Journeys support (contribution from Sunconure11)
+* Added Plant Mega Pack support and updated RealWorld support (contribution from yikies)
+
 [v3.5.0](https://github.com/WesCook/Nutrition/releases/tag/v3.5.0) - 2018-08-03
 * Prevented 2x2 crafting inventory from storing items when opening Nutrition GUI
 * Improved keybind handling (contribution from Snownee)
