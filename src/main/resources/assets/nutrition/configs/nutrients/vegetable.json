@@ -21,8 +21,10 @@
 			"foodVegetable",
 			"foodVeggiesalad",
 			"listAllgreenveggie",
+			"listAllherb",
 			"listAllmushroom",
 			"listAllpepper",
+			"listAllspice",
 			"listAllveggie"
 		],
 		"items": [
