@@ -1,5 +1,8 @@
 ## Changelog
 
+[v4.1.0](https://github.com/WesCook/Nutrition/releases/tag/v4.1.0) - 2019-02-28
+* Fixed major bug preventing nutrition effects from being applied on busy servers
+
 [v4.0.0](https://github.com/WesCook/Nutrition/releases/tag/v4.0.0) - 2018-10-20
 * Added visibility setting to hide nutrients in GUI and tooltips
 * Added `/nutrition reload` command to reload nutrients without restarting game
