@@ -15,7 +15,7 @@ public class EffectsManager {
 	@CapabilityInject(INutrientManager.class)
 	private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
 
-	// Called from EventPlayerUpdate#PlayerTickEvent and EventEatFood#reapplyEffectsFromMilk
+	// Called from EventWorldTick#PlayerTickEvent and EventEatFood#reapplyEffectsFromMilk
 	public static void reapplyEffects(EntityPlayer player) {
 		List<Effect> effects = removeDuplicates(getEffectsInThreshold(player));
 

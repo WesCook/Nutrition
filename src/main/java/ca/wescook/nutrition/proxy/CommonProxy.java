@@ -26,7 +26,7 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new EventPlayerJoinWorld()); // Attach capability to player
 		MinecraftForge.EVENT_BUS.register(new EventPlayerDeath()); // Player death and warping
 		MinecraftForge.EVENT_BUS.register(new EventEatFood()); // Register use item event
-		MinecraftForge.EVENT_BUS.register(new EventPlayerUpdate()); // Register update event for nutrition decay and potion effects
+		MinecraftForge.EVENT_BUS.register(new EventWorldTick()); // Register update event for nutrition decay and potion effects
 	}
 
 	public void init(FMLInitializationEvent event) {

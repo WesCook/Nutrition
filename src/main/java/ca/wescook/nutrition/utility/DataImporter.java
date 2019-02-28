@@ -40,7 +40,7 @@ public class DataImporter {
 		EffectsList.register(DataParser.parseEffects(loadJsonEffects()));
 	}
 
-	// Updates player capabilities on server so object IDs match those in NutritionList
+	// Updates player capabilities on server so object IDs match those in NutrientList
 	public static void updatePlayerCapabilitiesOnServer(MinecraftServer server) {
 		for (EntityPlayerMP player : server.getPlayerList().getPlayers())
 			if (!server.getWorld(0).isRemote)

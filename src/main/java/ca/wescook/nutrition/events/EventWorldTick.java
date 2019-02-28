@@ -10,8 +10,10 @@ import com.google.common.primitives.Floats;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -20,7 +22,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EventPlayerUpdate {
+public class EventWorldTick {
 	@CapabilityInject(INutrientManager.class)
 	private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
 
@@ -28,20 +30,20 @@ public class EventPlayerUpdate {
 	private int potionCounter = 0; // Count ticks to reapply potion effects
 
 	@SubscribeEvent
-	public void PlayerTickEvent(TickEvent.PlayerTickEvent event) {
+	public void WorldTickEvent(TickEvent.WorldTickEvent event) {
 		// Only run during end phase (post-vanilla)
 		if (event.phase != TickEvent.Phase.END)
 			return;
 
-		EntityPlayer player = event.player;
-
 		// Apply decay check each tick
-		if (Config.enableDecay)
-			nutritionDecay(player);
+		if (Config.enableDecay) {
+			for (EntityPlayer player : event.world.playerEntities) {
+				nutritionDecay(player);
+			}
+		}
 
 		// Reapply potion effects every 5 seconds
-		if (!event.player.getEntityWorld().isRemote) // Server only
-			potionTicking(player);
+		potionTicking(event.world);
 	}
 
 	private void nutritionDecay(EntityPlayer player) {
@@ -88,11 +90,15 @@ public class EventPlayerUpdate {
 		return playerNutrition;
 	}
 
-	private void potionTicking(EntityPlayer player) {
+	private void potionTicking(World world) {
 		if (potionCounter > 110) {
-			EffectsManager.reapplyEffects(player);
+			for (EntityPlayer player : FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayers()) // All players on server
+				EffectsManager.reapplyEffects(player);
 			potionCounter = 0;
 		}
-		potionCounter++;
+
+		// Only increment on world 0, as this value is global
+		if (world.provider.getDimension() == 0)
+			potionCounter++;
 	}
 }
