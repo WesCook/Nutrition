@@ -1,5 +1,14 @@
 ## Changelog
 
+[v4.2.0](https://github.com/WesCook/Nutrition/releases/tag/v4.2.0) - 2019-03-01
+* Added new particle visibility field to Effects
+* Added localization support for potion names
+* Added Italian localizations (contribution from Insane-96)
+* Added support for akkamaddi's Ashenwheat, Fauna and Ecology, Mo' Creatures, Tea the Story, and Tiny Progressions
+* Updated support for Animania, The Betweenlands, Rockhounding Surface, Pam's HarvestCraft, and XL Food Mod
+* Added support for Bewitchment, The Midnight, and Grimoire of Gaia (contribution from Sunconure11)
+* Updated support for Better Animals, Erebus, and Project: Vibrant Journeys (contribution from Sunconure11)
+
 [v4.1.0](https://github.com/WesCook/Nutrition/releases/tag/v4.1.0) - 2019-02-28
 * Fixed major bug preventing nutrition effects from being applied on busy servers
 
