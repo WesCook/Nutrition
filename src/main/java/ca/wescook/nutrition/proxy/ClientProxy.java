@@ -9,14 +9,19 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class ClientProxy extends CommonProxy {
+public class ClientProxy implements IProxy {
 	public static INutrientManager localNutrition; // Holds local copy of data/methods for client-side prediction
 	public static KeyBinding keyNutritionGui;
 
 	@Override
+	public void preInit(FMLPreInitializationEvent event) {
+	}
+
+	@Override
 	public void init(FMLInitializationEvent event) {
-		super.init(event);
 
 		if (Config.enableGui) { // If GUI is enabled
 			ClientRegistry.registerKeyBinding(keyNutritionGui = new KeyBinding("key.nutrition", 49, "Nutrition")); // Register Nutrition keybind, default to "N"
@@ -27,5 +32,9 @@ public class ClientProxy extends CommonProxy {
 
 		if (Config.enableTooltips)
 			MinecraftForge.EVENT_BUS.register(new EventTooltip()); // Register tooltip event
+	}
+
+	@Override
+	public void postInit(FMLPostInitializationEvent event) {
 	}
 }

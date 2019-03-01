@@ -6,6 +6,7 @@ import ca.wescook.nutrition.effects.EffectsList;
 import ca.wescook.nutrition.effects.JsonEffect;
 import ca.wescook.nutrition.nutrients.JsonNutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
+import ca.wescook.nutrition.nutrients.NutrientUtils;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,6 +39,10 @@ public class DataImporter {
  	public static void reload() {
 		NutrientList.register(DataParser.parseNutrients(loadJsonNutrients()));
 		EffectsList.register(DataParser.parseEffects(loadJsonEffects()));
+
+		// List all foods registered in-game without nutrients
+		if (Config.logMissingNutrients)
+			NutrientUtils.findRegisteredFoods();
 	}
 
 	// Updates player capabilities on server so object IDs match those in NutrientList
