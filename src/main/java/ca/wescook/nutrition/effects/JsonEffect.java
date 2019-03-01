@@ -13,5 +13,6 @@ public class JsonEffect {
 	public String detect;
 	public List<String> nutrients = new ArrayList<>();
 	public Integer cumulative_modifier;
+	public String particles;
 	public Boolean enabled;
 }

@@ -143,6 +143,15 @@ public class DataParser {
 			// Default the cumulative modifier to 1 if not defined
 			effect.cumulativeModifier = (effectRaw.cumulative_modifier != null) ? effectRaw.cumulative_modifier : 1;
 
+			// Find enum from string, default to TRANSPARENT if not defined
+			try {
+				effect.particles = (effectRaw.particles != null ? Effect.ParticleVisibility.valueOf(effectRaw.particles.toUpperCase()) : Effect.ParticleVisibility.TRANSPARENT);
+			}
+			catch(java.lang.IllegalArgumentException exception) {
+				Log.error("Particle visibility of '" + effect.name + "' is invalid.  Skipping effect.");
+				continue;
+			}
+
 			// Build list of applicable nutrients
 			// If nutrients are unspecified in file, this defaults to include every nutrient
 			if (effectRaw.nutrients.size() == 0) {

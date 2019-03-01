@@ -20,7 +20,9 @@ public class EffectsManager {
 		List<Effect> effects = removeDuplicates(getEffectsInThreshold(player));
 
 		for (Effect effect : effects) {
-			player.addPotionEffect(new PotionEffect(effect.potion, 619, effect.amplifier, true, false));
+			boolean ambient = (effect.particles == Effect.ParticleVisibility.TRANSLUCENT); // Determine if particles should be shown, and what strength
+			boolean showParticles = (effect.particles == Effect.ParticleVisibility.TRANSLUCENT || effect.particles == Effect.ParticleVisibility.OPAQUE);
+			player.addPotionEffect(new PotionEffect(effect.potion, 619, effect.amplifier, ambient, showParticles));
 		}
 	}
 

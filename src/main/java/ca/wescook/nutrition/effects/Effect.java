@@ -16,4 +16,11 @@ public class Effect {
 	public String detect;
 	public List<Nutrient> nutrients = new ArrayList<>();
 	public int cumulativeModifier;
+	public Enum<ParticleVisibility> particles;
+
+	public enum ParticleVisibility {
+		OPAQUE,
+		TRANSLUCENT,
+		TRANSPARENT
+	}
 }
