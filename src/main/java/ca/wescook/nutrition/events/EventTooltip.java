@@ -36,8 +36,8 @@ public class EventTooltip {
 		// Build tooltip
 		if (!nutrientString.equals("")) {
 			tooltip = I18n.format("tooltip." + Nutrition.MODID + ":nutrients") + " " +
-					TextFormatting.DARK_GREEN + nutrientString +
-					TextFormatting.DARK_AQUA + " (" + String.format("%.1f", nutritionValue) + "%)";
+			TextFormatting.DARK_GREEN + nutrientString +
+			TextFormatting.DARK_AQUA + " (" + String.format("%.1f", nutritionValue) + "%)";
 		}
 
 		// Add to item tooltip
