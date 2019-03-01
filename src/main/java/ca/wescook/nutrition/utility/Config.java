@@ -60,7 +60,7 @@ public class Config {
 			"This is to prevent large, complex foods from being too powerful.\n" +
 			"(eg. 1 nutrient = 0% loss, 2 nutrients = 15% loss, 3 nutrients = 30% loss)");
 		allowOverEating = configFile.getBoolean("AllowOverEating", CATEGORY_NUTRITION, false, "Allow player to continue eating even while full.\n" +
-			"This setting may upset balance, but is necessary for playing in peaceful mode.");
+			"This setting may upset balance (and tummies), but is necessary for playing in peaceful mode.");
 
 		enableGui = configFile.getBoolean("EnableGui", CATEGORY_GUI, true, "If the nutrition GUI should be enabled");
 		enableGuiButton = configFile.getBoolean("EnableGuiButton", CATEGORY_GUI, true, "If the nutrition button should be shown on player inventory (hotkey will still function).");
