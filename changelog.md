@@ -1,5 +1,9 @@
 ## Changelog
 
+[v4.3.0](https://github.com/WesCook/Nutrition/releases/tag/v4.3.0) - 2019-03-03
+* Fixed server crash caused by potion localizations
+* Added Glacidus support (contribution from Sunconure11)
+
 [v4.2.0](https://github.com/WesCook/Nutrition/releases/tag/v4.2.0) - 2019-03-01
 * Added new particle visibility field to Effects
 * Added localization support for potion names

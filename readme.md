@@ -46,6 +46,7 @@ Mods that are supported with the default five-food group system include:
 * [Food Expansion](https://minecraft.curseforge.com/projects/food-expansion)
 * [Forestry](https://minecraft.curseforge.com/projects/forestry)
 * [Galacticraft](https://micdoodle8.com/mods/galacticraft)
+* [Glacidus](https://minecraft.curseforge.com/projects/glacidus)
 * [Grim Pack](https://minecraft.curseforge.com/projects/grim-pack)
 * [Grimoire of Gaia](https://minecraft.curseforge.com/projects/grimoire-of-gaia)
 * [Heat and Climate](https://defeatedcrow.jp/modwiki/HeatAndClimate_EN)
