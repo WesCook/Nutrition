@@ -1,6 +1,5 @@
 package ca.wescook.nutrition.potions;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.util.ResourceLocation;
 
@@ -21,7 +20,7 @@ public class ModPotions {
 		// Toughness
 		toughness = new PotionToughness(true, new ResourceLocation("nutrition", "textures/potions/toughness.png"));
 		toughness.setRegistryName("toughness");
-		toughness.setPotionName(I18n.format("potion.") + toughness.getRegistryName());
+		toughness.setPotionName("potion." + toughness.getRegistryName());
 		toughness.setBeneficial();
 		toughness.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, TOUGHNESS_HEALTH.toString(), 0D, 0);
 		toughness.registerPotionAttributeModifier(SharedMonsterAttributes.ARMOR_TOUGHNESS, TOUGHNESS_ARMOR.toString(), 0D, 0);
@@ -30,14 +29,14 @@ public class ModPotions {
 		// Nourished
 		nourished = new PotionNourished(true, new ResourceLocation("nutrition", "textures/potions/nourished.png"));
 		nourished.setRegistryName("nourished");
-		nourished.setPotionName(I18n.format("potion.") + nourished.getRegistryName());
+		nourished.setPotionName("potion." + nourished.getRegistryName());
 		toughness.setBeneficial();
 		nourished.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, NOURISHMENT_HEALTH.toString(), 0D, 0);
 
 		// Malnourished
 		malnourished = new PotionMalnourished(true, new ResourceLocation("nutrition", "textures/potions/malnourished.png"));
 		malnourished.setRegistryName("malnourished");
-		malnourished.setPotionName(I18n.format("potion.") + malnourished.getRegistryName());
+		malnourished.setPotionName("potion." + malnourished.getRegistryName());
 		malnourished.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, MALNOURISHMENT_HEALTH.toString(), 0D, 0);
 	}
 }
