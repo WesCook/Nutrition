@@ -1,5 +1,10 @@
 ## Changelog
 
+[v4.4.0](https://github.com/WesCook/Nutrition/releases/tag/v4.4.0) - 2019-06-29
+* Added support for Growthcraft CE, BetterNether, Complex Crops, PizzaCraft, and Taco Tuesday
+* Updated support for Pam's Harvestcraft, Simply Tea, Twilight Forest, Vanilla Food Pantry, and XL Food Mod
+* Added support for Advent Of Ascension and Rats (contribution from Sunconure11)
+
 [v4.3.0](https://github.com/WesCook/Nutrition/releases/tag/v4.3.0) - 2019-03-03
 * Fixed server crash caused by potion localizations
 * Added Glacidus support (contribution from Sunconure11)
