@@ -1,17 +1,22 @@
 # Keys
-key.nutrition=Открыть Nutrition GUI
+key.nutrition=Открыть интерфейс питания
 
 # GUI
-gui.nutrition:nutrition_title=Nutrition
+gui.nutrition:nutrition_title=Питательные компоненты
 gui.nutrition:close=Закрыть
 gui.nutrition:updating=Обновление...
 
 # Nutrients (Может быть настроено с помощью Пакетов ресурсов)
-nutrient.nutrition:grain=Зерно
-nutrient.nutrition:fruit=Фрукт
-nutrient.nutrition:vegetable=Овощь
-nutrient.nutrition:protein=Белок
-nutrient.nutrition:dairy=Молочный
+nutrient.nutrition:grain=Зерновые
+nutrient.nutrition:fruit=Фрукты
+nutrient.nutrition:vegetable=Овощи
+nutrient.nutrition:protein=Белки
+nutrient.nutrition:dairy=Молочные
 
 # Tooltips
-tooltip.nutrition:nutrients=Nutrients:
+tooltip.nutrition:nutrients=Питательные компоненты:
+
+# Potions
+potion.nutrition:toughness=Прочность
+potion.nutrition:nourished=Сытость
+potion.nutrition:malnourished=Недоедание
