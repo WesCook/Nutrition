@@ -1093,7 +1093,18 @@
 			"xlfoodmod:tortilla",
 			"xlfoodmod:vegetable_soup",
 			"zawa:bamboo_shoot",
-			"zawa:dried_bamboo_shoot"
+			"zawa:dried_bamboo_shoot",
+			"exsagitarne:beans.boiled",
+			"exsartagine:breadveggie",
+			"exsartagine:pizzaplain",
+			"exsartagine:pizzachicken",
+			"exsartagine:pizzachickenraw",
+			"exsartagine:pizzafish",
+			"exsartagine:pizzafishraw",
+			"exsartagine:pizzameat",
+			"exsartagine:pizzameatraw",
+			"exsartagine:pizzasweet",
+			"exsartagine:pizzasweetraw"
 		]
 	}
 }
