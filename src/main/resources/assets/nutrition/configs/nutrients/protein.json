@@ -118,6 +118,8 @@
 			"arcticmobs:palesoup",
 			"arcticmobs:yetimeatcooked",
 			"arcticmobs:yetimeatraw",
+			"betteranimalsplus:crab_meat_cooked",
+			"betteranimalsplus:crab_meat_raw",
 			"betterwithaddons:food_clownfish_cooked",
 			"betterwithaddons:food_egg_cooked",
 			"betterwithaddons:food_fugu_sac",
@@ -993,6 +995,9 @@
 			"pvj:raw_duck",
 			"pvj:raw_squid",
 			"pvj:steamed_clam_meat",
+			"pyrotech:egg_roasted",
+			"quark:crab_leg",
+			"quark:cooked_crab_leg",
 			"quark:cooked_frog_leg",
 			"quark:frog_leg",
 			"quark:golden_frog_leg",
@@ -1369,7 +1374,13 @@
 			"zawa:rat_raw",
 			"zawa:raw_frog_leg",
 			"zawa:reptile_meat_cooked",
-			"zawa:reptile_meat_raw"
+			"zawa:reptile_meat_raw",
+			"exsartagine:pizzachicken",
+			"exsartagine:pizzachickenraw",
+			"exsartagine:pizzafish",
+			"exsartagine:pizzafishraw",
+			"exsartagine:pizzameat",
+			"exsartagine:pizzameatraw"
 		]
 	}
 }

@@ -543,6 +543,7 @@
 			"pvj:coconut_milk",
 			"pvj:cracked_coconut",
 			"pvj:juniper_berries",
+			"pyrotech:apple_baked",
 			"realworld:berry_acai",
 			"realworld:berry_beaut",
 			"realworld:berry_black",
@@ -736,7 +737,9 @@
 			"xlfoodmod:strawberry_pie",
 			"xlfoodmod:taco",
 			"xlfoodmod:taco_salad",
-			"xlfoodmod:vegetable_soup"
+			"xlfoodmod:vegetable_soup",
+			"exsartagine:pizzasweet",
+			"exsartagine:pizzasweetraw"
 		]
 	}
 }

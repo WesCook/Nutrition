@@ -752,7 +752,14 @@
 			"primal:void_grass_root",
 			"pvj:cactus_salad",
 			"pvj:mystical_potato",
+			"pyrotech:beetroot_roasted",
+			"pyrotech:carrot_roasted",
+			"pyrotech:mushroom_brown_roasted",
+			"pyrotech:mushroom_red_roasted",
 			"quark:root",
+			"quark:root_flower:0",
+			"quark:root_flower:1",
+			"quark:root_flower:2",
 			"rats:assorted_vegetables",
 			"rats:confit_byaldi",
 			"realworld:food_corbr",
@@ -1086,7 +1093,18 @@
 			"xlfoodmod:tortilla",
 			"xlfoodmod:vegetable_soup",
 			"zawa:bamboo_shoot",
-			"zawa:dried_bamboo_shoot"
+			"zawa:dried_bamboo_shoot",
+			"exsagitarne:beans.boiled",
+			"exsartagine:breadveggie",
+			"exsartagine:pizzaplain",
+			"exsartagine:pizzachicken",
+			"exsartagine:pizzachickenraw",
+			"exsartagine:pizzafish",
+			"exsartagine:pizzafishraw",
+			"exsartagine:pizzameat",
+			"exsartagine:pizzameatraw",
+			"exsartagine:pizzasweet",
+			"exsartagine:pizzasweetraw"
 		]
 	}
 }

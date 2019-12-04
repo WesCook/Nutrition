@@ -973,7 +973,19 @@
 			"xlfoodmod:vanilla_cupcake",
 			"xlfoodmod:vanilla_donut",
 			"xlfoodmod:vanilla_icecream",
-			"xlfoodmod:waffle"
+			"xlfoodmod:waffle",
+			"exsartagine:breadfine",
+			"exsartagine:breadmeat",
+			"exsartagine:breadveggie",
+			"exsartagine:pizzaplain",
+			"exsartagine:pizzachicken",
+			"exsartagine:pizzachickenraw",
+			"exsartagine:pizzafish",
+			"exsartagine:pizzafishraw",
+			"exsartagine:pizzameat",
+			"exsartagine:pizzameatraw",
+			"exsartagine:pizzasweet",
+			"exsartagine:pizzasweetraw"
 		]
 	}
 }
