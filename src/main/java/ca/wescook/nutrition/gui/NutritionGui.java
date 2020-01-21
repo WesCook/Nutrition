@@ -99,7 +99,7 @@ public class NutritionGui extends GuiScreenDynamic {
 			int nutrientWidth = fontRenderer.getStringWidth(I18n.format("nutrient." + Nutrition.MODID + ":" + nutrient.name)); // Get width of localized string
 			nutrientWidth = (nutrientWidth / 4) * 4; // Round to nearest multiple of 4
 			if (nutrientWidth > labelCharacterPadding)
-				this.labelCharacterPadding = nutrientWidth;
+				labelCharacterPadding = nutrientWidth;
 		}
 
 		// Update dynamic GUI size
