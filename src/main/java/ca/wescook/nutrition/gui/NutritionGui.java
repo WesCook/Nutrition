@@ -60,7 +60,7 @@ public class NutritionGui extends GuiScreenDynamic {
 		int i = 0;
 		for (Nutrient nutrient : NutrientList.getVisible()) {
 			// Calculate percentage width for nutrition bars
-			float currentNutrient = (ClientProxy.localNutrition != null && ClientProxy.localNutrition.get(nutrient) != null) ? Math.round(ClientProxy.localNutrition.get(nutrient)) : 0; // If null, setPlayerNutrition to 0, else get true value
+			float currentNutrient = (ClientProxy.localNutrition != null && ClientProxy.localNutrition.get(nutrient) != null) ? Math.round(ClientProxy.localNutrition.get(nutrient)) : 0; // Display empty if null
 			int nutritionBarDisplayWidth = (int) (currentNutrient / 100 * NUTRITION_BAR_WIDTH);
 
 			// Draw icons
