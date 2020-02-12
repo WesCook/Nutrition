@@ -1,5 +1,13 @@
 ## Changelog
 
+[v4.5.0](https://github.com/WesCook/Nutrition/releases/tag/v4.5.0) - 2020-02-12
+* Resolved conflict with JourneyMap which lead to an inaccurate GUI display on servers with two or more players
+* Updated support for Roots (contribution from Sunconure11)
+* Added support for Better Animals Plus, Fossils and Archaeology, Mystical World, and Quark (contribution from Sunconure11)
+* Added support for Pyrotech (contribution from WarlordWossman)
+* Russian localization improvements (contribution from Romz24)
+* Added support for Ex Sartagine (contribution from DMNerd)
+
 [v4.4.0](https://github.com/WesCook/Nutrition/releases/tag/v4.4.0) - 2019-06-29
 * Added support for Growthcraft CE, BetterNether, Complex Crops, PizzaCraft, and Taco Tuesday
 * Updated support for Pam's Harvestcraft, Simply Tea, Twilight Forest, Vanilla Food Pantry, and XL Food Mod
