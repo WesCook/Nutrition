@@ -23,7 +23,7 @@ Mods that are supported with the default five-food group system include:
 * [AbyssalCraft](https://www.curseforge.com/minecraft/mc-mods/abyssalcraft)
 * [Actually Additions](https://www.curseforge.com/minecraft/mc-mods/actually-additions)
 * [Advent of Ascension](https://www.curseforge.com/minecraft/mc-mods/advent-of-ascension-nevermine)
-* [Aether Legacy](https://www.curseforge.com/minecraft/mc-mods/aether-legacy)
+* [The Aether](https://www.curseforge.com/minecraft/mc-mods/the-aether)
 * [akkamaddi's Ashenwheat](https://www.curseforge.com/minecraft/mc-mods/akkamaddis-ashenwheat)
 * [Animalium](https://www.curseforge.com/minecraft/mc-mods/animalium)
 * [Animania](https://www.curseforge.com/minecraft/mc-mods/animania)
