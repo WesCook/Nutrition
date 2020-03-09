@@ -1,5 +1,11 @@
 ## Changelog
 
+[v4.6.0](https://github.com/WesCook/Nutrition/releases/tag/v4.6.0) - 2020-03-08
+* Added support for Pam's BrewCraft
+* Updated support for Better Animals Plus, Bewitchment, Fossils and Archeology Revival, Nether Ex, PizzaCraft, Project: Vibrant Journeys, Rats, Rockhounding: Surface, Roots, Salt Mod, Skye's Bakery, and The Betweenlands
+* Added support for Beasts (contribution from Sunconure11)
+* Updated support for Lycanites Mobs (contribution from Sunconure11)
+
 [v4.5.0](https://github.com/WesCook/Nutrition/releases/tag/v4.5.0) - 2020-02-12
 * Resolved conflict with JourneyMap which lead to an inaccurate GUI display on servers with two or more players
 * Updated support for Roots (contribution from Sunconure11)
