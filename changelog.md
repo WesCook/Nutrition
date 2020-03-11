@@ -1,5 +1,8 @@
 ## Changelog
 
+[v4.6.1](https://github.com/WesCook/Nutrition/releases/tag/v4.6.1) - 2020-03-10
+* Fixing Italian localization
+
 [v4.6.0](https://github.com/WesCook/Nutrition/releases/tag/v4.6.0) - 2020-03-08
 * Added support for Pam's BrewCraft
 * Updated support for Better Animals Plus, Bewitchment, Fossils and Archeology Revival, Nether Ex, PizzaCraft, Project: Vibrant Journeys, Rats, Rockhounding: Surface, Roots, Salt Mod, Skye's Bakery, and The Betweenlands
