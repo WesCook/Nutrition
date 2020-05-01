@@ -4,10 +4,8 @@ import ca.wescook.nutrition.Nutrition;
 import ca.wescook.nutrition.network.Sync;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
-import ca.wescook.nutrition.proxy.ClientProxy;
+import ca.wescook.nutrition.utility.ClientData;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiLabel;
 import net.minecraft.client.resources.I18n;
 
 import java.io.IOException;
@@ -60,7 +58,7 @@ public class NutritionGui extends GuiScreenDynamic {
 		int i = 0;
 		for (Nutrient nutrient : NutrientList.getVisible()) {
 			// Calculate percentage width for nutrition bars
-			float currentNutrient = (ClientProxy.localNutrition != null && ClientProxy.localNutrition.get(nutrient) != null) ? Math.round(ClientProxy.localNutrition.get(nutrient)) : 0; // Display empty if null
+			float currentNutrient = (ClientData.localNutrition != null && ClientData.localNutrition.get(nutrient) != null) ? Math.round(ClientData.localNutrition.get(nutrient)) : 0; // Display empty if null
 			int nutritionBarDisplayWidth = (int) (currentNutrient / 100 * NUTRITION_BAR_WIDTH);
 
 			// Draw icons
@@ -138,8 +136,8 @@ public class NutritionGui extends GuiScreenDynamic {
 
 			// Create percent value labels for each nutrient value
 			labelList.add(label = new GuiLabel(fontRenderer, 0, left + LABEL_VALUE_HORIZONTAL_OFFSET + labelCharacterPadding, top + LABEL_VERTICAL_OFFSET + (i * NUTRITION_DISTANCE), 0, 0, 0xffffffff));
-			if (ClientProxy.localNutrition != null && ClientProxy.localNutrition.get(nutrient) != null) // Ensure local nutrition data exists
-				label.addLine(Math.round(ClientProxy.localNutrition.get(nutrient)) + "%%");
+			if (ClientData.localNutrition != null && ClientData.localNutrition.get(nutrient) != null) // Ensure local nutrition data exists
+				label.addLine(Math.round(ClientData.localNutrition.get(nutrient)) + "%%");
 			else
 				label.addLine(I18n.format("gui." + Nutrition.MODID + ":updating"));
 			i++;
@@ -163,7 +161,7 @@ public class NutritionGui extends GuiScreenDynamic {
 		super.keyTyped(typedChar, keyCode);
 
 		// If escape key (1), or player inventory key (E), or Nutrition GUI key (N) is pressed
-		if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode() || keyCode == ClientProxy.keyNutritionGui.getKeyCode()) {
+		if (keyCode == 1 || keyCode == Minecraft.getInstance().gameSettings.keyBindInventory.getKeyCode() || keyCode == ClientData.keyNutritionGui.getKeyCode()) {
 			// Close GUI
 			mc.player.closeScreen();
 			if (mc.currentScreen == null)

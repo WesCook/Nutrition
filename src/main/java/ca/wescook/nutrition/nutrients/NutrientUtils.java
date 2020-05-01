@@ -2,9 +2,10 @@ package ca.wescook.nutrition.nutrients;
 
 import ca.wescook.nutrition.utility.Config;
 import ca.wescook.nutrition.utility.Log;
-import net.minecraft.block.BlockCake;
-import net.minecraft.item.*;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.MilkBucketItem;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,11 +48,12 @@ public class NutrientUtils {
 
 		// Base food value
 		int foodValue = 0;
-		if (item instanceof ItemFood)
-			foodValue = ((ItemFood) item).getHealAmount(itemStack); // Number of half-drumsticks food heals
-		else if (item instanceof ItemBlock || item instanceof ItemBlockSpecial) // Cake, most likely
-			foodValue = 2; // Hardcoded value from vanilla
-		else if (item instanceof ItemBucketMilk)
+		if (item.isFood())
+			foodValue = item.getFood().getHealing(); // Number of half-drumsticks food heals
+		// TODO: Support cakes again
+		//else if (item instanceof ItemBlock || item instanceof ItemBlockSpecial) // Cake, most likely
+		//	foodValue = 2; // Hardcoded value from vanilla
+		else if (item instanceof MilkBucketItem)
 			foodValue = 4; // Hardcoded milk value
 
 		// Apply multipliers
@@ -70,19 +72,21 @@ public class NutrientUtils {
 		Item item = itemStack.getItem();
 
 		// Regular ItemFood
-		if (item instanceof ItemFood)
+		if (item.isFood())
 			return true;
 
 		// Cake - Vanilla
-		if (item instanceof ItemBlock && ((ItemBlock) item).getBlock() instanceof BlockCake)
-			return true;
+		// TODO: Support cakes again
+		//if (item instanceof ItemBlock && ((ItemBlock) item).getBlock() instanceof BlockCake)
+			//return true;
 
 		// Cake - Modded
-		if (item instanceof ItemBlockSpecial && ((ItemBlockSpecial) item).getBlock() instanceof BlockCake)
-			return true;
+		// TODO: Support cakes again
+		//if (item instanceof ItemBlockSpecial && ((ItemBlockSpecial) item).getBlock() instanceof BlockCake)
+			//return true;
 
 		// Milk Bucket
-		if (item instanceof ItemBucketMilk)
+		if (item instanceof MilkBucketItem)
 			return true;
 
 		return false;
@@ -90,7 +94,7 @@ public class NutrientUtils {
 
 	// List all foods registered in-game without nutrients
 	public static void findRegisteredFoods() {
-		for (Item item : Item.REGISTRY) {
+		for (Item item : ForgeRegistries.ITEMS) {
 			ItemStack itemStack = new ItemStack(item);
 			if (isValidFood(itemStack) && getFoodNutrients(itemStack).size() == 0)
 				Log.warn("Registered food without nutrients: " + item.getRegistryName());

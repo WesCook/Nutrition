@@ -1,0 +1,19 @@
+{
+    "_comment": "Tastatur",
+    "key.nutrition": "Åpen ernæring GUI",
+
+    "_comment": "GUI",
+    "gui.nutrition:nutrition_title": "Ernæring",
+    "gui.nutrition:close": "Lukke",
+    "gui.nutrition:updating": "Oppdaterer...",
+
+    "_comment": "Ernæring (Kan tilpasses ved hjelp av ressurspakker)",
+    "nutrient.nutrition:grain": "Korn",
+    "nutrient.nutrition:fruit": "Frukt",
+    "nutrient.nutrition:vegetable": "grønnsaker",
+    "nutrient.nutrition:protein": "Protein",
+    "nutrient.nutrition:dairy": "melk",
+
+    "_comment": "Verktøytips",
+    "tooltip.nutrition:nutrients": "Ernæring:"
+}

@@ -11,8 +11,9 @@ import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import org.apache.commons.io.FilenameUtils;
@@ -36,7 +37,7 @@ public class DataImporter {
 	// Loads nutrients from JSONs and API
 	// Runs initially during Post-Init, or from /reload command
 	// Always call updatePlayerCapabilitiesOnServer() afterwards if world is loaded
- 	public static void reload() {
+ 	public static void load() {
 		NutrientList.register(DataParser.parseNutrients(loadJsonNutrients()));
 		EffectsList.register(DataParser.parseEffects(loadJsonEffects()));
 
@@ -47,9 +48,10 @@ public class DataImporter {
 
 	// Updates player capabilities on server so object IDs match those in NutrientList
 	public static void updatePlayerCapabilitiesOnServer(MinecraftServer server) {
-		for (EntityPlayerMP player : server.getPlayerList().getPlayers())
-			if (!server.getWorld(0).isRemote)
-				player.getCapability(NUTRITION_CAPABILITY, null).updateCapability();
+		for (ServerPlayerEntity player : server.getPlayerList().getPlayers())
+			if (!server.getWorld(DimensionType.OVERWORLD).isRemote)
+				// TODO: IntelliJ wants to make this an object reference.  Test if that will work.
+				player.getCapability(NUTRITION_CAPABILITY).ifPresent(cap -> cap.updateCapability());
 	}
 
 

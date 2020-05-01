@@ -4,14 +4,9 @@ import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.network.Sync;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
-import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -22,7 +17,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class ChatCommand extends CommandBase {
+public class ChatCommandOld extends CommandBase {
 	@CapabilityInject(INutrientManager.class)
 	private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
 
@@ -95,7 +90,7 @@ public class ChatCommand extends CommandBase {
 	}
 
 	private void commandReload(MinecraftServer server, ICommandSender sender) {
-		DataImporter.reload();
+		DataImporter.load();
 		DataImporter.updatePlayerCapabilitiesOnServer(server);
 		sender.sendMessage(new TextComponentString("Nutrients and effects reloaded"));
 	}

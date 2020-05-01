@@ -1,0 +1,19 @@
+{
+    "_comment": "Keys",
+    "key.nutrition": "Apri interfaccia Nutrizione",
+
+    "_comment": "GUI",
+    "gui.nutrition:nutrition_title": "Nutrizione",
+    "gui.nutrition:close": "Chiudi",
+    "gui.nutrition:updating": "Aggiornando...",
+
+    "_comment": "Nutrients (Can be customized using Resource Packs)",
+    "nutrient.nutrition:grain": "Cereali",
+    "nutrient.nutrition:fruit": "Frutta",
+    "nutrient.nutrition:vegetable": "Verdura",
+    "nutrient.nutrition:protein": "Proteine",
+    "nutrient.nutrition:dairy": "Latticini",
+
+    "_comment": "Tooltips",
+    "tooltip.nutrition:nutrients": "Nutrienti:"
+}

@@ -1,9 +1,7 @@
 package ca.wescook.nutrition.network;
 
 import ca.wescook.nutrition.Nutrition;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.network.NetworkRegistry;
 
 public class ModPacketHandler {
 	public static final SimpleNetworkWrapper NETWORK_CHANNEL = NetworkRegistry.INSTANCE.newSimpleChannel(Nutrition.MODID);

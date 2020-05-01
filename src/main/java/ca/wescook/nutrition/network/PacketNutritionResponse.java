@@ -4,18 +4,13 @@ import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientList;
-import ca.wescook.nutrition.proxy.ClientProxy;
+import ca.wescook.nutrition.utility.ClientData;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +22,7 @@ public class PacketNutritionResponse {
 		private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
 
 		// Server vars only
-		EntityPlayer serverPlayer;
+		PlayerEntity serverPlayer;
 
 		// Client vars only
 		Map<Nutrient, Float> clientNutrients;
@@ -35,7 +30,7 @@ public class PacketNutritionResponse {
 		public Message() {}
 
 		// Message data is passed along from server
-		public Message(EntityPlayer player) {
+		public Message(PlayerEntity player) {
 			serverPlayer = player; // Get server player
 		}
 
@@ -70,11 +65,11 @@ public class PacketNutritionResponse {
 		public IMessage onMessage(final Message message, final MessageContext context) {
 			FMLCommonHandler.instance().getWorldThread(context.netHandler).addScheduledTask(() -> {
 				// Update local dummy nutrition data
-				if (ClientProxy.localNutrition != null)
-					ClientProxy.localNutrition.set(message.clientNutrients);
+				if (ClientData.localNutrition != null)
+					ClientData.localNutrition.set(message.clientNutrients);
 
 				// If Nutrition GUI is open, update GUI
-				GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
+				GuiScreen currentScreen = Minecraft.getInstance().currentScreen;
 				if (currentScreen != null && currentScreen.equals(ModGuiHandler.nutritionGui))
 					ModGuiHandler.nutritionGui.redrawLabels();
 			});

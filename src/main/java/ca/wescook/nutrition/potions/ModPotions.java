@@ -1,6 +1,7 @@
 package ca.wescook.nutrition.potions;
 
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.UUID;
@@ -20,23 +21,19 @@ public class ModPotions {
 		// Toughness
 		toughness = new PotionToughness(true, new ResourceLocation("nutrition", "textures/potions/toughness.png"));
 		toughness.setRegistryName("toughness");
-		toughness.setPotionName("potion." + toughness.getRegistryName());
-		toughness.setBeneficial();
-		toughness.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, TOUGHNESS_HEALTH.toString(), 0D, 0);
-		toughness.registerPotionAttributeModifier(SharedMonsterAttributes.ARMOR_TOUGHNESS, TOUGHNESS_ARMOR.toString(), 0D, 0);
-		toughness.registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_SPEED, TOUGHNESS_ATTACK_SPEED.toString(), 0D, 0);
+		toughness.addAttributesModifier(SharedMonsterAttributes.MAX_HEALTH, TOUGHNESS_HEALTH.toString(), 0D, Operation.ADDITION);
+		toughness.addAttributesModifier(SharedMonsterAttributes.MAX_HEALTH, TOUGHNESS_HEALTH.toString(), 0D, Operation.ADDITION);
+		toughness.addAttributesModifier(SharedMonsterAttributes.ARMOR_TOUGHNESS, TOUGHNESS_ARMOR.toString(), 0D, Operation.ADDITION);
+		toughness.addAttributesModifier(SharedMonsterAttributes.ATTACK_SPEED, TOUGHNESS_ATTACK_SPEED.toString(), 0D, Operation.ADDITION);
 
 		// Nourished
 		nourished = new PotionNourished(true, new ResourceLocation("nutrition", "textures/potions/nourished.png"));
 		nourished.setRegistryName("nourished");
-		nourished.setPotionName("potion." + nourished.getRegistryName());
-		toughness.setBeneficial();
-		nourished.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, NOURISHMENT_HEALTH.toString(), 0D, 0);
+		nourished.addAttributesModifier(SharedMonsterAttributes.MAX_HEALTH, NOURISHMENT_HEALTH.toString(), 0D, Operation.ADDITION);
 
 		// Malnourished
 		malnourished = new PotionMalnourished(true, new ResourceLocation("nutrition", "textures/potions/malnourished.png"));
 		malnourished.setRegistryName("malnourished");
-		malnourished.setPotionName("potion." + malnourished.getRegistryName());
-		malnourished.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, MALNOURISHMENT_HEALTH.toString(), 0D, 0);
+		malnourished.addAttributesModifier(SharedMonsterAttributes.MAX_HEALTH, MALNOURISHMENT_HEALTH.toString(), 0D, Operation.ADDITION);
 	}
 }

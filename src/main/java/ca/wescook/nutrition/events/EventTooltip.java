@@ -5,15 +5,19 @@ import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.nutrients.NutrientUtils;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.List;
 import java.util.StringJoiner;
 
 public class EventTooltip {
 	@SubscribeEvent
+	@OnlyIn(Dist.CLIENT)
 	public void tooltipEvent(ItemTooltipEvent event) {
 		ItemStack itemStack = event.getItemStack();
 		String tooltip = null;
@@ -42,6 +46,6 @@ public class EventTooltip {
 
 		// Add to item tooltip
 		if (tooltip != null)
-			event.getToolTip().add(tooltip);
+			event.getToolTip().add(new StringTextComponent(tooltip));
 	}
 }

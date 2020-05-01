@@ -1,0 +1,34 @@
+# The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
+modLoader="javafml" #mandatory
+
+# A version range to match for said mod loader - for regular FML @Mod it will be the forge version
+loaderVersion="[28,)" #mandatory
+
+# A URL to refer people to when problems occur with this mod
+issueTrackerURL="https://github.com/WesCook/Nutrition/issues" #optional
+
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]] #mandatory
+
+# The modid of the mod
+modId="nutrition" #mandatory
+
+# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
+version="${version}" #mandatory
+
+# A display name for the mod
+displayName="Nutrition" #mandatory
+
+# A URL for the "homepage" for this mod, displayed in the mod UI
+displayURL="https://github.com/WesCook/Nutrition" #optional
+
+# A text field displayed in the mod UI
+credits="Inspiration from TerraFirmaCraft and Spice of Life.  Code contributions from Josh Davison and KnightMiner.  Thanks to others who have contributed mod support or localizations."," #optional
+
+# A text field displayed in the mod UI
+authors="Wes Cook" #optional
+
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+Nutrition is a highly configurable mod to enable the creation of health systems in Minecraft.
+'''

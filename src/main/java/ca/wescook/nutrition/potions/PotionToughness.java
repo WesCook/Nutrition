@@ -1,12 +1,13 @@
 package ca.wescook.nutrition.potions;
 
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.potion.EffectType;
 import net.minecraft.util.ResourceLocation;
 
 public class PotionToughness extends PotionCustom {
 
 	PotionToughness(boolean visibility, ResourceLocation icon) {
-		super(visibility, icon);
+		super(EffectType.BENEFICIAL, 0);
 	}
 
 	// Multiply effects based on amplifier

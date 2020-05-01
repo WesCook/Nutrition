@@ -1,11 +1,7 @@
 package ca.wescook.nutrition.network;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraft.entity.player.ServerPlayerEntity;
 
 public class PacketNutritionRequest {
 	// Message Subclass
@@ -27,7 +23,7 @@ public class PacketNutritionRequest {
 		public IMessage onMessage(final Message message, final MessageContext context) {
 			FMLCommonHandler.instance().getWorldThread(context.netHandler).addScheduledTask(() -> {
 				// Return message
-				EntityPlayerMP player = context.getServerHandler().player; // Get Player on server
+				ServerPlayerEntity player = context.getServerHandler().player; // Get Player on server
 				ModPacketHandler.NETWORK_CHANNEL.sendTo(new PacketNutritionResponse.Message(player), player);
 			});
 

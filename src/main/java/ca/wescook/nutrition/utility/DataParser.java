@@ -9,7 +9,9 @@ import ca.wescook.nutrition.nutrients.NutrientUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraftforge.fml.common.Loader;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
@@ -32,7 +34,7 @@ public class DataParser {
 			// Name, icon color
 			try {
 				nutrient.name = nutrientRaw.name;
-				nutrient.icon = new ItemStack(Item.getByNameOrId(nutrientRaw.icon)); // Create ItemStack used to represent icon
+				nutrient.icon = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(nutrientRaw.icon))); // Create ItemStack used to represent icon
 				nutrient.color = Integer.parseUnsignedInt("ff" + nutrientRaw.color, 16); // Convert hex string to int
 			} catch (NullPointerException e) {
 				Log.fatal("Missing or invalid JSON.  A name, icon, and color are required.");
@@ -63,7 +65,7 @@ public class DataParser {
 				for (String fullName : nutrientRaw.food.items) {
 					// Initial values
 					String name = fullName;
-					int metadata = 0;
+					int metadata = 0; // TODO: Metadata is removed
 
 					// Null check input string
 					if (name == null) {
@@ -87,18 +89,18 @@ public class DataParser {
 					}
 
 					// Get item
-					Item item = Item.getByNameOrId(name);
+					Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(name));
 
 					// Item ID not found, issue warning and skip adding item
 					if (item == null) {
 						String modid = fullName.substring(0, fullName.indexOf(":")); // Get string before first colon
-						if (Config.logMissingFood && Loader.isModLoaded(modid))
+						if (Config.logMissingFood && ModList.get().isLoaded(modid))
 							Log.warn("Food with nutrients doesn't exist: " + fullName + " (" + nutrient.name + ")");
 						continue;
 					}
 
 					// Add to nutrient, or report error
-					ItemStack itemStack = new ItemStack(item, 1, metadata);
+					ItemStack itemStack = new ItemStack(item, 1);
 					if (NutrientUtils.isValidFood(itemStack))
 						nutrient.foodItems.add(itemStack);
 					else
@@ -123,7 +125,7 @@ public class DataParser {
 				continue;
 
 			// Get potion from config
-			Potion potion = Potion.getPotionFromResourceLocation(effectRaw.potion);
+			Potion potion = Potion.getPotionTypeForName(effectRaw.potion);
 			if (potion == null) {
 				Log.error("Potion '" + effectRaw.potion + "' is not valid (" + effectRaw.name + ").");
 				continue;

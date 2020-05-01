@@ -1,13 +1,13 @@
 package ca.wescook.nutrition.gui;
 
 import ca.wescook.nutrition.Nutrition;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiLabel;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.GlStateManager;
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 // Similar to GuiScreen, but draws a dynamic Minecraft border around any size
+@OnlyIn(Dist.CLIENT)
 public abstract class GuiScreenDynamic extends GuiScreen {
 
 	// Container size
@@ -45,7 +45,7 @@ public abstract class GuiScreenDynamic extends GuiScreen {
 
 	private void drawBackground() {
 		// Init
-		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f); // Reset color
+		GlStateManager.color4f(1.0f, 1.0f, 1.0f, 1.0f); // Reset color
 		mc.getTextureManager().bindTexture(GUI_BORDERS); // Fetch texture
 
 		// Top left corner

@@ -1,0 +1,24 @@
+{
+    "_comment": "Keys",
+    "key.nutrition": "Open Nutrition GUI",
+
+    "_comment": "GUI",
+    "gui.nutrition:nutrition_title": "Nutrition",
+    "gui.nutrition:close": "Close",
+    "gui.nutrition:updating": "Updating...",
+
+    "_comment": "Nutrients (Can be customized using Resource Packs)",
+    "nutrient.nutrition:grain": "Grain",
+    "nutrient.nutrition:fruit": "Fruit",
+    "nutrient.nutrition:vegetable": "Vegetable",
+    "nutrient.nutrition:protein": "Protein",
+    "nutrient.nutrition:dairy": "Dairy",
+
+    "_comment": "Tooltips",
+    "tooltip.nutrition:nutrients": "Nutrients:",
+
+    "_comment": "Potions",
+    "potion.nutrition:toughness": "Toughness",
+    "potion.nutrition:nourished": "Nourished",
+    "potion.nutrition:malnourished": "Malnourished"
+}

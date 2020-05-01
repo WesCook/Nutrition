@@ -1,33 +1,33 @@
 package ca.wescook.nutrition.potions;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.Effect;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.EffectType;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class PotionCustom extends Potion {
+// TODO: Still in use?
+
+public class PotionCustom extends Effect {
 	private boolean visibility;
 	private ResourceLocation icon;
 
-	PotionCustom(boolean visibility, ResourceLocation icon) {
-		super(false, 0);
-		this.visibility = visibility;
-		this.icon = icon;
+	PotionCustom(EffectType typeIn, int liquidColorIn) {
+		super(typeIn, liquidColorIn);
 	}
 
 	@Override
-	public boolean shouldRender(PotionEffect effect) {
+	public boolean shouldRender(EffectInstance effect) {
 		return visibility;
 	}
 
 	// Inventory potion rendering
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void renderInventoryEffect(PotionEffect effect, Gui gui, int x, int y, float z) {
-		Minecraft mc = Minecraft.getMinecraft();
+	@OnlyIn(Dist.CLIENT)
+	public void renderInventoryEffect(EffectInstance effect, Gui gui, int x, int y, float z) {
+		Minecraft mc = Minecraft.getInstance();
 		if (mc.currentScreen != null) {
 			mc.getTextureManager().bindTexture(icon);
 			Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
@@ -36,9 +36,9 @@ public class PotionCustom extends Potion {
 
 	// On-screen HUD rendering
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void renderHUDEffect(PotionEffect effect, Gui gui, int x, int y, float z, float alpha) {
-		Minecraft.getMinecraft().getTextureManager().bindTexture(icon);
+	@OnlyIn(Dist.CLIENT)
+	public void renderHUDEffect(EffectInstance effect, Gui gui, int x, int y, float z, float alpha) {
+		Minecraft.getInstance().getTextureManager().bindTexture(icon);
 		Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
 	}
 }

@@ -2,8 +2,8 @@ package ca.wescook.nutrition.effects;
 
 import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.nutrients.Nutrient;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.potion.EffectInstance;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 
@@ -16,23 +16,24 @@ public class EffectsManager {
 	private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
 
 	// Called from EventWorldTick#PlayerTickEvent and EventEatFood#reapplyEffectsFromMilk
-	public static void reapplyEffects(EntityPlayer player) {
+	public static void reapplyEffects(PlayerEntity player) {
 		List<Effect> effects = removeDuplicates(getEffectsInThreshold(player));
 
 		for (Effect effect : effects) {
 			boolean ambient = (effect.particles == Effect.ParticleVisibility.TRANSLUCENT); // Determine if particles should be shown, and what strength
 			boolean showParticles = (effect.particles == Effect.ParticleVisibility.TRANSLUCENT || effect.particles == Effect.ParticleVisibility.OPAQUE);
-			player.addPotionEffect(new PotionEffect(effect.potion, 619, effect.amplifier, ambient, showParticles));
+			player.addPotionEffect(new EffectInstance(effect.potion, 619, effect.amplifier, ambient, showParticles));
 		}
 	}
 
 	// Returns which effects match threshold conditions
-	private static List<Effect> getEffectsInThreshold(EntityPlayer player) {
+	private static List<Effect> getEffectsInThreshold(PlayerEntity player) {
 		// List of effects being turned on
 		List<Effect> effectsInThreshold = new ArrayList<>();
 
 		// Get player nutrition
-		Map<Nutrient, Float> playerNutrition = player.getCapability(NUTRITION_CAPABILITY, null).get();
+		Map<Nutrient, Float> playerNutrition = (Map<Nutrient, Float>) player.getCapability(NUTRITION_CAPABILITY).map(cap -> cap.get());
+		// TODO: Is this right?
 
 		// Read in list of potion effects to apply
 		for (Effect effect : EffectsList.get()) {

@@ -3,11 +3,11 @@ package ca.wescook.nutrition.events;
 import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.utility.Config;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.Map;
 
@@ -18,11 +18,12 @@ public class EventPlayerDeath {
 	// Copy player nutrition when "cloned" (death, teleport from End)
 	@SubscribeEvent
 	public void onPlayerClone(PlayerEvent.Clone event) {
-		EntityPlayer player = event.getEntityPlayer();
+		PlayerEntity player = event.getPlayer();
 
 		// Duplicate nutrition capability data on server
-		INutrientManager nutritionOld = event.getOriginal().getCapability(NUTRITION_CAPABILITY, null); // Get old nutrition
-		INutrientManager nutritionNew = player.getCapability(NUTRITION_CAPABILITY, null); // Get new nutrition
+		// TODO: Need to find way to update this code
+		INutrientManager nutritionOld = event.getOriginal().getCapability(NUTRITION_CAPABILITY); // Get old nutrition
+		INutrientManager nutritionNew = player.getCapability(NUTRITION_CAPABILITY); // Get new nutrition
 		nutritionNew.set(nutritionOld.get()); // Overwrite nutrition
 
 		// On death, apply nutrition penalty
@@ -31,7 +32,7 @@ public class EventPlayerDeath {
 			Map<Nutrient, Float> nutrition = player.getCapability(NUTRITION_CAPABILITY, null).get();
 			for (Nutrient nutrient : nutrition.keySet())
 				if (Config.deathPenaltyReset || nutrition.get(nutrient) > Config.deathPenaltyMin) // If reset is disabled, only reduce to cap when above its value
-					player.getCapability(NUTRITION_CAPABILITY, null).set(nutrient, Math.max(Config.deathPenaltyMin, nutrition.get(nutrient) - Config.deathPenaltyLoss)); // Subtract death penalty from each nutrient, to cap
+					player.getCapability(NUTRITION_CAPABILITY).ifPresent(cap -> cap.set(nutrient, Math.max(Config.deathPenaltyMin, nutrition.get(nutrient) - Config.deathPenaltyLoss))); // Subtract death penalty from each nutrient, to cap
 		}
 	}
 }

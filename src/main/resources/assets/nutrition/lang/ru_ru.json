@@ -1,0 +1,24 @@
+{
+    "_comment": "Keys",
+    "key.nutrition": "Открыть интерфейс питания",
+
+    "_comment": "GUI",
+    "gui.nutrition:nutrition_title": "Питательные компоненты",
+    "gui.nutrition:close": "Закрыть",
+    "gui.nutrition:updating": "Обновление...",
+
+    "_comment": "Nutrients (Может быть настроено с помощью Пакетов ресурсов)",
+    "nutrient.nutrition:grain": "Зерновые",
+    "nutrient.nutrition:fruit": "Фрукты",
+    "nutrient.nutrition:vegetable": "Овощи",
+    "nutrient.nutrition:protein": "Белки",
+    "nutrient.nutrition:dairy": "Молочные",
+
+    "_comment": "Tooltips",
+    "tooltip.nutrition:nutrients": "Питательные компоненты:",
+
+    "_comment": "Potions",
+    "potion.nutrition:toughness": "Прочность",
+    "potion.nutrition:nourished": "Сытость",
+    "potion.nutrition:malnourished": "Недоедание"
+}
