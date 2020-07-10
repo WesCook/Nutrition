@@ -15,3 +15,8 @@ nutrient.nutrition:dairy=Milch
 
 # Tooltips
 tooltip.nutrition:nutrients=Nährstoffe:
+
+# Potions
+potion.nutrition:toughness=Robustheit
+potion.nutrition:nourished=Genährt
+potion.nutrition:malnourished=Unterernährt
