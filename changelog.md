@@ -1,5 +1,12 @@
 ## Changelog
 
+[v4.7.0](https://github.com/WesCook/Nutrition/releases/tag/v4.7.0) - 2021-05-05
+* Fixing division error when combining average nutrient detection with a whitelist
+* Updated support for Mystical World and Pam's Harvestcraft (contribution from Sunconure11)
+* Added support for The Birdwatching Mod (contribution from Sunconure11)
+* Updated Chinese localization (contribution from EnterFor)
+* Updated German localization (contribution from ACGaming)
+
 [v4.6.1](https://github.com/WesCook/Nutrition/releases/tag/v4.6.1) - 2020-03-10
 * Fixing Italian localization
 

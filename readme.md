@@ -36,6 +36,7 @@ Mods that are supported with the default five-food group system include:
 * [The Betweenlands](https://www.curseforge.com/minecraft/mc-mods/angry-pixel-the-betweenlands-mod)
 * [Bewitchment](https://www.curseforge.com/minecraft/mc-mods/bewitchment)
 * [Biomes O' Plenty](https://www.curseforge.com/minecraft/mc-mods/biomes-o-plenty)
+* [The Birdwatching Mod](https://www.curseforge.com/minecraft/mc-mods/the-birdwatching-mod)
 * [Cave Root](https://www.curseforge.com/minecraft/mc-mods/cave-root)
 * [Chococraft](https://www.curseforge.com/minecraft/mc-mods/chococraft-3)
 * [Combustive Fishing](https://www.curseforge.com/minecraft/mc-mods/combustive-fishing)
