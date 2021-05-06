@@ -63,7 +63,7 @@ public class EffectsManager {
 						total += playerNutrition.get(nutrient); // Add each value to total
 
 					// Divide by number of nutrients for average (division by zero check)
-					int size = playerNutrition.size();
+					int size = effect.nutrients.size();
 					average = (size != 0) ? total / size : -1f;
 
 					// Check average is inside the threshold
