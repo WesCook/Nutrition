@@ -1,0 +1,22 @@
+# Keys
+key.nutrition=Beslenme Ekranını Aç
+
+# GUI
+gui.nutrition:nutrition_title=Beslenme
+gui.nutrition:close=Kapat
+gui.nutrition:updating=Güncelleniyor...
+
+# Nutrients (Can be customized using Resource Packs)
+nutrient.nutrition:grain=Tahıl Ürünleri
+nutrient.nutrition:fruit=Meyve
+nutrient.nutrition:vegetable=Sebze
+nutrient.nutrition:protein=Protein
+nutrient.nutrition:dairy=Süt Ürünleri
+
+# Tooltips
+tooltip.nutrition:nutrients=Besinler:
+
+# Potions
+potion.nutrition:toughness=Dayanıklılık
+potion.nutrition:nourished=Beslenmiş
+potion.nutrition:malnourished=Yetersiz Beslenmiş
