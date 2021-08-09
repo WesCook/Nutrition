@@ -1,5 +1,12 @@
 ## Changelog
 
+[v4.8.0](https://github.com/WesCook/Nutrition/releases/tag/v4.8.0) - 2021-08-09
+* Added support for ChinjufuMod and JAFFA Foods
+* Updated support for Heat And Climate, Better Animals Plus, Rockhounding Surface, and Zoo & Wild Animals
+* Added support for Oh The Biomes You'll Go (contribution from vizthex123)
+* Updated support for Bewitchment (contribution from vizthex123)
+* Added Turkish localizations (contribution from omerfaruk-cakmak)
+
 [v4.7.0](https://github.com/WesCook/Nutrition/releases/tag/v4.7.0) - 2021-05-05
 * Fixing division error when combining average nutrient detection with a whitelist
 * Updated support for Mystical World and Pam's Harvestcraft (contribution from Sunconure11)
