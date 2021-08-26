@@ -73,6 +73,7 @@ Mods that are supported with the default five-food group system include:
 * [Natural Fauna](https://www.curseforge.com/minecraft/mc-mods/natural-fauna-mod-a-zawa-addon)
 * [NetherEx](https://www.curseforge.com/minecraft/mc-mods/netherex)
 * [Oh The Biomes You'll Go](https://www.curseforge.com/minecraft/mc-mods/oh-the-biomes-youll-go)
+* [Pam's BreadCraft](https://www.curseforge.com/minecraft/mc-mods/pams-breadcraft)
 * [Pam's BrewCraft](https://www.curseforge.com/minecraft/mc-mods/pams-brewcraft)
 * [Pam's HarvestCraft](https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft)
 * [Pam's Simply Strawberries](https://www.curseforge.com/minecraft/mc-mods/pams-simply-strawberries)

@@ -1,5 +1,8 @@
 ## Changelog
 
+[v4.9.0](https://github.com/WesCook/Nutrition/releases/tag/v4.9.0) - 2021-08-26
+* Added support for Pam's BreadCraft
+
 [v4.8.0](https://github.com/WesCook/Nutrition/releases/tag/v4.8.0) - 2021-08-09
 * Added support for ChinjufuMod and JAFFA Foods
 * Updated support for Heat And Climate, Better Animals Plus, Rockhounding Surface, and Zoo & Wild Animals
