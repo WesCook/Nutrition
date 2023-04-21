@@ -30,7 +30,7 @@ public class ModPotions {
 		nourished = new PotionNourished(true, new ResourceLocation("nutrition", "textures/potions/nourished.png"));
 		nourished.setRegistryName("nourished");
 		nourished.setPotionName("potion." + nourished.getRegistryName());
-		toughness.setBeneficial();
+		nourished.setBeneficial();
 		nourished.registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, NOURISHMENT_HEALTH.toString(), 0D, 0);
 
 		// Malnourished
